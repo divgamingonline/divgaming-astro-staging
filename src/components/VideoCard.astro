@@ -4,18 +4,35 @@ export interface Props {
   slug: string;
   creator?: string;
   thumbnail?: string;
+  fallbackThumbnail?: string;
+  finalFallbackThumbnail?: string;
   description?: string;
   youtubeUrl?: string;
 }
 
-const { title, slug, creator, thumbnail, description, youtubeUrl } = Astro.props;
+const {
+  title,
+  slug,
+  creator,
+  thumbnail,
+  fallbackThumbnail,
+  finalFallbackThumbnail,
+  description,
+  youtubeUrl
+} = Astro.props;
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <article class="video-card card">
   {thumbnail ? (
     <a href={`${base}/division-2/videos/${slug}/`} class="video-card__media">
-      <img src={thumbnail} alt="" loading="lazy" />
+      <img
+        src={thumbnail}
+        alt=""
+        loading="lazy"
+        onerror={`this.onerror=function(){this.onerror=null;this.src='${finalFallbackThumbnail || '/assets/img/divgaming-og.svg'}'};this.src='${fallbackThumbnail || finalFallbackThumbnail || '/assets/img/divgaming-og.svg'}'`}
+      />
     </a>
   ) : (
     <a href={`${base}/division-2/videos/${slug}/`} class="video-card__media video-card__media--empty">

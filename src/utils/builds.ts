@@ -57,7 +57,27 @@ export function videoPath(video: BuildVideo): string {
   return `/division-2/videos/${videoSlug(video)}/`;
 }
 
+export function youtubeWatchUrl(video: BuildVideo): string {
+  if (video.url) return video.url;
+
+  if (video.videoId) {
+    return `https://www.youtube.com/watch?v=${encodeURIComponent(video.videoId)}`;
+  }
+
+  return 'https://www.youtube.com/';
+}
+
 export function youtubeThumbnail(video: BuildVideo): string {
+  if (!video.videoId) return '/assets/img/divgaming-og.svg';
+  return `https://i.ytimg.com/vi/${encodeURIComponent(video.videoId)}/maxresdefault.jpg`;
+}
+
+export function youtubeThumbnailFallback(video: BuildVideo): string {
+  if (!video.videoId) return '/assets/img/divgaming-og.svg';
+  return `https://i.ytimg.com/vi/${encodeURIComponent(video.videoId)}/sddefault.jpg`;
+}
+
+export function youtubeThumbnailFinalFallback(video: BuildVideo): string {
   if (!video.videoId) return '/assets/img/divgaming-og.svg';
   return `https://i.ytimg.com/vi/${encodeURIComponent(video.videoId)}/hqdefault.jpg`;
 }
@@ -71,7 +91,7 @@ export function videoDescription(video: BuildVideo): string {
       : description;
   }
 
-  return `Watch ${video.title || 'this Division 2 video'} on DivGaming, an unofficial Division 2 community hub.`;
+  return `Watch ${video.title || 'this Division 2 video'} on the creator's YouTube page via DivGaming.`;
 }
 
 export function videoCategory(video: BuildVideo): string {

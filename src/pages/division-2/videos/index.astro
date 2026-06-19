@@ -6,6 +6,9 @@ import {
   normalizeBuilds,
   videoSlug,
   youtubeThumbnail,
+  youtubeThumbnailFallback,
+  youtubeThumbnailFinalFallback,
+  youtubeWatchUrl,
   videoDescription
 } from '../../../utils/builds';
 
@@ -26,6 +29,7 @@ const videos = normalizeBuilds(buildsData)
     <p class="lead">
       This staging page proves Astro can read data/builds.json and link to
       generated video SEO pages without committing generated HTML to the repo.
+      Video playback stays on YouTube so creators receive the direct visit.
     </p>
   </section>
 
@@ -40,7 +44,10 @@ const videos = normalizeBuilds(buildsData)
           slug={videoSlug(video)}
           creator={video.creator}
           thumbnail={youtubeThumbnail(video)}
+          fallbackThumbnail={youtubeThumbnailFallback(video)}
+          finalFallbackThumbnail={youtubeThumbnailFinalFallback(video)}
           description={videoDescription(video)}
+          youtubeUrl={youtubeWatchUrl(video)}
         />
       ))}
     </div>
@@ -49,6 +56,19 @@ const videos = normalizeBuilds(buildsData)
   <style>
     .video-grid {
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    :global(.video-card__actions) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    :global(.video-card__actions a:first-child) {
+      color: var(--dg-muted);
     }
   </style>
 </BaseLayout>
