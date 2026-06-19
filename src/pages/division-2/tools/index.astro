@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ToolCard from '../../../components/ToolCard.astro';
+---
+<BaseLayout title="Division 2 Tools | DivGaming" description="DivGaming tools for named items, exotics, brand sets, gear sets, gear talents, and weapon talents." canonical="/division-2/tools/" noindex={true}>
+  <section class="shell hero"><p class="eyebrow">Division 2 Tools</p><h1>Tools and databases</h1><p class="lead">This page will become the shared Astro tools hub. Phase 1 only creates the routing and design structure.</p></section>
+  <section class="shell section"><div class="grid grid-3"><ToolCard title="Named Items Database" description="Named gear and weapons by slot, brand, core, talent, and fixed attribute." href="/division-2/tools/named-items-database/"/><ToolCard title="Exotic Source Tracker" description="Exotic weapons and gear sources, item type, and farming notes." href="/division-2/tools/exotic-source-tracker/"/><ToolCard title="Brand Set Database" description="Brand bonuses and stat planning reference." href="/division-2/tools/brand-set-database/"/><ToolCard title="Gearset Matrix" description="Gear set bonuses and build direction." href="/division-2/tools/gearset-matrix/"/><ToolCard title="Gear Talents" description="Chest and backpack talent reference." href="/division-2/tools/gear-talents/"/><ToolCard title="Weapon Talents" description="Weapon talent reference." href="/division-2/tools/weapon-talents/"/></div></section>
+</BaseLayout>

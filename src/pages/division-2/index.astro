@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolCard from '../../components/ToolCard.astro';
+---
+<BaseLayout title="The Division 2 Hub | DivGaming" description="The DivGaming Division 2 hub for builds, guides, tools, databases, creators, and community resources." canonical="/division-2/" noindex={true}>
+  <section class="shell hero"><p class="eyebrow">Division 2 Hub</p><h1>The Division 2 resources in one place</h1><p class="lead">This staging hub proves the shared Astro layout before we migrate the full DivGaming content library.</p></section>
+  <section class="shell section"><div class="grid grid-3"><ToolCard title="Builds" description="Browse build categories and videos." href="/division-2/builds/"/><ToolCard title="Tools" description="Open DivGaming tools and reference databases." href="/division-2/tools/"/><ToolCard title="Guides" description="Read progression and farming guides." href="/division-2/guides/"/></div></section>
+</BaseLayout>

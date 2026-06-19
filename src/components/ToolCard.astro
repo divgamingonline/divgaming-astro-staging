@@ -1,0 +1,10 @@
+---
+export interface Props { title: string; description: string; href: string; label?: string; }
+const { title, description, href, label = 'Open' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const fullHref = href.startsWith('http') ? href : `${base}${href}`;
+---
+<a class="tool-card card" href={fullHref}>
+  <span class="tool-card__icon" aria-hidden="true">⌁</span>
+  <span class="tool-card__body"><strong>{title}</strong><span>{description}</span><em>{label} →</em></span>
+</a>

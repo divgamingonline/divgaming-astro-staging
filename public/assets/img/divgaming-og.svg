@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#050807"/>
+  <circle cx="180" cy="90" r="260" fill="#ff6b00" opacity=".18"/>
+  <circle cx="1040" cy="160" r="240" fill="#ff6b00" opacity=".10"/>
+  <text x="90" y="250" fill="#ff6b00" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="900" letter-spacing="10">DIVGAMING</text>
+  <text x="90" y="340" fill="#f4f7f2" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900">Division 2 Command Center</text>
+  <text x="90" y="415" fill="#d9f2ee" opacity=".76" font-family="Arial, Helvetica, sans-serif" font-size="30">Builds • Guides • Tools • Community</text>
+</svg>
