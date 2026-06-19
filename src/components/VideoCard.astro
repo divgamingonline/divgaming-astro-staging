@@ -1,9 +1,40 @@
 ---
-export interface Props { title: string; slug: string; creator?: string; thumbnail?: string; description?: string; }
-const { title, slug, creator, thumbnail, description } = Astro.props;
+export interface Props {
+  title: string;
+  slug: string;
+  creator?: string;
+  thumbnail?: string;
+  description?: string;
+  youtubeUrl?: string;
+}
+
+const { title, slug, creator, thumbnail, description, youtubeUrl } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
+
 <article class="video-card card">
-  {thumbnail ? <a href={`${base}/division-2/videos/${slug}/`} class="video-card__media"><img src={thumbnail} alt="" loading="lazy" /></a> : <a href={`${base}/division-2/videos/${slug}/`} class="video-card__media video-card__media--empty"><span>DIVGAMING</span></a>}
-  <div class="video-card__body"><h3><a href={`${base}/division-2/videos/${slug}/`}>{title}</a></h3>{creator && <p class="video-card__creator">By {creator}</p>}{description && <p>{description}</p>}</div>
+  {thumbnail ? (
+    <a href={`${base}/division-2/videos/${slug}/`} class="video-card__media">
+      <img src={thumbnail} alt="" loading="lazy" />
+    </a>
+  ) : (
+    <a href={`${base}/division-2/videos/${slug}/`} class="video-card__media video-card__media--empty">
+      <span>DIVGAMING</span>
+    </a>
+  )}
+
+  <div class="video-card__body">
+    <h3><a href={`${base}/division-2/videos/${slug}/`}>{title}</a></h3>
+    {creator && <p class="video-card__creator">By {creator}</p>}
+    {description && <p>{description}</p>}
+
+    <div class="video-card__actions">
+      <a href={`${base}/division-2/videos/${slug}/`}>Details</a>
+      {youtubeUrl && (
+        <a href={youtubeUrl} target="_blank" rel="noopener noreferrer">
+          Watch on YouTube →
+        </a>
+      )}
+    </div>
+  </div>
 </article>
