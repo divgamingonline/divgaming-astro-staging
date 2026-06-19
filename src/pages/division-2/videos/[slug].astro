@@ -39,6 +39,11 @@ const slug = videoSlug(video);
 const canonical = `/division-2/videos/${slug}/`;
 const description = videoDescription(video);
 const thumbnail = youtubeThumbnail(video);
+const youtubeUrl = video.url || (
+  video.videoId
+    ? `https://www.youtube.com/watch?v=${encodeURIComponent(video.videoId)}`
+    : 'https://www.youtube.com/'
+);
 const category = videoCategory(video);
 const tags = videoTags(video);
 const publishedDate = formatDate(video.publishedAt);
@@ -52,14 +57,11 @@ const jsonLd = {
   description,
   thumbnailUrl: thumbnail ? [thumbnail] : undefined,
   uploadDate: video.publishedAt,
-  embedUrl: video.videoId
-    ? `https://www.youtube.com/embed/${video.videoId}`
-    : undefined,
-  url: `https://divgaming.com${canonical}`,
+  url: youtubeUrl,
+  contentUrl: youtubeUrl,
   publisher: {
     '@type': 'Organization',
-    name: 'DivGaming',
-    url: 'https://divgaming.com'
+    name: video.creator || 'YouTube creator'
   }
 };
 ---
@@ -73,7 +75,7 @@ const jsonLd = {
 >
   <section class="shell video-layout">
     <article class="card video-page">
-      <p class="eyebrow">Division 2 Video</p>
+      <p class="eyebrow">Division 2 Creator Video</p>
       <h1>{video.title}</h1>
 
       <div class="video-meta">
@@ -82,19 +84,16 @@ const jsonLd = {
         {category && <span>Category: {category}</span>}
       </div>
 
-      {video.videoId ? (
-        <div class="video-embed">
-          <iframe
-            src={`https://www.youtube.com/embed/${video.videoId}`}
-            title={video.title}
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-      ) : (
+      <a class="video-thumb-link" href={youtubeUrl} target="_blank" rel="noopener noreferrer">
         <img class="video-thumb" src={thumbnail} alt="" loading="eager" />
-      )}
+        <span class="youtube-overlay">Watch on YouTube →</span>
+      </a>
+
+      <p class="creator-note">
+        DivGaming does not embed creator videos. Use the YouTube link below to
+        watch directly on the creator’s channel and support their views,
+        recommendations, and monetization.
+      </p>
 
       <p class="lead">{description}</p>
 
@@ -107,11 +106,9 @@ const jsonLd = {
       )}
 
       <div class="video-actions">
-        {video.url && (
-          <a class="button" href={video.url} target="_blank" rel="noopener noreferrer">
-            Watch on YouTube
-          </a>
-        )}
+        <a class="button" href={youtubeUrl} target="_blank" rel="noopener noreferrer">
+          Watch on YouTube
+        </a>
 
         <a class="button button--ghost" href={`${import.meta.env.BASE_URL}division-2/videos/`}>
           Back to video index
@@ -155,32 +152,54 @@ const jsonLd = {
       background: rgba(255, 255, 255, 0.04);
     }
 
-    .video-embed {
+    .video-thumb-link {
       position: relative;
+      display: block;
       overflow: hidden;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 1px solid rgba(255, 107, 0, 0.22);
       border-radius: 18px;
-      background: #000;
       margin: 18px 0;
+      border: 1px solid rgba(255, 107, 0, 0.22);
+      background: #000;
     }
 
-    .video-embed iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+    .video-thumb-link:hover {
+      text-decoration: none;
     }
 
     .video-thumb {
+      display: block;
       width: 100%;
       max-height: 520px;
       object-fit: cover;
-      border-radius: 18px;
-      margin: 18px 0;
-      border: 1px solid rgba(255, 107, 0, 0.22);
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .video-thumb-link:hover .video-thumb {
+      transform: scale(1.015);
+      opacity: 0.76;
+    }
+
+    .youtube-overlay {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: var(--dg-orange);
+      color: #141006;
+      font-weight: 950;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    .creator-note {
+      border: 1px solid rgba(255, 107, 0, 0.2);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: var(--dg-muted);
+      background: rgba(255, 107, 0, 0.08);
     }
 
     .tag-list {
