@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import buildsData from '../../../../data/builds.json';
+import {
+  normalizeBuilds,
+  videoSlug,
+  youtubeThumbnail,
+  videoDescription,
+  videoCategory,
+  videoTags,
+  formatDate
+} from '../../../utils/builds';
+
+const videos = normalizeBuilds(buildsData)
+  .filter((video) => video.title && (video.id || video.videoId));
+
+export async function getStaticPaths() {
+  const seen = new Set<string>();
+
+  return videos
+    .map((video) => {
+      const slug = videoSlug(video);
+      return { slug, video };
+    })
+    .filter(({ slug }) => {
+      if (seen.has(slug)) return false;
+      seen.add(slug);
+      return true;
+    })
+    .map(({ slug, video }) => ({
+      params: { slug },
+      props: { video }
+    }));
+}
+
+const { video } = Astro.props;
+
+const slug = videoSlug(video);
+const canonical = `/division-2/videos/${slug}/`;
+const description = videoDescription(video);
+const thumbnail = youtubeThumbnail(video);
+const category = videoCategory(video);
+const tags = videoTags(video);
+const publishedDate = formatDate(video.publishedAt);
+
+const title = `${video.title || 'Division 2 Video'} | DivGaming`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: video.title || 'Division 2 Video',
+  description,
+  thumbnailUrl: thumbnail ? [thumbnail] : undefined,
+  uploadDate: video.publishedAt,
+  embedUrl: video.videoId
+    ? `https://www.youtube.com/embed/${video.videoId}`
+    : undefined,
+  url: `https://divgaming.com${canonical}`,
+  publisher: {
+    '@type': 'Organization',
+    name: 'DivGaming',
+    url: 'https://divgaming.com'
+  }
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  image={thumbnail}
+  noindex={true}
+>
+  <section class="shell video-layout">
+    <article class="card video-page">
+      <p class="eyebrow">Division 2 Video</p>
+      <h1>{video.title}</h1>
+
+      <div class="video-meta">
+        {video.creator && <span>Creator: {video.creator}</span>}
+        {publishedDate && <span>Published: {publishedDate}</span>}
+        {category && <span>Category: {category}</span>}
+      </div>
+
+      {video.videoId ? (
+        <div class="video-embed">
+          <iframe
+            src={`https://www.youtube.com/embed/${video.videoId}`}
+            title={video.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      ) : (
+        <img class="video-thumb" src={thumbnail} alt="" loading="eager" />
+      )}
+
+      <p class="lead">{description}</p>
+
+      {tags.length > 0 && (
+        <div class="tag-list" aria-label="Video tags">
+          {tags.slice(0, 12).map((tag) => (
+            <span>{tag}</span>
+          ))}
+        </div>
+      )}
+
+      <div class="video-actions">
+        {video.url && (
+          <a class="button" href={video.url} target="_blank" rel="noopener noreferrer">
+            Watch on YouTube
+          </a>
+        )}
+
+        <a class="button button--ghost" href={`${import.meta.env.BASE_URL}division-2/videos/`}>
+          Back to video index
+        </a>
+      </div>
+    </article>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <style>
+    .video-layout {
+      display: grid;
+      gap: 22px;
+    }
+
+    .video-page {
+      padding: 28px;
+    }
+
+    .video-page h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2rem, 5vw, 4.25rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+
+    .video-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--dg-muted);
+      font-size: 0.9rem;
+    }
+
+    .video-meta span {
+      border: 1px solid rgba(255, 107, 0, 0.18);
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .video-embed {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(255, 107, 0, 0.22);
+      border-radius: 18px;
+      background: #000;
+      margin: 18px 0;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-thumb {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin: 18px 0;
+      border: 1px solid rgba(255, 107, 0, 0.22);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag-list span {
+      border: 1px solid rgba(255, 107, 0, 0.22);
+      border-radius: 999px;
+      padding: 5px 10px;
+      color: var(--dg-muted);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.82rem;
+    }
+
+    .video-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+  </style>
+</BaseLayout>

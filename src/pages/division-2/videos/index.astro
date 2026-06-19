@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import VideoCard from '../../../components/VideoCard.astro';
+import buildsData from '../../../../data/builds.json';
+import {
+  normalizeBuilds,
+  videoSlug,
+  youtubeThumbnail,
+  videoDescription
+} from '../../../utils/builds';
+
+const videos = normalizeBuilds(buildsData)
+  .filter((video) => video.title && (video.id || video.videoId))
+  .slice(0, 48);
+---
+
+<BaseLayout
+  title="Division 2 Videos | DivGaming Astro Staging"
+  description="Astro-generated Division 2 video index powered by data/builds.json."
+  canonical="/division-2/videos/"
+  noindex={true}
+>
+  <section class="shell hero">
+    <p class="eyebrow">Phase 2A test</p>
+    <h1>Division 2 video routes</h1>
+    <p class="lead">
+      This staging page proves Astro can read data/builds.json and link to
+      generated video SEO pages without committing generated HTML to the repo.
+    </p>
+  </section>
+
+  <section class="shell section">
+    <p class="eyebrow">Generated from data/builds.json</p>
+    <h2>Latest video pages</h2>
+
+    <div class="grid video-grid">
+      {videos.map((video) => (
+        <VideoCard
+          title={video.title || 'Division 2 Video'}
+          slug={videoSlug(video)}
+          creator={video.creator}
+          thumbnail={youtubeThumbnail(video)}
+          description={videoDescription(video)}
+        />
+      ))}
+    </div>
+  </section>
+
+  <style>
+    .video-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  </style>
+</BaseLayout>
