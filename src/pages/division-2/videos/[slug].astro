@@ -11,13 +11,13 @@ import {
   formatDate
 } from '../../../utils/builds';
 
-const videos = normalizeBuilds(buildsData)
+const allVideos = normalizeBuilds(buildsData)
   .filter((video) => video.title && (video.id || video.videoId));
 
 export async function getStaticPaths() {
-  const seen = new Set<string>();
+  const seen = new Set();
 
-  return videos
+  return allVideos
     .map((video) => {
       const slug = videoSlug(video);
       return { slug, video };
