@@ -1,0 +1,147 @@
+---
+import VideoCard from './VideoCard.astro';
+import {
+  videoSlug,
+  youtubeThumbnail,
+  youtubeThumbnailFallback,
+  youtubeThumbnailFinalFallback,
+  youtubeWatchUrl,
+  videoDescription,
+  videoCategory,
+  type BuildVideo
+} from '../utils/builds';
+
+export interface Props {
+  videos: BuildVideo[];
+  emptyMessage: string;
+}
+
+const { videos, emptyMessage } = Astro.props;
+---
+
+{videos.length > 0 ? (
+  <div class="grid build-video-grid">
+    {videos.map((video) => (
+      <VideoCard
+        title={video.title || 'Division 2 Video'}
+        slug={videoSlug(video)}
+        creator={video.creator}
+        thumbnail={youtubeThumbnail(video)}
+        fallbackThumbnail={youtubeThumbnailFallback(video)}
+        finalFallbackThumbnail={youtubeThumbnailFinalFallback(video)}
+        description={videoDescription(video)}
+        youtubeUrl={youtubeWatchUrl(video)}
+        category={videoCategory(video)}
+      />
+    ))}
+  </div>
+) : (
+  <div class="card empty-state">
+    <p class="eyebrow">No results yet</p>
+    <h2>{emptyMessage}</h2>
+    <p>
+      This category is powered by data/builds.json. As the data map improves,
+      this page will become more precise.
+    </p>
+  </div>
+)}
+
+<style>
+  .build-video-grid {
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    align-items: stretch;
+  }
+
+  .empty-state {
+    padding: 24px;
+  }
+
+  .empty-state h2 {
+    margin-top: 0;
+  }
+
+  :global(.video-card) {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  :global(.video-card__media) {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.45);
+    border-bottom: 1px solid rgba(255, 107, 0, 0.16);
+  }
+
+  :global(.video-card__media img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  :global(.video-card__media:hover img) {
+    transform: scale(1.025);
+    opacity: 0.78;
+  }
+
+  :global(.video-card__badge) {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    max-width: calc(100% - 24px);
+    border: 1px solid rgba(255, 107, 0, 0.35);
+    border-radius: 999px;
+    padding: 5px 9px;
+    background: rgba(0, 0, 0, 0.72);
+    color: var(--dg-orange);
+    font-size: 0.72rem;
+    font-weight: 950;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+  }
+
+  :global(.video-card__body) {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  :global(.video-card__body h3) {
+    margin: 0 0 8px;
+    font-size: 1.02rem;
+    line-height: 1.2;
+  }
+
+  :global(.video-card__body p) {
+    margin: 0 0 12px;
+    color: var(--dg-muted);
+  }
+
+  :global(.video-card__creator) {
+    color: var(--dg-orange) !important;
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  :global(.video-card__actions) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+    font-size: 0.86rem;
+    font-weight: 900;
+  }
+
+  :global(.video-card__actions a:first-child) {
+    color: var(--dg-muted);
+  }
+</style>

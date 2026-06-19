@@ -1,8 +1,5 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import ToolCard from '../../../components/ToolCard.astro';
+import BuildCategoryPage from '../../../components/BuildCategoryPage.astro';
 ---
-<BaseLayout title="Division 2 Builds | DivGaming" description="Browse Division 2 builds by category, including Striker, PvE, solo, and PvP." canonical="/division-2/builds/" noindex={true}>
-  <section class="shell hero"><p class="eyebrow">Division 2 Builds</p><h1>Build categories</h1><p class="lead">Phase 1 placeholder. In Phase 2 and 3, this will connect to data/builds.json.</p></section>
-  <section class="shell section"><div class="grid grid-4"><ToolCard title="Striker Builds" description="Striker-focused DPS setups." href="/division-2/builds/striker/"/><ToolCard title="PvE Builds" description="Mission, open-world, Countdown, raid, and incursion builds." href="/division-2/builds/pve/"/><ToolCard title="Solo Builds" description="Self-sufficient farming and progression builds." href="/division-2/builds/solo/"/><ToolCard title="PvP Builds" description="Dark Zone and Conflict builds." href="/division-2/builds/pvp/"/></div></section>
-</BaseLayout>
+
+<BuildCategoryPage categoryKey="all" />
