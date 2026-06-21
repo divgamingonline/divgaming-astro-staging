@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 190" role="img" aria-label="DIVGAMING.COM">
+  <defs>
+    <linearGradient id="dvgD" x1="20" y1="20" x2="165" y2="168" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff6b00"/>
+      <stop offset=".42" stop-color="#ffd39b"/>
+      <stop offset=".72" stop-color="#ff7a00"/>
+      <stop offset="1" stop-color="#b83a00"/>
+    </linearGradient>
+    <filter id="dvgGlow" x="-30%" y="-40%" width="170%" height="190%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1 0 .42 0 0 .35 0 0 0 0 0 0 0 0 .62 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="10" y="18" width="154" height="154" rx="34" fill="#080908" stroke="#ff6b00" stroke-opacity=".32" stroke-width="3"/>
+  <path d="M48 46h42c45 0 74 28 74 49s-29 49-74 49H48V46Zm31 29v40h13c24 0 39-7 39-20s-15-20-39-20H79Z" fill="url(#dvgD)" filter="url(#dvgGlow)"/>
+  <text x="190" y="105" fill="#ff6b00" font-family="Arial Black, Impact, sans-serif" font-size="68" font-weight="900" letter-spacing="-3">DIVGAMING</text>
+  <text x="628" y="105" fill="#ffffff" font-family="Arial Black, Impact, sans-serif" font-size="68" font-weight="900" letter-spacing="-3">.COM</text>
+  <text x="194" y="138" fill="#b8afa3" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="5">THE DIVISION 2 COMMUNITY HUB</text>
+  <path d="M192 154h560" stroke="#ff6b00" stroke-width="5" stroke-linecap="round" opacity=".72"/>
+</svg>

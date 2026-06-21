@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="DivGaming D mark">
+  <defs>
+    <linearGradient id="dvg" x1="34" y1="24" x2="218" y2="232" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff6b00"/>
+      <stop offset=".42" stop-color="#ffd39b"/>
+      <stop offset=".72" stop-color="#ff7a00"/>
+      <stop offset="1" stop-color="#b83a00"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1 0 .42 0 0 .35 0 0 0 0 0 0 0 0 .65 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="54" fill="#080908"/>
+  <path d="M68 47h67c46 0 80 33 80 81s-34 81-80 81H68V47Zm42 38v86h24c24 0 39-17 39-43s-15-43-39-43h-24Z" fill="url(#dvg)" filter="url(#glow)"/>
+  <path d="M54 218h148" stroke="#ff6b00" stroke-width="8" stroke-linecap="round" opacity=".72"/>
+</svg>

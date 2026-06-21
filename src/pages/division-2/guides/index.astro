@@ -6,39 +6,45 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const guides = [
   {
     title: 'Getting Back Into Division 2',
-    status: 'Planned',
-    text: 'A returning-agent path for gear, seasons, expertise, SHD levels, and endgame priorities.'
+    status: 'Returning Agents',
+    text: 'A returning-agent path for gear, seasons, expertise, SHD levels, and endgame priorities.',
+    href: '/division-2/tools/'
   },
   {
     title: 'Exotic Farming',
-    status: 'Tool-linked',
-    text: 'Guide route that will connect directly into the Exotic Source Tracker and farming notes.'
+    status: 'Farming',
+    text: 'Find exotic sources and connect directly into the Exotic Source Tracker.',
+    href: '/division-2/tools/exotic-source-tracker/'
   },
   {
     title: 'Named Item Farming',
-    status: 'Tool-linked',
-    text: 'Named item farming reference connected to sources, slots, and target loot logic.'
+    status: 'Farming',
+    text: 'Use named item references to understand sources, slots, talents, and target loot paths.',
+    href: '/division-2/tools/named-items-database/'
   },
   {
     title: 'Build Basics',
-    status: 'Planned',
-    text: 'Core explanation for damage, survivability, skills, crit, armor, cores, talents, and gear synergy.'
+    status: 'Buildcraft',
+    text: 'Understand damage, armor, skills, crit, cores, talents, and gear synergy.',
+    href: '/division-2/builds/'
   },
   {
     title: 'Raids and Incursions',
-    status: 'Planned',
-    text: 'Landing route for endgame group activities, roles, prep builds, and encounter notes.'
+    status: 'Endgame',
+    text: 'Prepare for endgame group content with roles, build lanes, and encounter planning.',
+    href: '/division-2/builds/pve/'
   },
   {
     title: 'Countdown and Endgame Farming',
-    status: 'Planned',
-    text: 'Efficient farming path for agents trying to quickly improve gear and optimize loadouts.'
+    status: 'Endgame',
+    text: 'Improve gear quickly with efficient farming and optimization routes.',
+    href: '/division-2/builds/pve/'
   }
 ];
 ---
 
 <BaseLayout
-  title="Division 2 Guides | DivGaming Astro Staging"
+  title="Division 2 Guides | DivGaming"
   description="Guide structure for Division 2 farming, builds, endgame, exotics, named items, raids, incursions, and returning agents."
   canonical="/division-2/guides/"
   noindex={true}
@@ -47,10 +53,10 @@ const guides = [
     <div class="command-hero">
       <div>
         <p class="eyebrow">Guide Library</p>
-        <h1>Guides with a real structure.</h1>
+        <h1>Guides with a real path.</h1>
         <p class="lead">
-          The guide library is now staged as a proper DivGaming route. The next
-          pass can fill these with full articles, tool links, and build pathways.
+          Farming, returning-agent help, build basics, endgame prep, and tool-linked
+          references for Division 2 players.
         </p>
         <div class="hero-actions">
           <a class="button" href={`${base}/division-2/tools/`}>Use Tools</a>
@@ -62,7 +68,7 @@ const guides = [
         <p class="eyebrow">Guide routes</p>
         <div class="command-panel__list">
           <div class="command-panel__row"><span>Guide tracks</span><strong>{guides.length}</strong></div>
-          <div class="command-panel__row"><span>Status</span><strong>Staged</strong></div>
+          <div class="command-panel__row"><span>Linked to tools</span><strong>Yes</strong></div>
         </div>
       </aside>
     </div>
@@ -72,22 +78,22 @@ const guides = [
     <div class="section-heading">
       <div>
         <p class="eyebrow">Guide tracks</p>
-        <h2>Next content lanes</h2>
+        <h2>Content lanes</h2>
       </div>
       <p>
-        These are not generic placeholders anymore. They are the planned content
-        lanes DivGaming should build out next.
+        Each guide card points agents toward an existing DivGaming route while
+        full article pages are built out.
       </p>
     </div>
 
     <div class="grid guide-grid">
       {guides.map((guide) => (
-        <article class="card guide-card">
+        <a class="card guide-card" href={`${base}${guide.href}`}>
           <p class="eyebrow">{guide.status}</p>
           <h2>{guide.title}</h2>
           <p>{guide.text}</p>
-          <strong>Guide lane staged</strong>
-        </article>
+          <strong>Open related route →</strong>
+        </a>
       ))}
     </div>
   </section>

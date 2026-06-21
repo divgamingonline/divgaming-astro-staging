@@ -19,25 +19,25 @@ const routes = [
   { eyebrow: 'Builds', title: 'Build Library', href: '/division-2/builds/', text: 'Browse Striker, PvE, solo, and PvP build routes from creator videos.', metric: videos.length },
   { eyebrow: 'Tools', title: 'Agent Tools', href: '/division-2/tools/', text: 'Use DivGaming databases for exotics, named items, brands, gear sets, and talents.', metric: exoticCount + namedCount + brandCount },
   { eyebrow: 'Creators', title: 'Creator Index', href: '/division-2/creators/', text: 'Discover Division 2 creators and route viewers directly to their YouTube videos.', metric: creatorCount },
-  { eyebrow: 'Guides', title: 'Guide Library', href: '/division-2/guides/', text: 'A clean structure for farming, progression, endgame, raids, incursions, and tools.', metric: 'New' }
+  { eyebrow: 'Guides', title: 'Guide Library', href: '/division-2/guides/', text: 'Farming, progression, builds, endgame, raids, incursions, and returning-agent paths.', metric: 'New' }
 ];
 ---
 
 <BaseLayout
-  title="DivGaming | Division 2 Builds, Tools, Guides, and Creator Videos"
-  description="DivGaming is an unofficial Division 2 community hub for builds, tools, guides, creator videos, exotics, named items, and gear databases."
+  title="DivGaming | The Division 2 Builds, Tools, Guides, and Community Hub"
+  description="DivGaming is an unofficial Division 2 community hub for builds, tools, guides, creator videos, exotics, named items, and agent resources."
   canonical="/"
   noindex={true}
 >
   <section class="shell hero">
     <div class="command-hero">
       <div>
-        <p class="eyebrow">DivGaming.com Astro Staging</p>
-        <h1>Division 2 command hub.</h1>
+        <p class="eyebrow">Unofficial Division 2 Community Hub</p>
+        <h1>Built for agents who want answers fast.</h1>
         <p class="lead">
           Builds, creator discovery, exotic sources, named items, brand sets,
-          gear sets, talent references, and guide routes — rebuilt into one fast
-          DivGaming experience.
+          gear sets, talent references, and guide routes — organized into one
+          clean DivGaming experience.
         </p>
 
         <div class="hero-actions">
@@ -47,7 +47,7 @@ const routes = [
       </div>
 
       <aside class="command-panel">
-        <p class="eyebrow">Live staging data</p>
+        <p class="eyebrow">DivGaming index</p>
         <div class="command-panel__list">
           <div class="command-panel__row"><span>Build videos</span><strong>{videos.length}</strong></div>
           <div class="command-panel__row"><span>Creators</span><strong>{creatorCount}</strong></div>
@@ -62,11 +62,11 @@ const routes = [
     <div class="section-heading">
       <div>
         <p class="eyebrow">Main routes</p>
-        <h2>Pick your lane</h2>
+        <h2>Choose your lane</h2>
       </div>
       <p>
-        This consolidated staging pass makes DivGaming feel like one connected
-        site instead of separate prototype pages.
+        DivGaming connects tools, builds, creator videos, and guide paths into a
+        single Division 2 resource hub.
       </p>
     </div>
 
@@ -80,6 +80,18 @@ const routes = [
           <strong>Open route →</strong>
         </a>
       ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="launch-note">
+      <p class="eyebrow">Production candidate direction</p>
+      <h2>Creator-forward, tool-driven, easy to maintain.</h2>
+      <p>
+        The new DivGaming structure keeps YouTube traffic with creators, keeps
+        reference data in JSON, and gives agents clean routes into the content
+        they actually need.
+      </p>
     </div>
   </section>
 </BaseLayout>

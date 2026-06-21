@@ -10,8 +10,8 @@ export interface Props {
 }
 
 const {
-  title = 'DivGaming | Division 2 Community Hub',
-  description = 'DivGaming is an unofficial Division 2 community hub for builds, tools, guides, videos, and creator resources.',
+  title = 'DivGaming | The Division 2 Builds, Tools, Guides, and Community Hub',
+  description = 'DivGaming is an unofficial Division 2 community hub for builds, tools, guides, videos, creators, exotics, named items, and agent resources.',
   canonical = '/',
   image = '/assets/img/divgaming-og.svg',
   noindex = false
@@ -23,6 +23,7 @@ const canonicalUrl = `https://divgaming.com${canonicalPath}`;
 const siteImage = image.startsWith('http') ? image : `${base}${image}`;
 
 const navItems = [
+  { label: 'Home', href: '/' },
   { label: 'Division 2', href: '/division-2/' },
   { label: 'Builds', href: '/division-2/builds/' },
   { label: 'Tools', href: '/division-2/tools/' },
@@ -64,6 +65,8 @@ function withBase(href: string) {
   </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <div class="site-bg" aria-hidden="true">
       <span class="site-bg__grid"></span>
       <span class="site-bg__scan"></span>
@@ -73,11 +76,7 @@ function withBase(href: string) {
 
     <header class="site-header">
       <a class="site-brand" href={withBase('/')} aria-label="DivGaming home">
-        <span class="site-brand__mark">D</span>
-        <span class="site-brand__text">
-          <strong>DIVGAMING</strong>
-          <small>Division 2 Command Hub</small>
-        </span>
+        <img src={withBase('/assets/img/divgaming-logo.svg')} alt="DivGaming" class="site-brand__logo" />
       </a>
 
       <nav class="site-nav" aria-label="Primary navigation">
@@ -89,17 +88,17 @@ function withBase(href: string) {
       <a class="site-header__cta" href={withBase('/division-2/tools/')}>Agent Tools</a>
     </header>
 
-    <main>
+    <main id="main-content">
       <slot />
     </main>
 
     <footer class="site-footer">
       <div class="shell site-footer__inner">
         <div>
-          <p class="eyebrow">Unofficial Division 2 Community Hub</p>
-          <strong>DivGaming</strong>
+          <img src={withBase('/assets/img/divgaming-logo.svg')} alt="DivGaming" class="site-footer__logo" />
           <p>
-            Builds, tools, videos, guides, and creator discovery for Division 2 agents.
+            Unofficial Division 2 community hub for builds, tools, guides,
+            videos, creators, and agent resources.
           </p>
         </div>
 
