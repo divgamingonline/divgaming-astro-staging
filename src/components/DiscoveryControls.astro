@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import type { DiscoveryFilter } from '../utils/builds';
 
 export interface Props {
@@ -29,16 +30,24 @@ const {
     </div>
   </div>
 
+  <div class="discovery-filter-toolbar">
+    {filters.length > 0 && (
+      <button type="button" class="filter-toggle" data-discovery-filter-toggle aria-expanded="false">
+        <Icon name="list-filter" />
+        Filters
+      </button>
+    )}
+    <button type="button" class="discovery-reset" data-discovery-reset>Reset</button>
+  </div>
+
   {filters.length > 0 && (
-    <div class="discovery-filters" aria-label="Discovery filters">
+    <div class="discovery-filters" aria-label="Discovery filters" data-discovery-filter-panel>
       <button type="button" class="active" data-discovery-filter="all">All</button>
       {filters.map((filter) => (
         <button type="button" data-discovery-filter={filter.value}>{filter.label}</button>
       ))}
     </div>
   )}
-
-  <button type="button" class="discovery-reset" data-discovery-reset>Reset filters</button>
 </div>
 
 <script>
@@ -49,7 +58,15 @@ const {
     const count = scope.querySelector('[data-result-count]');
     const reset = scope.querySelector('[data-discovery-reset]');
     const emptyState = document.querySelector('[data-discovery-empty]');
+    const filterToggle = scope.querySelector('[data-discovery-filter-toggle]');
     let activeFilter = 'all';
+
+    function closeFiltersOnMobile() {
+      if (window.matchMedia('(max-width: 780px)').matches) {
+        scope.classList.remove('filters-open');
+        filterToggle?.setAttribute('aria-expanded', 'false');
+      }
+    }
 
     function applyFilters() {
       const query = (searchInput?.value || '').trim().toLowerCase();
@@ -70,6 +87,11 @@ const {
       if (emptyState) emptyState.hidden = visible !== 0;
     }
 
+    filterToggle?.addEventListener('click', () => {
+      const isOpen = scope.classList.toggle('filters-open');
+      filterToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
     searchInput?.addEventListener('input', applyFilters);
 
     for (const button of filterButtons) {
@@ -81,6 +103,7 @@ const {
         }
 
         applyFilters();
+        closeFiltersOnMobile();
       });
     }
 
@@ -93,6 +116,7 @@ const {
       }
 
       applyFilters();
+      closeFiltersOnMobile();
     });
 
     applyFilters();
@@ -102,118 +126,3 @@ const {
     initDiscoveryControls(scope);
   }
 </script>
-
-<style>
-  .discovery-controls {
-    display: grid;
-    gap: 16px;
-    margin-bottom: 20px;
-    padding: 18px;
-  }
-
-  .discovery-controls__top {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 14px;
-    align-items: end;
-  }
-
-  .discovery-search {
-    display: grid;
-    gap: 8px;
-  }
-
-  .discovery-search span {
-    color: var(--muted);
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 900;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .discovery-search input {
-    width: 100%;
-    border: 1px solid rgba(255, 107, 0, 0.28);
-    border-radius: 999px;
-    padding: 14px 16px;
-    color: var(--text);
-    background: rgba(0, 0, 0, 0.28);
-    outline: none;
-  }
-
-  .discovery-search input:focus {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.12);
-  }
-
-  .discovery-count {
-    display: grid;
-    place-items: center;
-    min-width: 104px;
-    border: 1px solid rgba(255, 107, 0, 0.2);
-    border-radius: 16px;
-    padding: 10px 12px;
-    background: rgba(255, 107, 0, 0.055);
-  }
-
-  .discovery-count strong {
-    color: var(--orange-2);
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 1.55rem;
-    line-height: 1;
-  }
-
-  .discovery-count span {
-    color: var(--muted);
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .discovery-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .discovery-filters button,
-  .discovery-reset {
-    border: 1px solid rgba(255, 107, 0, 0.24);
-    border-radius: 999px;
-    padding: 8px 11px;
-    color: var(--muted);
-    background: rgba(255, 255, 255, 0.045);
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 900;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-  }
-
-  .discovery-filters button:hover,
-  .discovery-filters button.active,
-  .discovery-reset:hover {
-    color: #160d05;
-    background: var(--orange);
-    border-color: var(--orange);
-  }
-
-  .discovery-reset {
-    justify-self: start;
-  }
-
-  @media (max-width: 680px) {
-    .discovery-controls__top {
-      grid-template-columns: 1fr;
-    }
-
-    .discovery-count {
-      place-items: start;
-      min-width: 0;
-    }
-  }
-</style>

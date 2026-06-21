@@ -17,15 +17,6 @@ const navItems = [
   { label: 'Creators', href: '/division-2/creators/' },
   { label: 'Guides', href: '/division-2/guides/' }
 ];
-
-const mobileQuickLinks = [
-  { label: 'Striker', href: '/division-2/builds/striker/' },
-  { label: 'PvE', href: '/division-2/builds/pve/' },
-  { label: 'Solo', href: '/division-2/builds/solo/' },
-  { label: 'PvP', href: '/division-2/builds/pvp/' },
-  { label: 'Exotics', href: '/division-2/tools/exotic-source-tracker/' },
-  { label: 'Named', href: '/division-2/tools/named-items-database/' }
-];
 ---
 
 <header class="site-header" id="top">
@@ -66,12 +57,6 @@ const mobileQuickLinks = [
 
     <div class="mobile-search shell">
       <SearchBox id="mobile-global-search" compact={true} />
-    </div>
-
-    <div class="mobile-quicklinks shell" aria-label="Quick links">
-      {mobileQuickLinks.map((item) => (
-        <a href={withBase(item.href)}>{item.label}</a>
-      ))}
     </div>
   </div>
 

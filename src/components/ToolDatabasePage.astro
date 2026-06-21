@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ToolItemCard from './ToolItemCard.astro';
+import Icon from './Icon.astro';
 import {
   buildFilterOptions,
   countNeedsVerification,
@@ -99,16 +100,24 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
         />
       </label>
 
+      <div class="tool-filter-toolbar">
+        {filters.length > 0 && (
+          <button type="button" class="filter-toggle" data-tool-filter-toggle aria-expanded="false">
+            <Icon name="list-filter" />
+            Filters
+          </button>
+        )}
+        <button type="button" class="tool-reset" data-tool-reset>Reset</button>
+      </div>
+
       {filters.length > 0 && (
-        <div class="tool-filters" aria-label="Database filters">
+        <div class="tool-filters" aria-label="Database filters" data-tool-filter-panel>
           <button type="button" class="active" data-tool-filter="all">All</button>
           {filters.map((filter) => (
             <button type="button" data-tool-filter={filter.value}>{filter.label}</button>
           ))}
         </div>
       )}
-
-      <button type="button" class="tool-reset" data-tool-reset>Reset filters</button>
     </div>
 
     {items.length > 0 ? (
@@ -140,7 +149,16 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
       const count = database.querySelector('[data-result-count]');
       const reset = database.querySelector('[data-tool-reset]');
       const emptyState = database.querySelector('[data-empty-state]');
+      const filterToggle = database.querySelector('[data-tool-filter-toggle]');
+      const controls = database.querySelector('.tool-controls');
       let activeFilter = 'all';
+
+      function closeFiltersOnMobile() {
+        if (window.matchMedia('(max-width: 780px)').matches) {
+          controls?.classList.remove('filters-open');
+          filterToggle?.setAttribute('aria-expanded', 'false');
+        }
+      }
 
       function applyFilters() {
         const query = (searchInput?.value || '').trim().toLowerCase();
@@ -161,6 +179,11 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
         if (emptyState) emptyState.hidden = visible !== 0;
       }
 
+      filterToggle?.addEventListener('click', () => {
+        const isOpen = controls?.classList.toggle('filters-open');
+        filterToggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
+      });
+
       searchInput?.addEventListener('input', applyFilters);
 
       for (const button of filterButtons) {
@@ -172,6 +195,7 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
           }
 
           applyFilters();
+          closeFiltersOnMobile();
         });
       }
 
@@ -184,6 +208,7 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
         }
 
         applyFilters();
+        closeFiltersOnMobile();
       });
 
       applyFilters();
@@ -193,90 +218,4 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
       initToolDatabase(database);
     }
   </script>
-
-  <style>
-    .tool-controls {
-      display: grid;
-      gap: 16px;
-      margin-bottom: 20px;
-      padding: 18px;
-    }
-
-    .tool-search {
-      display: grid;
-      gap: 8px;
-    }
-
-    .tool-search span {
-      color: var(--muted);
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 900;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .tool-search input {
-      width: 100%;
-      border: 1px solid rgba(255, 107, 0, 0.28);
-      border-radius: 999px;
-      padding: 14px 16px;
-      color: var(--text);
-      background: rgba(0, 0, 0, 0.28);
-      outline: none;
-    }
-
-    .tool-search input:focus {
-      border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.12);
-    }
-
-    .tool-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tool-filters button,
-    .tool-reset {
-      border: 1px solid rgba(255, 107, 0, 0.24);
-      border-radius: 999px;
-      padding: 8px 11px;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.045);
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 900;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .tool-filters button:hover,
-    .tool-filters button.active,
-    .tool-reset:hover {
-      color: #160d05;
-      background: var(--orange);
-      border-color: var(--orange);
-    }
-
-    .tool-reset {
-      justify-self: start;
-    }
-
-    .tool-grid {
-      grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
-      align-items: stretch;
-    }
-
-    .empty-state {
-      padding: 22px;
-    }
-
-    @media (max-width: 900px) {
-      .tool-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </BaseLayout>
