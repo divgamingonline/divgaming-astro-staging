@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ToolItemCard from './ToolItemCard.astro';
 import {
+  buildFilterOptions,
   countNeedsVerification,
   datasetUpdatedLabel,
   normalizeItems,
@@ -30,10 +31,12 @@ const {
 } = Astro.props;
 
 const items = sortByName(normalizeItems(dataset));
+const filters = buildFilterOptions(items);
 const updated = datasetUpdatedLabel(dataset);
 const needsVerification = countNeedsVerification(items);
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 ---
 
 <BaseLayout
@@ -75,30 +78,122 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </section>
   )}
 
-  <section class="shell section">
+  <section class="shell section" id={databaseId} data-tool-database>
     <div class="section-heading">
       <div>
         <p class="eyebrow">Reference database</p>
-        <h2>{items.length} entries</h2>
+        <h2><span data-result-count>{items.length}</span> entries</h2>
       </div>
       <p>
-        This is an Astro staging version of the DivGaming tool database. Search
-        and advanced filtering will come in a later phase.
+        Search and filter this database instantly. This is still staging, but it
+        now behaves like an actual DivGaming tool.
       </p>
     </div>
 
+    <div class="tool-controls card">
+      <label class="tool-search">
+        <span>Search this database</span>
+        <input
+          type="search"
+          placeholder="Search names, talents, slots, sources..."
+          data-tool-search
+        />
+      </label>
+
+      {filters.length > 0 && (
+        <div class="tool-filters" aria-label="Database filters">
+          <button type="button" class="active" data-tool-filter="all">All</button>
+          {filters.map((filter) => (
+            <button type="button" data-tool-filter={filter.value}>{filter.label}</button>
+          ))}
+        </div>
+      )}
+
+      <button type="button" class="tool-reset" data-tool-reset>Reset filters</button>
+    </div>
+
     {items.length > 0 ? (
-      <div class="grid tool-grid">
-        {items.map((item) => (
-          <ToolItemCard item={item} />
-        ))}
-      </div>
+      <>
+        <div class="grid tool-grid" data-tool-grid>
+          {items.map((item) => (
+            <ToolItemCard item={item} />
+          ))}
+        </div>
+
+        <div class="card empty-state" data-empty-state hidden>
+          <p class="eyebrow">No results</p>
+          <h2>No matching entries found.</h2>
+          <p>Try a broader term or reset the filter chips.</p>
+        </div>
+      </>
     ) : (
       <div class="card empty-state">
         <h2>{emptyMessage}</h2>
       </div>
     )}
   </section>
+
+  <script>
+    function initToolDatabase(database) {
+      const searchInput = database.querySelector('[data-tool-search]');
+      const cards = [...database.querySelectorAll('[data-tool-card]')];
+      const filterButtons = [...database.querySelectorAll('[data-tool-filter]')];
+      const count = database.querySelector('[data-result-count]');
+      const reset = database.querySelector('[data-tool-reset]');
+      const emptyState = database.querySelector('[data-empty-state]');
+      let activeFilter = 'all';
+
+      function applyFilters() {
+        const query = (searchInput?.value || '').trim().toLowerCase();
+        let visible = 0;
+
+        for (const card of cards) {
+          const search = card.dataset.search || '';
+          const filters = (card.dataset.filters || '').split(' ');
+          const matchesSearch = !query || search.includes(query);
+          const matchesFilter = activeFilter === 'all' || filters.includes(activeFilter);
+          const shouldShow = matchesSearch && matchesFilter;
+
+          card.hidden = !shouldShow;
+          if (shouldShow) visible += 1;
+        }
+
+        if (count) count.textContent = String(visible);
+        if (emptyState) emptyState.hidden = visible !== 0;
+      }
+
+      searchInput?.addEventListener('input', applyFilters);
+
+      for (const button of filterButtons) {
+        button.addEventListener('click', () => {
+          activeFilter = button.dataset.toolFilter || 'all';
+
+          for (const item of filterButtons) {
+            item.classList.toggle('active', item === button);
+          }
+
+          applyFilters();
+        });
+      }
+
+      reset?.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        activeFilter = 'all';
+
+        for (const button of filterButtons) {
+          button.classList.toggle('active', button.dataset.toolFilter === 'all');
+        }
+
+        applyFilters();
+      });
+
+      applyFilters();
+    }
+
+    for (const database of document.querySelectorAll('[data-tool-database]')) {
+      initToolDatabase(database);
+    }
+  </script>
 
   <style>
     .tools-hero {
@@ -178,6 +273,73 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       max-width: 560px;
       margin: 0;
       color: var(--dg-muted);
+    }
+
+    .tool-controls {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding: 18px;
+    }
+
+    .tool-search {
+      display: grid;
+      gap: 8px;
+    }
+
+    .tool-search span {
+      color: var(--dg-muted);
+      font-size: 0.8rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tool-search input {
+      width: 100%;
+      border: 1px solid rgba(255, 107, 0, 0.28);
+      border-radius: 16px;
+      padding: 14px 15px;
+      color: var(--dg-text);
+      background: rgba(0, 0, 0, 0.28);
+      font: inherit;
+      outline: none;
+    }
+
+    .tool-search input:focus {
+      border-color: var(--dg-orange);
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.12);
+    }
+
+    .tool-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tool-filters button,
+    .tool-reset {
+      border: 1px solid rgba(255, 107, 0, 0.24);
+      border-radius: 999px;
+      padding: 8px 11px;
+      color: var(--dg-muted);
+      background: rgba(255, 255, 255, 0.045);
+      font: inherit;
+      font-size: 0.84rem;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .tool-filters button:hover,
+    .tool-filters button.active,
+    .tool-reset:hover {
+      color: #160d05;
+      background: var(--dg-orange);
+      border-color: var(--dg-orange);
+    }
+
+    .tool-reset {
+      justify-self: start;
     }
 
     .tool-grid {

@@ -4,7 +4,9 @@ import {
   displayName,
   itemBonuses,
   itemDescription,
+  itemFilterTokens,
   itemRoles,
+  itemSearchText,
   itemSource,
   itemSubhead,
   itemTalent,
@@ -28,9 +30,16 @@ const roles = itemRoles(item);
 const source = itemSource(item);
 const description = itemDescription(item);
 const confidence = confidenceLabel(item);
+const searchText = itemSearchText(item);
+const filters = itemFilterTokens(item).join(' ');
 ---
 
-<article class:list={['tool-item-card', 'card', compact && 'tool-item-card--compact']}>
+<article
+  class:list={['tool-item-card', 'card', compact && 'tool-item-card--compact']}
+  data-tool-card
+  data-search={searchText}
+  data-filters={filters}
+>
   <div class="tool-item-card__top">
     <div>
       <p class="eyebrow">{type}</p>
@@ -81,6 +90,10 @@ const confidence = confidenceLabel(item);
     gap: 14px;
     padding: 18px;
     min-height: 100%;
+  }
+
+  .tool-item-card[hidden] {
+    display: none;
   }
 
   .tool-item-card__top {
