@@ -30,22 +30,26 @@ const dispatchItems = [
   {
     icon: 'check-circle',
     label: 'Current Focus',
-    value: 'Staging Review'
+    value: 'Staging Review',
+    text: 'Astro staging is being tightened before any production switch.'
   },
   {
     icon: 'video',
     label: 'Creator Traffic',
-    value: 'YouTube Direct'
+    value: 'YouTube Direct',
+    text: 'Creator videos are indexed for discovery, but playback stays on YouTube.'
   },
   {
     icon: 'database',
     label: 'Data Layer',
-    value: 'JSON Driven'
+    value: 'JSON Driven',
+    text: 'Builds, tools, gear, talents, and videos remain maintainable.'
   },
   {
     icon: 'shield',
     label: 'Cutover Status',
-    value: 'Not Yet'
+    value: 'Not Yet',
+    text: 'DivGaming.com stays untouched until staging passes review.'
   }
 ];
 ---
@@ -138,25 +142,33 @@ const dispatchItems = [
   </div>
 
   <div class="shell footer-dispatch-band" aria-label="SHD Dispatch">
-    <div class="footer-dispatch-band__intro">
-      <p class="eyebrow">SHD Dispatch</p>
-      <strong>Launch candidate status</strong>
-      <span>Astro staging is being tightened for function, stability, production parity, and clean cutover readiness.</span>
+    <div class="footer-dispatch-band__top">
+      <div class="footer-dispatch-band__intro">
+        <p class="eyebrow">SHD Dispatch</p>
+        <strong>Launch candidate status</strong>
+        <span>
+          Astro staging is being tightened for function, stability, production parity,
+          mobile usability, and clean cutover readiness.
+        </span>
+      </div>
+
+      <div class="footer-dispatch-band__actions">
+        <a href={withBase('/division-2/')}>Review Hub</a>
+        <a href={withBase('/division-2/tools/')}>Check Tools</a>
+      </div>
     </div>
 
     <div class="footer-dispatch-band__items">
       {dispatchItems.map((item) => (
         <div class="footer-dispatch-band__item">
-          <Icon name={item.icon} />
-          <span>{item.label}</span>
-          <strong>{item.value}</strong>
+          <span class="footer-dispatch-band__icon"><Icon name={item.icon} /></span>
+          <div>
+            <span class="footer-dispatch-band__label">{item.label}</span>
+            <strong>{item.value}</strong>
+            <p>{item.text}</p>
+          </div>
         </div>
       ))}
-    </div>
-
-    <div class="footer-dispatch-band__actions">
-      <a href={withBase('/division-2/')}>Review Hub</a>
-      <a href={withBase('/division-2/tools/')}>Check Tools</a>
     </div>
   </div>
 
@@ -164,14 +176,18 @@ const dispatchItems = [
     .footer-dispatch-band {
       position: relative;
       z-index: 1;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 107, 0, 0.22);
+      border-bottom: 1px solid rgba(255, 107, 0, 0.22);
+      padding: 20px 0;
+    }
+
+    .footer-dispatch-band__top {
       display: grid;
-      grid-template-columns: minmax(260px, 1fr) minmax(420px, 1.35fr) auto;
-      gap: 20px;
-      align-items: center;
-      margin-top: 28px;
-      border-top: 1px solid rgba(255, 107, 0, 0.18);
-      border-bottom: 1px solid rgba(255, 107, 0, 0.18);
-      padding: 18px 0;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 16px;
     }
 
     .footer-dispatch-band__intro {
@@ -179,96 +195,45 @@ const dispatchItems = [
     }
 
     .footer-dispatch-band__intro .eyebrow {
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
     .footer-dispatch-band__intro strong {
       display: block;
       color: #fff;
       font-family: 'Chakra Petch', sans-serif;
-      font-size: 1.05rem;
-      line-height: 1.15;
+      font-size: 1.16rem;
+      line-height: 1.1;
     }
 
     .footer-dispatch-band__intro span {
       display: block;
-      margin-top: 6px;
+      max-width: 920px;
+      margin-top: 7px;
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       line-height: 1.45;
-    }
-
-    .footer-dispatch-band__items {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
-      min-width: 0;
-    }
-
-    .footer-dispatch-band__item {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      grid-template-areas:
-        "icon label"
-        "icon value";
-      column-gap: 8px;
-      align-items: center;
-      min-height: 58px;
-      border-left: 1px solid rgba(255, 107, 0, 0.22);
-      padding: 8px 10px;
-      background: linear-gradient(90deg, rgba(255, 107, 0, 0.055), transparent);
-    }
-
-    .footer-dispatch-band__item .lucide-icon {
-      grid-area: icon;
-      color: var(--orange-2);
-      width: 18px;
-      height: 18px;
-    }
-
-    .footer-dispatch-band__item span {
-      grid-area: label;
-      color: var(--muted);
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.62rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .footer-dispatch-band__item strong {
-      grid-area: value;
-      color: var(--green);
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.86rem;
-      line-height: 1.1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .footer-dispatch-band__actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
-      gap: 8px;
+      gap: 9px;
     }
 
     .footer-dispatch-band__actions a {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
-      min-height: 36px;
-      border: 1px solid rgba(255, 107, 0, 0.28);
+      justify-content: center;
+      min-height: 38px;
+      border: 1px solid rgba(255, 107, 0, 0.3);
       border-radius: 999px;
-      padding: 0 12px;
-      color: rgba(217, 242, 238, 0.9);
+      padding: 0 14px;
+      color: rgba(217, 242, 238, 0.92);
       background: rgba(255, 107, 0, 0.055);
       font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 900;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -281,8 +246,71 @@ const dispatchItems = [
       border-color: var(--orange);
     }
 
+    .footer-dispatch-band__items {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .footer-dispatch-band__item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      min-height: 108px;
+      border: 1px solid rgba(255, 107, 0, 0.16);
+      border-radius: 16px;
+      padding: 13px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 107, 0, 0.085), transparent 45%),
+        rgba(255, 255, 255, 0.025);
+    }
+
+    .footer-dispatch-band__icon {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 107, 0, 0.24);
+      border-radius: 12px;
+      color: var(--orange-2);
+      background: rgba(255, 107, 0, 0.075);
+    }
+
+    .footer-dispatch-band__icon .lucide-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-dispatch-band__label {
+      display: block;
+      color: var(--muted);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.64rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .footer-dispatch-band__item strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--green);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.15;
+    }
+
+    .footer-dispatch-band__item p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.38;
+    }
+
     @media (max-width: 1120px) {
-      .footer-dispatch-band {
+      .footer-dispatch-band__top {
         grid-template-columns: 1fr;
         align-items: start;
       }
@@ -290,38 +318,60 @@ const dispatchItems = [
       .footer-dispatch-band__actions {
         justify-content: flex-start;
       }
+
+      .footer-dispatch-band__items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 780px) {
       .footer-dispatch-band {
+        margin-top: 24px;
+        padding: 18px 0;
+      }
+
+      .footer-dispatch-band__top {
         gap: 14px;
-        margin-top: 22px;
-        padding: 16px 0;
+        margin-bottom: 14px;
+      }
+
+      .footer-dispatch-band__intro strong {
+        font-size: 1.04rem;
+      }
+
+      .footer-dispatch-band__intro span {
+        font-size: 0.86rem;
       }
 
       .footer-dispatch-band__items {
-        display: flex;
-        overflow-x: auto;
-        gap: 8px;
-        padding-bottom: 2px;
-        scrollbar-width: none;
-      }
-
-      .footer-dispatch-band__items::-webkit-scrollbar {
-        display: none;
+        grid-template-columns: 1fr;
+        gap: 9px;
       }
 
       .footer-dispatch-band__item {
-        flex: 0 0 185px;
+        min-height: auto;
+        border-radius: 14px;
+        padding: 12px;
+      }
+
+      .footer-dispatch-band__item p {
+        font-size: 0.82rem;
       }
 
       .footer-dispatch-band__actions {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        width: 100%;
       }
 
       .footer-dispatch-band__actions a {
         width: 100%;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .footer-dispatch-band__actions {
+        grid-template-columns: 1fr;
       }
     }
   </style>
