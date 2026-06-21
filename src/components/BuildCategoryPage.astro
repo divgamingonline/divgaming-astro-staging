@@ -27,20 +27,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="shell hero">
     <div class="command-hero">
       <div>
-        <p class="eyebrow">Build Discovery</p>
+        <p class="eyebrow">Build Library</p>
         <h1>{config.label}</h1>
         <p class="lead">{config.description}</p>
         <div class="hero-actions">
-          <a class="btn primary" href={`${base}/division-2/builds/`}>All builds</a>
-          <a class="btn ghost" href={`${base}/division-2/videos/`}>Video library</a>
+          <a class="btn primary" href={`${base}/division-2/builds/`}>All Builds</a>
+          <a class="btn ghost" href={`${base}/division-2/videos/`}>Video Library</a>
         </div>
       </div>
 
       <aside class="command-panel">
-        <p class="eyebrow">SHD intel</p>
+        <p class="eyebrow">Build index</p>
         <div class="command-panel__list">
           <div class="command-panel__row"><span>Videos</span><strong>{videos.length}</strong></div>
-          <div class="command-panel__row"><span>Watch mode</span><strong>YouTube</strong></div>
+          <div class="command-panel__row"><span>Playback</span><strong>YouTube</strong></div>
         </div>
       </aside>
     </div>

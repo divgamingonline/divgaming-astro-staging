@@ -32,22 +32,124 @@ const description = itemDescription(item);
 const confidence = confidenceLabel(item);
 const searchText = itemSearchText(item);
 const filters = itemFilterTokens(item).join(' ');
+
+function assetSlug(value: unknown): string {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '')
+    .trim();
+}
+
+function gearSlug(value: unknown): string {
+  const slot = String(value || '').toLowerCase();
+  if (slot.includes('backpack')) return 'backpack';
+  if (slot.includes('chest') || slot.includes('vest')) return 'chest';
+  if (slot.includes('glove')) return 'gloves';
+  if (slot.includes('holster')) return 'holster';
+  if (slot.includes('knee')) return 'kneepads';
+  if (slot.includes('mask')) return 'mask';
+  return '';
+}
+
+function weaponSlug(value: unknown): string {
+  const weapon = String(value || '').toLowerCase();
+  if (weapon.includes('smg')) return 'smg';
+  if (weapon.includes('lmg')) return 'lmg';
+  if (weapon.includes('mmr') || weapon.includes('marksman')) return 'mmr';
+  if (weapon.includes('rifle') && !weapon.includes('assault')) return 'rifle';
+  if (weapon.includes('shotgun')) return 'shotgun';
+  if (weapon.includes('pistol') || weapon.includes('sidearm')) return 'pistol';
+  if (weapon.includes('ar') || weapon.includes('assault')) return 'ar';
+  return '';
+}
+
+function normalizedType(item: ToolDataItem): string {
+  const text = `${item.rarity || ''} ${item.category || ''} ${item.itemType || ''}`.toLowerCase();
+  if (text.includes('exotic')) return 'exotic';
+  if (text.includes('gear set') || text.includes('gearset')) return 'gear-set';
+  if (text.includes('brand set')) return 'brand-set';
+  if (text.includes('named')) return 'named';
+  return 'standard';
+}
+
+const rarityType = normalizedType(item);
+const coreValue = String(item.defaultCore || item.cores?.[0] || item.availableCores?.[0] || item.coreRollLabel || '').toLowerCase();
+
+const coreClass =
+  coreValue.includes('weapon') ? 'core-red' :
+  coreValue.includes('armor') ? 'core-blue' :
+  coreValue.includes('skill') ? 'core-yellow' :
+  '';
+
+const coreLabel =
+  coreValue.includes('weapon') ? 'Weapon Damage' :
+  coreValue.includes('armor') ? 'Armor' :
+  coreValue.includes('skill') ? 'Skill Tier' :
+  String(item.coreRollLabel || item.coreRollText || '').replace(/^Core attributes?:\s*/i, '').replace(/\.$/, '');
+
+const brandAssetKey = String(item.assetKey || assetSlug(item.brandOrSet || item.brand || item.set || item.name));
+const slotAssetKey = gearSlug(item.slot);
+const weaponAssetKey = weaponSlug(item.weaponType);
+
+const canUseBrandIcon = Boolean(brandAssetKey) && ['brand-set', 'gear-set'].includes(rarityType);
+const canUseNamedBrandIcon = Boolean(brandAssetKey) && rarityType === 'named' && !['weapon', 'namedweapon'].includes(brandAssetKey);
+const showBrandIcon = canUseBrandIcon || canUseNamedBrandIcon;
+const showSlotIcon = Boolean(slotAssetKey) && !showBrandIcon;
+const showWeaponIcon = Boolean(weaponAssetKey) && !showBrandIcon && !showSlotIcon;
+
+const primaryIcon =
+  showBrandIcon ? `/assets/division-2/icons/brands/${brandAssetKey}.png` :
+  showSlotIcon ? `/assets/division-2/icons/gears/${slotAssetKey}.png` :
+  showWeaponIcon ? `/assets/division-2/icons/weapons/${weaponAssetKey}.png` :
+  '';
+
+const fallbackIcon =
+  showBrandIcon ? '/assets/division-2/icons/brands/_blank.png' :
+  showSlotIcon ? '/assets/division-2/icons/gears/_blank.png' :
+  showWeaponIcon ? '/assets/division-2/icons/weapons/_blank.png' :
+  '';
+
+const cardClass = `rarity-${rarityType}`;
 ---
 
 <article
-  class:list={['tool-item-card', 'card', compact && 'tool-item-card--compact']}
+  class:list={['tool-item-card', 'card', cardClass, compact && 'tool-item-card--compact']}
   data-tool-card
   data-search={searchText}
   data-filters={filters}
 >
   <div class="tool-item-card__top">
-    <div>
-      <p class="mission-kicker">{type}</p>
-      <h3>{name}</h3>
-      {subhead && <p class="tool-item-card__subhead">{subhead}</p>}
+    <div class="tool-item-card__title-row">
+      {primaryIcon && (
+        <span class="codex-logo-wrap">
+          <img
+            class="codex-logo"
+            src={primaryIcon}
+            alt=""
+            loading="lazy"
+            onerror={`this.src='${fallbackIcon}'`}
+          />
+        </span>
+      )}
+      <div>
+        <p class="mission-kicker">{type}</p>
+        <h3>{name}</h3>
+        {subhead && <p class="tool-item-card__subhead">{subhead}</p>}
+      </div>
     </div>
     {confidence && <span class="tool-item-card__confidence">{confidence}</span>}
   </div>
+
+  {coreLabel && (
+    <div class:list={['core-badge', coreClass]}>
+      <span class="core-dot"></span>
+      {coreLabel}
+    </div>
+  )}
 
   {talent && (
     <div class="tool-item-card__talent">
@@ -82,105 +184,3 @@ const filters = itemFilterTokens(item).join(' ');
     </p>
   )}
 </article>
-
-<style>
-  .tool-item-card {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 18px;
-    min-height: 100%;
-  }
-
-  .tool-item-card[hidden] {
-    display: none;
-  }
-
-  .tool-item-card__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .tool-item-card h3 {
-    margin: 0;
-    color: #fff;
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 1.25rem;
-    letter-spacing: -0.015em;
-    line-height: 1.12;
-  }
-
-  .tool-item-card__subhead,
-  .tool-item-card__description,
-  .tool-item-card__source,
-  .tool-item-card__talent p {
-    color: var(--muted);
-  }
-
-  .tool-item-card__subhead {
-    margin: 6px 0 0;
-    font-size: 0.9rem;
-  }
-
-  .tool-item-card__confidence {
-    flex: 0 0 auto;
-    border: 1px solid rgba(255, 107, 0, 0.32);
-    border-radius: 999px;
-    padding: 5px 8px;
-    color: var(--orange-2);
-    background: rgba(255, 107, 0, 0.09);
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 0.66rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .tool-item-card__talent {
-    border: 1px solid rgba(255, 107, 0, 0.18);
-    border-radius: 14px;
-    padding: 12px;
-    background: rgba(255, 107, 0, 0.06);
-  }
-
-  .tool-item-card__talent strong {
-    color: var(--orange-2);
-    font-family: 'Chakra Petch', sans-serif;
-  }
-
-  .tool-item-card__talent p,
-  .tool-item-card__description,
-  .tool-item-card__source {
-    margin: 6px 0 0;
-    line-height: 1.45;
-  }
-
-  .tool-item-card__list {
-    margin: 0;
-    padding-left: 18px;
-    color: var(--muted);
-  }
-
-  .tool-item-card__list li + li {
-    margin-top: 5px;
-  }
-
-  .tool-item-card__chips {
-    margin-top: auto;
-    padding: 0;
-    border: 0;
-    background: transparent;
-  }
-
-  .tool-item-card__source {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 12px;
-    font-size: 0.9rem;
-  }
-
-  .tool-item-card--compact .tool-item-card__source {
-    display: none;
-  }
-</style>

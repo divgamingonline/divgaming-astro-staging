@@ -35,7 +35,6 @@ const items = sortByName(normalizeItems(dataset));
 const filters = buildFilterOptions(items);
 const updated = datasetUpdatedLabel(dataset);
 const needsVerification = countNeedsVerification(items);
-
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 ---
@@ -53,13 +52,13 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
         <h1>{title}</h1>
         <p class="lead">{description}</p>
         <div class="hero-actions">
-          <a class="btn primary" href={`${base}/division-2/tools/`}>All tools</a>
-          <a class="btn ghost" href={`${base}/division-2/`}>Division 2 hub</a>
+          <a class="btn primary" href={`${base}/division-2/tools/`}>All Tools</a>
+          <a class="btn ghost" href={`${base}/division-2/`}>Division 2 Hub</a>
         </div>
       </div>
 
       <aside class="command-panel">
-        <p class="eyebrow">Dataset</p>
+        <p class="eyebrow">Database</p>
         <div class="command-panel__list">
           <div class="command-panel__row"><span>Records</span><strong>{items.length}</strong></div>
           {updated && <div class="command-panel__row"><span>Updated</span><strong>{updated}</strong></div>}
@@ -82,11 +81,10 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 
   <section class="shell section" id={databaseId} data-tool-database>
     <div class="section-head">
-      <p class="eyebrow">Reference database</p>
+      <p class="eyebrow">Searchable database</p>
       <h2><span data-result-count>{items.length}</span> entries</h2>
       <p>
-        Search and filter this SHD field database by name, talent, slot, source,
-        role, or keyword.
+        Search and filter by name, slot, source, talent, gear type, role, or keyword.
       </p>
     </div>
 
@@ -131,7 +129,7 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
         <div class="card empty-state" data-empty-state hidden>
           <p class="eyebrow">No results</p>
           <h2>No matching entries found.</h2>
-          <p>Try a broader SHD search term or reset the filter chips.</p>
+          <p>Try a broader search term or reset the filters.</p>
         </div>
       </>
     ) : (

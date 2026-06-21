@@ -10,22 +10,22 @@ const { id = 'global-search', compact = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const searchItems = [
-  { title: 'Division 2 Hub', type: 'Route', href: '/division-2/', keywords: 'hub routes shd intel division 2' },
+  { title: 'Division 2 Hub', type: 'Hub', href: '/division-2/', keywords: 'hub home start division 2 sections' },
   { title: 'Build Library', type: 'Builds', href: '/division-2/builds/', keywords: 'builds loadouts striker pve pvp solo videos' },
-  { title: 'Striker Builds', type: 'Builds', href: '/division-2/builds/striker/', keywords: 'striker build damage stacks dps' },
+  { title: 'Striker Builds', type: 'Builds', href: '/division-2/builds/striker/', keywords: 'striker damage stacks dps' },
   { title: 'PvE Builds', type: 'Builds', href: '/division-2/builds/pve/', keywords: 'pve countdown raid incursion mission heroic legendary' },
-  { title: 'Solo Builds', type: 'Builds', href: '/division-2/builds/solo/', keywords: 'solo survivability armor regen' },
+  { title: 'Solo Builds', type: 'Builds', href: '/division-2/builds/solo/', keywords: 'solo survivability armor regen self reliant' },
   { title: 'PvP Builds', type: 'Builds', href: '/division-2/builds/pvp/', keywords: 'pvp dark zone conflict dz' },
-  { title: 'Video Intel Library', type: 'Videos', href: '/division-2/videos/', keywords: 'videos youtube creators build video' },
-  { title: 'Agent Tools', type: 'Tools', href: '/division-2/tools/', keywords: 'tools database agent backpack resources' },
+  { title: 'Video Library', type: 'Videos', href: '/division-2/videos/', keywords: 'videos youtube creators build video library' },
+  { title: 'Gear Tools', type: 'Tools', href: '/division-2/tools/', keywords: 'tools database gear resources brand gearset talent' },
   { title: 'Exotic Source Tracker', type: 'Tools', href: '/division-2/tools/exotic-source-tracker/', keywords: 'exotic source tracker weapons gear farming' },
   { title: 'Named Items Database', type: 'Tools', href: '/division-2/tools/named-items-database/', keywords: 'named items database perfect talents' },
-  { title: 'Brand Set Database', type: 'Tools', href: '/division-2/tools/brand-set-database/', keywords: 'brands brand sets bonuses' },
+  { title: 'Brand Set Database', type: 'Tools', href: '/division-2/tools/brand-set-database/', keywords: 'brands brand sets high end bonuses' },
   { title: 'Gearset Matrix', type: 'Tools', href: '/division-2/tools/gearset-matrix/', keywords: 'gearset matrix gear sets chest backpack' },
   { title: 'Gear Talents', type: 'Tools', href: '/division-2/tools/gear-talents/', keywords: 'gear talents chest backpack perfect talents' },
   { title: 'Weapon Talents', type: 'Tools', href: '/division-2/tools/weapon-talents/', keywords: 'weapon talents guns perfect talents' },
-  { title: 'Creator Network', type: 'Creators', href: '/division-2/creators/', keywords: 'creators youtube channels agents community' },
-  { title: 'Guide Routes', type: 'Guides', href: '/division-2/guides/', keywords: 'guides farming returning agents raids incursions countdown' }
+  { title: 'Creator Directory', type: 'Creators', href: '/division-2/creators/', keywords: 'creators youtube channels community' },
+  { title: 'Guides', type: 'Guides', href: '/division-2/guides/', keywords: 'guides farming returning players raids incursions countdown' }
 ];
 
 const data = JSON.stringify(searchItems.map((item) => ({ ...item, href: `${base}${item.href}` })));
@@ -37,7 +37,7 @@ const data = JSON.stringify(searchItems.map((item) => ({ ...item, href: `${base}
     id={id}
     class="global-search-input"
     type="search"
-    placeholder="Search builds, tools, vendor intel, guides..."
+    placeholder="Search builds, tools, guides..."
     aria-label="Search DivGaming"
     autocomplete="off"
     data-search-input
@@ -82,7 +82,7 @@ const data = JSON.stringify(searchItems.map((item) => ({ ...item, href: `${base}
         .slice(0, 7);
 
       if (currentResults.length === 0) {
-        results.innerHTML = '<p class="empty-search">No SHD intel found.</p>';
+        results.innerHTML = '<p class="empty-search">No matching DivGaming section found.</p>';
       } else {
         results.innerHTML = currentResults.map(resultMarkup).join('');
       }
