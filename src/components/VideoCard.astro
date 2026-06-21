@@ -20,6 +20,13 @@ export interface Props {
 
 const { video } = Astro.props;
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function withBase(href: string) {
+  if (href.startsWith('http')) return href;
+  return `${base}${href}`;
+}
+
 const thumbnail = youtubeThumbnail(video);
 const fallback = youtubeThumbnailFallback(video);
 const finalFallback = youtubeThumbnailFinalFallback(video);
@@ -27,6 +34,7 @@ const tags = videoTags(video);
 const category = videoCategory(video);
 const watchUrl = youtubeWatchUrl(video);
 const detailUrl = videoPath(video);
+const detailHref = withBase(detailUrl);
 const dateLabel = formatDate(video.date);
 const viewsLabel = formatNumber(video.views);
 const searchText = discoverySearchText(video);
@@ -34,7 +42,7 @@ const filters = discoveryFilterTokens(video).join(' ');
 ---
 
 <article class="video-card card" data-discovery-card data-search={searchText} data-filters={filters}>
-  <a class="video-card__media" href={detailUrl} aria-label={`Open ${video.title}`}>
+  <a class="video-card__media" href={detailHref} aria-label={`Open ${video.title}`}>
     {thumbnail ? (
       <img
         src={thumbnail}
@@ -52,7 +60,7 @@ const filters = discoveryFilterTokens(video).join(' ');
 
   <div class="video-card__body">
     <p class="mission-kicker">{video.creator}</p>
-    <h3><a href={detailUrl}>{video.title}</a></h3>
+    <h3><a href={detailHref}>{video.title}</a></h3>
 
     <div class="video-card__meta">
       {dateLabel && <span>{dateLabel}</span>}
@@ -71,7 +79,7 @@ const filters = discoveryFilterTokens(video).join(' ');
 
     <div class="video-card__actions">
       <a class="btn primary" href={watchUrl} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <a class="btn ghost" href={detailUrl}>Intel Page</a>
+      <a class="btn ghost" href={detailHref}>Intel Page</a>
     </div>
   </div>
 </article>
