@@ -1,60 +1,198 @@
 ---
+import {
+  discoveryFilterTokens,
+  discoverySearchText,
+  formatDate,
+  formatNumber,
+  youtubeThumbnail,
+  youtubeThumbnailFallback,
+  youtubeThumbnailFinalFallback,
+  youtubeWatchUrl,
+  videoCategory,
+  videoPath,
+  videoTags,
+  type BuildVideo
+} from '../utils/builds';
+
 export interface Props {
-  title: string;
-  slug: string;
-  creator?: string;
-  thumbnail?: string;
-  fallbackThumbnail?: string;
-  finalFallbackThumbnail?: string;
-  description?: string;
-  youtubeUrl?: string;
-  category?: string;
+  video: BuildVideo;
 }
 
-const {
-  title,
-  slug,
-  creator,
-  thumbnail,
-  fallbackThumbnail,
-  finalFallbackThumbnail,
-  description,
-  youtubeUrl,
-  category
-} = Astro.props;
+const { video } = Astro.props;
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const thumbnail = youtubeThumbnail(video);
+const fallback = youtubeThumbnailFallback(video);
+const finalFallback = youtubeThumbnailFinalFallback(video);
+const tags = videoTags(video);
+const category = videoCategory(video);
+const watchUrl = youtubeWatchUrl(video);
+const detailUrl = videoPath(video);
+const dateLabel = formatDate(video.date);
+const viewsLabel = formatNumber(video.views);
+const searchText = discoverySearchText(video);
+const filters = discoveryFilterTokens(video).join(' ');
 ---
 
-<article class="video-card card">
-  {thumbnail ? (
-    <a href={`${base}/division-2/videos/${slug}/`} class="video-card__media" aria-label={`Open details for ${title}`}>
+<article class="video-card card" data-discovery-card data-search={searchText} data-filters={filters}>
+  <a class="video-card__media" href={detailUrl} aria-label={`Open ${video.title}`}>
+    {thumbnail ? (
       <img
         src={thumbnail}
         alt=""
         loading="lazy"
-        onerror={`this.onerror=function(){this.onerror=null;this.src='${finalFallbackThumbnail || '/assets/img/divgaming-og.svg'}'};this.src='${fallbackThumbnail || finalFallbackThumbnail || '/assets/img/divgaming-og.svg'}'`}
+        data-fallback={fallback}
+        data-final-fallback={finalFallback}
+        onerror="if (this.dataset.fallback && this.src !== this.dataset.fallback) { this.src = this.dataset.fallback; this.dataset.fallback = ''; } else if (this.dataset.finalFallback && this.src !== this.dataset.finalFallback) { this.src = this.dataset.finalFallback; this.dataset.finalFallback = ''; }"
       />
-      {category && <span class="video-card__badge">{category}</span>}
-    </a>
-  ) : (
-    <a href={`${base}/division-2/videos/${slug}/`} class="video-card__media video-card__media--empty">
-      <span>DIVGAMING</span>
-    </a>
-  )}
+    ) : (
+      <div class="video-card__placeholder">DIVGAMING</div>
+    )}
+    <span class="video-card__badge">{category}</span>
+  </a>
 
   <div class="video-card__body">
-    <h3><a href={`${base}/division-2/videos/${slug}/`}>{title}</a></h3>
-    {creator && <p class="video-card__creator">By {creator}</p>}
-    {description && <p>{description}</p>}
+    <p class="eyebrow">{video.creator}</p>
+    <h3><a href={detailUrl}>{video.title}</a></h3>
+
+    <div class="video-card__meta">
+      {dateLabel && <span>{dateLabel}</span>}
+      {viewsLabel && <span>{viewsLabel} views</span>}
+    </div>
+
+    {video.description && <p>{video.description}</p>}
+
+    {tags.length > 0 && (
+      <div class="video-card__tags">
+        {tags.slice(0, 5).map((tag) => (
+          <span>{tag}</span>
+        ))}
+      </div>
+    )}
 
     <div class="video-card__actions">
-      <a href={`${base}/division-2/videos/${slug}/`}>Details</a>
-      {youtubeUrl && (
-        <a href={youtubeUrl} target="_blank" rel="noopener noreferrer">
-          Watch on YouTube →
-        </a>
-      )}
+      <a class="button" href={watchUrl} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+      <a class="button button--ghost" href={detailUrl}>Details</a>
     </div>
   </div>
 </article>
+
+<style>
+  .video-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 100%;
+  }
+
+  .video-card[hidden] {
+    display: none;
+  }
+
+  .video-card__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: rgba(255, 107, 0, 0.08);
+  }
+
+  .video-card__media:hover {
+    text-decoration: none;
+  }
+
+  .video-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 180ms ease;
+  }
+
+  .video-card:hover .video-card__media img {
+    transform: scale(1.035);
+  }
+
+  .video-card__placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    color: rgba(255, 107, 0, 0.32);
+    font-size: 1.1rem;
+    font-weight: 950;
+    letter-spacing: 0.18em;
+  }
+
+  .video-card__badge {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    border: 1px solid rgba(255, 107, 0, 0.32);
+    border-radius: 999px;
+    padding: 5px 9px;
+    color: #160d05;
+    background: var(--dg-orange);
+    font-size: 0.75rem;
+    font-weight: 950;
+  }
+
+  .video-card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .video-card h3 {
+    margin: 0;
+    font-size: 1.22rem;
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+  }
+
+  .video-card h3 a:hover {
+    text-decoration: none;
+  }
+
+  .video-card__body p:not(.eyebrow),
+  .video-card__meta {
+    color: var(--dg-muted);
+  }
+
+  .video-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    font-size: 0.86rem;
+  }
+
+  .video-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .video-card__tags span {
+    border: 1px solid rgba(255, 107, 0, 0.18);
+    border-radius: 999px;
+    padding: 5px 8px;
+    color: var(--dg-muted);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.75rem;
+    font-weight: 850;
+  }
+
+  .video-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .video-card__actions .button {
+    min-height: 38px;
+    padding: 8px 12px;
+    font-size: 0.86rem;
+  }
+</style>

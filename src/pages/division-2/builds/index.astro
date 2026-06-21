@@ -1,5 +1,6 @@
 ---
 import BuildCategoryPage from '../../../components/BuildCategoryPage.astro';
+import buildsData from '../../../../data/builds.json';
 ---
 
-<BuildCategoryPage categoryKey="all" />
+<BuildCategoryPage data={buildsData} category="all" />

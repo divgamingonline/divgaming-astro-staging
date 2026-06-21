@@ -1,74 +1,46 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import VideoCard from '../../../components/VideoCard.astro';
+import BuildGrid from '../../../components/BuildGrid.astro';
 import buildsData from '../../../../data/builds.json';
-import {
-  normalizeBuilds,
-  videoSlug,
-  youtubeThumbnail,
-  youtubeThumbnailFallback,
-  youtubeThumbnailFinalFallback,
-  youtubeWatchUrl,
-  videoDescription
-} from '../../../utils/builds';
+import { getBuildVideos } from '../../../utils/builds';
 
-const videos = normalizeBuilds(buildsData)
-  .filter((video) => video.title && (video.id || video.videoId))
-  .slice(0, 48);
+const videos = getBuildVideos(buildsData, 'all');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
-  title="Division 2 Videos | DivGaming Astro Staging"
-  description="Astro-generated Division 2 video index powered by data/builds.json."
+  title="Division 2 Video Library | DivGaming Astro Staging"
+  description="Browse DivGaming Division 2 creator videos and open them directly on YouTube."
   canonical="/division-2/videos/"
   noindex={true}
 >
   <section class="shell hero">
-    <p class="eyebrow">Phase 2A test</p>
-    <h1>Division 2 video routes</h1>
-    <p class="lead">
-      This staging page proves Astro can read data/builds.json and link to
-      generated video SEO pages without committing generated HTML to the repo.
-      Video playback stays on YouTube so creators receive the direct visit.
-    </p>
-  </section>
-
-  <section class="shell section">
-    <p class="eyebrow">Generated from data/builds.json</p>
-    <h2>Latest video pages</h2>
-
-    <div class="grid video-grid">
-      {videos.map((video) => (
-        <VideoCard
-          title={video.title || 'Division 2 Video'}
-          slug={videoSlug(video)}
-          creator={video.creator}
-          thumbnail={youtubeThumbnail(video)}
-          fallbackThumbnail={youtubeThumbnailFallback(video)}
-          finalFallbackThumbnail={youtubeThumbnailFinalFallback(video)}
-          description={videoDescription(video)}
-          youtubeUrl={youtubeWatchUrl(video)}
-        />
-      ))}
+    <div class="hub-hero">
+      <p class="eyebrow">Creator Video Discovery</p>
+      <h1>Find a build, then support the creator.</h1>
+      <p class="lead">
+        DivGaming indexes build videos for discovery, but no videos are embedded.
+        All watch actions open YouTube directly.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href={`${base}/division-2/builds/`}>Build categories</a>
+        <a class="button button--ghost" href={`${base}/division-2/`}>Division 2 hub</a>
+      </div>
     </div>
   </section>
 
-  <style>
-    .video-grid {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Video Library</p>
+        <h2>{videos.length} indexed videos</h2>
+      </div>
+      <p>
+        Search by creator, build name, tag, activity, or keyword. This is the
+        Astro staging version of DivGaming video discovery.
+      </p>
+    </div>
 
-    :global(.video-card__actions) {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-      font-size: 0.86rem;
-      font-weight: 900;
-    }
-
-    :global(.video-card__actions a:first-child) {
-      color: var(--dg-muted);
-    }
-  </style>
+    <BuildGrid videos={videos} />
+  </section>
 </BaseLayout>

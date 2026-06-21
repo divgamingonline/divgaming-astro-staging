@@ -2,191 +2,52 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BuildGrid from './BuildGrid.astro';
 import {
-  buildCategories,
+  BUILD_CATEGORIES,
   getBuildVideos,
   type BuildCategoryKey
 } from '../utils/builds';
-import buildsData from '../../data/builds.json';
 
 export interface Props {
-  categoryKey: BuildCategoryKey;
+  data: unknown;
+  category: BuildCategoryKey;
 }
 
-const { categoryKey } = Astro.props;
-const category = buildCategories.find((item) => item.key === categoryKey) || buildCategories[0];
-const videos = getBuildVideos(buildsData, category.key, category.key === 'all' ? 96 : 72);
-
+const { data, category } = Astro.props;
+const config = BUILD_CATEGORIES[category];
+const videos = getBuildVideos(data, category);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const visibleCategories = buildCategories.filter((item) => item.key !== 'all');
 ---
 
 <BaseLayout
-  title={`${category.title} | DivGaming Astro Staging`}
-  description={category.description}
-  canonical={category.canonical}
+  title={`${config.label} | DivGaming Astro Staging`}
+  description={config.description}
+  canonical={config.canonical}
   noindex={true}
 >
-  <section class="shell builds-hero">
-    <div class="builds-hero__content">
-      <p class="eyebrow">{category.eyebrow}</p>
-      <h1>{category.title}</h1>
-      <p class="lead">{category.description}</p>
-
-      <div class="builds-hero__actions">
-        <a class="button" href={`${base}/division-2/videos/`}>All video pages</a>
-        <a class="button button--ghost" href={`${base}/division-2/`}>Division 2 hub</a>
+  <section class="shell hero">
+    <div class="hub-hero">
+      <p class="eyebrow">Build Discovery</p>
+      <h1>{config.label}</h1>
+      <p class="lead">{config.description}</p>
+      <div class="hero-actions">
+        <a class="button" href={`${base}/division-2/builds/`}>All builds</a>
+        <a class="button button--ghost" href={`${base}/division-2/videos/`}>Video library</a>
       </div>
-    </div>
-
-    <aside class="builds-hero__panel card">
-      <p class="eyebrow">Creator-first rule</p>
-      <h2>No embedded videos</h2>
-      <p>
-        DivGaming keeps discovery and reference pages here, but all watch actions
-        send users to YouTube so creators receive the direct visit.
-      </p>
-    </aside>
-  </section>
-
-  <section class="shell build-nav-section">
-    <p class="eyebrow">Build categories</p>
-    <div class="category-pills" aria-label="Build categories">
-      <a class={category.key === 'all' ? 'active' : ''} href={`${base}/division-2/builds/`}>
-        All Builds
-      </a>
-      {visibleCategories.map((item) => (
-        <a class={category.key === item.key ? 'active' : ''} href={`${base}${item.canonical}`}>
-          {item.title}
-        </a>
-      ))}
     </div>
   </section>
 
   <section class="shell section">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Filtered from data/builds.json</p>
-        <h2>{videos.length} creator videos</h2>
+        <p class="eyebrow">Creator videos</p>
+        <h2>{videos.length} videos</h2>
       </div>
       <p>
-        These are routed through DivGaming detail pages for discovery, then out to
-        the creator’s YouTube page for viewing.
+        Search by creator, title, build tag, activity, or role. Watching still
+        happens directly on YouTube.
       </p>
     </div>
 
-    <BuildGrid videos={videos} emptyMessage={category.emptyMessage} />
+    <BuildGrid videos={videos} />
   </section>
-
-  <style>
-    .builds-hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
-      gap: 20px;
-      padding-top: 40px;
-      align-items: stretch;
-    }
-
-    .builds-hero__content {
-      border: 1px solid rgba(255, 107, 0, 0.16);
-      border-radius: 28px;
-      padding: clamp(24px, 5vw, 54px);
-      background:
-        radial-gradient(circle at top left, rgba(255, 107, 0, 0.24), transparent 42%),
-        linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
-      box-shadow: var(--dg-shadow);
-    }
-
-    .builds-hero h1 {
-      margin: 0;
-      max-width: 900px;
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      line-height: 0.9;
-      letter-spacing: -0.065em;
-      text-transform: uppercase;
-    }
-
-    .builds-hero__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .builds-hero__panel {
-      padding: 22px;
-      align-self: stretch;
-    }
-
-    .builds-hero__panel h2 {
-      margin: 0 0 10px;
-      font-size: 1.55rem;
-    }
-
-    .builds-hero__panel p:last-child {
-      color: var(--dg-muted);
-    }
-
-    .build-nav-section {
-      padding-top: 24px;
-    }
-
-    .category-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .category-pills a {
-      border: 1px solid rgba(255, 107, 0, 0.22);
-      border-radius: 999px;
-      padding: 10px 14px;
-      color: var(--dg-muted);
-      background: rgba(255, 255, 255, 0.04);
-      font-weight: 900;
-    }
-
-    .category-pills a:hover,
-    .category-pills a.active {
-      color: #141006;
-      background: var(--dg-orange);
-      text-decoration: none;
-      border-color: var(--dg-orange);
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: end;
-      margin-bottom: 20px;
-    }
-
-    .section-heading h2 {
-      margin: 0;
-      font-size: clamp(1.9rem, 4vw, 3.2rem);
-      letter-spacing: -0.045em;
-    }
-
-    .section-heading > p {
-      max-width: 520px;
-      margin: 0;
-      color: var(--dg-muted);
-    }
-
-    @media (max-width: 880px) {
-      .builds-hero,
-      .section-heading {
-        grid-template-columns: 1fr;
-        display: grid;
-      }
-
-      .builds-hero {
-        padding-top: 24px;
-      }
-
-      .section-heading {
-        align-items: start;
-      }
-    }
-  </style>
 </BaseLayout>

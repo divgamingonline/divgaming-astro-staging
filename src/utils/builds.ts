@@ -1,300 +1,321 @@
+export type RawBuild = Record<string, any>;
+
 export type BuildVideo = {
-  id?: string;
-  videoId?: string;
-  title?: string;
-  creator?: string;
-  channelId?: string;
-  url?: string;
-  publishedAt?: string;
+  id: string;
+  title: string;
+  creator: string;
+  url: string;
+  videoId: string;
+  date?: string;
   views?: number;
   likes?: number;
-  comments?: number;
+  thumbnail?: string;
   description?: string;
-  tags?: string[];
-  sourceTags?: string[];
-  section?: string;
-  subcategory?: string;
-  contentType?: string;
-  activity?: string;
-  format?: string;
+  category?: string;
+  tags: string[];
+  buildTags: string[];
+  source?: RawBuild;
 };
 
 export type BuildCategoryKey = 'all' | 'striker' | 'pve' | 'solo' | 'pvp';
 
-export type BuildCategoryConfig = {
+export type BuildCategory = {
   key: BuildCategoryKey;
-  title: string;
-  eyebrow: string;
+  label: string;
   description: string;
   canonical: string;
-  emptyMessage: string;
 };
 
-export const buildCategories: BuildCategoryConfig[] = [
-  {
+export type DiscoveryFilter = {
+  label: string;
+  value: string;
+};
+
+export const BUILD_CATEGORIES: Record<BuildCategoryKey, BuildCategory> = {
+  all: {
     key: 'all',
-    title: 'Division 2 Builds',
-    eyebrow: 'Build Library',
-    description:
-      'Browse Division 2 build videos from community creators, organized for fast discovery and routed to YouTube so creators receive the direct visit.',
-    canonical: '/division-2/builds/',
-    emptyMessage: 'No build videos were found in data/builds.json yet.'
+    label: 'All Builds',
+    description: 'Browse every build video in the DivGaming staging build library.',
+    canonical: '/division-2/builds/'
   },
-  {
+  striker: {
     key: 'striker',
-    title: 'Striker Builds',
-    eyebrow: 'High RPM Damage',
-    description:
-      'Find Striker-focused Division 2 builds, including DPS, solo, PvE, and endgame variants from community creators.',
-    canonical: '/division-2/builds/striker/',
-    emptyMessage: 'No Striker build videos were found yet.'
+    label: 'Striker Builds',
+    description: 'Creator build videos focused on Striker setups, damage stacking, and aggressive endgame play.',
+    canonical: '/division-2/builds/striker/'
   },
-  {
+  pve: {
     key: 'pve',
-    title: 'PvE Builds',
-    eyebrow: 'Missions, Control Points, Open World',
-    description:
-      'Find PvE-focused Division 2 builds for missions, farming, open-world activities, Countdown, Incursion prep, and general endgame play.',
-    canonical: '/division-2/builds/pve/',
-    emptyMessage: 'No PvE build videos were found yet.'
+    label: 'PvE Builds',
+    description: 'Division 2 PvE builds for missions, open world, Countdown, raids, incursions, and endgame farming.',
+    canonical: '/division-2/builds/pve/'
   },
-  {
+  solo: {
     key: 'solo',
-    title: 'Solo Builds',
-    eyebrow: 'Solo Agent Friendly',
-    description:
-      'Find solo-friendly Division 2 builds for survivability, damage, farming, open-world control, and independent progression.',
-    canonical: '/division-2/builds/solo/',
-    emptyMessage: 'No solo build videos were found yet.'
+    label: 'Solo Builds',
+    description: 'Solo-friendly Division 2 builds built around survivability, consistency, and self-reliant damage.',
+    canonical: '/division-2/builds/solo/'
   },
-  {
+  pvp: {
     key: 'pvp',
-    title: 'PvP Builds',
-    eyebrow: 'Conflict and Dark Zone',
-    description:
-      'Find PvP-focused Division 2 builds for Conflict, Dark Zone, survivability, burst damage, armor regen, and player-versus-player setups.',
-    canonical: '/division-2/builds/pvp/',
-    emptyMessage: 'No PvP build videos were found yet.'
+    label: 'PvP Builds',
+    description: 'PvP and Dark Zone build videos for agents who want to pressure, survive, and counter other players.',
+    canonical: '/division-2/builds/pvp/'
   }
-];
+};
 
 export function normalizeBuilds(data: unknown): BuildVideo[] {
-  if (Array.isArray(data)) return data as BuildVideo[];
+  const rawItems = Array.isArray(data)
+    ? data
+    : data && typeof data === 'object' && Array.isArray((data as any).items)
+      ? (data as any).items
+      : data && typeof data === 'object' && Array.isArray((data as any).builds)
+        ? (data as any).builds
+        : [];
 
-  if (data && typeof data === 'object') {
-    const value = data as Record<string, unknown>;
-
-    if (Array.isArray(value.builds)) return value.builds as BuildVideo[];
-    if (Array.isArray(value.videos)) return value.videos as BuildVideo[];
-    if (Array.isArray(value.items)) return value.items as BuildVideo[];
-  }
-
-  return [];
+  return rawItems
+    .map((item: RawBuild, index: number) => normalizeBuild(item, index))
+    .filter((video): video is BuildVideo => Boolean(video));
 }
 
-export function slugify(value = '', fallback = 'item'): string {
-  const slug = String(value || fallback)
-    .toLowerCase()
-    .replace(/&/g, ' and ')
-    .replace(/['’]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 90)
-    .replace(/-+$/g, '');
+export function normalizeBuild(item: RawBuild, index: number): BuildVideo | null {
+  const title = String(item.title || item.name || item.videoTitle || '').trim();
+  const url = String(item.url || item.videoUrl || item.youtubeUrl || item.link || '').trim();
+  const videoId = String(item.videoId || item.youtubeId || extractYouTubeId(url) || '').trim();
 
-  return slug || fallback;
+  if (!title && !url && !videoId) return null;
+
+  const creator = String(
+    item.creator ||
+    item.channel ||
+    item.channelTitle ||
+    item.author ||
+    item.sourceCreator ||
+    'Unknown Creator'
+  ).trim();
+
+  const tags = normalizeTags(item.tags);
+  const buildTags = normalizeTags([
+    item.category,
+    item.buildCategory,
+    item.activity,
+    item.role,
+    item.playstyle,
+    item.specialization,
+    item.weaponType,
+    ...(Array.isArray(item.buildTags) ? item.buildTags : []),
+    ...(Array.isArray(item.categories) ? item.categories : [])
+  ]);
+
+  const fallbackId = videoId || slugToken(`${title}-${creator}-${index}`);
+
+  return {
+    id: String(item.id || fallbackId),
+    title: title || 'Untitled Build Video',
+    creator,
+    url: youtubeWatchUrl({ videoId, url }),
+    videoId,
+    date: item.publishedAt || item.date || item.createdAt || item.updatedAt,
+    views: numberValue(item.views || item.viewCount),
+    likes: numberValue(item.likes || item.likeCount),
+    thumbnail: item.thumbnail || item.thumbnailUrl,
+    description: item.description || item.summary || item.notes || '',
+    category: String(item.category || item.buildCategory || item.activity || '').trim(),
+    tags,
+    buildTags,
+    source: item
+  };
+}
+
+export function normalizeTags(input: unknown): string[] {
+  const values = Array.isArray(input) ? input : [input];
+
+  return values
+    .flatMap((value) => {
+      if (!value) return [];
+      if (Array.isArray(value)) return value;
+      return String(value).split(/[,|]/g);
+    })
+    .map((value) => String(value).trim())
+    .filter(Boolean)
+    .filter((value, index, array) => array.findIndex((candidate) => candidate.toLowerCase() === value.toLowerCase()) === index);
+}
+
+export function numberValue(input: unknown): number | undefined {
+  if (input === null || input === undefined || input === '') return undefined;
+  const value = Number(String(input).replace(/,/g, ''));
+  return Number.isFinite(value) ? value : undefined;
+}
+
+export function extractYouTubeId(url: string): string {
+  if (!url) return '';
+
+  const patterns = [
+    /youtube\.com\/watch\?v=([^&]+)/i,
+    /youtu\.be\/([^?&]+)/i,
+    /youtube\.com\/shorts\/([^?&]+)/i,
+    /youtube\.com\/embed\/([^?&]+)/i
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match?.[1]) return match[1];
+  }
+
+  return '';
+}
+
+export function youtubeWatchUrl(video: Pick<BuildVideo, 'videoId' | 'url'> | { videoId?: string; url?: string }): string {
+  if (video.videoId) return `https://www.youtube.com/watch?v=${video.videoId}`;
+  return video.url || '#';
+}
+
+export function youtubeThumbnail(video: Pick<BuildVideo, 'videoId' | 'thumbnail'> | { videoId?: string; thumbnail?: string }): string {
+  if (video.thumbnail) return video.thumbnail;
+  if (video.videoId) return `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`;
+  return '';
+}
+
+export function youtubeThumbnailFallback(video: Pick<BuildVideo, 'videoId'> | { videoId?: string }): string {
+  if (video.videoId) return `https://img.youtube.com/vi/${video.videoId}/sddefault.jpg`;
+  return '';
+}
+
+export function youtubeThumbnailFinalFallback(video: Pick<BuildVideo, 'videoId'> | { videoId?: string }): string {
+  if (video.videoId) return `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`;
+  return '';
 }
 
 export function videoSlug(video: BuildVideo): string {
-  const title = slugify(video.title || 'division-2-video', 'division-2-video');
-  const id = slugify(video.id || video.videoId || '', '');
-
-  return id ? `${title}-${id}` : title;
+  return slugToken(`${video.title}-${video.creator}-${video.videoId || video.id}`);
 }
 
 export function videoPath(video: BuildVideo): string {
   return `/division-2/videos/${videoSlug(video)}/`;
 }
 
-export function youtubeWatchUrl(video: BuildVideo): string {
-  if (video.url) return video.url;
-
-  if (video.videoId) {
-    return `https://www.youtube.com/watch?v=${encodeURIComponent(video.videoId)}`;
-  }
-
-  return 'https://www.youtube.com/';
-}
-
-export function youtubeThumbnail(video: BuildVideo): string {
-  if (!video.videoId) return '/assets/img/divgaming-og.svg';
-  return `https://i.ytimg.com/vi/${encodeURIComponent(video.videoId)}/maxresdefault.jpg`;
-}
-
-export function youtubeThumbnailFallback(video: BuildVideo): string {
-  if (!video.videoId) return '/assets/img/divgaming-og.svg';
-  return `https://i.ytimg.com/vi/${encodeURIComponent(video.videoId)}/sddefault.jpg`;
-}
-
-export function youtubeThumbnailFinalFallback(video: BuildVideo): string {
-  if (!video.videoId) return '/assets/img/divgaming-og.svg';
-  return `https://i.ytimg.com/vi/${encodeURIComponent(video.videoId)}/hqdefault.jpg`;
-}
-
 export function videoDescription(video: BuildVideo): string {
-  const description = video.description?.trim();
-
-  if (description) {
-    return description.length > 220
-      ? `${description.slice(0, 217).trim()}...`
-      : description;
-  }
-
-  return `Watch ${video.title || 'this Division 2 video'} on the creator's YouTube page via DivGaming.`;
+  return String(video.description || `${video.title} by ${video.creator}. Watch this Division 2 build video on YouTube.`).trim();
 }
 
 export function videoCategory(video: BuildVideo): string {
-  const section = video.section || video.contentType || video.subcategory || 'Builds';
-  return String(section || 'Builds');
+  return video.category || video.buildTags[0] || video.tags[0] || 'Build Video';
 }
 
 export function videoTags(video: BuildVideo): string[] {
-  return [
-    ...(video.tags || []),
-    ...(video.sourceTags || []),
-    video.section,
-    video.subcategory,
-    video.activity,
-    video.contentType,
-    video.format
-  ]
-    .filter(Boolean)
-    .map((tag) => String(tag));
+  return [...new Set([...video.buildTags, ...video.tags])];
 }
 
-export function videoSearchText(video: BuildVideo): string {
+export function slugToken(value: string): string {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export function formatDate(input?: string): string {
+  if (!input) return '';
+  const date = new Date(input);
+  if (Number.isNaN(date.getTime())) return String(input);
+  return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(date);
+}
+
+export function formatNumber(input?: number): string {
+  if (input === undefined || input === null) return '';
+  return new Intl.NumberFormat('en-US', { notation: input >= 10000 ? 'compact' : 'standard' }).format(input);
+}
+
+export function matchesBuildCategory(video: BuildVideo, key: BuildCategoryKey): boolean {
+  if (key === 'all') return true;
+
+  const haystack = [
+    video.title,
+    video.creator,
+    video.description,
+    video.category,
+    ...video.tags,
+    ...video.buildTags
+  ]
+    .join(' ')
+    .toLowerCase();
+
+  if (key === 'striker') return haystack.includes('striker');
+  if (key === 'pve') return haystack.includes('pve') || haystack.includes('pve') || haystack.includes('countdown') || haystack.includes('raid') || haystack.includes('incursion') || haystack.includes('mission');
+  if (key === 'solo') return haystack.includes('solo');
+  if (key === 'pvp') return haystack.includes('pvp') || haystack.includes('dark zone') || haystack.includes('dz') || haystack.includes('conflict');
+
+  return true;
+}
+
+export function getBuildVideos(data: unknown, key: BuildCategoryKey = 'all', limit?: number): BuildVideo[] {
+  const videos = normalizeBuilds(data)
+    .filter((video) => matchesBuildCategory(video, key))
+    .sort((a, b) => {
+      const dateA = a.date ? new Date(a.date).getTime() : 0;
+      const dateB = b.date ? new Date(b.date).getTime() : 0;
+      return dateB - dateA;
+    });
+
+  return typeof limit === 'number' ? videos.slice(0, limit) : videos;
+}
+
+export function discoverySearchText(video: BuildVideo): string {
   return [
     video.title,
     video.creator,
     video.description,
-    video.section,
-    video.subcategory,
-    video.contentType,
-    video.activity,
-    video.format,
-    ...(video.tags || []),
-    ...(video.sourceTags || [])
+    video.category,
+    ...video.tags,
+    ...video.buildTags
   ]
     .filter(Boolean)
     .join(' ')
     .toLowerCase();
 }
 
-export function isBuildVideo(video: BuildVideo): boolean {
-  const text = videoSearchText(video);
-
+export function discoveryFilterValues(video: BuildVideo): string[] {
   return [
-    'build',
-    'striker',
-    'pve',
-    'solo',
-    'pvp',
-    'dps',
-    'tank',
-    'skill',
-    'healer',
-    'dark zone',
-    'conflict',
-    'countdown',
-    'incursion',
-    'legendary',
-    'loadout'
-  ].some((term) => text.includes(term));
+    video.creator,
+    videoCategory(video),
+    ...videoTags(video)
+  ]
+    .filter(Boolean)
+    .map((value) => String(value).trim())
+    .filter(Boolean)
+    .filter((value, index, array) => array.findIndex((candidate) => candidate.toLowerCase() === value.toLowerCase()) === index);
 }
 
-export function matchesBuildCategory(video: BuildVideo, key: BuildCategoryKey): boolean {
-  const text = videoSearchText(video);
-
-  if (key === 'all') return isBuildVideo(video);
-
-  if (key === 'striker') {
-    return text.includes('striker') || text.includes('striker’s') || text.includes("striker's");
-  }
-
-  if (key === 'pve') {
-    return (
-      text.includes('pve') ||
-      text.includes('legendary') ||
-      text.includes('heroic') ||
-      text.includes('mission') ||
-      text.includes('countdown') ||
-      text.includes('incursion') ||
-      text.includes('raid') ||
-      text.includes('open world') ||
-      text.includes('control point') ||
-      text.includes('farming') ||
-      text.includes('farm')
-    ) && !text.includes('pvp only');
-  }
-
-  if (key === 'solo') {
-    return (
-      text.includes('solo') ||
-      text.includes('soloable') ||
-      text.includes('solo player') ||
-      text.includes('solo agent')
-    );
-  }
-
-  if (key === 'pvp') {
-    return (
-      text.includes('pvp') ||
-      text.includes('dark zone') ||
-      text.includes('dz ') ||
-      text.includes('conflict') ||
-      text.includes('rogue') ||
-      text.includes('player versus player')
-    );
-  }
-
-  return false;
+export function discoveryFilterTokens(video: BuildVideo): string[] {
+  return discoveryFilterValues(video).map(slugToken).filter(Boolean);
 }
 
-export function getBuildCategory(key: BuildCategoryKey): BuildCategoryConfig {
-  return buildCategories.find((category) => category.key === key) || buildCategories[0];
-}
+export function buildDiscoveryFilters(videos: BuildVideo[], limit = 22): DiscoveryFilter[] {
+  const counts = new Map<string, { label: string; count: number }>();
 
-export function getBuildVideos(data: unknown, key: BuildCategoryKey, limit = 72): BuildVideo[] {
-  return normalizeBuilds(data)
-    .filter((video) => video.title && (video.id || video.videoId))
-    .filter((video) => matchesBuildCategory(video, key))
+  for (const video of videos) {
+    for (const label of discoveryFilterValues(video)) {
+      const value = slugToken(label);
+      if (!value) continue;
+
+      const current = counts.get(value);
+      if (current) {
+        current.count += 1;
+      } else {
+        counts.set(value, { label, count: 1 });
+      }
+    }
+  }
+
+  return [...counts.entries()]
     .sort((a, b) => {
-      const aDate = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
-      const bDate = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
-      return bDate - aDate;
+      const countDiff = b[1].count - a[1].count;
+      if (countDiff !== 0) return countDiff;
+      return a[1].label.localeCompare(b[1].label);
     })
-    .slice(0, limit);
-}
-
-export function formatDate(value?: string): string {
-  if (!value) return '';
-
-  try {
-    return new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    }).format(new Date(value));
-  } catch {
-    return '';
-  }
-}
-
-export function formatNumber(value?: number): string {
-  if (typeof value !== 'number' || Number.isNaN(value)) return '';
-
-  return new Intl.NumberFormat('en-US', {
-    notation: value > 9999 ? 'compact' : 'standard',
-    maximumFractionDigits: 1
-  }).format(value);
+    .slice(0, limit)
+    .map(([value, entry]) => ({
+      value,
+      label: `${entry.label} (${entry.count})`
+    }));
 }

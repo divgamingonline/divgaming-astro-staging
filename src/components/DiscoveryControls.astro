@@ -1,0 +1,215 @@
+---
+import type { DiscoveryFilter } from '../utils/builds';
+
+export interface Props {
+  count: number;
+  filters?: DiscoveryFilter[];
+  label?: string;
+  placeholder?: string;
+}
+
+const {
+  count,
+  filters = [],
+  label = 'Search this library',
+  placeholder = 'Search builds, creators, tags, activities...'
+} = Astro.props;
+---
+
+<div class="discovery-controls card" data-discovery-controls>
+  <div class="discovery-controls__top">
+    <label class="discovery-search">
+      <span>{label}</span>
+      <input type="search" placeholder={placeholder} data-discovery-search />
+    </label>
+
+    <div class="discovery-count">
+      <strong data-result-count>{count}</strong>
+      <span>visible</span>
+    </div>
+  </div>
+
+  {filters.length > 0 && (
+    <div class="discovery-filters" aria-label="Discovery filters">
+      <button type="button" class="active" data-discovery-filter="all">All</button>
+      {filters.map((filter) => (
+        <button type="button" data-discovery-filter={filter.value}>{filter.label}</button>
+      ))}
+    </div>
+  )}
+
+  <button type="button" class="discovery-reset" data-discovery-reset>Reset filters</button>
+</div>
+
+<script>
+  function initDiscoveryControls(scope) {
+    const searchInput = scope.querySelector('[data-discovery-search]');
+    const cards = [...document.querySelectorAll('[data-discovery-card]')];
+    const filterButtons = [...scope.querySelectorAll('[data-discovery-filter]')];
+    const count = scope.querySelector('[data-result-count]');
+    const reset = scope.querySelector('[data-discovery-reset]');
+    const emptyState = document.querySelector('[data-discovery-empty]');
+    let activeFilter = 'all';
+
+    function applyFilters() {
+      const query = (searchInput?.value || '').trim().toLowerCase();
+      let visible = 0;
+
+      for (const card of cards) {
+        const search = card.dataset.search || '';
+        const filters = (card.dataset.filters || '').split(' ');
+        const matchesSearch = !query || search.includes(query);
+        const matchesFilter = activeFilter === 'all' || filters.includes(activeFilter);
+        const shouldShow = matchesSearch && matchesFilter;
+
+        card.hidden = !shouldShow;
+        if (shouldShow) visible += 1;
+      }
+
+      if (count) count.textContent = String(visible);
+      if (emptyState) emptyState.hidden = visible !== 0;
+    }
+
+    searchInput?.addEventListener('input', applyFilters);
+
+    for (const button of filterButtons) {
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.discoveryFilter || 'all';
+
+        for (const item of filterButtons) {
+          item.classList.toggle('active', item === button);
+        }
+
+        applyFilters();
+      });
+    }
+
+    reset?.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      activeFilter = 'all';
+
+      for (const button of filterButtons) {
+        button.classList.toggle('active', button.dataset.discoveryFilter === 'all');
+      }
+
+      applyFilters();
+    });
+
+    applyFilters();
+  }
+
+  for (const scope of document.querySelectorAll('[data-discovery-controls]')) {
+    initDiscoveryControls(scope);
+  }
+</script>
+
+<style>
+  .discovery-controls {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 18px;
+  }
+
+  .discovery-controls__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: end;
+  }
+
+  .discovery-search {
+    display: grid;
+    gap: 8px;
+  }
+
+  .discovery-search span {
+    color: var(--dg-muted);
+    font-size: 0.8rem;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .discovery-search input {
+    width: 100%;
+    border: 1px solid rgba(255, 107, 0, 0.28);
+    border-radius: 16px;
+    padding: 14px 15px;
+    color: var(--dg-text);
+    background: rgba(0, 0, 0, 0.28);
+    font: inherit;
+    outline: none;
+  }
+
+  .discovery-search input:focus {
+    border-color: var(--dg-orange);
+    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.12);
+  }
+
+  .discovery-count {
+    display: grid;
+    place-items: center;
+    min-width: 104px;
+    border: 1px solid rgba(255, 107, 0, 0.2);
+    border-radius: 16px;
+    padding: 10px 12px;
+    background: rgba(255, 107, 0, 0.055);
+  }
+
+  .discovery-count strong {
+    color: var(--dg-orange);
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+
+  .discovery-count span {
+    color: var(--dg-muted);
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .discovery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .discovery-filters button,
+  .discovery-reset {
+    border: 1px solid rgba(255, 107, 0, 0.24);
+    border-radius: 999px;
+    padding: 8px 11px;
+    color: var(--dg-muted);
+    background: rgba(255, 255, 255, 0.045);
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 900;
+    cursor: pointer;
+  }
+
+  .discovery-filters button:hover,
+  .discovery-filters button.active,
+  .discovery-reset:hover {
+    color: #160d05;
+    background: var(--dg-orange);
+    border-color: var(--dg-orange);
+  }
+
+  .discovery-reset {
+    justify-self: start;
+  }
+
+  @media (max-width: 680px) {
+    .discovery-controls__top {
+      grid-template-columns: 1fr;
+    }
+
+    .discovery-count {
+      place-items: start;
+      min-width: 0;
+    }
+  }
+</style>
