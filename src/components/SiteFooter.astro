@@ -17,15 +17,6 @@ function withBase(href: string) {
   return `${base}${href}`;
 }
 
-const fieldRoutes = [
-  { label: 'Division 2 Hub', href: '/division-2/', icon: 'route' },
-  { label: 'Build Library', href: '/division-2/builds/', icon: 'crosshair' },
-  { label: 'Agent Tools', href: '/division-2/tools/', icon: 'backpack' },
-  { label: 'Video Intel', href: '/division-2/videos/', icon: 'video' },
-  { label: 'Creator Network', href: '/division-2/creators/', icon: 'users' },
-  { label: 'Guide Routes', href: '/division-2/guides/', icon: 'book-open' }
-];
-
 const socialLinks = [
   { label: 'Discord', href: '#', icon: '/assets/img/socials/discord.png' },
   { label: 'YouTube', href: '#', icon: '/assets/img/socials/youtube.png' },
@@ -33,6 +24,33 @@ const socialLinks = [
   { label: 'TikTok', href: '#', icon: '/assets/img/socials/tiktok.png' },
   { label: 'Instagram', href: '#', icon: '/assets/img/socials/instagram.png' },
   { label: 'X', href: '#', icon: '/assets/img/socials/x.png' }
+];
+
+const dispatchItems = [
+  {
+    icon: 'check-circle',
+    label: 'Current Focus',
+    value: 'Staging Review',
+    text: 'Astro is being tightened for function, stability, and production parity.'
+  },
+  {
+    icon: 'video',
+    label: 'Creator Traffic',
+    value: 'YouTube Direct',
+    text: 'Videos are indexed for discovery, but views stay with the original creator.'
+  },
+  {
+    icon: 'database',
+    label: 'Data Layer',
+    value: 'JSON Driven',
+    text: 'Tools, builds, videos, brands, gearsets, talents, and items stay maintainable.'
+  },
+  {
+    icon: 'shield',
+    label: 'Cutover Status',
+    value: 'Not Yet',
+    text: 'Production switch happens only after staging passes the full review.'
+  }
 ];
 ---
 
@@ -113,14 +131,31 @@ const socialLinks = [
         </a>
       </div>
 
-      <div class="footer-link-panel">
-        <p class="eyebrow">Field Routes</p>
-        {fieldRoutes.map((route) => (
-          <a href={withBase(route.href)}>
-            <span><Icon name={route.icon} /> {route.label}</span>
-            <Icon name="arrow-right" />
-          </a>
-        ))}
+      <div class="footer-dispatch-panel">
+        <div class="footer-dispatch-panel__head">
+          <p class="eyebrow">SHD Dispatch</p>
+          <strong>Launch Candidate Notes</strong>
+        </div>
+
+        <div class="footer-dispatch-list">
+          {dispatchItems.map((item) => (
+            <div class="footer-dispatch-item">
+              <span class="footer-dispatch-icon"><Icon name={item.icon} /></span>
+              <div>
+                <div class="footer-dispatch-line">
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </div>
+                <p>{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="footer-dispatch-actions">
+          <a href={withBase('/division-2/')}>Review Hub</a>
+          <a href={withBase('/division-2/tools/')}>Check Tools</a>
+        </div>
       </div>
 
       <div class="footer-bottom-row">
@@ -132,4 +167,137 @@ const socialLinks = [
       </div>
     </div>
   </div>
+
+  <style>
+    .footer-dispatch-panel {
+      border: 1px solid rgba(255, 107, 0, 0.25);
+      border-radius: 24px;
+      padding: 22px;
+      background:
+        radial-gradient(circle at top left, rgba(117, 240, 160, 0.09), transparent 40%),
+        linear-gradient(180deg, rgba(21, 29, 28, 0.94), rgba(8, 11, 10, 0.98));
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25);
+    }
+
+    .footer-dispatch-panel__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .footer-dispatch-panel__head .eyebrow {
+      margin: 0;
+    }
+
+    .footer-dispatch-panel__head strong {
+      color: #fff;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 1rem;
+      text-align: right;
+    }
+
+    .footer-dispatch-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .footer-dispatch-item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.032);
+    }
+
+    .footer-dispatch-icon {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 107, 0, 0.22);
+      border-radius: 12px;
+      color: var(--orange-2);
+      background: rgba(255, 107, 0, 0.08);
+    }
+
+    .footer-dispatch-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-dispatch-line strong {
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    .footer-dispatch-item p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .footer-dispatch-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .footer-dispatch-actions a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 40px;
+      border: 1px solid rgba(255, 107, 0, 0.28);
+      border-radius: 999px;
+      color: rgba(217, 242, 238, 0.9);
+      background: rgba(255, 107, 0, 0.06);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .footer-dispatch-actions a:hover {
+      color: #160d05;
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    @media (max-width: 780px) {
+      .footer-dispatch-panel__head {
+        display: grid;
+        align-items: start;
+      }
+
+      .footer-dispatch-panel__head strong {
+        text-align: left;
+      }
+
+      .footer-dispatch-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-dispatch-line {
+        display: grid;
+      }
+
+      .footer-dispatch-line strong {
+        white-space: normal;
+      }
+    }
+  </style>
 </footer>
