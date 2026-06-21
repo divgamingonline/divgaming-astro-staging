@@ -14,15 +14,13 @@ import {
   formatDate
 } from '../../../utils/builds';
 
-function getAllVideos() {
-  return normalizeBuilds(buildsData)
-    .filter((video) => video.title && (video.id || video.videoId));
-}
-
 export async function getStaticPaths() {
+  const videos = normalizeBuilds(buildsData)
+    .filter((video) => video.title && (video.id || video.videoId));
+
   const seen = new Set<string>();
 
-  return getAllVideos()
+  return videos
     .map((video) => {
       const slug = videoSlug(video);
       return { slug, video };
@@ -39,7 +37,10 @@ export async function getStaticPaths() {
 }
 
 const { video } = Astro.props;
-const allVideos = getAllVideos();
+
+const allVideos = normalizeBuilds(buildsData)
+  .filter((item) => item.title && (item.id || item.videoId));
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const slug = videoSlug(video);
 const canonical = `/division-2/videos/${slug}/`;
@@ -52,6 +53,7 @@ const tags = videoTags(video);
 const publishedDate = formatDate(video.date);
 const watchUrl = youtubeWatchUrl(video);
 const title = `${video.title || 'Division 2 Video'} | DivGaming`;
+
 const relatedVideos = allVideos
   .filter((candidate) => videoSlug(candidate) !== slug)
   .filter((candidate) => candidate.creator === video.creator || videoTags(candidate).some((tag) => tags.includes(tag)))
