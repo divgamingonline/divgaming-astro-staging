@@ -1,9 +1,9 @@
 /* ============================================================
    DivGaming Astro — Mobile Hero Terminal / Status Hotfix
-   Fixes SHD prompt alignment and moves Network Status into stat grid.
+   Fixes SHD prompt alignment, hero stat layout, and mobile logo proportions.
    ============================================================ */
 
-/* Terminal prompt alignment: prompt symbol and ISAC copy must stay on same row. */
+/* Terminal prompt alignment: prompt symbol and ISAC copy stay on same row. */
 .terminal-prompt {
   display: grid !important;
   grid-template-columns: auto minmax(0, 1fr) !important;
@@ -29,7 +29,7 @@
   line-height: 1.45;
 }
 
-/* Network status is now a normal stat tile, not a full-width note. */
+/* Network status is a normal stat tile, not a full-width note. */
 .stat-item--network span {
   color: var(--green) !important;
   font-size: clamp(1.28rem, 2.4vw, 1.9rem) !important;
@@ -43,7 +43,23 @@
   border-color: rgba(117, 240, 160, 0.26) !important;
 }
 
+.hero-logo {
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+}
+
 @media (max-width: 780px) {
+  /* The SHD Alert box already handles status on mobile. */
+  .mobile-shd-status {
+    display: none !important;
+  }
+
+  .mobile-shd-bar {
+    padding-top: 4px !important;
+    padding-bottom: 8px !important;
+  }
+
   .terminal-content {
     padding: 12px 13px !important;
   }
@@ -63,6 +79,19 @@
     line-height: 1.42 !important;
     word-break: normal;
     overflow-wrap: anywhere;
+  }
+
+  /* Prevent the Division 2 logo from looking stretched on mobile. */
+  .hero-logo {
+    display: block !important;
+    width: min(330px, 88vw) !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+    margin-bottom: 16px !important;
   }
 
   .hero-command-panel {
@@ -94,6 +123,7 @@
   }
 
   .hero {
+    padding-top: 24px !important;
     padding-bottom: 34px !important;
   }
 
@@ -103,6 +133,10 @@
 }
 
 @media (max-width: 390px) {
+  .hero-logo {
+    width: min(300px, 86vw) !important;
+  }
+
   .hero-command-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
