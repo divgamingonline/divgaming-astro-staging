@@ -57,13 +57,24 @@ const tools = [
   noindex={true}
 >
   <section class="shell hero">
-    <div class="tools-index-hero">
-      <p class="eyebrow">Division 2 Field Tools</p>
-      <h1>Databases built for agents.</h1>
-      <p class="lead">
-        Exotics, named items, brands, gear sets, and talents — rebuilt as Astro
-        pages with real data and cleaner navigation.
-      </p>
+    <div class="command-hero">
+      <div>
+        <p class="eyebrow">Division 2 Agent Tools</p>
+        <h1>Databases built for agents.</h1>
+        <p class="lead">
+          Exotics, named items, brands, gear sets, and talents — rebuilt as
+          searchable Astro pages with cleaner navigation.
+        </p>
+      </div>
+
+      <aside class="command-panel">
+        <p class="eyebrow">Reference count</p>
+        <div class="command-panel__list">
+          {tools.slice(0, 4).map((tool) => (
+            <div class="command-panel__row"><span>{tool.title}</span><strong>{tool.count}</strong></div>
+          ))}
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -74,8 +85,8 @@ const tools = [
         <h2>Open a reference</h2>
       </div>
       <p>
-        These pages are now connected to real JSON data. Advanced search and
-        filtering will come in the next tools phase.
+        These pages are connected to real JSON data and include search and
+        filtering on the individual tool routes.
       </p>
     </div>
 

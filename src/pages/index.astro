@@ -4,50 +4,22 @@ import buildsData from '../../data/builds.json';
 import exoticsData from '../../data/division-2/exotics.json';
 import namedItemsData from '../../data/division-2/named-items.json';
 import brandsetsData from '../../data/division-2/brandsets.json';
-import { normalizeBuilds } from '../utils/builds';
+import { getBuildVideos } from '../utils/builds';
 import { normalizeItems } from '../utils/division2Tools';
+import { getCreators } from '../utils/creators';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const buildCount = normalizeBuilds(buildsData).length;
+const videos = getBuildVideos(buildsData, 'all');
+const creatorCount = getCreators(buildsData).length;
 const exoticCount = normalizeItems(exoticsData).length;
 const namedCount = normalizeItems(namedItemsData).length;
 const brandCount = normalizeItems(brandsetsData).length;
 
-const intents = [
-  {
-    eyebrow: 'Builds',
-    title: 'Find a build',
-    text: 'Jump into Striker, PvE, solo, and PvP build categories powered by the live builds dataset.',
-    href: '/division-2/builds/',
-    cta: 'Browse builds →'
-  },
-  {
-    eyebrow: 'Tools',
-    title: 'Open the field tools',
-    text: 'Use DivGaming databases for exotics, named items, brands, gear sets, and talents.',
-    href: '/division-2/tools/',
-    cta: 'Open tools →'
-  },
-  {
-    eyebrow: 'Creators',
-    title: 'Watch on YouTube',
-    text: 'Discover creator videos on DivGaming, then watch directly on YouTube so creators get the visit.',
-    href: '/division-2/videos/',
-    cta: 'Browse videos →'
-  },
-  {
-    eyebrow: 'Division 2',
-    title: 'Enter the hub',
-    text: 'Start at the Division 2 hub for tools, build paths, guides, and reference routes.',
-    href: '/division-2/',
-    cta: 'Go to hub →'
-  }
-];
-
-const tools = [
-  { title: 'Exotic Source Tracker', count: exoticCount, href: '/division-2/tools/exotic-source-tracker/', text: 'Exotic sources, talents, cores, and farming notes.' },
-  { title: 'Named Items Database', count: namedCount, href: '/division-2/tools/named-items-database/', text: 'Named items, slots, talents, brands, and sources.' },
-  { title: 'Brand Set Database', count: brandCount, href: '/division-2/tools/brand-set-database/', text: 'Brand bonuses, cores, roles, and item relationships.' }
+const routes = [
+  { eyebrow: 'Builds', title: 'Build Library', href: '/division-2/builds/', text: 'Browse Striker, PvE, solo, and PvP build routes from creator videos.', metric: videos.length },
+  { eyebrow: 'Tools', title: 'Agent Tools', href: '/division-2/tools/', text: 'Use DivGaming databases for exotics, named items, brands, gear sets, and talents.', metric: exoticCount + namedCount + brandCount },
+  { eyebrow: 'Creators', title: 'Creator Index', href: '/division-2/creators/', text: 'Discover Division 2 creators and route viewers directly to their YouTube videos.', metric: creatorCount },
+  { eyebrow: 'Guides', title: 'Guide Library', href: '/division-2/guides/', text: 'A clean structure for farming, progression, endgame, raids, incursions, and tools.', metric: 'New' }
 ];
 ---
 
@@ -58,94 +30,56 @@ const tools = [
   noindex={true}
 >
   <section class="shell hero">
-    <div class="home-hero">
-      <p class="eyebrow">DivGaming.com Astro Staging</p>
-      <h1>Division 2 field hub for serious agents.</h1>
-      <p class="lead">
-        Builds, creator discovery, exotic sources, named items, brand sets,
-        gear sets, and talent references — organized into one fast DivGaming
-        experience.
-      </p>
+    <div class="command-hero">
+      <div>
+        <p class="eyebrow">DivGaming.com Astro Staging</p>
+        <h1>Division 2 command hub.</h1>
+        <p class="lead">
+          Builds, creator discovery, exotic sources, named items, brand sets,
+          gear sets, talent references, and guide routes — rebuilt into one fast
+          DivGaming experience.
+        </p>
 
-      <div class="hero-actions">
-        <a class="button" href={`${base}/division-2/`}>Enter Division 2 Hub</a>
-        <a class="button button--ghost" href={`${base}/division-2/tools/`}>Open Field Tools</a>
+        <div class="hero-actions">
+          <a class="button" href={`${base}/division-2/`}>Enter Division 2 Hub</a>
+          <a class="button button--ghost" href={`${base}/division-2/tools/`}>Open Agent Tools</a>
+        </div>
       </div>
+
+      <aside class="command-panel">
+        <p class="eyebrow">Live staging data</p>
+        <div class="command-panel__list">
+          <div class="command-panel__row"><span>Build videos</span><strong>{videos.length}</strong></div>
+          <div class="command-panel__row"><span>Creators</span><strong>{creatorCount}</strong></div>
+          <div class="command-panel__row"><span>Exotics</span><strong>{exoticCount}</strong></div>
+          <div class="command-panel__row"><span>Named items</span><strong>{namedCount}</strong></div>
+        </div>
+      </aside>
     </div>
   </section>
 
   <section class="shell section">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">What do you need right now?</p>
-        <h2>Choose your route</h2>
+        <p class="eyebrow">Main routes</p>
+        <h2>Pick your lane</h2>
       </div>
       <p>
-        This is the staging version of the new Astro front end. The structure is
-        now data-backed; this phase starts aligning the experience with the
-        production DivGaming feel.
+        This consolidated staging pass makes DivGaming feel like one connected
+        site instead of separate prototype pages.
       </p>
     </div>
 
-    <div class="grid intent-grid">
-      {intents.map((item) => (
-        <a class="card intent-card" href={`${base}${item.href}`}>
-          <p class="eyebrow">{item.eyebrow}</p>
-          <h2>{item.title}</h2>
-          <p>{item.text}</p>
-          <strong>{item.cta}</strong>
+    <div class="grid quick-grid">
+      {routes.map((route) => (
+        <a class="card intent-card" href={`${base}${route.href}`}>
+          <span class="tool-card__count">{route.metric}</span>
+          <p class="eyebrow">{route.eyebrow}</p>
+          <h2>{route.title}</h2>
+          <p>{route.text}</p>
+          <strong>Open route →</strong>
         </a>
       ))}
-    </div>
-  </section>
-
-  <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Division 2 Field Tools</p>
-        <h2>Core databases</h2>
-      </div>
-      <p>
-        The tools are now loading real JSON data in Astro. Search, filtering,
-        and production-level polish come next.
-      </p>
-    </div>
-
-    <div class="grid tools-grid">
-      {tools.map((tool) => (
-        <a class="card tool-card" href={`${base}${tool.href}`}>
-          <span class="tool-card__count">{tool.count}</span>
-          <p class="eyebrow">Reference tool</p>
-          <h2>{tool.title}</h2>
-          <p>{tool.text}</p>
-          <strong>Open tool →</strong>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section class="shell section">
-    <div class="grid feature-grid">
-      <article class="card feature-card">
-        <span class="feature-card__count">{buildCount}</span>
-        <p class="eyebrow">Creator-first library</p>
-        <h2>Build videos stay creator-forward.</h2>
-        <p>
-          DivGaming can help users discover builds, but all watch actions route
-          directly to YouTube so creators receive the actual visit.
-        </p>
-        <a href={`${base}/division-2/videos/`}>Browse video routes →</a>
-      </article>
-
-      <article class="card feature-card">
-        <p class="eyebrow">Unofficial and community-built</p>
-        <h2>Built for agents, not algorithms.</h2>
-        <p>
-          The site is being rebuilt to be faster, cleaner, easier to maintain,
-          and easier to expand without committing hundreds of generated pages.
-        </p>
-        <a href={`${base}/division-2/`}>Explore the hub →</a>
-      </article>
     </div>
   </section>
 </BaseLayout>

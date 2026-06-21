@@ -1,6 +1,75 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import buildsData from '../../../../data/builds.json';
+import { getCreators, formatCreatorDate, formatCreatorNumber } from '../../../utils/creators';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const creators = getCreators(buildsData);
+const videoTotal = creators.reduce((sum, creator) => sum + creator.videoCount, 0);
 ---
-<BaseLayout title="Division 2 Creators | DivGaming Astro Staging" description="Division 2 Creators staging placeholder for the DivGaming Astro migration." canonical="/division-2/creators/" noindex={true}>
-  <section class="shell hero"><p class="eyebrow">Astro staging placeholder</p><h1>Division 2 Creators</h1><p class="lead">This route exists so Phase 1 navigation can be tested without touching the live site.</p></section>
+
+<BaseLayout
+  title="Division 2 Creators | DivGaming Astro Staging"
+  description="Browse Division 2 creators represented in the DivGaming build video library."
+  canonical="/division-2/creators/"
+  noindex={true}
+>
+  <section class="shell hero">
+    <div class="command-hero">
+      <div>
+        <p class="eyebrow">Creator Discovery</p>
+        <h1>Creators powering the library.</h1>
+        <p class="lead">
+          DivGaming helps agents find build videos while keeping creator traffic
+          pointed to YouTube where it belongs.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href={`${base}/division-2/videos/`}>Video Library</a>
+          <a class="button button--ghost" href={`${base}/division-2/builds/`}>Builds</a>
+        </div>
+      </div>
+
+      <aside class="command-panel">
+        <p class="eyebrow">Creator index</p>
+        <div class="command-panel__list">
+          <div class="command-panel__row"><span>Creators</span><strong>{creators.length}</strong></div>
+          <div class="command-panel__row"><span>Indexed videos</span><strong>{videoTotal}</strong></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Directory</p>
+        <h2>Creator cards</h2>
+      </div>
+      <p>
+        This is a staging creator directory generated from the build video
+        dataset. Individual creator profile pages can come next.
+      </p>
+    </div>
+
+    <div class="grid creator-grid">
+      {creators.map((creator) => (
+        <article class="card creator-card">
+          <span class="creator-card__count">{creator.videoCount}</span>
+          <p class="eyebrow">Creator</p>
+          <h2>{creator.name}</h2>
+          <p>
+            {creator.videoCount} indexed videos
+            {creator.latestDate ? ` · Latest ${formatCreatorDate(creator.latestDate)}` : ''}
+            {creator.totalViews ? ` · ${formatCreatorNumber(creator.totalViews)} views` : ''}
+          </p>
+          {creator.tags.length > 0 && (
+            <div class="badge-row">
+              {creator.tags.slice(0, 5).map((tag) => <span>{tag}</span>)}
+            </div>
+          )}
+          <a href={`${base}/division-2/videos/`}>View videos →</a>
+        </article>
+      ))}
+    </div>
+  </section>
 </BaseLayout>

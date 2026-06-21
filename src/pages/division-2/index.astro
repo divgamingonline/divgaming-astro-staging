@@ -3,60 +3,68 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import buildsData from '../../../data/builds.json';
 import exoticsData from '../../../data/division-2/exotics.json';
 import namedItemsData from '../../../data/division-2/named-items.json';
-import { normalizeBuilds } from '../../utils/builds';
+import { getBuildVideos } from '../../utils/builds';
 import { normalizeItems } from '../../utils/division2Tools';
+import { getCreators } from '../../utils/creators';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const buildCount = normalizeBuilds(buildsData).length;
-const exoticCount = normalizeItems(exoticsData).length;
-const namedCount = normalizeItems(namedItemsData).length;
+const videos = getBuildVideos(buildsData, 'all');
+const creators = getCreators(buildsData);
+const exotics = normalizeItems(exoticsData);
+const namedItems = normalizeItems(namedItemsData);
 
 const routes = [
-  { title: 'Build Library', href: '/division-2/builds/', count: buildCount, text: 'Striker, PvE, solo, PvP, and general build discovery.' },
-  { title: 'Field Tools', href: '/division-2/tools/', count: exoticCount + namedCount, text: 'Exotics, named items, brands, gearsets, and talent databases.' },
-  { title: 'Creator Videos', href: '/division-2/videos/', count: buildCount, text: 'SEO/reference pages that route viewers to YouTube.' },
-  { title: 'Guides', href: '/division-2/guides/', count: 'Soon', text: 'Mission, progression, farming, and endgame guide routes.' }
-];
-
-const buildLinks = [
-  { label: 'Striker Builds', href: '/division-2/builds/striker/' },
-  { label: 'PvE Builds', href: '/division-2/builds/pve/' },
-  { label: 'Solo Builds', href: '/division-2/builds/solo/' },
-  { label: 'PvP Builds', href: '/division-2/builds/pvp/' }
+  { title: 'Build Library', href: '/division-2/builds/', count: videos.length, text: 'Striker, PvE, solo, PvP, and full build discovery.' },
+  { title: 'Agent Tools', href: '/division-2/tools/', count: exotics.length + namedItems.length, text: 'Exotics, named items, brands, gearsets, and talent databases.' },
+  { title: 'Video Library', href: '/division-2/videos/', count: videos.length, text: 'Creator-first video discovery with direct YouTube routing.' },
+  { title: 'Creator Index', href: '/division-2/creators/', count: creators.length, text: 'A clean directory for Division 2 creators represented in the library.' },
+  { title: 'Guide Library', href: '/division-2/guides/', count: 'New', text: 'Guide structure for farming, progression, raids, incursions, and endgame.' }
 ];
 ---
 
 <BaseLayout
   title="Division 2 Hub | DivGaming Astro Staging"
-  description="The DivGaming Division 2 hub connects builds, tools, videos, and reference databases."
+  description="The DivGaming Division 2 hub connects builds, tools, videos, creators, and guide routes."
   canonical="/division-2/"
   noindex={true}
 >
   <section class="shell hero">
-    <div class="hub-hero">
-      <p class="eyebrow">Division 2 Hub</p>
-      <h1>Your agent command center.</h1>
-      <p class="lead">
-        A fast route into the DivGaming build library, field tools, creator video
-        discovery, and reference databases.
-      </p>
+    <div class="command-hero">
+      <div>
+        <p class="eyebrow">Division 2 Hub</p>
+        <h1>Agent command center.</h1>
+        <p class="lead">
+          Fast routes into builds, tools, videos, creators, and guides. This is
+          the new unified DivGaming structure.
+        </p>
 
-      <div class="hero-actions">
-        <a class="button" href={`${base}/division-2/builds/`}>Find Builds</a>
-        <a class="button button--ghost" href={`${base}/division-2/tools/`}>Open Tools</a>
+        <div class="hero-actions">
+          <a class="button" href={`${base}/division-2/builds/`}>Find Builds</a>
+          <a class="button button--ghost" href={`${base}/division-2/tools/`}>Open Tools</a>
+        </div>
       </div>
+
+      <aside class="command-panel">
+        <p class="eyebrow">Available now</p>
+        <div class="command-panel__list">
+          <div class="command-panel__row"><span>Build videos</span><strong>{videos.length}</strong></div>
+          <div class="command-panel__row"><span>Creators</span><strong>{creators.length}</strong></div>
+          <div class="command-panel__row"><span>Exotics</span><strong>{exotics.length}</strong></div>
+          <div class="command-panel__row"><span>Named items</span><strong>{namedItems.length}</strong></div>
+        </div>
+      </aside>
     </div>
   </section>
 
   <section class="shell section">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Agent routes</p>
-        <h2>Pick a lane</h2>
+        <p class="eyebrow">Route map</p>
+        <h2>Where agents go</h2>
       </div>
       <p>
-        These routes are now backed by Astro pages and real JSON data where
-        available.
+        All primary Division 2 routes now share the same Astro layout, visual
+        system, navigation, and staging identity.
       </p>
     </div>
 
@@ -68,29 +76,6 @@ const buildLinks = [
           <h2>{route.title}</h2>
           <p>{route.text}</p>
           <strong>Open route →</strong>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Build categories</p>
-        <h2>Fast build paths</h2>
-      </div>
-      <p>
-        Build category pages are filtered from the same creator video dataset.
-      </p>
-    </div>
-
-    <div class="grid intent-grid">
-      {buildLinks.map((link) => (
-        <a class="card intent-card" href={`${base}${link.href}`}>
-          <p class="eyebrow">Build category</p>
-          <h2>{link.label}</h2>
-          <p>Open filtered creator videos and route to YouTube for watching.</p>
-          <strong>Browse {link.label} →</strong>
         </a>
       ))}
     </div>

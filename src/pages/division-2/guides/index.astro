@@ -1,6 +1,94 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const guides = [
+  {
+    title: 'Getting Back Into Division 2',
+    status: 'Planned',
+    text: 'A returning-agent path for gear, seasons, expertise, SHD levels, and endgame priorities.'
+  },
+  {
+    title: 'Exotic Farming',
+    status: 'Tool-linked',
+    text: 'Guide route that will connect directly into the Exotic Source Tracker and farming notes.'
+  },
+  {
+    title: 'Named Item Farming',
+    status: 'Tool-linked',
+    text: 'Named item farming reference connected to sources, slots, and target loot logic.'
+  },
+  {
+    title: 'Build Basics',
+    status: 'Planned',
+    text: 'Core explanation for damage, survivability, skills, crit, armor, cores, talents, and gear synergy.'
+  },
+  {
+    title: 'Raids and Incursions',
+    status: 'Planned',
+    text: 'Landing route for endgame group activities, roles, prep builds, and encounter notes.'
+  },
+  {
+    title: 'Countdown and Endgame Farming',
+    status: 'Planned',
+    text: 'Efficient farming path for agents trying to quickly improve gear and optimize loadouts.'
+  }
+];
 ---
-<BaseLayout title="Division 2 Guides | DivGaming Astro Staging" description="Division 2 Guides staging placeholder for the DivGaming Astro migration." canonical="/division-2/guides/" noindex={true}>
-  <section class="shell hero"><p class="eyebrow">Astro staging placeholder</p><h1>Division 2 Guides</h1><p class="lead">This route exists so Phase 1 navigation can be tested without touching the live site.</p></section>
+
+<BaseLayout
+  title="Division 2 Guides | DivGaming Astro Staging"
+  description="Guide structure for Division 2 farming, builds, endgame, exotics, named items, raids, incursions, and returning agents."
+  canonical="/division-2/guides/"
+  noindex={true}
+>
+  <section class="shell hero">
+    <div class="command-hero">
+      <div>
+        <p class="eyebrow">Guide Library</p>
+        <h1>Guides with a real structure.</h1>
+        <p class="lead">
+          The guide library is now staged as a proper DivGaming route. The next
+          pass can fill these with full articles, tool links, and build pathways.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href={`${base}/division-2/tools/`}>Use Tools</a>
+          <a class="button button--ghost" href={`${base}/division-2/builds/`}>Find Builds</a>
+        </div>
+      </div>
+
+      <aside class="command-panel">
+        <p class="eyebrow">Guide routes</p>
+        <div class="command-panel__list">
+          <div class="command-panel__row"><span>Guide tracks</span><strong>{guides.length}</strong></div>
+          <div class="command-panel__row"><span>Status</span><strong>Staged</strong></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Guide tracks</p>
+        <h2>Next content lanes</h2>
+      </div>
+      <p>
+        These are not generic placeholders anymore. They are the planned content
+        lanes DivGaming should build out next.
+      </p>
+    </div>
+
+    <div class="grid guide-grid">
+      {guides.map((guide) => (
+        <article class="card guide-card">
+          <p class="eyebrow">{guide.status}</p>
+          <h2>{guide.title}</h2>
+          <p>{guide.text}</p>
+          <strong>Guide lane staged</strong>
+        </article>
+      ))}
+    </div>
+  </section>
 </BaseLayout>

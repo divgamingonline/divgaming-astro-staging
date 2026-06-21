@@ -21,12 +21,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const canonicalPath = canonical.startsWith('/') ? canonical : `/${canonical}`;
 const canonicalUrl = `https://divgaming.com${canonicalPath}`;
 const siteImage = image.startsWith('http') ? image : `${base}${image}`;
+
 const navItems = [
-  { label: 'Home', href: '/' },
   { label: 'Division 2', href: '/division-2/' },
   { label: 'Builds', href: '/division-2/builds/' },
   { label: 'Tools', href: '/division-2/tools/' },
-  { label: 'Videos', href: '/division-2/videos/' }
+  { label: 'Videos', href: '/division-2/videos/' },
+  { label: 'Creators', href: '/division-2/creators/' },
+  { label: 'Guides', href: '/division-2/guides/' }
 ];
 
 function withBase(href: string) {
@@ -64,6 +66,7 @@ function withBase(href: string) {
   <body>
     <div class="site-bg" aria-hidden="true">
       <span class="site-bg__grid"></span>
+      <span class="site-bg__scan"></span>
       <span class="site-bg__orb site-bg__orb--one"></span>
       <span class="site-bg__orb site-bg__orb--two"></span>
     </div>
@@ -73,7 +76,7 @@ function withBase(href: string) {
         <span class="site-brand__mark">D</span>
         <span class="site-brand__text">
           <strong>DIVGAMING</strong>
-          <small>Division 2 Field Hub</small>
+          <small>Division 2 Command Hub</small>
         </span>
       </a>
 
@@ -83,7 +86,7 @@ function withBase(href: string) {
         ))}
       </nav>
 
-      <a class="site-header__cta" href={withBase('/division-2/tools/')}>Field Tools</a>
+      <a class="site-header__cta" href={withBase('/division-2/tools/')}>Agent Tools</a>
     </header>
 
     <main>
@@ -93,11 +96,10 @@ function withBase(href: string) {
     <footer class="site-footer">
       <div class="shell site-footer__inner">
         <div>
-          <p class="eyebrow">Unofficial Community Project</p>
+          <p class="eyebrow">Unofficial Division 2 Community Hub</p>
           <strong>DivGaming</strong>
           <p>
-            Built for Division agents who need builds, tools, references, and
-            creator discovery in one clean hub.
+            Builds, tools, videos, guides, and creator discovery for Division 2 agents.
           </p>
         </div>
 
@@ -105,7 +107,8 @@ function withBase(href: string) {
           <a href={withBase('/division-2/builds/')}>Builds</a>
           <a href={withBase('/division-2/tools/')}>Tools</a>
           <a href={withBase('/division-2/videos/')}>Videos</a>
-          <a href={withBase('/division-2/')}>Division 2 Hub</a>
+          <a href={withBase('/division-2/creators/')}>Creators</a>
+          <a href={withBase('/division-2/guides/')}>Guides</a>
         </div>
       </div>
     </footer>
