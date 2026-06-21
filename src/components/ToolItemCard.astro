@@ -1,0 +1,178 @@
+---
+import {
+  confidenceLabel,
+  displayName,
+  itemBonuses,
+  itemDescription,
+  itemRoles,
+  itemSource,
+  itemSubhead,
+  itemTalent,
+  itemTypeLabel,
+  type ToolDataItem
+} from '../utils/division2Tools';
+
+export interface Props {
+  item: ToolDataItem;
+  compact?: boolean;
+}
+
+const { item, compact = false } = Astro.props;
+
+const name = displayName(item);
+const type = itemTypeLabel(item);
+const subhead = itemSubhead(item);
+const talent = itemTalent(item);
+const bonuses = itemBonuses(item);
+const roles = itemRoles(item);
+const source = itemSource(item);
+const description = itemDescription(item);
+const confidence = confidenceLabel(item);
+---
+
+<article class:list={['tool-item-card', 'card', compact && 'tool-item-card--compact']}>
+  <div class="tool-item-card__top">
+    <div>
+      <p class="eyebrow">{type}</p>
+      <h3>{name}</h3>
+      {subhead && <p class="tool-item-card__subhead">{subhead}</p>}
+    </div>
+    {confidence && <span class="tool-item-card__confidence">{confidence}</span>}
+  </div>
+
+  {talent && (
+    <div class="tool-item-card__talent">
+      {talent.name && <strong>{talent.name}</strong>}
+      {talent.description && <p>{talent.description}</p>}
+    </div>
+  )}
+
+  {!talent && description && (
+    <p class="tool-item-card__description">{description}</p>
+  )}
+
+  {bonuses.length > 0 && (
+    <ul class="tool-item-card__list">
+      {bonuses.slice(0, compact ? 3 : 5).map((bonus) => (
+        <li>{bonus}</li>
+      ))}
+    </ul>
+  )}
+
+  {roles.length > 0 && (
+    <div class="tool-item-card__chips">
+      {roles.slice(0, 5).map((role) => (
+        <span>{role}</span>
+      ))}
+    </div>
+  )}
+
+  {source && (
+    <p class="tool-item-card__source">
+      <strong>Source:</strong> {source}
+    </p>
+  )}
+</article>
+
+<style>
+  .tool-item-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px;
+    min-height: 100%;
+  }
+
+  .tool-item-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .tool-item-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    letter-spacing: -0.025em;
+  }
+
+  .tool-item-card__subhead,
+  .tool-item-card__description,
+  .tool-item-card__source,
+  .tool-item-card__talent p {
+    color: var(--dg-muted);
+  }
+
+  .tool-item-card__subhead {
+    margin: 6px 0 0;
+    font-size: 0.9rem;
+  }
+
+  .tool-item-card__confidence {
+    flex: 0 0 auto;
+    border: 1px solid rgba(255, 107, 0, 0.22);
+    border-radius: 999px;
+    padding: 5px 8px;
+    color: var(--dg-orange);
+    background: rgba(255, 107, 0, 0.08);
+    font-size: 0.68rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.055em;
+  }
+
+  .tool-item-card__talent {
+    border: 1px solid rgba(255, 107, 0, 0.16);
+    border-radius: 14px;
+    padding: 12px;
+    background: rgba(255, 107, 0, 0.055);
+  }
+
+  .tool-item-card__talent strong {
+    color: var(--dg-orange);
+  }
+
+  .tool-item-card__talent p,
+  .tool-item-card__description,
+  .tool-item-card__source {
+    margin: 6px 0 0;
+    line-height: 1.45;
+  }
+
+  .tool-item-card__list {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--dg-muted);
+  }
+
+  .tool-item-card__list li + li {
+    margin-top: 5px;
+  }
+
+  .tool-item-card__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .tool-item-card__chips span {
+    border: 1px solid rgba(255, 107, 0, 0.18);
+    border-radius: 999px;
+    padding: 5px 9px;
+    color: var(--dg-muted);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.78rem;
+    font-weight: 850;
+  }
+
+  .tool-item-card__source {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 12px;
+    font-size: 0.9rem;
+  }
+
+  .tool-item-card--compact .tool-item-card__source {
+    display: none;
+  }
+</style>
