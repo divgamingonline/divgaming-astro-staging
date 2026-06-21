@@ -1,0 +1,135 @@
+---
+import Icon from './Icon.astro';
+
+export interface Props {
+  videosIndexed?: number;
+  creatorsIndexed?: number;
+  toolRecords?: number;
+}
+
+const { videosIndexed = 0, creatorsIndexed = 0, toolRecords = 0 } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const coffeeUrl = 'https://buymeacoffee.com/divgamingoy';
+
+function withBase(href: string) {
+  if (href.startsWith('http')) return href;
+  return `${base}${href}`;
+}
+
+const fieldRoutes = [
+  { label: 'Division 2 Hub', href: '/division-2/', icon: 'route' },
+  { label: 'Build Library', href: '/division-2/builds/', icon: 'crosshair' },
+  { label: 'Agent Tools', href: '/division-2/tools/', icon: 'backpack' },
+  { label: 'Video Intel', href: '/division-2/videos/', icon: 'video' },
+  { label: 'Creator Network', href: '/division-2/creators/', icon: 'users' },
+  { label: 'Guide Routes', href: '/division-2/guides/', icon: 'book-open' }
+];
+
+const socialLinks = [
+  { label: 'Discord', href: '#', icon: '/assets/img/socials/discord.png' },
+  { label: 'YouTube', href: '#', icon: '/assets/img/socials/youtube.png' },
+  { label: 'Twitch', href: '#', icon: '/assets/img/socials/twitch.png' },
+  { label: 'TikTok', href: '#', icon: '/assets/img/socials/tiktok.png' },
+  { label: 'Instagram', href: '#', icon: '/assets/img/socials/instagram.png' },
+  { label: 'X', href: '#', icon: '/assets/img/socials/x.png' }
+];
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-info">
+      <div class="footer-brand-row">
+        <img class="footer-logo" src={withBase('/assets/img/dg-logo.png')} alt="DivGaming logo" loading="lazy" />
+        <strong>DivGaming.com</strong>
+      </div>
+
+      <p class="footer-tagline">
+        Community-built Division 2 network hub for tools, creator content,
+        guides, maps, vendor resources, and active agents.
+      </p>
+
+      <div class="footer-network-stats" aria-label="DivGaming network stats">
+        <div>
+          <strong>{videosIndexed}</strong>
+          <span>Videos Indexed</span>
+        </div>
+        <div>
+          <strong>{creatorsIndexed}</strong>
+          <span>Active SHD Agents</span>
+        </div>
+        <div>
+          <strong>{toolRecords}</strong>
+          <span>Tool Records</span>
+        </div>
+        <div>
+          <strong class="status-active">Active</strong>
+          <span>ISAC Network</span>
+        </div>
+      </div>
+
+      <div class="footer-socials" aria-label="DivGaming social links">
+        {socialLinks.map((item) => (
+          <a href={item.href} aria-label={item.label}>
+            <img src={withBase(item.icon)} alt="" loading="lazy" />
+          </a>
+        ))}
+      </div>
+
+      <p class="footer-disclaimer">
+        DivGaming.com is an independent community project and is not affiliated
+        with Ubisoft, Massive Entertainment, or The Division franchise.
+      </p>
+      <p class="footer-copy">
+        © 2026 DivGaming.com. All original site design, DivGaming branding,
+        layout, and written content are reserved by DivGaming.com.
+      </p>
+      <p class="footer-credit">
+        Built for the Division Community by <strong>ItsSandman</strong>
+        <span class="credit-divider">//</span>
+        The SHD Network survives because agents keep it alive.
+      </p>
+    </div>
+
+    <div class="footer-actions">
+      <div class="support-card">
+        <span>Support the project</span>
+        <div class="support-project">
+          <div class="support-project-head">
+            <strong>Weekly Project</strong>
+            <small>Mission Impact</small>
+          </div>
+          <p>Help keep the SHD Network operational for Division agents worldwide.</p>
+          <div class="support-impact-grid">
+            <span>Network maintenance</span>
+            <span>Resource updates</span>
+            <span>Creator tracking</span>
+            <span>Future development</span>
+          </div>
+        </div>
+        <a href={coffeeUrl} target="_blank" rel="noopener">
+          <Icon name="coffee" />
+          Contribute Resources
+        </a>
+      </div>
+
+      <div class="footer-link-panel">
+        <p class="eyebrow">Field Routes</p>
+        {fieldRoutes.map((route) => (
+          <a href={withBase(route.href)}>
+            <span><Icon name={route.icon} /> {route.label}</span>
+            <Icon name="arrow-right" />
+          </a>
+        ))}
+      </div>
+
+      <div class="footer-bottom-row">
+        <button id="install-btn" class="btn ghost install-btn" style="display:none">
+          <Icon name="download" />
+          <span>Add DivGaming to my device</span>
+        </button>
+        <a class="back-top" href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </div>
+</footer>

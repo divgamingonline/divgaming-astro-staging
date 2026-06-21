@@ -1,0 +1,82 @@
+---
+import Icon from './Icon.astro';
+
+const coffeeUrl = 'https://buymeacoffee.com/divgamingoy';
+---
+
+<section class="support-strip shell" aria-label="Support DivGaming">
+  <div class="support-strip__copy">
+    <p class="eyebrow">Keep the SHD Network Running</p>
+    <h2>Support DivGaming field operations.</h2>
+    <p>
+      Your support helps keep tools updated, creator routes organized,
+      build intel refreshed, and the SHD Network online for the Division community.
+    </p>
+  </div>
+  <a class="support-strip__button" href={coffeeUrl} target="_blank" rel="noopener">
+    <Icon name="coffee" />
+    Buy me a coffee
+  </a>
+</section>
+
+<div class="mobile-support-widget">
+  <button class="mobile-support-trigger" id="mobile-support-trigger" type="button" aria-label="Open support menu">
+    <Icon name="coffee" />
+  </button>
+</div>
+
+<div class="mobile-support-overlay" id="mobile-support-overlay"></div>
+
+<div class="mobile-support-sheet" id="mobile-support-sheet" role="dialog" aria-modal="true" aria-labelledby="mobile-support-title">
+  <div class="mobile-support-header">
+    <div id="mobile-support-title">
+      <Icon name="coffee" />
+      Support the SHD Network
+    </div>
+    <button class="mobile-support-close" id="mobile-support-close" type="button" aria-label="Close support menu">✕</button>
+  </div>
+
+  <div class="mobile-support-content">
+    <p>
+      If you find DivGaming useful, consider contributing to the effort.
+      Your support helps keep builds fresh, tools updated, and the SHD Network running.
+    </p>
+    <div class="mobile-support-impact-grid">
+      <span>Daily builds</span>
+      <span>Tool updates</span>
+      <span>New features</span>
+      <span>Community requests</span>
+    </div>
+    <a href={coffeeUrl} target="_blank" rel="noopener" class="mobile-support-btn">
+      <Icon name="coffee" />
+      Buy me a coffee
+    </a>
+  </div>
+</div>
+
+<script>
+  const supportTrigger = document.getElementById('mobile-support-trigger');
+  const supportOverlay = document.getElementById('mobile-support-overlay');
+  const supportSheet = document.getElementById('mobile-support-sheet');
+  const supportClose = document.getElementById('mobile-support-close');
+
+  function openSupportSheet() {
+    supportOverlay?.classList.add('active');
+    supportSheet?.classList.add('open');
+    document.body.classList.add('support-sheet-open');
+  }
+
+  function closeSupportSheet() {
+    supportOverlay?.classList.remove('active');
+    supportSheet?.classList.remove('open');
+    document.body.classList.remove('support-sheet-open');
+  }
+
+  supportTrigger?.addEventListener('click', openSupportSheet);
+  supportOverlay?.addEventListener('click', closeSupportSheet);
+  supportClose?.addEventListener('click', closeSupportSheet);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeSupportSheet();
+  });
+</script>

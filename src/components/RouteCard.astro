@@ -1,0 +1,33 @@
+---
+import Icon from './Icon.astro';
+
+export interface Props {
+  href: string;
+  icon?: string;
+  kicker?: string;
+  title: string;
+  text: string;
+  action?: string;
+  count?: string | number;
+  primary?: boolean;
+}
+
+const {
+  href,
+  icon = 'route',
+  kicker = 'SHD Route',
+  title,
+  text,
+  action = 'Open route →',
+  count,
+  primary = false
+} = Astro.props;
+---
+
+<a class:list={['mission-card', primary && 'mission-card-primary']} href={href}>
+  {count !== undefined && <span class="tool-card__count">{count}</span>}
+  <span class="mission-kicker"><Icon name={icon} /> {kicker}</span>
+  <strong>{title}</strong>
+  <small>{text}</small>
+  <em>{action}</em>
+</a>

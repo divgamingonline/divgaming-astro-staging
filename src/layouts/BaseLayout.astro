@@ -1,7 +1,5 @@
 ---
 import '../styles/global.css';
-import '../styles/mobile-production.css';
-import '../styles/site-finish.css';
 
 import buildsData from '../../data/builds.json';
 import exoticsData from '../../data/division-2/exotics.json';
@@ -10,6 +8,12 @@ import brandsetsData from '../../data/division-2/brandsets.json';
 import gearsetsData from '../../data/division-2/gearsets.json';
 import gearTalentsData from '../../data/division-2/gear-talents.json';
 import weaponTalentsData from '../../data/division-2/weapon-talents.json';
+
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SupportWidget from '../components/SupportWidget.astro';
+import MobileTabBar from '../components/MobileTabBar.astro';
+
 import { getBuildVideos } from '../utils/builds';
 import { getCreators } from '../utils/creators';
 import { normalizeItems } from '../utils/division2Tools';
@@ -44,46 +48,6 @@ const toolRecords =
   normalizeItems(gearsetsData).length +
   normalizeItems(gearTalentsData).length +
   normalizeItems(weaponTalentsData).length;
-
-function withBase(href: string) {
-  if (href.startsWith('http')) return href;
-  return `${base}${href}`;
-}
-
-const navItems = [
-  { label: 'Mission', href: '/#mission-control' },
-  { label: 'Tools', href: '/division-2/tools/' },
-  { label: 'Builds', href: '/division-2/builds/' },
-  { label: 'Routes', href: '/division-2/' },
-  { label: 'Creators', href: '/division-2/creators/' },
-  { label: 'Guides', href: '/division-2/guides/' }
-];
-
-const mobileTabs = [
-  { label: 'Home', href: '/', icon: '⌂' },
-  { label: 'Builds', href: '/division-2/builds/', icon: '▦' },
-  { label: 'Tools', href: '/division-2/tools/', icon: '⌘' },
-  { label: 'Videos', href: '/division-2/videos/', icon: '▶' },
-  { label: 'Hub', href: '/division-2/', icon: '☰' }
-];
-
-const mobileQuickLinks = [
-  { label: 'Striker', href: '/division-2/builds/striker/' },
-  { label: 'PvE', href: '/division-2/builds/pve/' },
-  { label: 'Solo', href: '/division-2/builds/solo/' },
-  { label: 'PvP', href: '/division-2/builds/pvp/' },
-  { label: 'Exotics', href: '/division-2/tools/exotic-source-tracker/' },
-  { label: 'Named', href: '/division-2/tools/named-items-database/' }
-];
-
-const socialLinks = [
-  { label: 'Discord', href: '#', icon: '/assets/img/socials/discord.png' },
-  { label: 'YouTube', href: '#', icon: '/assets/img/socials/youtube.png' },
-  { label: 'Twitch', href: '#', icon: '/assets/img/socials/twitch.png' },
-  { label: 'TikTok', href: '#', icon: '/assets/img/socials/tiktok.png' },
-  { label: 'Instagram', href: '#', icon: '/assets/img/socials/instagram.png' },
-  { label: 'X', href: '#', icon: '/assets/img/socials/x.png' }
-];
 ---
 
 <!doctype html>
@@ -115,234 +79,21 @@ const socialLinks = [
       href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,400&family=Barlow:wght@400;500;600;700&display=swap"
     />
 
-    <link rel="icon" type="image/png" sizes="32x32" href={withBase('/assets/img/dg-logo.png')} />
-    <link rel="apple-touch-icon" sizes="180x180" href={withBase('/assets/img/dg-logo.png')} />
-    <link rel="manifest" href={withBase('/manifest.json')} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}/assets/img/dg-logo.png`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${base}/assets/img/dg-logo.png`} />
+    <link rel="manifest" href={`${base}/manifest.json`} />
     <title>{title}</title>
   </head>
 
   <body>
-    <header class="dg-topbar" id="top">
-      <nav class="nav shell" aria-label="Primary navigation">
-        <a href={withBase('/')} class="brand dg-header-brand" aria-label="DivGaming.com home">
-          <img
-            class="dg-header-logo"
-            src={withBase('/assets/img/dg-logo-128.webp')}
-            alt="DivGaming logo"
-            width="98"
-            height="98"
-          />
-          <span class="brand-title"><strong>DivGaming.com</strong></span>
-        </a>
-
-        <div class="global-search-container" aria-label="Site search placeholder">
-          <span class="search-icon-left">⌕</span>
-          <input class="global-search-input" type="search" placeholder="Search builds, tools, vendor intel, guides..." />
-          <span class="search-icon-right">→</span>
-        </div>
-
-        <div class="nav-links">
-          {navItems.map((item) => (
-            <a href={withBase(item.href)}>{item.label}</a>
-          ))}
-        </div>
-      </nav>
-
-      <div class="mobile-shd-bar">
-        <div class="mobile-shd-status shell">
-          <span class="mobile-signal"></span>
-          <strong>SHD NETWORK</strong>
-          <em>ONLINE</em>
-        </div>
-
-        <div class="mobile-search shell">
-          <span>⌕</span>
-          <input type="search" placeholder="Search SHD intel..." aria-label="Search SHD intel" />
-          <a href={withBase('/division-2/tools/')}>Tools</a>
-        </div>
-
-        <div class="mobile-quicklinks shell" aria-label="Quick links">
-          {mobileQuickLinks.map((item) => (
-            <a href={withBase(item.href)}>{item.label}</a>
-          ))}
-        </div>
-      </div>
-    </header>
+    <SiteHeader />
 
     <main>
       <slot />
     </main>
 
-    <section class="support-strip shell" aria-label="Support DivGaming">
-      <div class="support-strip__copy">
-        <p class="eyebrow">Keep the SHD Network Running</p>
-        <h2>Support DivGaming field operations.</h2>
-        <p>
-          Your support helps keep tools updated, creator routes organized,
-          build intel refreshed, and the SHD Network online for the Division community.
-        </p>
-      </div>
-      <a class="support-strip__button" href="https://buymeacoffee.com/divgamingoy" target="_blank" rel="noopener">
-        ☕ Buy me a coffee
-      </a>
-    </section>
-
-    <nav class="mobile-tabbar" aria-label="Mobile navigation">
-      {mobileTabs.map((item) => (
-        <a href={withBase(item.href)}>
-          <span aria-hidden="true">{item.icon}</span>
-          <strong>{item.label}</strong>
-        </a>
-      ))}
-    </nav>
-
-    <footer class="site-footer site-footer--rich">
-      <div class="shell footer-grid">
-        <div class="footer-info">
-          <div class="footer-brand-row">
-            <img class="footer-logo" src={withBase('/assets/img/dg-logo.png')} alt="DivGaming logo" loading="lazy" />
-            <strong>DivGaming.com</strong>
-          </div>
-
-          <p class="footer-tagline">
-            Community-built Division 2 network hub for tools, creator content,
-            guides, maps, vendor resources, and active agents.
-          </p>
-
-          <div class="footer-network-stats" aria-label="DivGaming network stats">
-            <div>
-              <strong>{videosIndexed}</strong>
-              <span>Videos Indexed</span>
-            </div>
-            <div>
-              <strong>{creatorsIndexed}</strong>
-              <span>Active SHD Agents</span>
-            </div>
-            <div>
-              <strong>{toolRecords}</strong>
-              <span>Tool Records</span>
-            </div>
-            <div>
-              <strong class="status-active">Active</strong>
-              <span>ISAC Network</span>
-            </div>
-          </div>
-
-          <div class="footer-socials" aria-label="DivGaming social links">
-            {socialLinks.map((item) => (
-              <a href={item.href} aria-label={item.label}>
-                <img src={withBase(item.icon)} alt="" loading="lazy" />
-              </a>
-            ))}
-          </div>
-
-          <p class="footer-disclaimer">
-            DivGaming.com is an independent community project and is not affiliated
-            with Ubisoft, Massive Entertainment, or The Division franchise.
-          </p>
-          <p class="footer-copy">
-            © 2026 DivGaming.com. All original site design, DivGaming branding,
-            layout, and written content are reserved by DivGaming.com.
-          </p>
-          <p class="footer-credit">
-            Built for the Division Community by <strong>ItsSandman</strong>
-            <span class="credit-divider">//</span>
-            The SHD Network survives because agents keep it alive.
-          </p>
-        </div>
-
-        <div class="footer-actions">
-          <div class="support-card">
-            <span>Support the project</span>
-            <div class="support-project">
-              <div class="support-project-head">
-                <strong>Weekly Project</strong>
-                <small>Mission Impact</small>
-              </div>
-              <p>Help keep the SHD Network operational for Division agents worldwide.</p>
-              <div class="support-impact-grid">
-                <span>Network maintenance</span>
-                <span>Resource updates</span>
-                <span>Creator tracking</span>
-                <span>Future development</span>
-              </div>
-            </div>
-            <a href="https://buymeacoffee.com/divgamingoy" target="_blank" rel="noopener">Contribute Resources</a>
-          </div>
-
-          <div class="footer-link-panel">
-            <p class="eyebrow">Field Routes</p>
-            <a href={withBase('/division-2/')}>Division 2 Hub</a>
-            <a href={withBase('/division-2/builds/')}>Build Library</a>
-            <a href={withBase('/division-2/tools/')}>Agent Tools</a>
-            <a href={withBase('/division-2/videos/')}>Video Intel</a>
-            <a href={withBase('/division-2/creators/')}>Creator Network</a>
-            <a href={withBase('/division-2/guides/')}>Guide Routes</a>
-          </div>
-
-          <div class="footer-bottom-row">
-            <a class="back-top" href="#top">Back to top ↑</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <div class="mobile-support-widget">
-      <button class="mobile-support-trigger" id="mobile-support-trigger" type="button" aria-label="Open support menu">
-        ☕
-      </button>
-    </div>
-
-    <div class="mobile-support-overlay" id="mobile-support-overlay"></div>
-
-    <div class="mobile-support-sheet" id="mobile-support-sheet" role="dialog" aria-modal="true" aria-labelledby="mobile-support-title">
-      <div class="mobile-support-header">
-        <div id="mobile-support-title">☕ Support the SHD Network</div>
-        <button class="mobile-support-close" id="mobile-support-close" type="button" aria-label="Close support menu">✕</button>
-      </div>
-
-      <div class="mobile-support-content">
-        <p>
-          If you find DivGaming useful, consider contributing to the effort.
-          Your support helps keep builds fresh, tools updated, and the SHD Network running.
-        </p>
-        <div class="mobile-support-impact-grid">
-          <span>Daily builds</span>
-          <span>Tool updates</span>
-          <span>New features</span>
-          <span>Community requests</span>
-        </div>
-        <a href="https://buymeacoffee.com/divgamingoy" target="_blank" rel="noopener" class="mobile-support-btn">
-          ☕ Buy me a coffee
-        </a>
-      </div>
-    </div>
-
-    <script>
-      const supportTrigger = document.getElementById('mobile-support-trigger');
-      const supportOverlay = document.getElementById('mobile-support-overlay');
-      const supportSheet = document.getElementById('mobile-support-sheet');
-      const supportClose = document.getElementById('mobile-support-close');
-
-      function openSupportSheet() {
-        supportOverlay?.classList.add('active');
-        supportSheet?.classList.add('open');
-        document.body.classList.add('support-sheet-open');
-      }
-
-      function closeSupportSheet() {
-        supportOverlay?.classList.remove('active');
-        supportSheet?.classList.remove('open');
-        document.body.classList.remove('support-sheet-open');
-      }
-
-      supportTrigger?.addEventListener('click', openSupportSheet);
-      supportOverlay?.addEventListener('click', closeSupportSheet);
-      supportClose?.addEventListener('click', closeSupportSheet);
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeSupportSheet();
-      });
-    </script>
+    <SupportWidget />
+    <MobileTabBar />
+    <SiteFooter videosIndexed={videosIndexed} creatorsIndexed={creatorsIndexed} toolRecords={toolRecords} />
   </body>
 </html>
