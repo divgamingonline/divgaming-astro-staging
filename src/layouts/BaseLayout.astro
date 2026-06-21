@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/mobile-production.css';
 
 export interface Props {
   title?: string;
@@ -35,13 +36,30 @@ const navItems = [
   { label: 'Creators', href: '/division-2/creators/' },
   { label: 'Guides', href: '/division-2/guides/' }
 ];
+
+const mobileTabs = [
+  { label: 'Home', href: '/', icon: '⌂' },
+  { label: 'Builds', href: '/division-2/builds/', icon: '▦' },
+  { label: 'Tools', href: '/division-2/tools/', icon: '⌘' },
+  { label: 'Videos', href: '/division-2/videos/', icon: '▶' },
+  { label: 'Hub', href: '/division-2/', icon: '☰' }
+];
+
+const mobileQuickLinks = [
+  { label: 'Striker', href: '/division-2/builds/striker/' },
+  { label: 'PvE', href: '/division-2/builds/pve/' },
+  { label: 'Solo', href: '/division-2/builds/solo/' },
+  { label: 'PvP', href: '/division-2/builds/pvp/' },
+  { label: 'Exotics', href: '/division-2/tools/exotic-source-tracker/' },
+  { label: 'Named', href: '/division-2/tools/named-items-database/' }
+];
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
@@ -98,11 +116,40 @@ const navItems = [
           ))}
         </div>
       </nav>
+
+      <div class="mobile-shd-bar">
+        <div class="mobile-shd-status shell">
+          <span class="mobile-signal"></span>
+          <strong>SHD NETWORK</strong>
+          <em>ONLINE</em>
+        </div>
+
+        <div class="mobile-search shell">
+          <span>⌕</span>
+          <input type="search" placeholder="Search SHD intel..." aria-label="Search SHD intel" />
+          <a href={withBase('/division-2/tools/')}>Tools</a>
+        </div>
+
+        <div class="mobile-quicklinks shell" aria-label="Quick links">
+          {mobileQuickLinks.map((item) => (
+            <a href={withBase(item.href)}>{item.label}</a>
+          ))}
+        </div>
+      </div>
     </header>
 
     <main>
       <slot />
     </main>
+
+    <nav class="mobile-tabbar" aria-label="Mobile navigation">
+      {mobileTabs.map((item) => (
+        <a href={withBase(item.href)}>
+          <span aria-hidden="true">{item.icon}</span>
+          <strong>{item.label}</strong>
+        </a>
+      ))}
+    </nav>
 
     <footer class="site-footer">
       <div class="shell footer-inner">
