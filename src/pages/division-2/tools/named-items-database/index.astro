@@ -1,6 +1,19 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ToolDatabasePage from '../../../../components/ToolDatabasePage.astro';
+import namedItemsData from '../../../../../data/division-2/named-items.json';
+import { normalizeItems } from '../../../../utils/division2Tools';
+
+const items = normalizeItems(namedItemsData);
+const featuredItems = items.filter((item) =>
+  ['The Gift', 'Matador', 'Turmoil'].includes(String(item.displayName || item.name))
+);
 ---
-<BaseLayout title="Named Items Database | DivGaming Astro Staging" description="Named Items Database staging placeholder for the DivGaming Astro migration." canonical="/division-2/tools/named-items-database/" noindex={true}>
-  <section class="shell hero"><p class="eyebrow">Astro staging placeholder</p><h1>Named Items Database</h1><p class="lead">This route exists so Phase 1 navigation can be tested without touching the live site.</p></section>
-</BaseLayout>
+
+<ToolDatabasePage
+  title="Named Items Database"
+  eyebrow="Named Gear and Weapons"
+  description="Browse Division 2 named items, including brands, slots, talents, attributes, core behavior, and source notes."
+  canonical="/division-2/tools/named-items-database/"
+  dataset={namedItemsData}
+  featuredItems={featuredItems}
+/>

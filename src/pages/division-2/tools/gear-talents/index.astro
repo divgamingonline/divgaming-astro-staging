@@ -1,6 +1,12 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ToolDatabasePage from '../../../../components/ToolDatabasePage.astro';
+import gearTalentsData from '../../../../../data/division-2/gear-talents.json';
 ---
-<BaseLayout title="Gear Talents | DivGaming Astro Staging" description="Gear Talents staging placeholder for the DivGaming Astro migration." canonical="/division-2/tools/gear-talents/" noindex={true}>
-  <section class="shell hero"><p class="eyebrow">Astro staging placeholder</p><h1>Gear Talents</h1><p class="lead">This route exists so Phase 1 navigation can be tested without touching the live site.</p></section>
-</BaseLayout>
+
+<ToolDatabasePage
+  title="Gear Talents"
+  eyebrow="Backpack and Chest Talents"
+  description="Reference Division 2 gear talents, including perfect talent relationships and slot notes."
+  canonical="/division-2/tools/gear-talents/"
+  dataset={gearTalentsData}
+/>

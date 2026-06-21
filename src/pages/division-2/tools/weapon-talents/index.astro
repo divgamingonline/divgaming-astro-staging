@@ -1,6 +1,12 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ToolDatabasePage from '../../../../components/ToolDatabasePage.astro';
+import weaponTalentsData from '../../../../../data/division-2/weapon-talents.json';
 ---
-<BaseLayout title="Weapon Talents | DivGaming Astro Staging" description="Weapon Talents staging placeholder for the DivGaming Astro migration." canonical="/division-2/tools/weapon-talents/" noindex={true}>
-  <section class="shell hero"><p class="eyebrow">Astro staging placeholder</p><h1>Weapon Talents</h1><p class="lead">This route exists so Phase 1 navigation can be tested without touching the live site.</p></section>
-</BaseLayout>
+
+<ToolDatabasePage
+  title="Weapon Talents"
+  eyebrow="Weapon Talent Reference"
+  description="Reference Division 2 weapon talents and perfect weapon talent variants."
+  canonical="/division-2/tools/weapon-talents/"
+  dataset={weaponTalentsData}
+/>

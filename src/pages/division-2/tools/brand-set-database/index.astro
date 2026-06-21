@@ -1,6 +1,19 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ToolDatabasePage from '../../../../components/ToolDatabasePage.astro';
+import brandsetsData from '../../../../../data/division-2/brandsets.json';
+import { normalizeItems } from '../../../../utils/division2Tools';
+
+const items = normalizeItems(brandsetsData);
+const featuredItems = items.filter((item) =>
+  ['Česká Výroba s.r.o.', 'Grupo Sombra S.A.', 'Providence Defense'].includes(String(item.displayName || item.name))
+);
 ---
-<BaseLayout title="Brand Set Database | DivGaming Astro Staging" description="Brand Set Database staging placeholder for the DivGaming Astro migration." canonical="/division-2/tools/brand-set-database/" noindex={true}>
-  <section class="shell hero"><p class="eyebrow">Astro staging placeholder</p><h1>Brand Set Database</h1><p class="lead">This route exists so Phase 1 navigation can be tested without touching the live site.</p></section>
-</BaseLayout>
+
+<ToolDatabasePage
+  title="Brand Set Database"
+  eyebrow="Brand Bonuses"
+  description="Compare Division 2 brand set bonuses, default cores, build roles, and named item relationships."
+  canonical="/division-2/tools/brand-set-database/"
+  dataset={brandsetsData}
+  featuredItems={featuredItems}
+/>
