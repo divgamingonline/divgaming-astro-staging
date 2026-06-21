@@ -1,8 +1,98 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ToolCard from '../../components/ToolCard.astro';
+import buildsData from '../../../data/builds.json';
+import exoticsData from '../../../data/division-2/exotics.json';
+import namedItemsData from '../../../data/division-2/named-items.json';
+import { normalizeBuilds } from '../../utils/builds';
+import { normalizeItems } from '../../utils/division2Tools';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const buildCount = normalizeBuilds(buildsData).length;
+const exoticCount = normalizeItems(exoticsData).length;
+const namedCount = normalizeItems(namedItemsData).length;
+
+const routes = [
+  { title: 'Build Library', href: '/division-2/builds/', count: buildCount, text: 'Striker, PvE, solo, PvP, and general build discovery.' },
+  { title: 'Field Tools', href: '/division-2/tools/', count: exoticCount + namedCount, text: 'Exotics, named items, brands, gearsets, and talent databases.' },
+  { title: 'Creator Videos', href: '/division-2/videos/', count: buildCount, text: 'SEO/reference pages that route viewers to YouTube.' },
+  { title: 'Guides', href: '/division-2/guides/', count: 'Soon', text: 'Mission, progression, farming, and endgame guide routes.' }
+];
+
+const buildLinks = [
+  { label: 'Striker Builds', href: '/division-2/builds/striker/' },
+  { label: 'PvE Builds', href: '/division-2/builds/pve/' },
+  { label: 'Solo Builds', href: '/division-2/builds/solo/' },
+  { label: 'PvP Builds', href: '/division-2/builds/pvp/' }
+];
 ---
-<BaseLayout title="The Division 2 Hub | DivGaming" description="The DivGaming Division 2 hub for builds, guides, tools, databases, creators, and community resources." canonical="/division-2/" noindex={true}>
-  <section class="shell hero"><p class="eyebrow">Division 2 Hub</p><h1>The Division 2 resources in one place</h1><p class="lead">This staging hub proves the shared Astro layout before we migrate the full DivGaming content library.</p></section>
-  <section class="shell section"><div class="grid grid-3"><ToolCard title="Builds" description="Browse build categories and videos." href="/division-2/builds/"/><ToolCard title="Tools" description="Open DivGaming tools and reference databases." href="/division-2/tools/"/><ToolCard title="Guides" description="Read progression and farming guides." href="/division-2/guides/"/></div></section>
+
+<BaseLayout
+  title="Division 2 Hub | DivGaming Astro Staging"
+  description="The DivGaming Division 2 hub connects builds, tools, videos, and reference databases."
+  canonical="/division-2/"
+  noindex={true}
+>
+  <section class="shell hero">
+    <div class="hub-hero">
+      <p class="eyebrow">Division 2 Hub</p>
+      <h1>Your agent command center.</h1>
+      <p class="lead">
+        A fast route into the DivGaming build library, field tools, creator video
+        discovery, and reference databases.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button" href={`${base}/division-2/builds/`}>Find Builds</a>
+        <a class="button button--ghost" href={`${base}/division-2/tools/`}>Open Tools</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Agent routes</p>
+        <h2>Pick a lane</h2>
+      </div>
+      <p>
+        These routes are now backed by Astro pages and real JSON data where
+        available.
+      </p>
+    </div>
+
+    <div class="grid tools-grid">
+      {routes.map((route) => (
+        <a class="card tool-card" href={`${base}${route.href}`}>
+          <span class="tool-card__count">{route.count}</span>
+          <p class="eyebrow">Division 2</p>
+          <h2>{route.title}</h2>
+          <p>{route.text}</p>
+          <strong>Open route →</strong>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Build categories</p>
+        <h2>Fast build paths</h2>
+      </div>
+      <p>
+        Build category pages are filtered from the same creator video dataset.
+      </p>
+    </div>
+
+    <div class="grid intent-grid">
+      {buildLinks.map((link) => (
+        <a class="card intent-card" href={`${base}${link.href}`}>
+          <p class="eyebrow">Build category</p>
+          <h2>{link.label}</h2>
+          <p>Open filtered creator videos and route to YouTube for watching.</p>
+          <strong>Browse {link.label} →</strong>
+        </a>
+      ))}
+    </div>
+  </section>
 </BaseLayout>

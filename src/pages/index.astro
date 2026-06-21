@@ -1,9 +1,151 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ToolCard from '../components/ToolCard.astro';
+import buildsData from '../../data/builds.json';
+import exoticsData from '../../data/division-2/exotics.json';
+import namedItemsData from '../../data/division-2/named-items.json';
+import brandsetsData from '../../data/division-2/brandsets.json';
+import { normalizeBuilds } from '../utils/builds';
+import { normalizeItems } from '../utils/division2Tools';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const buildCount = normalizeBuilds(buildsData).length;
+const exoticCount = normalizeItems(exoticsData).length;
+const namedCount = normalizeItems(namedItemsData).length;
+const brandCount = normalizeItems(brandsetsData).length;
+
+const intents = [
+  {
+    eyebrow: 'Builds',
+    title: 'Find a build',
+    text: 'Jump into Striker, PvE, solo, and PvP build categories powered by the live builds dataset.',
+    href: '/division-2/builds/',
+    cta: 'Browse builds →'
+  },
+  {
+    eyebrow: 'Tools',
+    title: 'Open the field tools',
+    text: 'Use DivGaming databases for exotics, named items, brands, gear sets, and talents.',
+    href: '/division-2/tools/',
+    cta: 'Open tools →'
+  },
+  {
+    eyebrow: 'Creators',
+    title: 'Watch on YouTube',
+    text: 'Discover creator videos on DivGaming, then watch directly on YouTube so creators get the visit.',
+    href: '/division-2/videos/',
+    cta: 'Browse videos →'
+  },
+  {
+    eyebrow: 'Division 2',
+    title: 'Enter the hub',
+    text: 'Start at the Division 2 hub for tools, build paths, guides, and reference routes.',
+    href: '/division-2/',
+    cta: 'Go to hub →'
+  }
+];
+
+const tools = [
+  { title: 'Exotic Source Tracker', count: exoticCount, href: '/division-2/tools/exotic-source-tracker/', text: 'Exotic sources, talents, cores, and farming notes.' },
+  { title: 'Named Items Database', count: namedCount, href: '/division-2/tools/named-items-database/', text: 'Named items, slots, talents, brands, and sources.' },
+  { title: 'Brand Set Database', count: brandCount, href: '/division-2/tools/brand-set-database/', text: 'Brand bonuses, cores, roles, and item relationships.' }
+];
 ---
-<BaseLayout title="DivGaming Astro Staging | The Division 2 Community Hub" description="Astro staging build for DivGaming.com, an unofficial Division 2 community hub." canonical="/" noindex={true}>
-  <section class="shell hero"><p class="eyebrow">Astro staging build</p><h1>DivGaming Command Center</h1><p class="lead">This is the safe Astro staging version of DivGaming. It is not the live DivGaming.com site yet. Phase 1 verifies the layout, routing, and GitHub Pages deployment pipeline.</p><div class="hero-actions"><a class="button" href={`${import.meta.env.BASE_URL}division-2/`}>Open Division 2 Hub</a><a class="button button--ghost" href={`${import.meta.env.BASE_URL}division-2/tools/`}>Open Tools</a></div></section>
-  <section class="shell section"><p class="eyebrow">What do you need right now?</p><h2>Core paths</h2><div class="grid grid-4"><ToolCard title="Builds" description="Browse Division 2 builds and loadout resources." href="/division-2/builds/"/><ToolCard title="Tools" description="Open databases, trackers, and planning references." href="/division-2/tools/"/><ToolCard title="Guides" description="Find farming, systems, raid, and incursion help." href="/division-2/guides/"/><ToolCard title="Creators" description="Discover Division 2 community creators." href="/division-2/creators/"/></div></section>
-  <section class="shell section"><p class="eyebrow">Division 2 Field Tools</p><h2>Important reference pages</h2><div class="grid grid-3"><ToolCard title="Named Items Database" description="Search named gear and weapons by slot, brand, core, talent, and attributes." href="/division-2/tools/named-items-database/" label="Open database"/><ToolCard title="Exotic Source Tracker" description="Find exotic weapons and gear by source, item type, and farming notes." href="/division-2/tools/exotic-source-tracker/" label="Open tracker"/><ToolCard title="Brand Set Database" description="Compare brand bonuses and plan builds around the stats you need." href="/division-2/tools/brand-set-database/" label="Open database"/><ToolCard title="Gearset Matrix" description="Review gear sets, bonuses, playstyles, and build direction." href="/division-2/tools/gearset-matrix/" label="Open matrix"/><ToolCard title="Gear Talents" description="Browse chest and backpack talents for build planning." href="/division-2/tools/gear-talents/" label="Open talents"/><ToolCard title="Weapon Talents" description="Review weapon talents and pair them with the right loadout." href="/division-2/tools/weapon-talents/" label="Open talents"/></div></section>
+
+<BaseLayout
+  title="DivGaming | Division 2 Builds, Tools, Guides, and Creator Videos"
+  description="DivGaming is an unofficial Division 2 community hub for builds, tools, guides, creator videos, exotics, named items, and gear databases."
+  canonical="/"
+  noindex={true}
+>
+  <section class="shell hero">
+    <div class="home-hero">
+      <p class="eyebrow">DivGaming.com Astro Staging</p>
+      <h1>Division 2 field hub for serious agents.</h1>
+      <p class="lead">
+        Builds, creator discovery, exotic sources, named items, brand sets,
+        gear sets, and talent references — organized into one fast DivGaming
+        experience.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button" href={`${base}/division-2/`}>Enter Division 2 Hub</a>
+        <a class="button button--ghost" href={`${base}/division-2/tools/`}>Open Field Tools</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">What do you need right now?</p>
+        <h2>Choose your route</h2>
+      </div>
+      <p>
+        This is the staging version of the new Astro front end. The structure is
+        now data-backed; this phase starts aligning the experience with the
+        production DivGaming feel.
+      </p>
+    </div>
+
+    <div class="grid intent-grid">
+      {intents.map((item) => (
+        <a class="card intent-card" href={`${base}${item.href}`}>
+          <p class="eyebrow">{item.eyebrow}</p>
+          <h2>{item.title}</h2>
+          <p>{item.text}</p>
+          <strong>{item.cta}</strong>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Division 2 Field Tools</p>
+        <h2>Core databases</h2>
+      </div>
+      <p>
+        The tools are now loading real JSON data in Astro. Search, filtering,
+        and production-level polish come next.
+      </p>
+    </div>
+
+    <div class="grid tools-grid">
+      {tools.map((tool) => (
+        <a class="card tool-card" href={`${base}${tool.href}`}>
+          <span class="tool-card__count">{tool.count}</span>
+          <p class="eyebrow">Reference tool</p>
+          <h2>{tool.title}</h2>
+          <p>{tool.text}</p>
+          <strong>Open tool →</strong>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="grid feature-grid">
+      <article class="card feature-card">
+        <span class="feature-card__count">{buildCount}</span>
+        <p class="eyebrow">Creator-first library</p>
+        <h2>Build videos stay creator-forward.</h2>
+        <p>
+          DivGaming can help users discover builds, but all watch actions route
+          directly to YouTube so creators receive the actual visit.
+        </p>
+        <a href={`${base}/division-2/videos/`}>Browse video routes →</a>
+      </article>
+
+      <article class="card feature-card">
+        <p class="eyebrow">Unofficial and community-built</p>
+        <h2>Built for agents, not algorithms.</h2>
+        <p>
+          The site is being rebuilt to be faster, cleaner, easier to maintain,
+          and easier to expand without committing hundreds of generated pages.
+        </p>
+        <a href={`${base}/division-2/`}>Explore the hub →</a>
+      </article>
+    </div>
+  </section>
 </BaseLayout>
