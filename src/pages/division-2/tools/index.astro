@@ -15,60 +15,64 @@ const tools = [
     title: 'Exotic Source Tracker',
     href: '/division-2/tools/exotic-source-tracker/',
     count: normalizeItems(exoticsData).length,
-    description: 'Track exotic gear and weapon sources, talents, cores, and farming notes.'
+    text: 'Find exotic weapons and gear, where they come from, and what their talents do.'
   },
   {
     title: 'Named Items Database',
     href: '/division-2/tools/named-items-database/',
     count: normalizeItems(namedItemsData).length,
-    description: 'Browse named high-end gear and weapons with talents, brands, slots, and source notes.'
+    text: 'Look up named weapons and gear, perfect talents, slots, sources, and item details.'
   },
   {
     title: 'Brand Set Database',
     href: '/division-2/tools/brand-set-database/',
     count: normalizeItems(brandsetsData).length,
-    description: 'Review brand set bonuses, roles, cores, and named item relationships.'
+    text: 'Compare high-end brand set bonuses and understand what each brand supports.'
   },
   {
     title: 'Gearset Matrix',
     href: '/division-2/tools/gearset-matrix/',
     count: normalizeItems(gearsetsData).length,
-    description: 'Compare gear set bonuses, chest effects, backpack effects, and build roles.'
+    text: 'Review gearset bonuses, chest/backpack talents, and what each set is built for.'
   },
   {
     title: 'Gear Talents',
     href: '/division-2/tools/gear-talents/',
     count: normalizeItems(gearTalentsData).length,
-    description: 'Reference backpack and chest talents, including perfect talent relationships.'
+    text: 'Search chest and backpack talents for build planning.'
   },
   {
     title: 'Weapon Talents',
     href: '/division-2/tools/weapon-talents/',
     count: normalizeItems(weaponTalentsData).length,
-    description: 'Reference weapon talents and perfect weapon talent variants.'
+    text: 'Search weapon talents and understand what works with your weapon type.'
   }
 ];
 ---
 
 <BaseLayout
   title="Division 2 Tools | DivGaming"
-  description="Division 2 databases and reference tools for DivGaming."
+  description="Use DivGaming Division 2 tools to research exotics, named items, brand sets, gearsets, gear talents, and weapon talents."
   canonical="/division-2/tools/"
   noindex={true}
 >
   <section class="shell hero">
     <div class="command-hero">
       <div>
-        <p class="eyebrow">Division 2 Agent Tools</p>
-        <h1>Databases built for agents.</h1>
+        <p class="eyebrow">Gear Tools</p>
+        <h1>Research items and plan builds</h1>
         <p class="lead">
-          Exotics, named items, brands, gear sets, and talents — rebuilt as
-          searchable Astro pages with cleaner navigation.
+          Use these tools to look up items, compare gear options, understand talents,
+          and make better build decisions.
         </p>
+        <div class="hero-actions">
+          <a class="btn primary" href={`${base}/division-2/tools/exotic-source-tracker/`}>Exotics</a>
+          <a class="btn ghost" href={`${base}/division-2/tools/named-items-database/`}>Named Items</a>
+        </div>
       </div>
 
       <aside class="command-panel">
-        <p class="eyebrow">Reference count</p>
+        <p class="eyebrow">Tool records</p>
         <div class="command-panel__list">
           {tools.slice(0, 4).map((tool) => (
             <div class="command-panel__row"><span>{tool.title}</span><strong>{tool.count}</strong></div>
@@ -79,25 +83,23 @@ const tools = [
   </section>
 
   <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Tool database</p>
-        <h2>Open a reference</h2>
-      </div>
+    <div class="section-head">
+      <p class="eyebrow">Available tools</p>
+      <h2>Choose a database</h2>
       <p>
-        Tool pages are connected to real JSON data and include search and
-        filtering on the individual routes.
+        Each database is searchable and filterable, so you can quickly find the
+        gear, item, or talent you are looking for.
       </p>
     </div>
 
-    <div class="grid tools-grid">
+    <div class="tools-grid">
       {tools.map((tool) => (
-        <a class="card tool-card" href={`${base}${tool.href}`}>
+        <a class="tool-card" href={`${base}${tool.href}`}>
           <span class="tool-card__count">{tool.count}</span>
-          <p class="eyebrow">Reference tool</p>
-          <h2>{tool.title}</h2>
-          <p>{tool.description}</p>
-          <strong>Open tool →</strong>
+          <span class="mission-kicker">Tool</span>
+          <strong>{tool.title}</strong>
+          <p>{tool.text}</p>
+          <em>Open tool →</em>
         </a>
       ))}
     </div>

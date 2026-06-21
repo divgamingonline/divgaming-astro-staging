@@ -31,25 +31,25 @@ const dispatchItems = [
     icon: 'check-circle',
     label: 'Current Focus',
     value: 'Staging Review',
-    text: 'Astro staging is being tightened before any production switch.'
+    text: 'The Astro version is being reviewed for function, stability, and content clarity before launch.'
   },
   {
     icon: 'video',
     label: 'Creator Traffic',
     value: 'YouTube Direct',
-    text: 'Creator videos are indexed for discovery, but playback stays on YouTube.'
+    text: 'Creator videos are indexed for discovery, but playback stays on the original YouTube channel.'
   },
   {
     icon: 'database',
     label: 'Data Layer',
     value: 'JSON Driven',
-    text: 'Builds, tools, gear, talents, and videos remain maintainable.'
+    text: 'Builds, tools, gear, talents, and video entries are powered by maintainable data files.'
   },
   {
     icon: 'shield',
     label: 'Cutover Status',
     value: 'Not Yet',
-    text: 'DivGaming.com stays untouched until staging passes review.'
+    text: 'The live DivGaming.com site stays untouched until staging passes the full review.'
   }
 ];
 ---
@@ -63,8 +63,8 @@ const dispatchItems = [
       </div>
 
       <p class="footer-tagline">
-        Community-built Division 2 network hub for tools, creator content,
-        guides, maps, vendor resources, and active agents.
+        A Division 2 community hub for builds, gear tools, creator videos,
+        guides, maps, vendor resources, and player-friendly reference material.
       </p>
 
       <div class="footer-network-stats" aria-label="DivGaming network stats">
@@ -74,7 +74,7 @@ const dispatchItems = [
         </div>
         <div>
           <strong>{creatorsIndexed}</strong>
-          <span>Active SHD Agents</span>
+          <span>Creators Listed</span>
         </div>
         <div>
           <strong>{toolRecords}</strong>
@@ -82,16 +82,8 @@ const dispatchItems = [
         </div>
         <div>
           <strong class="status-active">Active</strong>
-          <span>ISAC Network</span>
+          <span>Staging Review</span>
         </div>
-      </div>
-
-      <div class="footer-socials" aria-label="DivGaming social links">
-        {socialLinks.map((item) => (
-          <a href={item.href} aria-label={item.label}>
-            <img src={withBase(item.icon)} alt="" loading="lazy" />
-          </a>
-        ))}
       </div>
 
       <p class="footer-disclaimer">
@@ -103,26 +95,41 @@ const dispatchItems = [
         layout, and written content are reserved by DivGaming.com.
       </p>
       <p class="footer-credit">
-        Built for the Division Community by <strong>ItsSandman</strong>
+        Built for the Division community by <strong>ItsSandman</strong>
         <span class="credit-divider">//</span>
-        The SHD Network survives because agents keep it alive.
+        Built to help players find useful information faster.
       </p>
     </div>
 
     <div class="footer-actions">
+      <div class="footer-social-card">
+        <div>
+          <p class="eyebrow">Connect</p>
+          <strong>Follow DivGaming</strong>
+        </div>
+
+        <div class="footer-socials" aria-label="DivGaming social links">
+          {socialLinks.map((item) => (
+            <a href={item.href} aria-label={item.label}>
+              <img src={withBase(item.icon)} alt="" loading="lazy" />
+            </a>
+          ))}
+        </div>
+      </div>
+
       <div class="support-card">
         <span>Support the project</span>
         <div class="support-project">
           <div class="support-project-head">
             <strong>Weekly Project</strong>
-            <small>Mission Impact</small>
+            <small>Community Support</small>
           </div>
-          <p>Help keep the SHD Network operational for Division agents worldwide.</p>
+          <p>Help keep DivGaming maintained, updated, and useful for Division 2 players.</p>
           <div class="support-impact-grid">
-            <span>Network maintenance</span>
-            <span>Resource updates</span>
-            <span>Creator tracking</span>
-            <span>Future development</span>
+            <span>Tool updates</span>
+            <span>Build tracking</span>
+            <span>Creator indexing</span>
+            <span>Future features</span>
           </div>
         </div>
         <a href={coffeeUrl} target="_blank" rel="noopener">
@@ -141,14 +148,14 @@ const dispatchItems = [
     </div>
   </div>
 
-  <div class="shell footer-dispatch-band" aria-label="SHD Dispatch">
+  <div class="shell footer-dispatch-band" aria-label="Launch status">
     <div class="footer-dispatch-band__top">
       <div class="footer-dispatch-band__intro">
-        <p class="eyebrow">SHD Dispatch</p>
-        <strong>Launch candidate status</strong>
+        <p class="eyebrow">Launch Status</p>
+        <strong>Astro staging review</strong>
         <span>
-          Astro staging is being tightened for function, stability, production parity,
-          mobile usability, and clean cutover readiness.
+          This version is being tightened for function, stability, production parity,
+          mobile usability, and clean cutover readiness before replacing the live site.
         </span>
       </div>
 
@@ -173,6 +180,33 @@ const dispatchItems = [
   </div>
 
   <style>
+    .footer-social-card {
+      display: grid;
+      gap: 14px;
+      border: 1px solid rgba(255, 107, 0, 0.22);
+      border-radius: 22px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 107, 0, 0.11), transparent 42%),
+        rgba(255, 255, 255, 0.028);
+    }
+
+    .footer-social-card .eyebrow {
+      margin-bottom: 5px;
+    }
+
+    .footer-social-card strong {
+      display: block;
+      color: #fff;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+
+    .footer-actions .footer-socials {
+      margin: 0;
+    }
+
     .footer-dispatch-band {
       position: relative;
       z-index: 1;
@@ -188,10 +222,6 @@ const dispatchItems = [
       gap: 22px;
       align-items: end;
       margin-bottom: 16px;
-    }
-
-    .footer-dispatch-band__intro {
-      min-width: 0;
     }
 
     .footer-dispatch-band__intro .eyebrow {
@@ -325,6 +355,10 @@ const dispatchItems = [
     }
 
     @media (max-width: 780px) {
+      .footer-social-card {
+        padding: 16px;
+      }
+
       .footer-dispatch-band {
         margin-top: 24px;
         padding: 18px 0;

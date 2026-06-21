@@ -6,14 +6,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const guides = [
   {
     title: 'Getting Back Into Division 2',
-    status: 'Returning Agents',
-    text: 'A returning-agent path for gear, seasons, expertise, SHD levels, and endgame priorities.',
+    status: 'Returning Players',
+    text: 'A route for players coming back after a break who need to understand what to do first.',
     href: '/division-2/tools/'
   },
   {
     title: 'Exotic Farming',
     status: 'Farming',
-    text: 'Find exotic sources and connect directly into the Exotic Source Tracker.',
+    text: 'Find exotic items and use the tracker to understand where they come from.',
     href: '/division-2/tools/exotic-source-tracker/'
   },
   {
@@ -25,19 +25,19 @@ const guides = [
   {
     title: 'Build Basics',
     status: 'Buildcraft',
-    text: 'Understand damage, armor, skills, crit, cores, talents, and gear synergy.',
+    text: 'Understand cores, talents, brand sets, gearsets, damage, armor, and skill choices.',
     href: '/division-2/builds/'
   },
   {
     title: 'Raids and Incursions',
     status: 'Endgame',
-    text: 'Prepare for endgame group content with roles, build lanes, and encounter planning.',
+    text: 'Prepare for group content with roles, build lanes, and encounter planning.',
     href: '/division-2/builds/pve/'
   },
   {
     title: 'Countdown and Endgame Farming',
     status: 'Endgame',
-    text: 'Improve gear quickly with efficient farming and optimization routes.',
+    text: 'Improve your gear faster with better farming and optimization routes.',
     href: '/division-2/builds/pve/'
   }
 ];
@@ -45,18 +45,18 @@ const guides = [
 
 <BaseLayout
   title="Division 2 Guides | DivGaming"
-  description="Guide structure for Division 2 farming, builds, endgame, exotics, named items, raids, incursions, and returning agents."
+  description="Guide routes for Division 2 farming, builds, endgame, exotics, named items, raids, incursions, and returning players."
   canonical="/division-2/guides/"
   noindex={true}
 >
   <section class="shell hero">
     <div class="command-hero">
       <div>
-        <p class="eyebrow">Guide Library</p>
-        <h1>SHD Guide Routes</h1>
+        <p class="eyebrow">Guides</p>
+        <h1>Helpful paths for different player needs</h1>
         <p class="lead">
-          Farming, returning-agent help, build basics, endgame prep, and
-          tool-linked references for Division 2 players.
+          Use these guide routes to find the right tool, build category, or
+          reference page based on what you are trying to do.
         </p>
         <div class="hero-actions">
           <a class="btn primary" href={`${base}/division-2/tools/`}>Use Tools</a>
@@ -77,10 +77,9 @@ const guides = [
   <section class="shell section">
     <div class="section-head">
       <p class="eyebrow">Guide tracks</p>
-      <h2>Content lanes</h2>
+      <h2>Choose what you are trying to do</h2>
       <p>
-        Each guide card points agents toward an existing DivGaming route while
-        full article pages are built out.
+        These cards point you to useful pages while full guide articles are built out.
       </p>
     </div>
 
@@ -90,7 +89,7 @@ const guides = [
           <span class="mission-kicker">{guide.status}</span>
           <strong>{guide.title}</strong>
           <p>{guide.text}</p>
-          <em>Open related route →</em>
+          <em>Open related page →</em>
         </a>
       ))}
     </div>

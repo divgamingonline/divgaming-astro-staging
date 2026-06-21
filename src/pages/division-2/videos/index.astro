@@ -9,32 +9,32 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
-  title="Division 2 Video Intel Library | DivGaming"
-  description="Browse DivGaming Division 2 creator videos and open them directly on YouTube."
+  title="Division 2 Video Library | DivGaming"
+  description="Browse Division 2 creator videos indexed by DivGaming and open the original videos directly on YouTube."
   canonical="/division-2/videos/"
   noindex={true}
 >
   <section class="shell hero">
     <div class="command-hero">
       <div>
-        <p class="eyebrow">Creator Video Discovery</p>
-        <h1>Find build intel. Support creators.</h1>
+        <p class="eyebrow">Creator Videos</p>
+        <h1>Find videos without taking views from creators</h1>
         <p class="lead">
-          DivGaming indexes build videos for discovery, but no videos are
-          embedded. All watch actions open YouTube directly.
+          DivGaming indexes videos to make them easier to find. Watching happens
+          directly on YouTube so creators keep their views, recommendations, and monetization.
         </p>
         <div class="hero-actions">
-          <a class="btn primary" href={`${base}/division-2/builds/`}>Build categories</a>
+          <a class="btn primary" href={`${base}/division-2/builds/`}>Build Categories</a>
           <a class="btn ghost" href={`${base}/division-2/creators/`}>Creators</a>
         </div>
       </div>
 
       <aside class="command-panel">
-        <p class="eyebrow">Video intel</p>
+        <p class="eyebrow">Video index</p>
         <div class="command-panel__list">
           <div class="command-panel__row"><span>Indexed videos</span><strong>{videos.length}</strong></div>
           <div class="command-panel__row"><span>Embeds</span><strong>None</strong></div>
-          <div class="command-panel__row"><span>Traffic</span><strong>YouTube</strong></div>
+          <div class="command-panel__row"><span>Playback</span><strong>YouTube</strong></div>
         </div>
       </aside>
     </div>
@@ -45,8 +45,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p class="eyebrow">Video Library</p>
       <h2>{videos.length} indexed videos</h2>
       <p>
-        Search by creator, build name, tag, activity, or keyword. The goal is
-        discovery first, creator traffic always.
+        Search by creator, build name, tag, activity, or keyword.
       </p>
     </div>
 

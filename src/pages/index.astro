@@ -17,7 +17,7 @@ const namedCount = normalizeItems(namedItemsData).length;
 
 <BaseLayout
   title="DivGaming | The Division 2 Builds, Guides, Tools & Vendor Intel"
-  description="Explore The Division 2 builds, guides, tools, vendor reset intel, creator videos, maps, gear resources, and SHD community intel on DivGaming."
+  description="Explore Division 2 builds, gear tools, creator videos, guides, and reference databases built for new, returning, and endgame players."
   canonical="/"
   noindex={true}
 >
@@ -25,13 +25,13 @@ const namedCount = normalizeItems(namedItemsData).length;
     <div class="shd-terminal">
       <div class="terminal-header">
         <span class="terminal-dot"></span>
-        <span class="terminal-label">SHD ALERT</span>
-        <span class="terminal-pulse">LIVE BROADCAST</span>
+        <span class="terminal-label">DIVGAMING UPDATE</span>
+        <span class="terminal-pulse">STAGING REVIEW</span>
       </div>
       <div class="terminal-content">
         <div class="terminal-prompt">
           <span class="prompt-symbol">&gt;</span>
-          <span class="prompt-text">ISAC: Agent network sync complete. DivGaming field routes online.</span>
+          <span class="prompt-text">Find builds, gear tools, guides, creator videos, and Division 2 resources faster.</span>
         </div>
       </div>
       <div class="terminal-blink"></div>
@@ -47,16 +47,16 @@ const namedCount = normalizeItems(namedItemsData).length;
           height="130"
         />
 
-        <p class="eyebrow">DivGaming // SHD Intel // Community</p>
-        <h1>SHD Agent Companion</h1>
+        <p class="eyebrow">DivGaming // Builds // Tools // Guides</p>
+        <h1>Division 2 Player Hub</h1>
         <p class="hero-text">
-          Access the SHD Network. Pick a mission path, find the right build,
-          open field tools, watch creator intel, and move faster through The
-          Division 2 endgame.
+          DivGaming helps players find the right build, understand gear, open useful
+          tools, watch creator videos, and get back into The Division 2 without
+          digging through scattered resources.
         </p>
 
         <div class="hero-actions">
-          <a class="btn primary" href="#mission-control">Start mission</a>
+          <a class="btn primary" href="#mission-control">Start here</a>
           <a class="btn ghost" href={`${base}/division-2/builds/`}>Browse builds</a>
           <a class="btn ghost" href={`${base}/division-2/tools/`}>Open tools</a>
         </div>
@@ -75,12 +75,12 @@ const namedCount = normalizeItems(namedItemsData).length;
 
         <a class="stat-item" href={`${base}/division-2/creators/`}>
           <span>{creatorCount}</span>
-          <small>Active SHD Agents</small>
+          <small>Creators Listed</small>
         </a>
 
         <a class="stat-item stat-item--network" href={`${base}/division-2/`}>
-          <span>Online</span>
-          <small>Network Status</small>
+          <span>Active</span>
+          <small>Staging Review</small>
         </a>
       </aside>
     </section>
@@ -88,41 +88,40 @@ const namedCount = normalizeItems(namedItemsData).length;
 
   <section class="section shell mission-control-section" id="mission-control">
     <div class="section-head mission-control-head">
-      <p class="eyebrow">Agent Mission Control</p>
-      <h2>What Do You Need Right Now?</h2>
+      <p class="eyebrow">Start Here</p>
+      <h2>What are you looking for?</h2>
       <p>
-        Start with the task in front of you. DivGaming routes agents into the
-        build library, tools, field intel, creator videos, or guide paths without
-        forcing you to search from scratch.
+        Choose the path that matches what you need right now. This keeps the
+        site useful for newer players, returning agents, and experienced endgame players.
       </p>
     </div>
 
     <div class="mission-control-grid">
       <a class="mission-card mission-card-primary" href={`${base}/division-2/builds/`}>
-        <span class="mission-kicker">Find a Loadout</span>
-        <strong>Build Library</strong>
-        <small>Browse PvE, PvP, solo, Striker, and creator build intel.</small>
+        <span class="mission-kicker">Builds</span>
+        <strong>Find a Build</strong>
+        <small>Browse PvE, PvP, solo, Striker, and creator build videos.</small>
         <em>Open builds →</em>
       </a>
 
       <a class="mission-card" href={`${base}/division-2/tools/`}>
-        <span class="mission-kicker">Plan Before Farming</span>
-        <strong>Agent Backpack</strong>
-        <small>Open exotics, named items, brand sets, gearsets, and talents.</small>
+        <span class="mission-kicker">Tools</span>
+        <strong>Research Gear</strong>
+        <small>Look up exotics, named items, brand sets, gearsets, and talents.</small>
         <em>Open tools →</em>
       </a>
 
       <a class="mission-card" href={`${base}/division-2/`}>
-        <span class="mission-kicker">Use Focused Paths</span>
-        <strong>SHD Intel Routes</strong>
-        <small>Jump into builds, tools, creators, videos, guides, and route pages.</small>
-        <em>Choose route →</em>
+        <span class="mission-kicker">Hub</span>
+        <strong>Explore Division 2</strong>
+        <small>Use the main Division 2 hub to reach every major section.</small>
+        <em>Open hub →</em>
       </a>
 
       <a class="mission-card" href={`${base}/division-2/creators/`}>
-        <span class="mission-kicker">Support Creators</span>
-        <strong>Creator Intel</strong>
-        <small>Find creator content and open the original videos on YouTube.</small>
+        <span class="mission-kicker">Creators</span>
+        <strong>Find Creator Videos</strong>
+        <small>Discover videos and open them directly on the creator's YouTube channel.</small>
         <em>View creators →</em>
       </a>
     </div>
@@ -137,11 +136,11 @@ const namedCount = normalizeItems(namedItemsData).length;
 
   <section class="section shell">
     <div class="section-head">
-      <p class="eyebrow">SHD Field Resources</p>
-      <h2>Agent Backpack</h2>
+      <p class="eyebrow">Player Resources</p>
+      <h2>Tools, builds, and reference databases</h2>
       <p>
-        Community intelligence, operational tools, build routes, and creator
-        discovery used by Division agents.
+        Use these sections to understand items, compare gear, find build ideas,
+        and connect to creator videos without losing the original YouTube source.
       </p>
     </div>
 
@@ -159,15 +158,15 @@ const namedCount = normalizeItems(namedItemsData).length;
       </a>
 
       <a class="tool-card" href={`${base}/division-2/videos/`}>
-        <span class="mission-kicker">Intel</span>
-        <strong>Video Intel Library</strong>
-        <p>{videos.length} creator videos indexed for discovery.</p>
+        <span class="mission-kicker">Videos</span>
+        <strong>Creator Video Library</strong>
+        <p>{videos.length} videos indexed for discovery with direct YouTube links.</p>
       </a>
 
       <a class="tool-card" href={`${base}/division-2/guides/`}>
         <span class="mission-kicker">Guides</span>
         <strong>Guide Routes</strong>
-        <p>Farming, progression, buildcraft, and endgame guide paths.</p>
+        <p>Helpful paths for farming, returning players, builds, and endgame activities.</p>
       </a>
     </div>
   </section>

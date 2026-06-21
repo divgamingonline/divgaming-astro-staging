@@ -14,17 +14,17 @@ const exotics = normalizeItems(exoticsData);
 const namedItems = normalizeItems(namedItemsData);
 
 const routes = [
-  { title: 'Build Library', href: '/division-2/builds/', count: videos.length, text: 'Striker, PvE, solo, PvP, and full build discovery.' },
-  { title: 'Agent Backpack', href: '/division-2/tools/', count: exotics.length + namedItems.length, text: 'Exotics, named items, brands, gearsets, and talent databases.' },
-  { title: 'Video Intel', href: '/division-2/videos/', count: videos.length, text: 'Creator-first video discovery with direct YouTube routing.' },
-  { title: 'Creator Network', href: '/division-2/creators/', count: creators.length, text: 'A clean directory for Division 2 creators represented in the library.' },
-  { title: 'Guide Routes', href: '/division-2/guides/', count: 'SHD', text: 'Guide structure for farming, progression, raids, incursions, and endgame.' }
+  { title: 'Build Library', href: '/division-2/builds/', count: videos.length, text: 'Browse build videos by playstyle, activity, and category.' },
+  { title: 'Gear Tools', href: '/division-2/tools/', count: exotics.length + namedItems.length, text: 'Research exotics, named items, brand sets, gearsets, and talents.' },
+  { title: 'Video Library', href: '/division-2/videos/', count: videos.length, text: 'Find creator videos and open the original YouTube video directly.' },
+  { title: 'Creator Directory', href: '/division-2/creators/', count: creators.length, text: 'Browse creators represented in the DivGaming build video library.' },
+  { title: 'Guides', href: '/division-2/guides/', count: 'Help', text: 'Use guide paths for farming, builds, returning players, and endgame.' }
 ];
 ---
 
 <BaseLayout
   title="Division 2 Hub | DivGaming"
-  description="The DivGaming Division 2 hub connects builds, tools, videos, creators, and guide routes."
+  description="The DivGaming Division 2 hub connects builds, gear tools, videos, creators, and guide routes in one place."
   canonical="/division-2/"
   noindex={true}
 >
@@ -32,10 +32,10 @@ const routes = [
     <div class="command-hero">
       <div>
         <p class="eyebrow">Division 2 Hub</p>
-        <h1>SHD Intel Routes</h1>
+        <h1>Choose a section</h1>
         <p class="lead">
-          Fast routes into builds, tools, videos, creators, and guides. This is
-          the central Division 2 landing page for DivGaming.
+          Use this page as the main starting point for Division 2 builds, gear tools,
+          videos, creator resources, and guides.
         </p>
 
         <div class="hero-actions">
@@ -58,11 +58,11 @@ const routes = [
 
   <section class="shell section">
     <div class="section-head">
-      <p class="eyebrow">Route map</p>
-      <h2>Where agents go</h2>
+      <p class="eyebrow">Site sections</p>
+      <h2>Start with what you need</h2>
       <p>
-        Builds, tools, creators, videos, and guide paths now share the same
-        DivGaming production-style interface.
+        These sections are organized around common player needs: finding a build,
+        checking an item, watching a creator, or using a guide path.
       </p>
     </div>
 
@@ -73,7 +73,7 @@ const routes = [
           <span class="mission-kicker">Division 2</span>
           <strong>{route.title}</strong>
           <p>{route.text}</p>
-          <em>Open route →</em>
+          <em>Open section →</em>
         </a>
       ))}
     </div>
