@@ -18,14 +18,14 @@ const videoTotal = creators.reduce((sum, creator) => sum + creator.videoCount, 0
     <div class="command-hero">
       <div>
         <p class="eyebrow">Creator Discovery</p>
-        <h1>Creators powering the library.</h1>
+        <h1>Creator Network</h1>
         <p class="lead">
           DivGaming helps agents discover build videos while keeping creator
           traffic pointed directly to YouTube.
         </p>
         <div class="hero-actions">
-          <a class="button" href={`${base}/division-2/videos/`}>Video Library</a>
-          <a class="button button--ghost" href={`${base}/division-2/builds/`}>Builds</a>
+          <a class="btn primary" href={`${base}/division-2/videos/`}>Video Library</a>
+          <a class="btn ghost" href={`${base}/division-2/builds/`}>Builds</a>
         </div>
       </div>
 
@@ -40,23 +40,21 @@ const videoTotal = creators.reduce((sum, creator) => sum + creator.videoCount, 0
   </section>
 
   <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Directory</p>
-        <h2>Creator cards</h2>
-      </div>
+    <div class="section-head">
+      <p class="eyebrow">Directory</p>
+      <h2>Creator cards</h2>
       <p>
         Creator cards are generated from the build video library and provide a
         clean path into the content ecosystem.
       </p>
     </div>
 
-    <div class="grid creator-grid">
+    <div class="creator-grid">
       {creators.map((creator) => (
-        <article class="card creator-card">
+        <article class="creator-card">
           <span class="creator-card__count">{creator.videoCount}</span>
-          <p class="eyebrow">Creator</p>
-          <h2>{creator.name}</h2>
+          <span class="mission-kicker">Creator</span>
+          <strong>{creator.name}</strong>
           <p>
             {creator.videoCount} indexed videos
             {creator.latestDate ? ` · Latest ${formatCreatorDate(creator.latestDate)}` : ''}

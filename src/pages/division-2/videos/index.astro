@@ -9,35 +9,44 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
-  title="Division 2 Video Library | DivGaming Astro Staging"
+  title="Division 2 Video Intel Library | DivGaming"
   description="Browse DivGaming Division 2 creator videos and open them directly on YouTube."
   canonical="/division-2/videos/"
   noindex={true}
 >
   <section class="shell hero">
-    <div class="hub-hero">
-      <p class="eyebrow">Creator Video Discovery</p>
-      <h1>Find a build, then support the creator.</h1>
-      <p class="lead">
-        DivGaming indexes build videos for discovery, but no videos are embedded.
-        All watch actions open YouTube directly.
-      </p>
-      <div class="hero-actions">
-        <a class="button" href={`${base}/division-2/builds/`}>Build categories</a>
-        <a class="button button--ghost" href={`${base}/division-2/`}>Division 2 hub</a>
+    <div class="command-hero">
+      <div>
+        <p class="eyebrow">Creator Video Discovery</p>
+        <h1>Find build intel. Support creators.</h1>
+        <p class="lead">
+          DivGaming indexes build videos for discovery, but no videos are
+          embedded. All watch actions open YouTube directly.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href={`${base}/division-2/builds/`}>Build categories</a>
+          <a class="btn ghost" href={`${base}/division-2/creators/`}>Creators</a>
+        </div>
       </div>
+
+      <aside class="command-panel">
+        <p class="eyebrow">Video intel</p>
+        <div class="command-panel__list">
+          <div class="command-panel__row"><span>Indexed videos</span><strong>{videos.length}</strong></div>
+          <div class="command-panel__row"><span>Embeds</span><strong>None</strong></div>
+          <div class="command-panel__row"><span>Traffic</span><strong>YouTube</strong></div>
+        </div>
+      </aside>
     </div>
   </section>
 
   <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Video Library</p>
-        <h2>{videos.length} indexed videos</h2>
-      </div>
+    <div class="section-head">
+      <p class="eyebrow">Video Library</p>
+      <h2>{videos.length} indexed videos</h2>
       <p>
-        Search by creator, build name, tag, activity, or keyword. This is the
-        Astro staging version of DivGaming video discovery.
+        Search by creator, build name, tag, activity, or keyword. The goal is
+        discovery first, creator traffic always.
       </p>
     </div>
 

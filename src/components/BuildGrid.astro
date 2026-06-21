@@ -27,7 +27,7 @@ const filters = buildDiscoveryFilters(videos);
     <div class="card empty-state" data-discovery-empty hidden>
       <p class="eyebrow">No results</p>
       <h2>No matching videos found.</h2>
-      <p>Try another creator, tag, build type, or reset the filters.</p>
+      <p>Try another creator, tag, build type, or reset the SHD intel filters.</p>
     </div>
   </>
 ) : (
@@ -49,11 +49,15 @@ const filters = buildDiscoveryFilters(videos);
 
   .empty-state h2 {
     margin: 0;
-    font-size: clamp(1.7rem, 4vw, 2.8rem);
-    letter-spacing: -0.045em;
   }
 
   .empty-state p:not(.eyebrow) {
-    color: var(--dg-muted);
+    color: var(--muted);
+  }
+
+  @media (max-width: 700px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

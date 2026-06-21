@@ -53,14 +53,14 @@ const guides = [
     <div class="command-hero">
       <div>
         <p class="eyebrow">Guide Library</p>
-        <h1>Guides with a real path.</h1>
+        <h1>SHD Guide Routes</h1>
         <p class="lead">
-          Farming, returning-agent help, build basics, endgame prep, and tool-linked
-          references for Division 2 players.
+          Farming, returning-agent help, build basics, endgame prep, and
+          tool-linked references for Division 2 players.
         </p>
         <div class="hero-actions">
-          <a class="button" href={`${base}/division-2/tools/`}>Use Tools</a>
-          <a class="button button--ghost" href={`${base}/division-2/builds/`}>Find Builds</a>
+          <a class="btn primary" href={`${base}/division-2/tools/`}>Use Tools</a>
+          <a class="btn ghost" href={`${base}/division-2/builds/`}>Find Builds</a>
         </div>
       </div>
 
@@ -75,24 +75,22 @@ const guides = [
   </section>
 
   <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Guide tracks</p>
-        <h2>Content lanes</h2>
-      </div>
+    <div class="section-head">
+      <p class="eyebrow">Guide tracks</p>
+      <h2>Content lanes</h2>
       <p>
         Each guide card points agents toward an existing DivGaming route while
         full article pages are built out.
       </p>
     </div>
 
-    <div class="grid guide-grid">
+    <div class="guide-grid">
       {guides.map((guide) => (
-        <a class="card guide-card" href={`${base}${guide.href}`}>
-          <p class="eyebrow">{guide.status}</p>
-          <h2>{guide.title}</h2>
+        <a class="guide-card" href={`${base}${guide.href}`}>
+          <span class="mission-kicker">{guide.status}</span>
+          <strong>{guide.title}</strong>
           <p>{guide.text}</p>
-          <strong>Open related route →</strong>
+          <em>Open related route →</em>
         </a>
       ))}
     </div>

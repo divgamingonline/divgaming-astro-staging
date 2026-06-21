@@ -40,37 +40,38 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 ---
 
 <BaseLayout
-  title={`${title} | DivGaming Astro Staging`}
+  title={`${title} | DivGaming`}
   description={description}
   canonical={canonical}
   noindex={true}
 >
-  <section class="shell tools-hero">
-    <div class="tools-hero__content">
-      <p class="eyebrow">{eyebrow}</p>
-      <h1>{title}</h1>
-      <p class="lead">{description}</p>
-      <div class="tools-hero__actions">
-        <a class="button" href={`${base}/division-2/tools/`}>All tools</a>
-        <a class="button button--ghost" href={`${base}/division-2/`}>Division 2 hub</a>
+  <section class="shell hero">
+    <div class="command-hero">
+      <div>
+        <p class="eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <p class="lead">{description}</p>
+        <div class="hero-actions">
+          <a class="btn primary" href={`${base}/division-2/tools/`}>All tools</a>
+          <a class="btn ghost" href={`${base}/division-2/`}>Division 2 hub</a>
+        </div>
       </div>
-    </div>
 
-    <aside class="tools-hero__panel card">
-      <p class="eyebrow">Dataset</p>
-      <h2>{items.length}</h2>
-      <p>records loaded from the Astro data layer.</p>
-      {updated && <p class="tools-hero__updated">Updated: {updated}</p>}
-      {needsVerification > 0 && (
-        <p class="tools-hero__updated">{needsVerification} records marked for verification.</p>
-      )}
-    </aside>
+      <aside class="command-panel">
+        <p class="eyebrow">Dataset</p>
+        <div class="command-panel__list">
+          <div class="command-panel__row"><span>Records</span><strong>{items.length}</strong></div>
+          {updated && <div class="command-panel__row"><span>Updated</span><strong>{updated}</strong></div>}
+          {needsVerification > 0 && <div class="command-panel__row"><span>Needs check</span><strong>{needsVerification}</strong></div>}
+        </div>
+      </aside>
+    </div>
   </section>
 
   {featuredItems.length > 0 && (
     <section class="shell section">
       <p class="eyebrow">Featured references</p>
-      <div class="grid featured-grid">
+      <div class="grid tools-grid">
         {featuredItems.slice(0, 3).map((item) => (
           <ToolItemCard item={item} compact={true} />
         ))}
@@ -79,14 +80,12 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
   )}
 
   <section class="shell section" id={databaseId} data-tool-database>
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Reference database</p>
-        <h2><span data-result-count>{items.length}</span> entries</h2>
-      </div>
+    <div class="section-head">
+      <p class="eyebrow">Reference database</p>
+      <h2><span data-result-count>{items.length}</span> entries</h2>
       <p>
-        Search and filter this database instantly. This is still staging, but it
-        now behaves like an actual DivGaming tool.
+        Search and filter this SHD field database by name, talent, slot, source,
+        role, or keyword.
       </p>
     </div>
 
@@ -123,7 +122,7 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
         <div class="card empty-state" data-empty-state hidden>
           <p class="eyebrow">No results</p>
           <h2>No matching entries found.</h2>
-          <p>Try a broader term or reset the filter chips.</p>
+          <p>Try a broader SHD search term or reset the filter chips.</p>
         </div>
       </>
     ) : (
@@ -196,85 +195,6 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
   </script>
 
   <style>
-    .tools-hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
-      gap: 20px;
-      padding-top: 40px;
-      align-items: stretch;
-    }
-
-    .tools-hero__content {
-      border: 1px solid rgba(255, 107, 0, 0.16);
-      border-radius: 28px;
-      padding: clamp(24px, 5vw, 54px);
-      background:
-        radial-gradient(circle at top left, rgba(255, 107, 0, 0.24), transparent 42%),
-        linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
-      box-shadow: var(--dg-shadow);
-    }
-
-    .tools-hero h1 {
-      margin: 0;
-      font-size: clamp(2.45rem, 7vw, 5.4rem);
-      line-height: 0.92;
-      letter-spacing: -0.065em;
-      text-transform: uppercase;
-    }
-
-    .tools-hero__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .tools-hero__panel {
-      padding: 22px;
-    }
-
-    .tools-hero__panel h2 {
-      margin: 0;
-      color: var(--dg-orange);
-      font-size: clamp(3rem, 9vw, 6rem);
-      line-height: 0.9;
-      letter-spacing: -0.065em;
-    }
-
-    .tools-hero__panel p {
-      color: var(--dg-muted);
-    }
-
-    .tools-hero__updated {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 12px;
-      font-size: 0.88rem;
-    }
-
-    .featured-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: end;
-      margin-bottom: 20px;
-    }
-
-    .section-heading h2 {
-      margin: 0;
-      font-size: clamp(1.9rem, 4vw, 3.2rem);
-      letter-spacing: -0.045em;
-    }
-
-    .section-heading > p {
-      max-width: 560px;
-      margin: 0;
-      color: var(--dg-muted);
-    }
-
     .tool-controls {
       display: grid;
       gap: 16px;
@@ -288,26 +208,26 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
     }
 
     .tool-search span {
-      color: var(--dg-muted);
-      font-size: 0.8rem;
-      font-weight: 950;
-      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
     .tool-search input {
       width: 100%;
       border: 1px solid rgba(255, 107, 0, 0.28);
-      border-radius: 16px;
-      padding: 14px 15px;
-      color: var(--dg-text);
+      border-radius: 999px;
+      padding: 14px 16px;
+      color: var(--text);
       background: rgba(0, 0, 0, 0.28);
-      font: inherit;
       outline: none;
     }
 
     .tool-search input:focus {
-      border-color: var(--dg-orange);
+      border-color: var(--orange);
       box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.12);
     }
 
@@ -322,20 +242,22 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
       border: 1px solid rgba(255, 107, 0, 0.24);
       border-radius: 999px;
       padding: 8px 11px;
-      color: var(--dg-muted);
+      color: var(--muted);
       background: rgba(255, 255, 255, 0.045);
-      font: inherit;
-      font-size: 0.84rem;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.78rem;
       font-weight: 900;
       cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
 
     .tool-filters button:hover,
     .tool-filters button.active,
     .tool-reset:hover {
       color: #160d05;
-      background: var(--dg-orange);
-      border-color: var(--dg-orange);
+      background: var(--orange);
+      border-color: var(--orange);
     }
 
     .tool-reset {
@@ -352,18 +274,8 @@ const databaseId = `tool-db-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
     }
 
     @media (max-width: 900px) {
-      .tools-hero,
-      .section-heading {
-        display: grid;
+      .tool-grid {
         grid-template-columns: 1fr;
-      }
-
-      .tools-hero {
-        padding-top: 24px;
-      }
-
-      .section-heading {
-        align-items: start;
       }
     }
   </style>

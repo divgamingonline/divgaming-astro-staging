@@ -11,7 +11,7 @@ export interface Props {
 const {
   count,
   filters = [],
-  label = 'Search this library',
+  label = 'Search SHD intel',
   placeholder = 'Search builds, creators, tags, activities...'
 } = Astro.props;
 ---
@@ -124,26 +124,26 @@ const {
   }
 
   .discovery-search span {
-    color: var(--dg-muted);
-    font-size: 0.8rem;
-    font-weight: 950;
-    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
   .discovery-search input {
     width: 100%;
     border: 1px solid rgba(255, 107, 0, 0.28);
-    border-radius: 16px;
-    padding: 14px 15px;
-    color: var(--dg-text);
+    border-radius: 999px;
+    padding: 14px 16px;
+    color: var(--text);
     background: rgba(0, 0, 0, 0.28);
-    font: inherit;
     outline: none;
   }
 
   .discovery-search input:focus {
-    border-color: var(--dg-orange);
+    border-color: var(--orange);
     box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.12);
   }
 
@@ -158,13 +158,15 @@ const {
   }
 
   .discovery-count strong {
-    color: var(--dg-orange);
+    color: var(--orange-2);
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 1.55rem;
     line-height: 1;
   }
 
   .discovery-count span {
-    color: var(--dg-muted);
+    color: var(--muted);
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 0.72rem;
     font-weight: 900;
     text-transform: uppercase;
@@ -182,20 +184,22 @@ const {
     border: 1px solid rgba(255, 107, 0, 0.24);
     border-radius: 999px;
     padding: 8px 11px;
-    color: var(--dg-muted);
+    color: var(--muted);
     background: rgba(255, 255, 255, 0.045);
-    font: inherit;
-    font-size: 0.84rem;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 0.78rem;
     font-weight: 900;
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: .04em;
   }
 
   .discovery-filters button:hover,
   .discovery-filters button.active,
   .discovery-reset:hover {
     color: #160d05;
-    background: var(--dg-orange);
-    border-color: var(--dg-orange);
+    background: var(--orange);
+    border-color: var(--orange);
   }
 
   .discovery-reset {

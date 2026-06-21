@@ -15,10 +15,10 @@ const namedItems = normalizeItems(namedItemsData);
 
 const routes = [
   { title: 'Build Library', href: '/division-2/builds/', count: videos.length, text: 'Striker, PvE, solo, PvP, and full build discovery.' },
-  { title: 'Agent Tools', href: '/division-2/tools/', count: exotics.length + namedItems.length, text: 'Exotics, named items, brands, gearsets, and talent databases.' },
-  { title: 'Video Library', href: '/division-2/videos/', count: videos.length, text: 'Creator-first video discovery with direct YouTube routing.' },
-  { title: 'Creator Index', href: '/division-2/creators/', count: creators.length, text: 'A clean directory for Division 2 creators represented in the library.' },
-  { title: 'Guide Library', href: '/division-2/guides/', count: 'New', text: 'Guide structure for farming, progression, raids, incursions, and endgame.' }
+  { title: 'Agent Backpack', href: '/division-2/tools/', count: exotics.length + namedItems.length, text: 'Exotics, named items, brands, gearsets, and talent databases.' },
+  { title: 'Video Intel', href: '/division-2/videos/', count: videos.length, text: 'Creator-first video discovery with direct YouTube routing.' },
+  { title: 'Creator Network', href: '/division-2/creators/', count: creators.length, text: 'A clean directory for Division 2 creators represented in the library.' },
+  { title: 'Guide Routes', href: '/division-2/guides/', count: 'SHD', text: 'Guide structure for farming, progression, raids, incursions, and endgame.' }
 ];
 ---
 
@@ -32,15 +32,15 @@ const routes = [
     <div class="command-hero">
       <div>
         <p class="eyebrow">Division 2 Hub</p>
-        <h1>Your agent command center.</h1>
+        <h1>SHD Intel Routes</h1>
         <p class="lead">
           Fast routes into builds, tools, videos, creators, and guides. This is
           the central Division 2 landing page for DivGaming.
         </p>
 
         <div class="hero-actions">
-          <a class="button" href={`${base}/division-2/builds/`}>Find Builds</a>
-          <a class="button button--ghost" href={`${base}/division-2/tools/`}>Open Tools</a>
+          <a class="btn primary" href={`${base}/division-2/builds/`}>Find Builds</a>
+          <a class="btn ghost" href={`${base}/division-2/tools/`}>Open Tools</a>
         </div>
       </div>
 
@@ -57,25 +57,23 @@ const routes = [
   </section>
 
   <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Route map</p>
-        <h2>Where agents go</h2>
-      </div>
+    <div class="section-head">
+      <p class="eyebrow">Route map</p>
+      <h2>Where agents go</h2>
       <p>
-        Builds, tools, creators, videos, and guide paths now share one unified
-        DivGaming structure.
+        Builds, tools, creators, videos, and guide paths now share the same
+        DivGaming production-style interface.
       </p>
     </div>
 
-    <div class="grid tools-grid">
+    <div class="tools-grid">
       {routes.map((route) => (
-        <a class="card tool-card" href={`${base}${route.href}`}>
+        <a class="tool-card" href={`${base}${route.href}`}>
           <span class="tool-card__count">{route.count}</span>
-          <p class="eyebrow">Division 2</p>
-          <h2>{route.title}</h2>
+          <span class="mission-kicker">Division 2</span>
+          <strong>{route.title}</strong>
           <p>{route.text}</p>
-          <strong>Open route →</strong>
+          <em>Open route →</em>
         </a>
       ))}
     </div>

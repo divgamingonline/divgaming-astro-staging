@@ -42,7 +42,7 @@ const filters = itemFilterTokens(item).join(' ');
 >
   <div class="tool-item-card__top">
     <div>
-      <p class="eyebrow">{type}</p>
+      <p class="mission-kicker">{type}</p>
       <h3>{name}</h3>
       {subhead && <p class="tool-item-card__subhead">{subhead}</p>}
     </div>
@@ -69,7 +69,7 @@ const filters = itemFilterTokens(item).join(' ');
   )}
 
   {roles.length > 0 && (
-    <div class="tool-item-card__chips">
+    <div class="badge-row tool-item-card__chips">
       {roles.slice(0, 5).map((role) => (
         <span>{role}</span>
       ))}
@@ -105,15 +105,18 @@ const filters = itemFilterTokens(item).join(' ');
 
   .tool-item-card h3 {
     margin: 0;
+    color: #fff;
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 1.25rem;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.015em;
+    line-height: 1.12;
   }
 
   .tool-item-card__subhead,
   .tool-item-card__description,
   .tool-item-card__source,
   .tool-item-card__talent p {
-    color: var(--dg-muted);
+    color: var(--muted);
   }
 
   .tool-item-card__subhead {
@@ -123,26 +126,28 @@ const filters = itemFilterTokens(item).join(' ');
 
   .tool-item-card__confidence {
     flex: 0 0 auto;
-    border: 1px solid rgba(255, 107, 0, 0.22);
+    border: 1px solid rgba(255, 107, 0, 0.32);
     border-radius: 999px;
     padding: 5px 8px;
-    color: var(--dg-orange);
-    background: rgba(255, 107, 0, 0.08);
-    font-size: 0.68rem;
-    font-weight: 950;
+    color: var(--orange-2);
+    background: rgba(255, 107, 0, 0.09);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.055em;
+    letter-spacing: 0.08em;
   }
 
   .tool-item-card__talent {
-    border: 1px solid rgba(255, 107, 0, 0.16);
+    border: 1px solid rgba(255, 107, 0, 0.18);
     border-radius: 14px;
     padding: 12px;
-    background: rgba(255, 107, 0, 0.055);
+    background: rgba(255, 107, 0, 0.06);
   }
 
   .tool-item-card__talent strong {
-    color: var(--dg-orange);
+    color: var(--orange-2);
+    font-family: 'Chakra Petch', sans-serif;
   }
 
   .tool-item-card__talent p,
@@ -155,7 +160,7 @@ const filters = itemFilterTokens(item).join(' ');
   .tool-item-card__list {
     margin: 0;
     padding-left: 18px;
-    color: var(--dg-muted);
+    color: var(--muted);
   }
 
   .tool-item-card__list li + li {
@@ -163,20 +168,10 @@ const filters = itemFilterTokens(item).join(' ');
   }
 
   .tool-item-card__chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
     margin-top: auto;
-  }
-
-  .tool-item-card__chips span {
-    border: 1px solid rgba(255, 107, 0, 0.18);
-    border-radius: 999px;
-    padding: 5px 9px;
-    color: var(--dg-muted);
-    background: rgba(255, 255, 255, 0.04);
-    font-size: 0.78rem;
-    font-weight: 850;
+    padding: 0;
+    border: 0;
+    background: transparent;
   }
 
   .tool-item-card__source {

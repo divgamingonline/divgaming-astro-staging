@@ -45,13 +45,13 @@ const filters = discoveryFilterTokens(video).join(' ');
         onerror="if (this.dataset.fallback && this.src !== this.dataset.fallback) { this.src = this.dataset.fallback; this.dataset.fallback = ''; } else if (this.dataset.finalFallback && this.src !== this.dataset.finalFallback) { this.src = this.dataset.finalFallback; this.dataset.finalFallback = ''; }"
       />
     ) : (
-      <div class="video-card__placeholder">DIVGAMING</div>
+      <div class="video-card__placeholder">SHD INTEL</div>
     )}
     <span class="video-card__badge">{category}</span>
   </a>
 
   <div class="video-card__body">
-    <p class="eyebrow">{video.creator}</p>
+    <p class="mission-kicker">{video.creator}</p>
     <h3><a href={detailUrl}>{video.title}</a></h3>
 
     <div class="video-card__meta">
@@ -62,7 +62,7 @@ const filters = discoveryFilterTokens(video).join(' ');
     {video.description && <p>{video.description}</p>}
 
     {tags.length > 0 && (
-      <div class="video-card__tags">
+      <div class="badge-row video-card__tags">
         {tags.slice(0, 5).map((tag) => (
           <span>{tag}</span>
         ))}
@@ -70,8 +70,8 @@ const filters = discoveryFilterTokens(video).join(' ');
     )}
 
     <div class="video-card__actions">
-      <a class="button" href={watchUrl} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <a class="button button--ghost" href={detailUrl}>Details</a>
+      <a class="btn primary" href={watchUrl} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+      <a class="btn ghost" href={detailUrl}>Intel Page</a>
     </div>
   </div>
 </article>
@@ -117,6 +117,7 @@ const filters = discoveryFilterTokens(video).join(' ');
     place-items: center;
     height: 100%;
     color: rgba(255, 107, 0, 0.32);
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 1.1rem;
     font-weight: 950;
     letter-spacing: 0.18em;
@@ -126,13 +127,16 @@ const filters = discoveryFilterTokens(video).join(' ');
     position: absolute;
     left: 12px;
     bottom: 12px;
-    border: 1px solid rgba(255, 107, 0, 0.32);
+    border: 1px solid rgba(255, 107, 0, 0.38);
     border-radius: 999px;
     padding: 5px 9px;
     color: #160d05;
-    background: var(--dg-orange);
-    font-size: 0.75rem;
+    background: var(--orange);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 0.72rem;
     font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: .06em;
   }
 
   .video-card__body {
@@ -145,18 +149,19 @@ const filters = discoveryFilterTokens(video).join(' ');
 
   .video-card h3 {
     margin: 0;
-    font-size: 1.22rem;
+    color: #fff;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1.18rem;
     line-height: 1.15;
-    letter-spacing: -0.035em;
   }
 
   .video-card h3 a:hover {
     text-decoration: none;
   }
 
-  .video-card__body p:not(.eyebrow),
+  .video-card__body p:not(.mission-kicker),
   .video-card__meta {
-    color: var(--dg-muted);
+    color: var(--muted);
   }
 
   .video-card__meta {
@@ -167,20 +172,10 @@ const filters = discoveryFilterTokens(video).join(' ');
   }
 
   .video-card__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
     margin-top: auto;
-  }
-
-  .video-card__tags span {
-    border: 1px solid rgba(255, 107, 0, 0.18);
-    border-radius: 999px;
-    padding: 5px 8px;
-    color: var(--dg-muted);
-    background: rgba(255, 255, 255, 0.04);
-    font-size: 0.75rem;
-    font-weight: 850;
+    padding: 0;
+    border: 0;
+    background: transparent;
   }
 
   .video-card__actions {
@@ -190,9 +185,9 @@ const filters = discoveryFilterTokens(video).join(' ');
     margin-top: 4px;
   }
 
-  .video-card__actions .button {
+  .video-card__actions .btn {
     min-height: 38px;
     padding: 8px 12px;
-    font-size: 0.86rem;
+    font-size: 0.74rem;
   }
 </style>
