@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import buildsData from '../../data/builds.json';
 import exoticsData from '../../data/division-2/exotics.json';
 import namedItemsData from '../../data/division-2/named-items.json';
-import brandsetsData from '../../data/division-2/brandsets.json';
 import { getBuildVideos } from '../utils/builds';
 import { normalizeItems } from '../utils/division2Tools';
 import { getCreators } from '../utils/creators';
@@ -11,87 +10,169 @@ import { getCreators } from '../utils/creators';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const videos = getBuildVideos(buildsData, 'all');
 const creatorCount = getCreators(buildsData).length;
+const toolsCount = 6;
 const exoticCount = normalizeItems(exoticsData).length;
 const namedCount = normalizeItems(namedItemsData).length;
-const brandCount = normalizeItems(brandsetsData).length;
-
-const routes = [
-  { eyebrow: 'Builds', title: 'Build Library', href: '/division-2/builds/', text: 'Browse Striker, PvE, solo, and PvP build routes from creator videos.', metric: videos.length },
-  { eyebrow: 'Tools', title: 'Agent Tools', href: '/division-2/tools/', text: 'Use DivGaming databases for exotics, named items, brands, gear sets, and talents.', metric: exoticCount + namedCount + brandCount },
-  { eyebrow: 'Creators', title: 'Creator Index', href: '/division-2/creators/', text: 'Discover Division 2 creators and route viewers directly to their YouTube videos.', metric: creatorCount },
-  { eyebrow: 'Guides', title: 'Guide Library', href: '/division-2/guides/', text: 'Farming, progression, builds, endgame, raids, incursions, and returning-agent paths.', metric: 'New' }
-];
 ---
 
 <BaseLayout
-  title="DivGaming | The Division 2 Builds, Tools, Guides, and Community Hub"
-  description="DivGaming is an unofficial Division 2 community hub for builds, tools, guides, creator videos, exotics, named items, and agent resources."
+  title="DivGaming | The Division 2 Builds, Guides, Tools & Vendor Intel"
+  description="Explore The Division 2 builds, guides, tools, vendor reset intel, creator videos, maps, gear resources, and SHD community intel on DivGaming."
   canonical="/"
   noindex={true}
 >
-  <section class="shell hero">
-    <div class="command-hero">
-      <div>
-        <p class="eyebrow">Unofficial Division 2 Community Hub</p>
-        <h1>Built for agents who want answers fast.</h1>
-        <p class="lead">
-          Builds, creator discovery, exotic sources, named items, brand sets,
-          gear sets, talent references, and guide routes — organized into one
-          clean DivGaming experience.
+  <header class="production-hero">
+    <div class="shd-terminal">
+      <div class="terminal-header">
+        <span class="terminal-dot"></span>
+        <span class="terminal-label">SHD ALERT</span>
+        <span class="terminal-pulse">LIVE BROADCAST</span>
+      </div>
+      <div class="terminal-content">
+        <div class="terminal-prompt">
+          <span class="prompt-symbol">&gt;</span>
+          <span class="prompt-text">ISAC: Agent network sync complete. DivGaming field routes online.</span>
+        </div>
+        <div class="terminal-subtext">
+          Community intel, builds, tools, creators, and SHD resources are ready.
+        </div>
+      </div>
+      <div class="terminal-blink"></div>
+    </div>
+
+    <section class="hero shell">
+      <div class="hero-copy">
+        <img
+          class="hero-logo"
+          src={`${base}/assets/img/division2-logo-white-2-1086.webp`}
+          alt="Tom Clancy's The Division 2"
+          width="543"
+          height="130"
+        />
+
+        <p class="eyebrow">DivGaming // SHD Intel // Community</p>
+        <h1>SHD Agent Companion</h1>
+        <p class="hero-text">
+          Access the SHD Network. Pick a mission path, find the right build,
+          open field tools, watch creator intel, and move faster through The
+          Division 2 endgame.
         </p>
 
         <div class="hero-actions">
-          <a class="button" href={`${base}/division-2/`}>Enter Division 2 Hub</a>
-          <a class="button button--ghost" href={`${base}/division-2/tools/`}>Open Agent Tools</a>
+          <a class="btn primary" href="#mission-control">Start mission</a>
+          <a class="btn ghost" href={`${base}/division-2/builds/`}>Browse builds</a>
+          <a class="btn ghost" href={`${base}/division-2/tools/`}>Open tools</a>
         </div>
       </div>
 
-      <aside class="command-panel">
-        <p class="eyebrow">DivGaming index</p>
-        <div class="command-panel__list">
-          <div class="command-panel__row"><span>Build videos</span><strong>{videos.length}</strong></div>
-          <div class="command-panel__row"><span>Creators</span><strong>{creatorCount}</strong></div>
-          <div class="command-panel__row"><span>Exotics</span><strong>{exoticCount}</strong></div>
-          <div class="command-panel__row"><span>Named items</span><strong>{namedCount}</strong></div>
+      <aside class="hero-command-panel">
+        <a class="stat-item" href={`${base}/division-2/tools/`}>
+          <span>{toolsCount}</span>
+          <small>Tools Available</small>
+        </a>
+
+        <a class="stat-item" href={`${base}/division-2/videos/`}>
+          <span>{videos.length}</span>
+          <small>Videos Indexed</small>
+        </a>
+
+        <a class="stat-item" href={`${base}/division-2/creators/`}>
+          <span>{creatorCount}</span>
+          <small>Active SHD Agents</small>
+        </a>
+
+        <div class="hero-intel-card">
+          <small>Network status</small>
+          <strong>Operational</strong>
+          <p>DivGaming routes are online and ready for agent review.</p>
         </div>
       </aside>
-    </div>
-  </section>
+    </section>
+  </header>
 
-  <section class="shell section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Main routes</p>
-        <h2>Choose your lane</h2>
-      </div>
+  <section class="section shell mission-control-section" id="mission-control">
+    <div class="section-head mission-control-head">
+      <p class="eyebrow">Agent Mission Control</p>
+      <h2>What Do You Need Right Now?</h2>
       <p>
-        DivGaming connects tools, builds, creator videos, and guide paths into a
-        single Division 2 resource hub.
+        Start with the task in front of you. DivGaming routes agents into the
+        build library, tools, field intel, creator videos, or guide paths without
+        forcing you to search from scratch.
       </p>
     </div>
 
-    <div class="grid quick-grid">
-      {routes.map((route) => (
-        <a class="card intent-card" href={`${base}${route.href}`}>
-          <span class="tool-card__count">{route.metric}</span>
-          <p class="eyebrow">{route.eyebrow}</p>
-          <h2>{route.title}</h2>
-          <p>{route.text}</p>
-          <strong>Open route →</strong>
-        </a>
-      ))}
+    <div class="mission-control-grid">
+      <a class="mission-card mission-card-primary" href={`${base}/division-2/builds/`}>
+        <span class="mission-kicker">Find a Loadout</span>
+        <strong>Build Library</strong>
+        <small>Browse PvE, PvP, solo, Striker, and creator build intel.</small>
+        <em>Open builds →</em>
+      </a>
+
+      <a class="mission-card" href={`${base}/division-2/tools/`}>
+        <span class="mission-kicker">Plan Before Farming</span>
+        <strong>Agent Backpack</strong>
+        <small>Open exotics, named items, brand sets, gearsets, and talents.</small>
+        <em>Open tools →</em>
+      </a>
+
+      <a class="mission-card" href={`${base}/division-2/`}>
+        <span class="mission-kicker">Use Focused Paths</span>
+        <strong>SHD Intel Routes</strong>
+        <small>Jump into builds, tools, creators, videos, guides, and route pages.</small>
+        <em>Choose route →</em>
+      </a>
+
+      <a class="mission-card" href={`${base}/division-2/creators/`}>
+        <span class="mission-kicker">Support Creators</span>
+        <strong>Creator Intel</strong>
+        <small>Find creator content and open the original videos on YouTube.</small>
+        <em>View creators →</em>
+      </a>
+    </div>
+
+    <div class="mission-quick-strip">
+      <a href={`${base}/division-2/`}>Division 2 Hub</a>
+      <a href={`${base}/division-2/builds/striker/`}>Striker Builds</a>
+      <a href={`${base}/division-2/tools/exotic-source-tracker/`}>Exotic Sources</a>
+      <a href={`${base}/division-2/tools/named-items-database/`}>Named Items</a>
     </div>
   </section>
 
-  <section class="shell section">
-    <div class="launch-note">
-      <p class="eyebrow">Production candidate direction</p>
-      <h2>Creator-forward, tool-driven, easy to maintain.</h2>
+  <section class="section shell">
+    <div class="section-head">
+      <p class="eyebrow">SHD Field Resources</p>
+      <h2>Agent Backpack</h2>
       <p>
-        The new DivGaming structure keeps YouTube traffic with creators, keeps
-        reference data in JSON, and gives agents clean routes into the content
-        they actually need.
+        Community intelligence, operational tools, build routes, and creator
+        discovery used by Division agents.
       </p>
+    </div>
+
+    <div class="tools-grid">
+      <a class="tool-card" href={`${base}/division-2/tools/exotic-source-tracker/`}>
+        <span class="mission-kicker">Tool</span>
+        <strong>Exotic Source Tracker</strong>
+        <p>{exoticCount} exotic records with source and talent references.</p>
+      </a>
+
+      <a class="tool-card" href={`${base}/division-2/tools/named-items-database/`}>
+        <span class="mission-kicker">Tool</span>
+        <strong>Named Items Database</strong>
+        <p>{namedCount} named item records for gear and weapon planning.</p>
+      </a>
+
+      <a class="tool-card" href={`${base}/division-2/videos/`}>
+        <span class="mission-kicker">Intel</span>
+        <strong>Video Intel Library</strong>
+        <p>{videos.length} creator videos indexed for discovery.</p>
+      </a>
+
+      <a class="tool-card" href={`${base}/division-2/guides/`}>
+        <span class="mission-kicker">Guides</span>
+        <strong>Guide Routes</strong>
+        <p>Farming, progression, buildcraft, and endgame guide paths.</p>
+      </a>
     </div>
   </section>
 </BaseLayout>

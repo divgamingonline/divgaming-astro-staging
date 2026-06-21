@@ -10,10 +10,10 @@ export interface Props {
 }
 
 const {
-  title = 'DivGaming | The Division 2 Builds, Tools, Guides, and Community Hub',
-  description = 'DivGaming is an unofficial Division 2 community hub for builds, tools, guides, videos, creators, exotics, named items, and agent resources.',
+  title = 'DivGaming | The Division 2 Builds, Guides, Tools & Vendor Intel',
+  description = 'Explore The Division 2 builds, guides, tools, vendor reset intel, creator videos, maps, gear resources, and SHD community intel on DivGaming.',
   canonical = '/',
-  image = '/assets/img/divgaming-og.svg',
+  image = '/assets/img/og-image.jpg',
   noindex = false
 } = Astro.props;
 
@@ -22,20 +22,19 @@ const canonicalPath = canonical.startsWith('/') ? canonical : `/${canonical}`;
 const canonicalUrl = `https://divgaming.com${canonicalPath}`;
 const siteImage = image.startsWith('http') ? image : `${base}${image}`;
 
-const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Division 2', href: '/division-2/' },
-  { label: 'Builds', href: '/division-2/builds/' },
-  { label: 'Tools', href: '/division-2/tools/' },
-  { label: 'Videos', href: '/division-2/videos/' },
-  { label: 'Creators', href: '/division-2/creators/' },
-  { label: 'Guides', href: '/division-2/guides/' }
-];
-
 function withBase(href: string) {
   if (href.startsWith('http')) return href;
   return `${base}${href}`;
 }
+
+const navItems = [
+  { label: 'Mission', href: '/#mission-control' },
+  { label: 'Tools', href: '/division-2/tools/' },
+  { label: 'Builds', href: '/division-2/builds/' },
+  { label: 'Routes', href: '/division-2/' },
+  { label: 'Creators', href: '/division-2/creators/' },
+  { label: 'Guides', href: '/division-2/guides/' }
+];
 ---
 
 <!doctype html>
@@ -49,6 +48,7 @@ function withBase(href: string) {
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="DivGaming" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={siteImage} />
@@ -59,55 +59,67 @@ function withBase(href: string) {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={siteImage} />
 
-    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,400&family=Barlow:wght@400;500;600;700&display=swap"
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href={withBase('/assets/img/dg-logo.png')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={withBase('/assets/img/dg-logo.png')} />
     <link rel="manifest" href={withBase('/manifest.json')} />
     <title>{title}</title>
   </head>
 
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="dg-topbar" id="top">
+      <nav class="nav shell" aria-label="Primary navigation">
+        <a href={withBase('/')} class="brand dg-header-brand" aria-label="DivGaming.com home">
+          <img
+            class="dg-header-logo"
+            src={withBase('/assets/img/dg-logo-128.webp')}
+            alt="DivGaming logo"
+            width="98"
+            height="98"
+          />
+          <span class="brand-title"><strong>DivGaming.com</strong></span>
+        </a>
 
-    <div class="site-bg" aria-hidden="true">
-      <span class="site-bg__grid"></span>
-      <span class="site-bg__scan"></span>
-      <span class="site-bg__orb site-bg__orb--one"></span>
-      <span class="site-bg__orb site-bg__orb--two"></span>
-    </div>
+        <div class="global-search-container" aria-label="Site search placeholder">
+          <span class="search-icon-left">⌕</span>
+          <input class="global-search-input" type="search" placeholder="Search builds, tools, vendor intel, guides..." />
+          <span class="search-icon-right">→</span>
+        </div>
 
-    <header class="site-header">
-      <a class="site-brand" href={withBase('/')} aria-label="DivGaming home">
-        <img src={withBase('/assets/img/divgaming-logo.svg')} alt="DivGaming" class="site-brand__logo" />
-      </a>
-
-      <nav class="site-nav" aria-label="Primary navigation">
-        {navItems.map((item) => (
-          <a href={withBase(item.href)}>{item.label}</a>
-        ))}
+        <div class="nav-links">
+          {navItems.map((item) => (
+            <a href={withBase(item.href)}>{item.label}</a>
+          ))}
+        </div>
       </nav>
-
-      <a class="site-header__cta" href={withBase('/division-2/tools/')}>Agent Tools</a>
     </header>
 
-    <main id="main-content">
+    <main>
       <slot />
     </main>
 
     <footer class="site-footer">
-      <div class="shell site-footer__inner">
-        <div>
-          <img src={withBase('/assets/img/divgaming-logo.svg')} alt="DivGaming" class="site-footer__logo" />
-          <p>
-            Unofficial Division 2 community hub for builds, tools, guides,
-            videos, creators, and agent resources.
-          </p>
+      <div class="shell footer-inner">
+        <div class="footer-brand">
+          <img src={withBase('/assets/img/dg-logo-128.webp')} alt="DivGaming logo" />
+          <div>
+            <strong>DivGaming.com</strong>
+            <p>Unofficial Division 2 SHD intel hub for builds, guides, tools, creators, and field resources.</p>
+          </div>
         </div>
 
-        <div class="site-footer__links">
+        <div class="footer-links">
+          <a href={withBase('/division-2/')}>Division 2 Hub</a>
           <a href={withBase('/division-2/builds/')}>Builds</a>
           <a href={withBase('/division-2/tools/')}>Tools</a>
           <a href={withBase('/division-2/videos/')}>Videos</a>
           <a href={withBase('/division-2/creators/')}>Creators</a>
-          <a href={withBase('/division-2/guides/')}>Guides</a>
         </div>
       </div>
     </footer>
