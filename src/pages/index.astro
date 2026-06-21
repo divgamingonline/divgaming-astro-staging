@@ -33,9 +33,6 @@ const namedCount = normalizeItems(namedItemsData).length;
           <span class="prompt-symbol">&gt;</span>
           <span class="prompt-text">ISAC: Agent network sync complete. DivGaming field routes online.</span>
         </div>
-        <div class="terminal-subtext">
-          Community intel, builds, tools, creators, and SHD resources are ready.
-        </div>
       </div>
       <div class="terminal-blink"></div>
     </div>
@@ -81,11 +78,10 @@ const namedCount = normalizeItems(namedItemsData).length;
           <small>Active SHD Agents</small>
         </a>
 
-        <div class="hero-intel-card">
-          <small>Network status</small>
-          <strong>Operational</strong>
-          <p>DivGaming routes are online and ready for agent review.</p>
-        </div>
+        <a class="stat-item stat-item--network" href={`${base}/division-2/`}>
+          <span>Online</span>
+          <small>Network Status</small>
+        </a>
       </aside>
     </section>
   </header>

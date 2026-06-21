@@ -1,0 +1,121 @@
+/* ============================================================
+   DivGaming Astro — Mobile Hero Terminal / Status Hotfix
+   Fixes SHD prompt alignment and moves Network Status into stat grid.
+   ============================================================ */
+
+/* Terminal prompt alignment: prompt symbol and ISAC copy must stay on same row. */
+.terminal-prompt {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  align-items: start !important;
+  column-gap: 10px !important;
+  flex-wrap: nowrap !important;
+}
+
+.prompt-symbol {
+  grid-column: 1;
+  display: inline-block;
+  color: var(--green);
+  font-family: 'Chakra Petch', monospace;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.prompt-text {
+  grid-column: 2;
+  display: block;
+  min-width: 0;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+/* Network status is now a normal stat tile, not a full-width note. */
+.stat-item--network span {
+  color: var(--green) !important;
+  font-size: clamp(1.28rem, 2.4vw, 1.9rem) !important;
+  text-transform: none;
+}
+
+.stat-item--network {
+  background:
+    radial-gradient(circle at top left, rgba(117, 240, 160, 0.13), transparent 46%),
+    rgba(16, 21, 20, 0.82) !important;
+  border-color: rgba(117, 240, 160, 0.26) !important;
+}
+
+@media (max-width: 780px) {
+  .terminal-content {
+    padding: 12px 13px !important;
+  }
+
+  .terminal-prompt {
+    column-gap: 9px !important;
+  }
+
+  .prompt-symbol {
+    font-size: 0.92rem !important;
+    line-height: 1.42 !important;
+    padding-top: 1px;
+  }
+
+  .prompt-text {
+    font-size: 0.8rem !important;
+    line-height: 1.42 !important;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-command-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .hero-command-panel .stat-item {
+    min-height: 92px !important;
+    display: grid;
+    align-content: center;
+  }
+
+  .hero-command-panel .stat-item span {
+    font-size: 1.75rem !important;
+  }
+
+  .hero-command-panel .stat-item small {
+    margin-top: 8px;
+  }
+
+  .stat-item--network span {
+    font-size: 1.32rem !important;
+  }
+
+  .production-hero {
+    padding-bottom: 22px !important;
+  }
+
+  .hero {
+    padding-bottom: 34px !important;
+  }
+
+  .mobile-support-widget {
+    bottom: calc(104px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-command-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .hero-command-panel .stat-item {
+    min-height: 86px !important;
+  }
+
+  .hero-command-panel .stat-item span {
+    font-size: 1.55rem !important;
+  }
+
+  .stat-item--network span {
+    font-size: 1.15rem !important;
+  }
+}
