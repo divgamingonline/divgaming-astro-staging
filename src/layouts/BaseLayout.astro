@@ -10,65 +10,103 @@ export interface Props {
 }
 
 const {
-  title = 'DivGaming | The Division 2 Builds, Guides, Tools & Community',
-  description = 'DivGaming is an unofficial The Division 2 community hub for builds, guides, tools, creators, vendor reset tracking, named items, and exotic sources.',
-  canonical = Astro.url.pathname,
+  title = 'DivGaming | Division 2 Community Hub',
+  description = 'DivGaming is an unofficial Division 2 community hub for builds, tools, guides, videos, and creator resources.',
+  canonical = '/',
   image = '/assets/img/divgaming-og.svg',
   noindex = false
 } = Astro.props;
 
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://divgamingonline.github.io';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const canonicalUrl = canonical.startsWith('http')
-  ? canonical
-  : `${siteUrl}${base}${canonical.startsWith('/') ? canonical : `/${canonical}`}`;
-const imageUrl = image.startsWith('http')
-  ? image
-  : `${siteUrl}${base}${image.startsWith('/') ? image : `/${image}`}`;
+const canonicalPath = canonical.startsWith('/') ? canonical : `/${canonical}`;
+const canonicalUrl = `https://divgaming.com${canonicalPath}`;
+const siteImage = image.startsWith('http') ? image : `${base}${image}`;
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Division 2', href: '/division-2/' },
+  { label: 'Builds', href: '/division-2/builds/' },
+  { label: 'Tools', href: '/division-2/tools/' },
+  { label: 'Videos', href: '/division-2/videos/' }
+];
+
+function withBase(href: string) {
+  if (href.startsWith('http')) return href;
+  return `${base}${href}`;
+}
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
-    {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
-    <meta property="og:site_name" content="DivGaming" />
+
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DivGaming" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={siteImage} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={imageUrl} />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={imageUrl} />
-    <link rel="manifest" href={`${base}/manifest.json`} />
-    <link rel="icon" href={`${base}/favicon.svg`} />
-    <slot name="head" />
+    <meta name="twitter:image" content={siteImage} />
+
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="manifest" href={withBase('/manifest.json')} />
+    <title>{title}</title>
   </head>
+
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-bg" aria-hidden="true">
+      <span class="site-bg__grid"></span>
+      <span class="site-bg__orb site-bg__orb--one"></span>
+      <span class="site-bg__orb site-bg__orb--two"></span>
+    </div>
+
     <header class="site-header">
-      <div class="shell site-header__inner">
-        <a class="logo" href={`${base}/`} aria-label="DivGaming home"><span class="logo-mark">D</span><span>DIVGAMING</span></a>
-        <nav class="main-nav" aria-label="Primary navigation">
-          <a href={`${base}/`}>Home</a>
-          <a href={`${base}/division-2/`}>Division 2 Hub</a>
-          <a href={`${base}/division-2/builds/`}>Builds</a>
-          <a href={`${base}/division-2/tools/`}>Tools</a>
-          <a href={`${base}/division-2/creators/`}>Creators</a>
-        </nav>
-      </div>
+      <a class="site-brand" href={withBase('/')} aria-label="DivGaming home">
+        <span class="site-brand__mark">D</span>
+        <span class="site-brand__text">
+          <strong>DIVGAMING</strong>
+          <small>Division 2 Field Hub</small>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        {navItems.map((item) => (
+          <a href={withBase(item.href)}>{item.label}</a>
+        ))}
+      </nav>
+
+      <a class="site-header__cta" href={withBase('/division-2/tools/')}>Field Tools</a>
     </header>
-    <main id="main-content" class="page"><slot /></main>
+
+    <main>
+      <slot />
+    </main>
+
     <footer class="site-footer">
-      <div class="shell">
-        <p>DivGaming.com is an unofficial community project and is not affiliated with Ubisoft or Massive Entertainment.</p>
-        <p class="footer-links"><a href={`${base}/division-2/`}>Division 2 Hub</a><a href={`${base}/division-2/tools/`}>Tools</a><a href={`${base}/division-2/builds/`}>Builds</a></p>
+      <div class="shell site-footer__inner">
+        <div>
+          <p class="eyebrow">Unofficial Community Project</p>
+          <strong>DivGaming</strong>
+          <p>
+            Built for Division agents who need builds, tools, references, and
+            creator discovery in one clean hub.
+          </p>
+        </div>
+
+        <div class="site-footer__links">
+          <a href={withBase('/division-2/builds/')}>Builds</a>
+          <a href={withBase('/division-2/tools/')}>Tools</a>
+          <a href={withBase('/division-2/videos/')}>Videos</a>
+          <a href={withBase('/division-2/')}>Division 2 Hub</a>
+        </div>
       </div>
     </footer>
   </body>
