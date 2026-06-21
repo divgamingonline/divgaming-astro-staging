@@ -1,0 +1,94 @@
+{
+  "metadata": {
+    "project": "DivGaming.com Division 2 Codex",
+    "phase": "codex-phase-1",
+    "notes": "Static GitHub Pages data layer. Use as DivGaming source of truth for reference pages; validate/expand over time.",
+    "sources": [
+      "https://github.com/mxswat/mx-division-builds",
+      "https://hi-dep.github.io/division2/",
+      "DivGaming production content"
+    ]
+  },
+  "items": [
+    {
+      "id": "boomerang-perfect-boomerang",
+      "name": "Boomerang / Perfect Boomerang",
+      "description": "Weapon · Critical hits can return the bullet and amplify the next shot. Perfect version appears on The Virginian."
+    },
+    {
+      "id": "determined-perfect-determined",
+      "name": "Determined / Perfect Determined",
+      "description": "Weapon · After a headshot kill, the next shot can count as a headshot. Perfect version appears on named precision weapons."
+    },
+    {
+      "id": "fast-hands-perfect-fast-hands",
+      "name": "Fast Hands / Perfect Fast Hands",
+      "description": "Weapon · Critical hits build reload-speed stacks. Perfect version appears on Good Times."
+    },
+    {
+      "id": "flatline-perfect-flatline",
+      "name": "Flatline / Perfect Flatline",
+      "description": "Weapon · Amplifies weapon damage to pulsed enemies. Perfect version appears on Kingbreaker."
+    },
+    {
+      "id": "ignited-perfect-ignited",
+      "name": "Ignited / Perfect Ignited",
+      "description": "Weapon · Increases damage to burning enemies. Perfect version appears on Pyromaniac."
+    },
+    {
+      "id": "in-sync-perfect-in-sync",
+      "name": "In Sync / Perfect In Sync",
+      "description": "Weapon · Weapon hits increase skill damage; skill hits increase weapon damage. Perfect versions appear on Harmony/Test Subject."
+    },
+    {
+      "id": "killer-perfect-killer",
+      "name": "Killer / Perfect Killer",
+      "description": "Weapon · Killing with a critical hit grants critical hit damage. Perfect version appears on Dark Winter."
+    },
+    {
+      "id": "lucky-shot-perfect-lucky-shot",
+      "name": "Lucky Shot / Perfect Lucky Shot",
+      "description": "Weapon · Increases magazine size and returns missed shots from cover. Perfect version appears on Baker’s Dozen."
+    },
+    {
+      "id": "measured-perfectly-measured",
+      "name": "Measured / Perfectly Measured",
+      "description": "Weapon · Top and bottom halves of the magazine trade rate of fire and damage. Perfect version appears on The Apartment."
+    },
+    {
+      "id": "optimist",
+      "name": "Optimist",
+      "description": "Weapon · Weapon damage increases as the magazine empties."
+    },
+    {
+      "id": "perpetuation-perfect-perpetuation",
+      "name": "Perpetuation / Perfect Perpetuation",
+      "description": "Weapon · Headshots increase the next status-effect damage/duration. Perfect version appears on Golan-associated named weapon examples."
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "description": "Weapon · Amplifies weapon damage based on distance from target."
+    },
+    {
+      "id": "rifleman-perfect-rifleman",
+      "name": "Rifleman / Perfect Rifleman",
+      "description": "Weapon · Landing headshots stacks weapon damage. Perfect version appears on Artist’s Tool."
+    },
+    {
+      "id": "sadist-perfect-sadist",
+      "name": "Sadist / Perfect Sadist",
+      "description": "Weapon · Increases damage to bleeding enemies. Perfect version appears on Carnage."
+    },
+    {
+      "id": "sledgehammer-perfect-sledgehammer",
+      "name": "Sledgehammer / Perfect Sledgehammer",
+      "description": "Weapon · Grenade damage marks enemies so they take increased armor damage. Perfect version appears on Lefty."
+    },
+    {
+      "id": "spike-perfect-spike",
+      "name": "Spike / Perfect Spike",
+      "description": "Weapon · Headshots increase skill damage. Perfect version appears on Surge."
+    }
+  ]
+}
