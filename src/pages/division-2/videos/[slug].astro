@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import buildsData from '../../../../data/builds.json';
+import {
+  normalizeBuilds,
+  videoSlug,
+  youtubeThumbnail,
+  youtubeThumbnailFallback,
+  youtubeThumbnailFinalFallback,
+  youtubeWatchUrl,
+  videoDescription,
+  videoCategory,
+  videoTags,
+  formatDate
+} from '../../../utils/builds';
+
+export async function getStaticPaths() {
+  const videos = normalizeBuilds(buildsData)
+    .filter((video) => video.title && (video.id || video.videoId));
+
+  const seen = new Set<string>();
+
+  return videos
+    .map((video) => {
+      const slug = videoSlug(video);
+      return { slug, video };
+    })
+    .filter(({ slug }) => {
+      if (!slug || seen.has(slug)) return false;
+      seen.add(slug);
+      return true;
+    })
+    .map(({ slug, video }) => ({
+      params: { slug },
+      props: { video }
+    }));
+}
+
+const { video } = Astro.props;
+
+const allVideos = normalizeBuilds(buildsData)
+  .filter((item) => item.title && (item.id || item.videoId));
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const slug = videoSlug(video);
+const canonical = `/division-2/videos/${slug}/`;
+const description = videoDescription(video);
+const thumbnail = youtubeThumbnail(video);
+const fallback = youtubeThumbnailFallback(video);
+const finalFallback = youtubeThumbnailFinalFallback(video);
+const category = videoCategory(video);
+const tags = videoTags(video);
+const publishedDate = formatDate(video.date);
+const watchUrl = youtubeWatchUrl(video);
+const title = `${video.title || 'Division 2 Video'} | DivGaming`;
+
+const relatedVideos = allVideos
+  .filter((candidate) => videoSlug(candidate) !== slug)
+  .filter((candidate) => candidate.creator === video.creator || videoTags(candidate).some((tag) => tags.includes(tag)))
+  .slice(0, 4);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: video.title || 'Division 2 Video',
+  description,
+  thumbnailUrl: thumbnail ? [thumbnail] : undefined,
+  uploadDate: video.date,
+  url: watchUrl,
+  publisher: {
+    '@type': 'Organization',
+    name: 'DivGaming',
+    url: 'https://divgaming.com'
+  }
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  image={thumbnail}
+  noindex={true}
+>
+  <section class="shell hero">
+    <article class="video-detail card">
+      <div class="video-detail__media">
+        {thumbnail ? (
+          <img
+            src={thumbnail}
+            alt=""
+            loading="eager"
+            data-fallback={fallback}
+            data-final-fallback={finalFallback}
+            onerror="if (this.dataset.fallback && this.src !== this.dataset.fallback) { this.src = this.dataset.fallback; this.dataset.fallback = ''; } else if (this.dataset.finalFallback && this.src !== this.dataset.finalFallback) { this.src = this.dataset.finalFallback; this.dataset.finalFallback = ''; }"
+          />
+        ) : (
+          <div class="video-detail__placeholder">VIDEO</div>
+        )}
+      </div>
+
+      <div class="video-detail__body">
+        <p class="eyebrow">Creator Video</p>
+        <h1>{video.title}</h1>
+
+        <div class="video-detail__meta">
+          {video.creator && <span>Creator: {video.creator}</span>}
+          {publishedDate && <span>Published: {publishedDate}</span>}
+          {category && <span>{category}</span>}
+        </div>
+
+        <div class="creator-watch-note">
+          DivGaming does not embed creator videos. Use the YouTube link below to watch directly on the creator’s channel.
+        </div>
+
+        <p class="lead">{description}</p>
+
+        {tags.length > 0 && (
+          <div class="badge-row video-detail__tags" aria-label="Video tags">
+            {tags.slice(0, 12).map((tag) => (
+              <span>{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <div class="video-detail__actions">
+          <a class="btn primary" href={watchUrl} target="_blank" rel="noopener noreferrer">
+            Watch on YouTube
+          </a>
+          <a class="btn ghost" href={`${base}/division-2/videos/`}>
+            Back to Video Library
+          </a>
+          <a class="btn ghost" href={`${base}/division-2/builds/`}>
+            Build Categories
+          </a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  {relatedVideos.length > 0 && (
+    <section class="shell section">
+      <div class="section-head">
+        <p class="eyebrow">Related Videos</p>
+        <h2>More creator videos</h2>
+      </div>
+
+      <div class="tools-grid related-video-grid">
+        {relatedVideos.map((related) => (
+          <a class="tool-card" href={`${base}/division-2/videos/${videoSlug(related)}/`}>
+            <span class="mission-kicker">{related.creator}</span>
+            <strong>{related.title}</strong>
+            <p>{videoDescription(related)}</p>
+            <em>Open details →</em>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>
