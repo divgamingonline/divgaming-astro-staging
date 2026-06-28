@@ -1,0 +1,1091 @@
+{
+  "metadata": {
+    "schemaVersion": "2.0",
+    "lastUpdated": "2026-06-15",
+    "dataModel": "DivGaming Codex strict item model",
+    "sourcePolicy": "Display data is curated locally. hi-dep and mxswat are validation sources. The manual source checker reports differences but does not publish automatically.",
+    "kind": "exotics",
+    "count": 43
+  },
+  "items": [
+    {
+      "id": "acosta-s-go-bag",
+      "name": "Acosta’s Go-Bag",
+      "displayName": "Acosta’s Go-Bag",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "skill_tier",
+      "availableCores": [
+        "skill_tier"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Backpack targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "General pool after unlock; farm backpack targeted loot, Countdown, Summit, open world.",
+      "detailUrl": "/division-2/exotics/acosta-s-go-bag/",
+      "aliases": []
+    },
+    {
+      "id": "backfire",
+      "name": "Backfire",
+      "displayName": "Backfire",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "SMG targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "General exotic SMG pool. Farm SMG targeted loot and caches.",
+      "detailUrl": "/division-2/exotics/backfire/",
+      "aliases": []
+    },
+    {
+      "id": "bighorn",
+      "name": "Bighorn",
+      "displayName": "Bighorn",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Big Game Hunter",
+        "description": ""
+      },
+      "source": "Legendary difficulty",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Legendary strongholds and Legendary missions.",
+      "detailUrl": "/division-2/exotics/bighorn/",
+      "aliases": []
+    },
+    {
+      "id": "birdie-s-backpack",
+      "name": "Birdie’s Backpack",
+      "displayName": "Birdie’s Backpack",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "Backpack",
+      "weaponType": "",
+      "defaultCore": "",
+      "availableCores": [],
+      "coreBehavior": "needs_source_verification",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Added to DivGaming exotic watchlist from user/source-audit feedback; run the manual Codex Source Check for latest source data.",
+      "sourceConfidence": "watchlist",
+      "needsVerification": true,
+      "notes": "Newer exotic reported missing from the first Codex pass. Talent/source/core should be validated against hi-dep/mxswat before being considered final.",
+      "detailUrl": "/division-2/exotics/birdie-s-backpack/",
+      "aliases": [
+        "Birdie's Backpack"
+      ]
+    },
+    {
+      "id": "bluescreen",
+      "name": "Bluescreen",
+      "displayName": "Bluescreen",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "LMG targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "General exotic LMG pool.",
+      "detailUrl": "/division-2/exotics/bluescreen/",
+      "aliases": []
+    },
+    {
+      "id": "btsu-datagloves",
+      "name": "BTSU Datagloves",
+      "displayName": "BTSU Datagloves",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "skill_tier",
+      "availableCores": [
+        "skill_tier"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Transference Overclock",
+        "description": ""
+      },
+      "source": "Gloves targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm gloves targeted loot, caches, Countdown, Summit.",
+      "detailUrl": "/division-2/exotics/btsu-datagloves/",
+      "aliases": []
+    },
+    {
+      "id": "bullet-king",
+      "name": "Bullet King",
+      "displayName": "Bullet King",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Bullet Hell",
+        "description": ""
+      },
+      "source": "LMG targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "General exotic LMG pool; often associated with Rikers content.",
+      "detailUrl": "/division-2/exotics/bullet-king/",
+      "aliases": []
+    },
+    {
+      "id": "busy-little-bee",
+      "name": "Busy Little Bee",
+      "displayName": "Busy Little Bee",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Pistol targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm pistol targeted loot and exotic caches.",
+      "detailUrl": "/division-2/exotics/busy-little-bee/",
+      "aliases": []
+    },
+    {
+      "id": "capacitor",
+      "name": "Capacitor",
+      "displayName": "Capacitor",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Capacitance",
+        "description": ""
+      },
+      "source": "Summit challenge unlock / AR targeted loot",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Complete Summit challenge unlock first, then farm AR targeted loot and caches.",
+      "detailUrl": "/division-2/exotics/capacitor/",
+      "aliases": []
+    },
+    {
+      "id": "catharsis",
+      "name": "Catharsis",
+      "displayName": "Catharsis",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "armor",
+      "availableCores": [
+        "armor"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Vicious Cycle",
+        "description": ""
+      },
+      "source": "Mask targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm mask targeted loot, Countdown, Summit, and caches.",
+      "detailUrl": "/division-2/exotics/catharsis/",
+      "aliases": []
+    },
+    {
+      "id": "chameleon",
+      "name": "Chameleon",
+      "displayName": "Chameleon",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Adaptive Instincts",
+        "description": ""
+      },
+      "source": "AR targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm assault rifle targeted loot and bounties/caches.",
+      "detailUrl": "/division-2/exotics/chameleon/",
+      "aliases": []
+    },
+    {
+      "id": "collector",
+      "name": "Collector",
+      "displayName": "Collector",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "skill_tier",
+      "availableCores": [
+        "skill_tier"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Chest targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm chest targeted loot and exotic caches.",
+      "detailUrl": "/division-2/exotics/collector/",
+      "aliases": []
+    },
+    {
+      "id": "the-courier",
+      "name": "The Courier",
+      "displayName": "The Courier",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "armor",
+      "availableCores": [
+        "armor"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Backpack targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Seasonal/general exotic pool item; farm matching targeted loot when available.",
+      "detailUrl": "/division-2/exotics/the-courier/",
+      "aliases": []
+    },
+    {
+      "id": "coyote-s-mask",
+      "name": "Coyote’s Mask",
+      "displayName": "Coyote’s Mask",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Mask targeted loot / Jefferson Trade Center",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm mask targeted loot and Jefferson Trade Center.",
+      "detailUrl": "/division-2/exotics/coyote-s-mask/",
+      "aliases": []
+    },
+    {
+      "id": "diamondback",
+      "name": "Diamondback",
+      "displayName": "Diamondback",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Kenly College / Rifle targeted loot",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Kenly College unlock path; then rifle targeted loot when eligible.",
+      "detailUrl": "/division-2/exotics/diamondback/",
+      "aliases": []
+    },
+    {
+      "id": "doctor-home",
+      "name": "Doctor Home",
+      "displayName": "Doctor Home",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Rifle targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "General exotic rifle pool.",
+      "detailUrl": "/division-2/exotics/doctor-home/",
+      "aliases": []
+    },
+    {
+      "id": "dodge-city-gunslinger-s-holster",
+      "name": "Dodge City Gunslinger’s Holster",
+      "displayName": "Dodge City Gunslinger’s Holster",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Project / Holster targeted loot",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Complete project unlock first, then holster targeted loot/caches.",
+      "detailUrl": "/division-2/exotics/dodge-city-gunslinger-s-holster/",
+      "aliases": []
+    },
+    {
+      "id": "dread-edict",
+      "name": "Dread Edict",
+      "displayName": "Dread Edict",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "MMR targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm marksman rifle targeted loot and caches.",
+      "detailUrl": "/division-2/exotics/dread-edict/",
+      "aliases": []
+    },
+    {
+      "id": "eagle-bearer",
+      "name": "Eagle Bearer",
+      "displayName": "Eagle Bearer",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Eagle’s Strike / Tenacity",
+        "description": ""
+      },
+      "source": "Dark Hours raid / raid cache",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Raid-associated AR source; raid cache/source rules can vary by season.",
+      "detailUrl": "/division-2/exotics/eagle-bearer/",
+      "aliases": []
+    },
+    {
+      "id": "harrier-s-pride",
+      "name": "Harrier’s Pride",
+      "displayName": "Harrier’s Pride",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "",
+      "availableCores": [],
+      "coreBehavior": "needs_source_verification",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Added to DivGaming exotic watchlist from user/source-audit feedback; run the manual Codex Source Check for latest source data.",
+      "sourceConfidence": "watchlist",
+      "needsVerification": true,
+      "notes": "Newer exotic reported missing from the first Codex pass. Exact slot/talent/source/core should be validated against hi-dep/mxswat before being considered final.",
+      "detailUrl": "/division-2/exotics/harrier-s-pride/",
+      "aliases": [
+        "Harrier Pride"
+      ]
+    },
+    {
+      "id": "imperial-dynasty",
+      "name": "Imperial Dynasty",
+      "displayName": "Imperial Dynasty",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "skill_tier",
+      "availableCores": [
+        "skill_tier"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Dragon’s Glare",
+        "description": ""
+      },
+      "source": "Holster targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm holster targeted loot and exotic caches.",
+      "detailUrl": "/division-2/exotics/imperial-dynasty/",
+      "aliases": []
+    },
+    {
+      "id": "iron-lung",
+      "name": "Iron Lung",
+      "displayName": "Iron Lung",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "LMG targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "General exotic LMG pool after seasonal availability.",
+      "detailUrl": "/division-2/exotics/iron-lung/",
+      "aliases": []
+    },
+    {
+      "id": "lady-death",
+      "name": "Lady Death",
+      "displayName": "Lady Death",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "SMG targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm SMG targeted loot, open world, caches.",
+      "detailUrl": "/division-2/exotics/lady-death/",
+      "aliases": []
+    },
+    {
+      "id": "liberty",
+      "name": "Liberty",
+      "displayName": "Liberty",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Crafting project / pistol targeted loot",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Complete crafting/project path, then pistol targeted loot after unlock.",
+      "detailUrl": "/division-2/exotics/liberty/",
+      "aliases": []
+    },
+    {
+      "id": "mantis",
+      "name": "Mantis",
+      "displayName": "Mantis",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "MMR targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm marksman rifle targeted loot and caches.",
+      "detailUrl": "/division-2/exotics/mantis/",
+      "aliases": []
+    },
+    {
+      "id": "memento",
+      "name": "Memento",
+      "displayName": "Memento",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "",
+      "availableCores": [
+        "weapon_damage",
+        "armor",
+        "skill_tier"
+      ],
+      "coreBehavior": "multi_core_exotic",
+      "talent": {
+        "name": "Kill Confirmed",
+        "description": ""
+      },
+      "source": "Backpack targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm backpack targeted loot, Countdown, Summit, and caches.",
+      "detailUrl": "/division-2/exotics/memento/",
+      "aliases": []
+    },
+    {
+      "id": "merciless-ruthless",
+      "name": "Merciless / Ruthless",
+      "displayName": "Merciless / Ruthless",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Rifle targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm rifle targeted loot, Hyena-linked content, caches.",
+      "detailUrl": "/division-2/exotics/merciless-ruthless/",
+      "aliases": []
+    },
+    {
+      "id": "ninjabike-messenger-backpack",
+      "name": "NinjaBike Messenger Backpack",
+      "displayName": "NinjaBike Messenger Backpack",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "",
+      "availableCores": [
+        "weapon_damage",
+        "armor",
+        "skill_tier"
+      ],
+      "coreBehavior": "multi_core_exotic",
+      "talent": {
+        "name": "Resourceful",
+        "description": ""
+      },
+      "source": "Backpack targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm backpack targeted loot and caches.",
+      "detailUrl": "/division-2/exotics/ninjabike-messenger-backpack/",
+      "aliases": []
+    },
+    {
+      "id": "ninjabike-messenger-kneepads",
+      "name": "NinjaBike Messenger Kneepads",
+      "displayName": "NinjaBike Messenger Kneepads",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Parkour!",
+        "description": ""
+      },
+      "source": "Kneepad targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Legacy exotic kneepad reference; availability depends on current loot pool state.",
+      "detailUrl": "/division-2/exotics/ninjabike-messenger-kneepads/",
+      "aliases": []
+    },
+    {
+      "id": "ouroboros",
+      "name": "Ouroboros",
+      "displayName": "Ouroboros",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Rule Them All",
+        "description": ""
+      },
+      "source": "Incursion reward / Paradise Lost",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Incursion-associated exotic SMG source.",
+      "detailUrl": "/division-2/exotics/ouroboros/",
+      "aliases": []
+    },
+    {
+      "id": "pestilence",
+      "name": "Pestilence",
+      "displayName": "Pestilence",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Plague of the Outcasts",
+        "description": ""
+      },
+      "source": "LMG targeted loot / Dark Zone history",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm LMG targeted loot and caches; historically DZ associated.",
+      "detailUrl": "/division-2/exotics/pestilence/",
+      "aliases": []
+    },
+    {
+      "id": "ravenous",
+      "name": "Ravenous",
+      "displayName": "Ravenous",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Geri and Freki",
+        "description": ""
+      },
+      "source": "Iron Horse raid / raid cache",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Raid-associated rifle source; raid cache/source rules can vary by season.",
+      "detailUrl": "/division-2/exotics/ravenous/",
+      "aliases": []
+    },
+    {
+      "id": "regulus",
+      "name": "Regulus",
+      "displayName": "Regulus",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Regicide",
+        "description": ""
+      },
+      "source": "Iron Horse project",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Raid/project exotic pistol path.",
+      "detailUrl": "/division-2/exotics/regulus/",
+      "aliases": []
+    },
+    {
+      "id": "ridgeway-s-pride",
+      "name": "Ridgeway’s Pride",
+      "displayName": "Ridgeway’s Pride",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "armor",
+      "availableCores": [
+        "armor"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Summit project / chest targeted loot",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Complete Summit project, then chest targeted loot after unlock.",
+      "detailUrl": "/division-2/exotics/ridgeway-s-pride/",
+      "aliases": []
+    },
+    {
+      "id": "sawyers-kneepads",
+      "name": "Sawyer’s Kneepads",
+      "displayName": "Sawyer’s Kneepads",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "armor",
+      "availableCores": [
+        "armor"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Grace Under Fire",
+        "description": ""
+      },
+      "source": "Kneepad targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm kneepad targeted loot and exotic caches after the item is eligible.",
+      "detailUrl": "/division-2/exotics/sawyers-kneepads/",
+      "aliases": []
+    },
+    {
+      "id": "scorpio",
+      "name": "Scorpio",
+      "displayName": "Scorpio",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Septic Shock",
+        "description": ""
+      },
+      "source": "Shotgun targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm shotgun targeted loot and caches.",
+      "detailUrl": "/division-2/exotics/scorpio/",
+      "aliases": []
+    },
+    {
+      "id": "st-elmos-engine",
+      "name": "St. Elmo’s Engine",
+      "displayName": "St. Elmo’s Engine",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Actum Est",
+        "description": ""
+      },
+      "source": "AR targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "General exotic AR pool after seasonal availability.",
+      "detailUrl": "/division-2/exotics/st-elmos-engine/",
+      "aliases": []
+    },
+    {
+      "id": "sweet-dreams-lullaby",
+      "name": "Sweet Dreams / Lullaby",
+      "displayName": "Sweet Dreams / Lullaby",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Shotgun targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm shotgun targeted loot and Outcast-linked content/caches.",
+      "detailUrl": "/division-2/exotics/sweet-dreams-lullaby/",
+      "aliases": []
+    },
+    {
+      "id": "tardigrade-armor-system",
+      "name": "Tardigrade Armor System",
+      "displayName": "Tardigrade Armor System",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "armor",
+      "availableCores": [
+        "armor"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Ablative Nano-Plating",
+        "description": ""
+      },
+      "source": "Chest targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm chest targeted loot and caches.",
+      "detailUrl": "/division-2/exotics/tardigrade-armor-system/",
+      "aliases": []
+    },
+    {
+      "id": "vile",
+      "name": "Vile",
+      "displayName": "Vile",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "skill_tier",
+      "availableCores": [
+        "skill_tier"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Toxic Delivery",
+        "description": ""
+      },
+      "source": "Mask targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm mask targeted loot and caches; strong status-effect synergy.",
+      "detailUrl": "/division-2/exotics/vile/",
+      "aliases": []
+    },
+    {
+      "id": "vindicator",
+      "name": "Vindicator",
+      "displayName": "Vindicator",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Descent / reconstructed cache",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Descent-associated exotic rifle source.",
+      "detailUrl": "/division-2/exotics/vindicator/",
+      "aliases": []
+    },
+    {
+      "id": "waveform",
+      "name": "Waveform",
+      "displayName": "Waveform",
+      "rarity": "Exotic",
+      "category": "Exotic Gear",
+      "itemType": "gear",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "skill_tier",
+      "availableCores": [
+        "skill_tier"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "Alternating Current",
+        "description": ""
+      },
+      "source": "Holster targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Farm holster targeted loot and caches.",
+      "detailUrl": "/division-2/exotics/waveform/",
+      "aliases": []
+    },
+    {
+      "id": "whiplash",
+      "name": "Whiplash",
+      "displayName": "Whiplash",
+      "rarity": "Exotic",
+      "category": "Exotic Weapon",
+      "itemType": "weapon",
+      "slot": "",
+      "weaponType": "",
+      "defaultCore": "weapon_damage",
+      "availableCores": [
+        "weapon_damage"
+      ],
+      "coreBehavior": "fixed_default_core",
+      "talent": {
+        "name": "",
+        "description": ""
+      },
+      "source": "Pistol targeted loot / exotic caches",
+      "sourceConfidence": "curated",
+      "needsVerification": false,
+      "notes": "Year 8 Season 1 exotic pistol; farm pistol targeted loot when available.",
+      "detailUrl": "/division-2/exotics/whiplash/",
+      "aliases": []
+    }
+  ]
+}

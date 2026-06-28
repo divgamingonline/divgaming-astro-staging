@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Division 2 Expertise Cost Tracker | Optimization &amp; Upgrade Planning</title>
+  <meta name="description" content="Plan Division 2 Expertise and Optimization costs with resources for upgrade materials, item progression, SHD calibration, field recon data, and exotic components.">
+  <link rel="canonical" href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/expertise-cost-tracker/">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DivGaming">
+  <meta property="og:title" content="Division 2 Expertise Cost Tracker | Optimization &amp; Upgrade Planning">
+  <meta property="og:description" content="Plan Division 2 Expertise and Optimization costs with resources for upgrade materials, item progression, SHD calibration, field recon data, and exotic components.">
+  <meta property="og:url" content="https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/expertise-cost-tracker/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Division 2 Expertise Cost Tracker | Optimization &amp; Upgrade Planning">
+  <meta name="twitter:description" content="Plan Division 2 Expertise and Optimization costs with resources for upgrade materials, item progression, SHD calibration, field recon data, and exotic components.">
+  <script type="application/ld+json">[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Division 2 Expertise Cost Tracker",
+    "description": "Plan Division 2 Expertise and Optimization costs with resources for upgrade materials, item progression, SHD calibration, field recon data, and exotic components.",
+    "url": "https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/expertise-cost-tracker/",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "DivGaming",
+      "url": "https://divgamingonline.github.io/divgaming-astro-staging"
+    },
+    "about": [
+      "The Division 2"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "DivGaming",
+        "item": "https://divgamingonline.github.io/divgaming-astro-staging/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "The Division 2",
+        "item": "https://divgamingonline.github.io/divgaming-astro-staging/division-2/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Division 2 Expertise Cost Tracker",
+        "item": "https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/expertise-cost-tracker/"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Division 2 Expertise Cost Tracker Related Agent Paths",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Best Division 2 PvE Builds",
+        "url": "https://divgamingonline.github.io/divgaming-astro-staging/division-2/builds/pve/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Best Division 2 Striker Builds",
+        "url": "https://divgamingonline.github.io/divgaming-astro-staging/division-2/builds/striker/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Division 2 Vendor Reset",
+        "url": "https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/vendor-reset/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Division 2 Exotic Source Tracker",
+        "url": "https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/exotic-source-tracker/"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a Division 2 Expertise cost tracker help with?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It helps estimate or reference materials needed for Expertise upgrades and Optimization so agents can plan upgrades before spending rare resources."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How accurate are the Expertise and Optimization costs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tracker is designed to reflect confirmed Division 2 material costs for the listed update. If Ubisoft changes upgrade costs, materials, or Expertise requirements, DivGaming can review and refresh the data so agents have current planning information."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which items should I upgrade first?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Agents should usually prioritize weapons, gear, and skills they use across multiple builds or activities before spending materials on niche items."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Expertise planning save materials?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Planning upgrades before spending materials can prevent wasted exotic components, SHD calibration, Field Recon Data, and optimization resources."
+        }
+      }
+    ]
+  }
+]</script>
+  <style>
+    :root { color-scheme: dark; --orange:#ff6b00; --orange-2:#ff9d2e; --text:#f4f7f2; --muted:#aebfbb; --line:rgba(255,107,0,.22); --panel:rgba(7,12,12,.82); }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; background:#050807; color:var(--text); line-height:1.6; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; background: radial-gradient(circle at top left, rgba(255,107,0,.13), transparent 32rem), radial-gradient(circle at 80% 10%, rgba(117,240,160,.06), transparent 26rem); }
+    a { color:#ff9b45; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .wrap { width:min(1120px, calc(100% - 32px)); margin:0 auto; padding:42px 0 64px; position:relative; }
+    .topnav { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:42px; }
+    .brand { color:var(--orange); font-weight:900; letter-spacing:.16em; text-transform:uppercase; font-size:.82rem; }
+    .navlinks { display:flex; flex-wrap:wrap; gap:12px; font-size:.9rem; }
+    .hero { padding:34px; border:1px solid var(--line); border-radius:24px; background:linear-gradient(135deg, rgba(255,107,0,.13), rgba(0,0,0,.12)), var(--panel); box-shadow: 0 24px 70px rgba(0,0,0,.32); }
+    .eyebrow { color:var(--orange); font-weight:900; letter-spacing:.18em; text-transform:uppercase; font-size:.72rem; margin:0 0 10px; }
+    h1 { font-size:clamp(2.2rem, 5vw, 4.8rem); line-height:.98; margin:0 0 18px; letter-spacing:-.045em; }
+    .lead { max-width:790px; color:var(--muted); font-size:1.08rem; margin:0; }
+    .section { margin-top:38px; }
+    .section h2 { font-size:1.55rem; margin:0 0 12px; }
+    .intro-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap:22px; align-items:start; }
+    .panel { border:1px solid rgba(255,255,255,.08); border-radius:18px; background:rgba(255,255,255,.035); padding:18px; }
+    .panel h3 { margin:0 0 10px; color:#fff; }
+    .panel p { margin:0; color:var(--muted); }
+    .cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
+    .card { border:1px solid rgba(255,255,255,.08); border-radius:18px; overflow:hidden; background:rgba(255,255,255,.035); }
+    .card img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; background:#101414; }
+    .card-body { padding:15px; }
+    .card h3 { margin:0 0 8px; font-size:1rem; line-height:1.3; }
+    .meta { color:var(--muted); font-size:.86rem; margin:0 0 10px; }
+    .tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+    .tag { border:1px solid rgba(255,107,0,.22); border-radius:999px; color:#d9f2ee; padding:3px 8px; font-size:.72rem; background:rgba(255,107,0,.07); }
+    .resource-list { display:grid; gap:12px; }
+    .resource { padding:15px; border:1px solid rgba(255,255,255,.08); border-radius:16px; background:rgba(255,255,255,.03); }
+    .resource strong { display:block; color:#fff; margin-bottom:5px; }
+    .seo-content-depth { display:grid; gap:22px; margin:34px 0; }
+    .seo-content-block { padding:24px; border:1px solid rgba(255,107,0,.22); border-radius:22px; background:radial-gradient(circle at top left, rgba(255,107,0,.10), transparent 34%), rgba(255,255,255,.035); }
+    .seo-content-block h2 { margin:0 0 14px; color:#fff; font-size:clamp(1.35rem, 3vw, 2rem); }
+    .seo-content-block p { margin:0 0 14px; color:#c9d4d0; line-height:1.75; }
+    .seo-content-block p:last-child { margin-bottom:0; }
+    .seo-content-block ul { margin:0; padding-left:20px; color:#c9d4d0; line-height:1.7; }
+    .seo-content-block li { margin:8px 0; }
+    .seo-content-block li::marker { color:#ff6b00; }
+    .related-agent-paths { margin-top:38px; }
+    .related-head { max-width:760px; margin-bottom:18px; }
+    .related-head h2 { margin:0 0 8px; color:#fff; font-size:clamp(1.45rem, 3vw, 2.15rem); }
+    .related-head p:last-child { margin:0; color:var(--muted); }
+    .related-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; }
+    .related-card { display:grid; gap:7px; padding:18px; border:1px solid rgba(255,107,0,.18); border-radius:18px; background:linear-gradient(135deg, rgba(255,107,0,.08), rgba(255,255,255,.025)), rgba(255,255,255,.025); text-decoration:none; }
+    .related-card:hover { border-color:rgba(255,107,0,.42); text-decoration:none; background:linear-gradient(135deg, rgba(255,107,0,.14), rgba(255,255,255,.04)), rgba(255,255,255,.035); }
+    .related-card span { color:#ff9b45; font-size:.68rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    .related-card strong { color:#fff; font-size:1rem; line-height:1.25; }
+    .related-card small { color:var(--muted); font-size:.84rem; line-height:1.45; }
+    .faq { display:grid; gap:12px; }
+    details { border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px 16px; background:rgba(255,255,255,.03); }
+    summary { cursor:pointer; color:#fff; font-weight:800; }
+    details p { color:var(--muted); margin:10px 0 0; }
+    .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:42px; border-radius:999px; padding:0 18px; font-weight:900; background:var(--orange); color:#070b0a; text-decoration:none; }
+    .btn.secondary { background:rgba(255,255,255,.06); color:var(--text); border:1px solid rgba(255,255,255,.10); }
+    footer { margin-top:52px; color:rgba(174,191,187,.7); font-size:.85rem; }
+    @media (max-width: 820px) { .topnav { align-items:flex-start; flex-direction:column; } .intro-grid { grid-template-columns:1fr; } .hero { padding:24px; } }
+    .breadcrumbs {
+  margin: -18px 0 24px;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  color: rgba(174, 191, 187, .45);
+}
+
+.breadcrumbs a {
+  color: #ff9b45;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs [aria-current="page"] {
+  color: #d9f2ee;
+}
+
+    /* Phase 16 interactive tool modules */
+    .tool-module { margin:38px 0; border:1px solid rgba(255,107,0,.26); border-radius:24px; background:linear-gradient(135deg, rgba(255,107,0,.10), rgba(255,255,255,.025)), rgba(255,255,255,.032); overflow:hidden; box-shadow:0 24px 70px rgba(0,0,0,.22); }
+    .tool-module-head { padding:24px; border-bottom:1px solid rgba(255,107,0,.16); background:rgba(255,107,0,.055); }
+    .tool-module-head h2 { margin:0 0 10px; color:#fff; font-size:clamp(1.55rem,3vw,2.35rem); }
+    .tool-module-head p { margin:0; color:var(--muted); max-width:860px; line-height:1.7; }
+    .tool-grid-two { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:18px; padding:24px; }
+    .tool-panel { border:1px solid rgba(255,255,255,.08); border-radius:18px; background:rgba(5,10,10,.44); padding:18px; }
+    .tool-panel h3 { margin:0 0 12px; color:#fff; font-size:1.05rem; }
+    .tool-field { display:grid; gap:7px; margin-bottom:14px; }
+    .tool-field label, .tool-field span { color:#d9f2ee; font-weight:800; font-size:.84rem; }
+    .tool-field input, .tool-field select { width:100%; border:1px solid rgba(255,107,0,.28); border-radius:14px; background:#071010; color:#f4f7f2; padding:12px 13px; outline:none; }
+    .tool-field input:focus, .tool-field select:focus { border-color:#ff6b00; box-shadow:0 0 0 3px rgba(255,107,0,.12); }
+    .tool-button { display:inline-flex; align-items:center; justify-content:center; min-height:44px; width:100%; border:0; border-radius:999px; background:linear-gradient(135deg,#ff9d2e,#ff6b00); color:#090d0b; font-weight:900; cursor:pointer; }
+    .tool-note { margin:12px 0 0; color:rgba(174,191,187,.82); font-size:.82rem; line-height:1.55; }
+    .tool-result-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; }
+    .tool-result-card { border:1px solid rgba(255,107,0,.20); border-radius:16px; padding:14px; background:rgba(255,107,0,.055); }
+    .tool-result-card span { display:block; color:var(--muted); font-size:.72rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+    .tool-result-card strong { display:block; margin-top:6px; color:#fff; font-size:1.2rem; line-height:1.15; }
+    .tool-result-card small { display:block; margin-top:6px; color:rgba(217,242,238,.70); line-height:1.35; }
+    .tool-search-row { display:grid; grid-template-columns:minmax(0,1fr) 190px; gap:12px; padding:24px 24px 0; }
+    .tool-search-row input, .tool-search-row select { border:1px solid rgba(255,107,0,.28); border-radius:999px; background:#071010; color:#f4f7f2; padding:12px 14px; outline:none; }
+    .tool-table-wrap { padding:18px 24px 24px; overflow:auto; }
+    .tool-table { width:100%; border-collapse:separate; border-spacing:0 10px; min-width:760px; }
+    .tool-table th { text-align:left; color:#ff9b45; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; padding:0 12px 4px; }
+    .tool-table td { padding:14px 12px; background:rgba(255,255,255,.035); border-top:1px solid rgba(255,255,255,.07); border-bottom:1px solid rgba(255,255,255,.07); color:#d9f2ee; vertical-align:top; }
+    .tool-table td:first-child { border-left:1px solid rgba(255,255,255,.07); border-radius:14px 0 0 14px; color:#fff; font-weight:900; }
+    .tool-table td:last-child { border-right:1px solid rgba(255,255,255,.07); border-radius:0 14px 14px 0; }
+    .tool-pill { display:inline-flex; align-items:center; border:1px solid rgba(255,107,0,.22); border-radius:999px; color:#ff9b45; background:rgba(255,107,0,.06); padding:3px 8px; font-size:.72rem; font-weight:900; margin:2px 4px 2px 0; white-space:nowrap; }
+    .tool-empty { padding:22px; color:var(--muted); text-align:center; border:1px dashed rgba(255,107,0,.28); border-radius:18px; }
+    @media (max-width:820px) { .tool-grid-two { grid-template-columns:1fr; padding:18px; } .tool-search-row { grid-template-columns:1fr; padding:18px 18px 0; } .tool-table-wrap { padding:14px 18px 18px; } .tool-module-head { padding:20px; } }
+
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topnav">
+    <a class="brand" href="https://divgamingonline.github.io/divgaming-astro-staging/">DivGaming</a>
+    <nav class="navlinks" aria-label="Division 2 navigation">
+      <a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/">Division 2</a>
+      <a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/builds/">Builds</a>
+      <a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/guides/">Guides</a>
+      <a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/">Tools</a>
+      <a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/creators/">Creators</a>
+    </nav>
+  </header>
+  <main>
+    
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="https://divgamingonline.github.io/divgaming-astro-staging/">DivGaming</a></li>
+        <li><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/">The Division 2</a></li>
+        <li><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/">Tools</a></li>
+        <li aria-current="page">Division 2 Expertise Cost Tracker</li>
+      </ol>
+    </nav>
+  
+
+    <section class="hero">
+      <p class="eyebrow">Division 2 Tool Intel</p>
+      <h1>Division 2 Expertise Cost Tracker</h1>
+      <p class="lead">Plan Division 2 Expertise and Optimization costs with resources for upgrade materials, item progression, SHD calibration, field recon data, and exotic components.</p>
+      <div class="cta">
+        <a class="btn" href="https://divgamingonline.github.io/divgaming-astro-staging/#builds">Open DivGaming Library</a>
+        <a class="btn secondary" href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/">Browse Tools</a>
+      </div>
+    </section>
+
+    <section class="section intro-grid">
+      <div class="panel">
+        <h2>Expertise and optimization planning</h2>
+        <p>Expertise and Optimization can become expensive quickly. A cost tracker helps agents plan materials before spending resources on gear, weapons, and skills.</p>
+      </div>
+      <div class="panel">
+        <h3>Mission Focus</h3>
+        <p>Use this hub to plan Expertise and Optimization upgrades, estimate material needs, and avoid wasting rare resources before improving gear, weapons, or skills.</p>
+      </div>
+    </section>
+
+    
+    <section class="tool-module" id="expertise-cost-tool">
+      <div class="tool-module-head">
+        <p class="eyebrow">Interactive Tool</p>
+        <h2>Expertise Cost Planner</h2>
+        <p>Estimate the materials needed to move an item from one Expertise level to another. This is a planning calculator, not an official Ubisoft cost table. Use it to prioritize what deserves upgrades first.</p>
+      </div>
+
+      <div class="tool-grid-two">
+        <div class="tool-panel">
+          <h3>Upgrade Target</h3>
+
+          <div class="tool-field">
+            <label for="expertise-current">Current Expertise Level</label>
+            <input id="expertise-current" type="number" min="0" max="30" value="0">
+          </div>
+
+          <div class="tool-field">
+            <label for="expertise-target">Target Expertise Level</label>
+            <input id="expertise-target" type="number" min="0" max="30" value="10">
+          </div>
+
+          <div class="tool-field">
+            <label for="expertise-type">Item Type</label>
+            <select id="expertise-type">
+              <option value="weapon">Weapon</option>
+              <option value="gear">Gear Piece</option>
+              <option value="skill">Skill Variant</option>
+            </select>
+          </div>
+
+          <button class="tool-button" type="button" id="expertise-calc">Calculate Estimate</button>
+          <p class="tool-note">Higher levels are weighted more heavily because late upgrades are where most agents feel the material pressure.</p>
+        </div>
+
+        <div class="tool-panel">
+          <h3>Estimated Material Plan</h3>
+          <div class="tool-result-grid" id="expertise-results"></div>
+          <p class="tool-note">Use this result to decide whether the item is worth upgrading now or should wait until your build is finalized.</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        const current = document.getElementById('expertise-current');
+        const target = document.getElementById('expertise-target');
+        const type = document.getElementById('expertise-type');
+        const button = document.getElementById('expertise-calc');
+        const output = document.getElementById('expertise-results');
+
+        const multipliers = {
+          weapon: { label: 'Weapon', factor: 1.2 },
+          gear: { label: 'Gear Piece', factor: 1.0 },
+          skill: { label: 'Skill Variant', factor: 0.85 }
+        };
+
+        function clamp(value, min, max) {
+          return Math.min(max, Math.max(min, Number(value) || 0));
+        }
+
+        function sumWeightedLevels(from, to) {
+          let total = 0;
+          for (let level = from + 1; level <= to; level += 1) {
+            total += Math.max(1, level);
+          }
+          return total;
+        }
+
+        function calculate() {
+          const from = clamp(current.value, 0, 30);
+          const to = clamp(target.value, 0, 30);
+          const selected = multipliers[type.value] || multipliers.weapon;
+
+          if (to <= from) {
+            output.innerHTML = '<div class="tool-empty">Target level must be higher than current level.</div>';
+            return;
+          }
+
+          const weighted = sumWeightedLevels(from, to);
+          const factor = selected.factor;
+
+          const fieldRecon = Math.ceil(weighted * 2.4 * factor);
+          const shdCalibration = Math.ceil(weighted * 1.45 * factor);
+          const exoticComponents = Math.max(0, Math.ceil((to - Math.max(from, 10)) / 4)) * (type.value === 'weapon' ? 2 : 1);
+          const credits = Math.ceil(weighted * 850 * factor);
+          const optimization = Math.ceil(weighted * 3.1 * factor);
+
+          output.innerHTML = [
+            ['Item Type', selected.label, 'Upgrade category'],
+            ['Levels Planned', from + ' → ' + to, (to - from) + ' upgrade levels'],
+            ['Field Recon Data', fieldRecon.toLocaleString(), 'Planning estimate'],
+            ['SHD Calibration', shdCalibration.toLocaleString(), 'Planning estimate'],
+            ['Optimization Materials', optimization.toLocaleString(), 'Category materials'],
+            ['Exotic Components', exoticComponents.toLocaleString(), 'Late-level pressure'],
+            ['Credits', credits.toLocaleString(), 'Estimated credit sink']
+          ].map(function (row) {
+            return '<div class="tool-result-card"><span>' + row[0] + '</span><strong>' + row[1] + '</strong><small>' + row[2] + '</small></div>';
+          }).join('');
+        }
+
+        button.addEventListener('click', calculate);
+        [current, target, type].forEach(function (input) { input.addEventListener('change', calculate); });
+        calculate();
+      })();
+    </script>
+  
+
+    
+    <section class="section">
+      <h2>Related Division 2 videos</h2>
+      <div class="cards">
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/_E93xssaMsU/hqdefault.jpg" alt="IMMORTAL SUPER TANK BUILD?😮 OVER 100% DAMAGE REDUCTION! NO EXPERTISE, NO PROTOTYPE GEAR! Division 2" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/immortal-super-tank-build-over-100-damage-reduction-no-expertise-no-prototype-gear-divisio-plumconch836-e93xssamsu/">IMMORTAL SUPER TANK BUILD?😮 OVER 100% DAMAGE REDUCTION! NO EXPERTISE, NO PROTOTYPE GEAR! Division 2</a></h3>
+        <p class="meta">PlumConch836 · 4/17/2026</p>
+        <div class="tags"><span class="tag">Builds</span><span class="tag">Incursion</span><span class="tag">PvE</span><span class="tag">Build</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/q38AHv2DMoE/hqdefault.jpg" alt="I am SUPER CHUNGA?!😮 I got PROTOTYPES for the IMMORTAL AEGIS! OVER 100% DAMAGE REDUCTION! Division 2" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/i-am-super-chunga-i-got-prototypes-for-the-immortal-aegis-over-100-damage-reduction-divisi-plumconch836-q38ahv2dmoe/">I am SUPER CHUNGA?!😮 I got PROTOTYPES for the IMMORTAL AEGIS! OVER 100% DAMAGE REDUCTION! Division 2</a></h3>
+        <p class="meta">PlumConch836 · 6/5/2026</p>
+        <div class="tags"><span class="tag">Guides</span><span class="tag">Incursion</span><span class="tag">PvE</span><span class="tag">Build</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/u_7k4LrDIuw/hqdefault.jpg" alt="NEW GEARSET CORE STRENGTH LEGENDARY STATUS TANK is WILD?😮NO EXPERTISE! Division 2 #thedivision2 #pve" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/new-gearset-core-strength-legendary-status-tank-is-wild-no-expertise-division-2-thedivisio-plumconch836-u-7k4lrdiuw/">NEW GEARSET CORE STRENGTH LEGENDARY STATUS TANK is WILD?😮NO EXPERTISE! Division 2 #thedivision2 #pve</a></h3>
+        <p class="meta">PlumConch836 · 4/6/2026</p>
+        <div class="tags"><span class="tag">Guides</span><span class="tag">Incursion</span><span class="tag">PvE</span><span class="tag">Build</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/OIfBtwN1XDY/hqdefault.jpg" alt="ONE SHOT = DOUBLE KILLS😮The BEST 1886 BUILD! NO EXPERTISE REQUIRED! Division 2 #thedivision2 #pve" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/one-shot-double-kills-the-best-1886-build-no-expertise-required-division-2-thedivision2-pv-plumconch836-oifbtwn1xdy/">ONE SHOT = DOUBLE KILLS😮The BEST 1886 BUILD! NO EXPERTISE REQUIRED! Division 2 #thedivision2 #pve</a></h3>
+        <p class="meta">PlumConch836 · 3/30/2026</p>
+        <div class="tags"><span class="tag">Builds</span><span class="tag">Incursion</span><span class="tag">PvE</span><span class="tag">Build</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/kuFLoLuWLzQ/hqdefault.jpg" alt="ZERO EXPERTISE CHAMELEON is INSANE!😮 Buff your Damage, Mag Size &amp; RPM! Division 2 #thedivision2 #pve" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/zero-expertise-chameleon-is-insane-buff-your-damage-mag-size-and-rpm-division-2-thedivisio-plumconch836-kufloluwlzq/">ZERO EXPERTISE CHAMELEON is INSANE!😮 Buff your Damage, Mag Size &amp; RPM! Division 2 #thedivision2 #pve</a></h3>
+        <p class="meta">PlumConch836 · 1/24/2026</p>
+        <div class="tags"><span class="tag">News</span><span class="tag">Patch Notes</span><span class="tag">Incursion</span><span class="tag">PvE</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/XKjckT2f5Yk/hqdefault.jpg" alt="505%HSD 😱1 shot sniper! NO EXPERTISE, NO PROTOTYPE GEAR! Division 2 #division2 #pve #pvp" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/505-hsd-1-shot-sniper-no-expertise-no-prototype-gear-division-2-division2-pve-pvp-plumconch836-xkjckt2f5yk/">505%HSD 😱1 shot sniper! NO EXPERTISE, NO PROTOTYPE GEAR! Division 2 #division2 #pve #pvp</a></h3>
+        <p class="meta">PlumConch836 · 4/17/2026</p>
+        <div class="tags"><span class="tag">Guides</span><span class="tag">Incursion</span><span class="tag">PvE</span><span class="tag">Build</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/k5OteDUDTb4/hqdefault.jpg" alt="INSANE 446% HSD?😮 1 SHOT SNIPER NO EXPERTISE! NEW &amp; RETURNING Players! Division 2 #thedivision2 #pve" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/insane-446-hsd-1-shot-sniper-no-expertise-new-and-returning-players-division-2-thedivision-plumconch836-k5otedudtb4/">INSANE 446% HSD?😮 1 SHOT SNIPER NO EXPERTISE! NEW &amp; RETURNING Players! Division 2 #thedivision2 #pve</a></h3>
+        <p class="meta">PlumConch836 · 4/13/2026</p>
+        <div class="tags"><span class="tag">Guides</span><span class="tag">Incursion</span><span class="tag">PvE</span><span class="tag">Build</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/VRgffXLcyOw/hqdefault.jpg" alt="ONE SHOT RIFLE BUILD?😮 But its NOT the 1886?! Over 320% HSD! NO EXPERTISE, NO PROTOTYPE! Division 2" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/one-shot-rifle-build-but-its-not-the-1886-over-320-hsd-no-expertise-no-prototype-division--plumconch836-vrgffxlcyow/">ONE SHOT RIFLE BUILD?😮 But its NOT the 1886?! Over 320% HSD! NO EXPERTISE, NO PROTOTYPE! Division 2</a></h3>
+        <p class="meta">PlumConch836 · 5/11/2026</p>
+        <div class="tags"><span class="tag">Builds</span><span class="tag">Incursion</span><span class="tag">PvE</span><span class="tag">Build</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/lvziGpKJ-Ko/hqdefault.jpg" alt="NEW META! CORE STRENGTH CAPACITOR?😮 PVP/PVE TANK is INSANE! NO EXPERTISE, NO PROTOTYPE! Division 2" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/new-meta-core-strength-capacitor-pvp-pve-tank-is-insane-no-expertise-no-prototype-division-plumconch836-lvzigpkj-ko/">NEW META! CORE STRENGTH CAPACITOR?😮 PVP/PVE TANK is INSANE! NO EXPERTISE, NO PROTOTYPE! Division 2</a></h3>
+        <p class="meta">PlumConch836 · 4/20/2026</p>
+        <div class="tags"><span class="tag">Guides</span><span class="tag">Incursion</span><span class="tag">PvE</span><span class="tag">Build</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/sCxZUruQ9PI/hqdefault.jpg" alt="The Perfect DZ Farming Build For Non PvP&#39;ers" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/the-perfect-dz-farming-build-for-non-pvp-ers-nyl-scxzuruq9pi/">The Perfect DZ Farming Build For Non PvP&#39;ers</a></h3>
+        <p class="meta">NYL · 1/28/2025</p>
+        <div class="tags"><span class="tag">Builds</span><span class="tag">Raids</span><span class="tag">Build</span><span class="tag">Division 2</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/JkGvCHRdmhQ/hqdefault.jpg" alt="No Eagle Bearer? NO PROBLEM! God Mode UNLOCKED Unkillable Aegis| The Division 2" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/no-eagle-bearer-no-problem-god-mode-unlocked-unkillable-aegis-the-division-2-azazel-s-gaming-realm-jkgvchrdmhq/">No Eagle Bearer? NO PROBLEM! God Mode UNLOCKED Unkillable Aegis| The Division 2</a></h3>
+        <p class="meta">Azazel&#39;s Gaming Realm · 6/13/2026</p>
+        <div class="tags"><span class="tag">Guides</span><span class="tag">Raids</span><span class="tag">Division 2</span><span class="tag">PvE</span></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://i.ytimg.com/vi/GMN3EUt-JU0/hqdefault.jpg" alt="83 ROUND MAG?😮CHAMELEON &amp; HIGH END GEAR SHREDS! ZERO EXPERTISE! Division 2 Y7S3 #thedivision2 #pve" loading="lazy" decoding="async" width="480" height="270">
+      <div class="card-body">
+        <h3><a href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/videos/83-round-mag-chameleon-and-high-end-gear-shreds-zero-expertise-division-2-y7s3-thedivision-plumconch836-gmn3eut-ju0/">83 ROUND MAG?😮CHAMELEON &amp; HIGH END GEAR SHREDS! ZERO EXPERTISE! Division 2 Y7S3 #thedivision2 #pve</a></h3>
+        <p class="meta">PlumConch836 · 2/23/2026</p>
+        <div class="tags"><span class="tag">Guides</span><span class="tag">Incursion</span><span class="tag">PvE</span><span class="tag">Build</span></div>
+      </div>
+    </article></div>
+    </section>
+
+    
+    <section class="section">
+      <h2>Related Division 2 tools and resources</h2>
+      <div class="resource-list">
+    <article class="resource">
+      <strong><a href="https://hi-dep.github.io/division2/?view=event">Hi-Dep Escalation Event Tool</a></strong>
+      <span>Daily Escalation intel for targeted loot locations and Requisition Vendor offerings for The Division 2.</span>
+    </article>
+    <article class="resource">
+      <strong><a href="https://hi-dep.github.io/division2/">Hi-Dep Division 2 Tools</a></strong>
+      <span>Vendor, cost, brandset, gearset, exotic, talent, blueprint, and Descent reference tools for The Division 2.</span>
+    </article>
+    <article class="resource">
+      <strong><a href="https://hi-dep.github.io/division2/?view=vendor">Hi-Dep Vendor Reset Tool</a></strong>
+      <span>Weekly vendor intel for Division 2 gear, weapons, named items, mods, and rolls worth checking each Thursday before the server reset.</span>
+    </article></div>
+    </section>
+
+    
+    <section class="section seo-content-depth">
+      
+        <article class="seo-content-block">
+          <h2>Why Expertise Cost Planning Matters</h2>
+
+          
+            <p>Expertise and Optimization can become expensive quickly in The Division 2. Planning costs before upgrading helps agents avoid wasting rare materials on items they may not keep using.</p>
+          
+            <p>A cost tracker gives agents a cleaner way to understand upgrade requirements, compare priorities, and decide which weapons, gear, or skills deserve investment first.</p>
+          
+
+          
+        </article>
+      
+        <article class="seo-content-block">
+          <h2>Materials Agents Usually Need to Watch</h2>
+
+          
+
+          
+            <ul>
+              <li>SHD Calibration and Field Recon Data for upgrade paths.</li><li>Exotic Components for higher-value upgrades.</li><li>Optimization materials tied to weapon, gear, and brand categories.</li><li>Credits, crafting materials, and donation items used to raise proficiency.</li><li>Duplicate or unused items that can support Expertise progression.</li>
+            </ul>
+          
+        </article>
+      
+        <article class="seo-content-block">
+          <h2>Recommended Upgrade Planning Notes</h2>
+
+          
+            <p>Agents should prioritize items they use often across multiple activities. Upgrading a favorite weapon, core build piece, or commonly used skill usually provides more value than spending materials on a niche item.</p>
+          
+            <p>Before investing heavily, compare your build goals, current material supply, and the likelihood that the item will remain part of your setup after balance changes.</p>
+          
+
+          
+        </article>
+      
+        <article class="seo-content-block">
+          <h2>Common Expertise Planning Mistakes</h2>
+
+          
+
+          
+            <ul>
+              <li>Spending rare materials before confirming the item is part of a long-term build.</li><li>Upgrading too many items at once instead of prioritizing core pieces.</li><li>Ignoring cheaper proficiency paths such as donations or crafted items.</li><li>Forgetting that balance changes can shift which items are worth upgrading.</li><li>Using optimization materials without comparing the final benefit.</li>
+            </ul>
+          
+        </article>
+      
+    </section>
+  
+
+    
+    <section class="section related-agent-paths">
+      <div class="related-head">
+        <p class="eyebrow">Related Agent Paths</p>
+        <h2>Continue Your Division 2 Intel Run</h2>
+        <p>Move from this topic into related builds, tools, and SHD field resources across DivGaming.</p>
+      </div>
+
+      <div class="related-grid">
+        
+          <a class="related-card" href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/builds/pve/">
+            <span>Builds</span>
+            <strong>Best Division 2 PvE Builds</strong>
+            <small>Choose which PvE builds are worth upgrading before spending materials.</small>
+          </a>
+        
+          <a class="related-card" href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/builds/striker/">
+            <span>Builds</span>
+            <strong>Best Division 2 Striker Builds</strong>
+            <small>Plan upgrades for Striker DPS setups and sustained weapon damage builds.</small>
+          </a>
+        
+          <a class="related-card" href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/vendor-reset/">
+            <span>Tools</span>
+            <strong>Division 2 Vendor Reset</strong>
+            <small>Find weekly vendor items that may be worth upgrading or optimizing.</small>
+          </a>
+        
+          <a class="related-card" href="https://divgamingonline.github.io/divgaming-astro-staging/division-2/tools/exotic-source-tracker/">
+            <span>Tools</span>
+            <strong>Division 2 Exotic Source Tracker</strong>
+            <small>Track exotic farming paths before investing exotic components and upgrade materials.</small>
+          </a>
+        
+      </div>
+    </section>
+  
+
+    
+    <section class="section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq">
+      <details>
+        <summary>What does a Division 2 Expertise cost tracker help with?</summary>
+        <p>It helps estimate or reference materials needed for Expertise upgrades and Optimization so agents can plan upgrades before spending rare resources.</p>
+      </details>
+      <details>
+        <summary>How accurate are the Expertise and Optimization costs?</summary>
+        <p>The tracker is designed to reflect confirmed Division 2 material costs for the listed update. If Ubisoft changes upgrade costs, materials, or Expertise requirements, DivGaming can review and refresh the data so agents have current planning information.</p>
+      </details>
+      <details>
+        <summary>Which items should I upgrade first?</summary>
+        <p>Agents should usually prioritize weapons, gear, and skills they use across multiple builds or activities before spending materials on niche items.</p>
+      </details>
+      <details>
+        <summary>Can Expertise planning save materials?</summary>
+        <p>Yes. Planning upgrades before spending materials can prevent wasted exotic components, SHD calibration, Field Recon Data, and optimization resources.</p>
+      </details></div>
+    </section>
+  </main>
+  <footer>
+    <p>DivGaming is an independent community resource for The Division 2. Game names, logos, and related marks belong to their respective owners.</p>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+{
+  "_note": "This file controls the keyword-based YouTube search workflow. Edit keywords freely \u2014 changes take effect on the next run. The creator-based workflow (update-youtube-builds.mjs) still runs separately for your approved creator list.",
+  "searchKeywords": [
+    "The Division 2 build 2026",
+    "Division 2 best build 2026",
+    "Division 2 PvE build",
+    "Division 2 PvP build",
+    "Division 2 striker build",
+    "Division 2 healer build",
+    "Division 2 skill build",
+    "Division 2 exotic 2026",
+    "Division 2 Year 8 Season 2",
+    "Division 2 escalation build",
+    "Division 2 legendary build",
+    "Division 2 raid build",
+    "Division 2 dark zone build",
+    "Division 2 guide 2026",
+    "Division 2 PTS 2026",
+    "Tom Clancy Division 2 build"
+  ],
+  "maxResultsPerKeyword": 12,
+  "lookbackDays": 45,
+  "minViewCount": 50,
+  "requireDivision2InTitle": false,
+  "requiredTitleTerms": [
+    "division 2",
+    "division2",
+    "tctd2",
+    "td2",
+    "#division2"
+  ],
+   "requiredDivisionSignals": [
+  "division 2",
+  "the division 2",
+  "division2",
+  "#division2",
+  "#thedivision2",
+  "tom clancy's the division",
+  "tom clancy’s the division",
+  "tctd2",
+  "warlords of new york",
+  "battle for brooklyn",
+  "shd",
+  "isac",
+  "dark zone",
+  "countdown",
+  "descent",
+  "incursion",
+  "black tusk",
+  "true sons",
+  "hyenas",
+  "outcasts",
+  "cleaners",
+  "aaron keener",
+  "kelso",
+  "striker",
+  "heartbreaker",
+  "ouroboros",
+  "st elmo",
+  "chatterbox",
+  "division",
+"thedivision",
+"keener",
+"rogue",
+"exotic",
+"build",
+"gear set",
+"gearset",
+"pve",
+"pvp",
+"legendary",
+"raid",
+"manhunt",
+"season",
+"pts"
+],  
+   "globalExcludeTerms": [
+    "#shorts",
+    "shorts",
+    "stream starting",
+    "waiting for stream",
+    "going live",
+    "live now",
+    "live stream",
+    "livestream",
+    "streaming now",
+    "watch me live",
+    "full stream",
+    "stream vod",
+    "twitch stream",
+    "be right back",
+    "brb stream",
+    "pre-stream",
+    "channel update",
+    "giveaway",
+    "destiny 2",
+    "borderlands",
+    "warframe",
+    "diablo",
+    "first descendant",
+    "helldivers",
+    "the finals",
+    "where winds meet",
+    "nba",
+    "nfl",
+    "fifa",
+    "madden",
+    "nhl",
+    "mlb",
+    "ufc",
+    "wwe",
+    "football",
+    "basketball",
+    "soccer",
+    "baseball",
+    "hockey"
+  ],
+  "autoTagRules": [
+    {
+      "terms": [
+        "pve",
+        "legendary",
+        "incursion",
+        "raid",
+        "countdown",
+        "mission"
+      ],
+      "tag": "PvE"
+    },
+    {
+      "terms": [
+        "pvp",
+        "dark zone",
+        "conflict",
+        "rogue"
+      ],
+      "tag": "PvP"
+    },
+    {
+      "terms": [
+        "build",
+        "loadout",
+        "gear set",
+        "gearset"
+      ],
+      "tag": "Build"
+    },
+    {
+      "terms": [
+        "guide",
+        "tips",
+        "how to",
+        "tutorial",
+        "farm"
+      ],
+      "tag": "Guide"
+    },
+    {
+      "terms": [
+        "exotic"
+      ],
+      "tag": "Exotic"
+    },
+    {
+      "terms": [
+        "news",
+        "patch",
+        "pts",
+        "update",
+        "season",
+        "maintenance"
+      ],
+      "tag": "News"
+    },
+    {
+      "terms": [
+        "escalation",
+        "y8s2",
+        "year 8 season 2"
+      ],
+      "tag": "Escalation"
+    },
+    {
+      "terms": [
+        "striker"
+      ],
+      "tag": "Striker"
+    },
+    {
+      "terms": [
+        "healer",
+        "support",
+        "sustain",
+        "future initiative"
+      ],
+      "tag": "Support"
+    },
+    {
+      "terms": [
+        "skill",
+        "skill build",
+        "drone",
+        "turret",
+        "hive"
+      ],
+      "tag": "Skill"
+    },
+    {
+      "terms": [
+        "descent"
+      ],
+      "tag": "Descent"
+    },
+    {
+      "terms": [
+        "lore",
+        "story",
+        "explained",
+        "history"
+      ],
+      "tag": "Lore"
+    }
+  ]
+}

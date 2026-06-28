@@ -1,0 +1,50 @@
+{
+  "updatedAt": "2026-06-22T21:36:18.511Z",
+  "buildOfTheWeek": {
+    "id": "patrick-wolf-_ohEeYm9Tlk",
+    "videoId": "_ohEeYm9Tlk",
+    "title": "The Division 2 | NEW Ultimate (No Shield) Self Healing Striker Setup!! | Huge DPS + Infinite Heals!",
+    "creator": "Patrick Wolf",
+    "section": "Builds",
+    "subcategory": "Healer",
+    "activity": "General",
+    "classificationConfidence": 0.99,
+    "youtubeStats": {
+      "viewCount": 44831,
+      "likeCount": 1506,
+      "commentCount": 132,
+      "fetchedAt": "2026-06-22T21:36:07.994Z"
+    },
+    "reason": "Auto-selected from Builds only using YouTube engagement, classification confidence, tags, and freshness."
+  },
+  "creatorOfTheWeek": {
+    "id": "djtickle",
+    "name": "DJTICKLE",
+    "handle": "@djtickle",
+    "verified": true,
+    "avatar": "https://yt3.ggpht.com/nfAP7EKSiIgTnHDcUjldr3dbDD1FdUl3aQHU5V4uxA8w5gBl1gPXpV3V2NPtAsjKiWTXU6WXrw=s800-c-k-c0x00ffffff-no-rj",
+    "banner": "https://yt3.googleusercontent.com/fNtgSkJBw5Lj5ho2pNplqXnwgcs8AhhTdwBz9jXvEWgG6PsViG4K0zpML1ebEpbNeoOVI9pfjw",
+    "youtubeUrl": "https://www.youtube.com/@djtickle",
+    "description": "Recognized this week for consistent build, division 2 coverage and contributions to the Division 2 community.",
+    "focus": "57 recent uploads indexed across 11 active content categories.",
+    "tags": [
+      "Division 2",
+      "PvE",
+      "Build",
+      "News",
+      "Escalation"
+    ],
+    "links": [
+      {
+        "platform": "youtube",
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@djtickle"
+      },
+      {
+        "platform": "twitch",
+        "label": "Twitch",
+        "url": "https://www.twitch.tv/djtickle"
+      }
+    ]
+  }
+}

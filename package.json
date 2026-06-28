@@ -1,11 +1,11 @@
 {
-  "name": "divgaming-astro-staging",
+  "name": "divgaming-astro-production-port",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/qa-parity-check.mjs && astro build",
     "preview": "astro preview"
   },
   "dependencies": {

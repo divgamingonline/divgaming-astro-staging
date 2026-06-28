@@ -1,0 +1,73 @@
+[
+  {
+    "title": "The Division 2 Subreddit",
+    "category": "Community",
+    "description": "Unofficial Reddit community with wiki links, FAQs, guides, vendor reset discussion, and player help. One of the most active community hubs for the franchise.",
+    "url": "https://www.reddit.com/r/division2/"
+  },
+  {
+    "title": "Community Wiki",
+    "category": "Community",
+    "description": "Community-maintained Division 2 reference hub with guides, FAQs, useful links, resources, and player-discovered intel.",
+    "url": "https://www.reddit.com/r/thedivision/wiki/thedivision2/"
+  },
+  {
+    "title": "Division 2 Discord",
+    "category": "Community",
+    "description": "Official and fan-run Discord servers for real-time chat, LFG (looking for group), build advice, seasonal events, and news.",
+    "url": "https://discord.gg/thedivision"
+  },
+  {
+    "title": "MX Division Build Tool",
+    "category": "Build Tools",
+    "description": "Community build companion and theorycrafting tool for build planning and sharing. Simulate gear, talents, and stat combinations before grinding.",
+    "url": "https://mxswat.github.io/mx-division-builds/",
+    "github": "https://github.com/mxswat/mx-division-builds"
+  },
+  {
+    "title": "Hi-Dep Vendor Reset Tool",
+    "category": "Community Intel",
+    "description": "Weekly vendor intel for Division 2 gear, weapons, named items, mods, and rolls worth checking each Thursday before the server reset.",
+    "url": "https://hi-dep.github.io/division2/?view=vendor"
+  },
+  {
+  "title": "Hi-Dep Escalation Event Tool",
+  "category": "Community Intel",
+  "description": "Daily Escalation intel for targeted loot locations and Requisition Vendor offerings for The Division 2.",
+  "url": "https://hi-dep.github.io/division2/?view=event",
+  "source": "Community Tool",
+  "tags": ["Vendor", "Costs", "Brandsets", "Gearsets", "Talents", "Blueprints", "Descent"]
+  },
+  {
+  "title": "Hi-Dep Division 2 Tools",
+  "category": "Tools / Info",
+  "description": "Vendor, cost, brandset, gearset, exotic, talent, blueprint, and Descent reference tools for The Division 2.",
+  "url": "https://hi-dep.github.io/division2/",
+  "source": "Community Tool",
+  "tags": ["Vendor", "Costs", "Brandsets", "Gearsets", "Talents", "Blueprints", "Descent"]
+  },
+  {
+    "title": "Division 2 Gear Sheet",
+    "category": "Spreadsheets",
+    "description": "Community spreadsheet reference for gear sets, brand bonuses, talents, and attributes. Maintained by dedicated community members.",
+    "url": "https://docs.google.com/spreadsheets/d/1XUwha2iijSRMD_apWy6WfXlx8wldMTVIB9TxEuidXgo/edit?gid=0#gid=0"
+  },
+  {
+    "title": "Interactive Division 2 Map",
+    "category": "Maps",
+    "description": "Agent field map for tracking collectibles, control points, SHD tech, comms, activities, and key open-world locations across Washington D.C.",
+    "url": "https://division2map.com/"
+  },
+  {
+    "title": "The Division 2 Wiki (Fandom)",
+    "category": "Guides",
+    "description": "Comprehensive Fandom wiki covering gear sets, weapons, missions, lore, exotics, world tiers, specializations, and game mechanics.",
+    "url": "https://thedivision.fandom.com/wiki/Tom_Clancy%27s_The_Division_2"
+  },
+  {
+    "title": "Official Ubisoft Discord",
+    "category": "Community",
+    "description": "Official Ubisoft Discord where the dev team posts patch news, answers questions, and players discuss issues, feedback, and gameplay.",
+    "url": "https://discord.gg/ubisoftofficial"
+  }
+]

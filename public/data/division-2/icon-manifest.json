@@ -1,0 +1,46 @@
+{
+  "gears": {
+    "backpack.png": "img/gears/backpack.png",
+    "chest.png": "img/gears/chest.png",
+    "gloves.png": "img/gears/gloves.png",
+    "holster.png": "img/gears/holster.png",
+    "kneepads.png": "img/gears/kneepads.png",
+    "mask.png": "img/gears/mask.png"
+  },
+  "weapons": {
+    "ar.png": "img/weapons/ar.png",
+    "lmg.png": "img/weapons/lmg.png",
+    "mmr.png": "img/weapons/mmr.png",
+    "pistol.png": "img/weapons/pistol.png",
+    "rifle.png": "img/weapons/rifle.png",
+    "shotgun.png": "img/weapons/shotgun.png",
+    "smg.png": "img/weapons/smg.png"
+  },
+  "talents": {
+    "wicked.png": "img/talents/wicked.png",
+    "combinedarms.png": "img/talents/combinedarms.png",
+    "clutch.png": "img/talents/clutch.png",
+    "measured.png": "img/weapon_talents/measured.png",
+    "bewildered.png": "img/talents/bewildered.png",
+    "spotter.png": "img/talents/spotter.png",
+    "vigilance.png": "img/talents/vigilance.png",
+    "opportunistic.png": "img/talents/opportunistic.png",
+    "glasscannon.png": "img/talents/glasscannon.png",
+    "intimidate.png": "img/talents/intimidate.png",
+    "spark.png": "img/talents/spark.png",
+    "techsupport.png": "img/talents/techsupport.png",
+    "headhunter.png": "img/talents/headhunter.png",
+    "rifleman.png": "img/weapon_talents/rifleman.png",
+    "luckyshot.png": "img/weapon_talents/luckyshot.png",
+    "sadist.png": "img/weapon_talents/sadist.png",
+    "strained.png": "img/weapon_talents/strained.png",
+    "killer.png": "img/weapon_talents/killer.png",
+    "fasthands.png": "img/weapon_talents/fasthands.png",
+    "insync.png": "img/weapon_talents/insync.png",
+    "flatline.png": "img/weapon_talents/flatline.png",
+    "sledgehammer.png": "img/weapon_talents/sledgehammer.png"
+  },
+  "brands": {
+    "ceskavyrobasro.png": "img/brands/ceskavyrobasro.png"
+  }
+}

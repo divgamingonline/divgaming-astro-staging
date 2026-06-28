@@ -1,0 +1,47 @@
+{
+  "_note": "Add channels here to block them from appearing on DivGaming. Blocked channels are excluded from both the keyword search AND the creator-based workflow. When you push a change to this file, the apply-blocklist workflow runs automatically and removes any existing builds from blocked channels.",
+
+  "blockedChannels": [
+    {
+      "channelId": "UCWd5S9-AEf26j0wY3P8TOhw",
+      "channelName": "Kamikazevondoom",
+      "reason": "Blocked from DivGaming index"
+    },
+    {
+      "channelId": "UCnqbdVhRhYh5KQpDtKz8ksg",
+      "channelName": "TheGamingBrigadeTV",
+      "reason": "Blocked from DivGaming index"
+    },
+    {
+      "channelId": "UC2Tm4OVrrd-2QDLX55hizhQ",
+      "channelName": "NothingButSkillz",
+      "reason": "Blocked from DivGaming index"
+    },
+    {
+      "channelId": "UCRbAtGPNumGV868iZ8brEDw",
+      "channelName": "RogueGold",
+      "reason": "Blocked from DivGaming index"
+    },
+    {
+      "channelId": "UCWIdBINha5bKeFuvAs7US4A",
+      "channelName": "TuxedoBandido",
+      "reason": "Blocked from DivGaming index"
+    },
+    {
+      "channelId": "UCm_q9wNyq-PbGg9dIIo_b4w",
+      "channelName": "RunningButcher",
+      "reason": "Blocked from DivGaming index"
+    }
+  ],
+
+  "blockedTitleTerms": [
+    "stream starting",
+    "waiting for stream",
+    "stream is starting",
+    "going live soon",
+    "pre-stream",
+    "be right back",
+    "brb stream",
+    "livestream"
+  ]
+}

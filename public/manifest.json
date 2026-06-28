@@ -1,0 +1,30 @@
+{
+  "name": "DivGaming - The Division 2 Builds, Guides & Tools",
+  "short_name": "DivGaming",
+  "description": "Division 2 builds, guides, tools, vendor reset intel, creator videos, and SHD community resources.",
+  "id": "/",
+  "start_url": "/divgaming-astro-staging/",
+  "scope": "/divgaming-astro-staging/",
+  "display": "standalone",
+  "background_color": "#050807",
+  "theme_color": "#ff6b00",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/img/dg-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/dg-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/dg-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

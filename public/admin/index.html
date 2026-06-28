@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="DivGaming.com static admin editor for GitHub Pages JSON content." />
+  <title>DivGaming Admin | Static Content Editor</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header admin-hero" id="top">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a href="../" class="brand" aria-label="Back to DivGaming.com home">
+        <img class="brand-logo divgaming-brand" src="../assets/img/divgaming-logo.svg" alt="DivGaming.com" loading="eager" />
+        <span class="brand-title"><strong>Admin</strong><em>Static Editor</em></span>
+      </a>
+      <div class="nav-links open" id="nav-links">
+        <a href="../">View Site</a>
+        <a href="../#builds">Builds</a>
+        <a href="../#tools">Tools</a>
+      </div>
+    </nav>
+    <section class="hero shell">
+      <div class="hero-copy">
+        <div class="hero-logos">
+          <img class="hero-divgaming-logo" src="../assets/img/divgaming-logo.svg" alt="DivGaming.com" loading="eager" />
+        </div>
+        <p class="eyebrow">Static GitHub Pages Editor</p>
+        <h1>Manage site content.</h1>
+        <p class="hero-text">Edit builds, resources, creators, and intel in a browser-friendly JSON editor. Validate, download, then upload the file back into GitHub.</p>
+      </div>
+    </section>
+  </header>
+
+  <main class="section shell">
+    <div class="admin-layout">
+      <aside class="admin-panel" aria-label="Admin file selector">
+        <p class="eyebrow">Editable data</p>
+        <h2>DivGaming Admin</h2>
+        <p class="admin-small">GitHub Pages cannot save edits directly from the browser without a backend. This editor validates your JSON and downloads the corrected file so you can commit it to your repo.</p>
+        <div class="admin-tabs" id="admin-tabs"></div>
+        <div class="admin-actions">
+          <button class="btn ghost" id="validate-json" type="button">Validate JSON</button>
+          <button class="btn primary" id="download-json" type="button">Download edited file</button>
+          <label class="btn ghost" for="upload-json">Import local JSON</label>
+          <input class="file-input" id="upload-json" type="file" accept="application/json,.json" />
+        </div>
+        <a class="admin-link-card" id="github-edit-link" href="#" target="_blank" rel="noopener">
+          <strong>Open this file in GitHub</strong><br>
+          <span class="admin-small">After setting your repo URL in config.js, this jumps straight to GitHub’s editor.</span>
+        </a>
+      </aside>
+
+      <section>
+        <article class="editor-panel">
+          <div class="editor-top">
+            <div>
+              <h2 id="editor-title">Loading…</h2>
+              <p class="editor-meta" id="editor-meta">Choose a file on the left.</p>
+            </div>
+            <div class="admin-buttons">
+              <button class="btn ghost" id="format-json" type="button">Format</button>
+              <button class="btn ghost" id="copy-json" type="button">Copy</button>
+            </div>
+          </div>
+          <textarea class="json-editor" id="json-editor" spellcheck="false" aria-label="JSON editor"></textarea>
+          <p class="admin-status" id="admin-status"></p>
+        </article>
+
+        <article class="help-panel">
+          <h3>How to make changes live</h3>
+          <ol>
+            <li>Select the file you want to edit, such as <code>builds.json</code> or <code>resources.json</code>.</li>
+            <li>Edit the JSON, then use <strong>Validate JSON</strong> and <strong>Download edited file</strong>.</li>
+            <li>In GitHub, replace the matching file inside the <code>data/</code> folder and commit the change.</li>
+            <li>GitHub Pages will redeploy the static site after the commit.</li>
+          </ol>
+          <p class="admin-small">For real one-click saving later, this can be upgraded to Decap CMS, Supabase, Firebase, or a small Cloudflare Worker. This version intentionally stays free and GitHub Pages-compatible.</p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>DivGaming.com admin editor. Static, local-browser editing only.</p>
+      <a href="../">Return to site ↑</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="admin.js" type="module"></script>
+</body>
+</html>

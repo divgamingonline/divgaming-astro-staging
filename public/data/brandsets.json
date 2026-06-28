@@ -1,0 +1,5 @@
+# DivGaming Division 2 Codex audits
+
+The manual workflow **Run Division 2 Codex Source Check** writes `latest-codex-audit.md` and `latest-codex-audit.json` as workflow artifacts.
+
+The workflow is detection/report-only. It does not publish or overwrite live Codex data.

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "iDentity",
+    "handle": "@iDentityUS",
+    "verified": true,
+    "keywords": ["division 2", "build", "striker", "pve", "pvp", "legendary", "descent", "incursion"],
+    "defaultTags": ["Build", "Division 2"],
+    "banner": "",
+    "links": []
+  },
+  {
+    "name": "YouKnoDaVibes",
+    "handle": "@YouKnoDaVibes",
+    "verified": true,
+    "keywords": ["division 2", "build", "pvp", "dark zone", "conflict", "striker"],
+    "defaultTags": ["Build", "Division 2"],
+    "banner": "",
+    "links": []
+  },
+  {
+    "name": "NYL",
+    "handle": "@NYLCasualGaming",
+    "verified": true,
+    "keywords": ["division 2", "build", "pve", "solo", "legendary", "gear"],
+    "defaultTags": ["Build", "Division 2"],
+    "banner": "",
+    "links": []
+  },
+  {
+    "name": "DJTICKLE",
+    "handle": "@djtickle",
+    "verified": true,
+    "keywords": ["division 2", "build", "pve", "pvp", "gear", "tu"],
+    "defaultTags": ["Build", "Division 2"],
+    "banner": "",
+    "links": []
+  },
+  {
+    "name": "GCROCK",
+    "handle": "@GCROCK",
+    "verified": true,
+    "keywords": ["division 2", "build", "pve", "legendary", "incursion", "escalation", "striker"],
+    "defaultTags": ["PvE", "Build"],
+    "banner": "",
+    "links": []
+  },
+  {
+    "name": "NGN",
+    "handle": "@NGN",
+    "verified": true,
+    "keywords": ["division 2", "build", "lore", "gear", "guide"],
+    "defaultTags": ["Build", "Guide"],
+    "banner": "",
+    "links": []
+  },
+  {
+    "name": "PlumConch836",
+    "handle": "@plumconch836",
+    "verified": true,
+    "keywords": ["division 2", "build", "healer", "skill", "pve", "legendary", "escalation"],
+    "defaultTags": ["PvE", "Build"],
+    "banner": "",
+    "links": []
+  },
+  {
+    "name": "AKingsCreation",
+    "handle": "@AKingsCreation",
+    "verified": true,
+    "keywords": ["division 2", "build", "pve", "pvp", "striker", "gear"],
+    "defaultTags": ["Build", "Division 2"],
+    "banner": "",
+    "links": []
+  }
+]

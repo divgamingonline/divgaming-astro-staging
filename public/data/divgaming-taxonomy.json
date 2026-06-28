@@ -1,0 +1,64 @@
+{
+  "Builds": [
+    "DPS",
+    "Tank",
+    "Healer",
+    "Skill",
+    "Hybrid",
+    "Solo",
+    "PvP / Dark Zone",
+    "Raid",
+    "Incursion",
+    "Legendary",
+    "Escalation"
+  ],
+  "Guides": [
+    "New Player",
+    "Countdown",
+    "Dark Zone",
+    "Descent",
+    "Exotics",
+    "Expertise",
+    "Gear / Masks",
+    "Incursion",
+    "Legendary",
+    "Raids",
+    "Farming",
+    "Talents",
+    "Escalation"
+  ],
+  "News": [
+    "Patch Notes",
+    "Season Updates",
+    "Maintenance",
+    "Community News",
+    "Vendor Reset",
+    "PTS",
+    "Escalation"
+  ],
+  "Tips": [
+    "Quick Tips",
+    "Combat Tips",
+    "Farming Tips",
+    "Build Tips",
+    "Dark Zone Tips",
+    "Things Players Miss",
+    "Escalation"
+  ],
+  "Tools / Info": [
+    "Talents",
+    "Brands & Gearsets",
+    "Build Tools",
+    "Division Channels",
+    "Service Status",
+    "Interactive Map",
+    "Timers",
+    "Submit Videos"
+  ],
+  "Entertainment": [
+    "Story / Lore",
+    "Fan Fiction",
+    "Short Films",
+    "Community Edits"
+  ]
+}

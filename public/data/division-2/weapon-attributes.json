@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "project": "DivGaming.com Division 2 Codex",
+    "phase": "codex-phase-1",
+    "notes": "Static GitHub Pages data layer. Use as DivGaming source of truth for reference pages; validate/expand over time.",
+    "sources": [
+      "https://github.com/mxswat/mx-division-builds",
+      "https://hi-dep.github.io/division2/",
+      "DivGaming production content"
+    ]
+  },
+  "items": [
+    {
+      "id": "core-weapon-damage",
+      "name": "Core Weapon Damage",
+      "description": "Every weapon has weapon damage as its core scaling value."
+    },
+    {
+      "id": "weapon-type-damage",
+      "name": "Weapon-Type Damage",
+      "description": "Brand bonuses and specialization/build choices can increase AR, SMG, rifle, MMR, shotgun, LMG, or pistol damage."
+    },
+    {
+      "id": "damage-to-armor-health-out-of-cover",
+      "name": "Damage to Armor / Health / Out of Cover",
+      "description": "Common high-value attributes used to improve real target damage depending on enemy state."
+    },
+    {
+      "id": "critical-chance-critical-damage-headshot-damage",
+      "name": "Critical Chance / Critical Damage / Headshot Damage",
+      "description": "Primary red-build scaling choices for sustained DPS and precision builds."
+    },
+    {
+      "id": "handling-accuracy-stability-reload-rpm-magazine",
+      "name": "Handling, Accuracy, Stability, Reload, RPM, Magazine",
+      "description": "Weapon feel and sustained-fire attributes that support different archetypes."
+    }
+  ]
+}

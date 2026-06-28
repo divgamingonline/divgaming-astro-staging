@@ -1,6 +1,0 @@
-Copy the entire package contents into the root of divgaming-astro-staging.
-
-This is not a selective patch. It is a full staging replacement package.
-
-Commit message:
-Release DivGaming Astro final boss build

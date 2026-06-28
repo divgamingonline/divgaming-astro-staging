@@ -1,0 +1,20 @@
+{
+  "sourceUrl": "https://ubistatic-a.akamaihd.net/0115/tctd2/status.html",
+  "lastChecked": "2026-06-28T15:06:29.038Z",
+  "overallStatus": "Operational",
+  "message": "Ubisoft is not currently reporting Division server issues on the official status page.",
+  "platforms": [
+    {
+      "name": "PC",
+      "status": "Operational"
+    },
+    {
+      "name": "PlayStation",
+      "status": "Operational"
+    },
+    {
+      "name": "Xbox",
+      "status": "Operational"
+    }
+  ]
+}
