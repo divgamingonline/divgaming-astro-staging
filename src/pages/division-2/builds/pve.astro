@@ -1,6 +1,23 @@
 ---
-import BuildCategoryPage from '../../../components/BuildCategoryPage.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import VideoGrid from '../../../components/VideoGrid.astro';
 import buildsData from '../../../../data/builds.json';
 ---
 
-<BuildCategoryPage data={buildsData} category="pve" />
+<BaseLayout title="PvE Builds | DivGaming" canonical="/division-2/builds/pve/">
+  <section class="shell hero compact-hero">
+    <div class="page-hero">
+      <div>
+        <p class="eyebrow">Build Library</p>
+        <h1>PvE Builds</h1>
+        <p class="lead">Browse creator videos in this category. Videos open directly on YouTube, and you can save builds for later reference.</p>
+      </div>
+      <aside class="hero-panel">
+        <span>Category</span>
+        <strong>PVE</strong>
+        <small>Filtered videos</small>
+      </aside>
+    </div>
+  </section>
+  <VideoGrid data={buildsData} category="pve" />
+</BaseLayout>

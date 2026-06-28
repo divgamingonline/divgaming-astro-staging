@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="Page Not Found | DivGaming" canonical="/404/">
+  <section class="shell hero compact-hero">
+    <div class="page-hero">
+      <div>
+        <p class="eyebrow">404</p>
+        <h1>Page not found</h1>
+        <p class="lead">That page does not exist in this staging version. Use the hub to get back to the main sections.</p>
+        <div class="hero-actions">
+          <a class="button primary" href={`${base}/`}>Home</a>
+          <a class="button ghost" href={`${base}/division-2/`}>Division 2 Hub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

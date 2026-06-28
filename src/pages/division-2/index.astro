@@ -1,57 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import buildsData from '../../../data/builds.json';
-import exoticsData from '../../../data/division-2/exotics.json';
-import namedItemsData from '../../../data/division-2/named-items.json';
-import { getBuildVideos } from '../../utils/builds';
-import { normalizeItems } from '../../utils/division2Tools';
-import { getCreators } from '../../utils/creators';
-
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const videos = getBuildVideos(buildsData, 'all');
-const creators = getCreators(buildsData);
-const exotics = normalizeItems(exoticsData);
-const namedItems = normalizeItems(namedItemsData);
 
-const routes = [
-  { title: 'Build Library', href: '/division-2/builds/', count: videos.length, text: 'Browse build videos by playstyle, activity, and category.' },
-  { title: 'Gear Tools', href: '/division-2/tools/', count: exotics.length + namedItems.length, text: 'Research exotics, named items, brand sets, gearsets, and talents.' },
-  { title: 'Video Library', href: '/division-2/videos/', count: videos.length, text: 'Find creator videos and open the original YouTube video directly.' },
-  { title: 'Creator Directory', href: '/division-2/creators/', count: creators.length, text: 'Browse creators represented in the DivGaming build video library.' },
-  { title: 'Guides', href: '/division-2/guides/', count: 'Help', text: 'Use guide paths for farming, builds, returning players, and endgame.' }
+const sections = [
+  ['Build Library', '/division-2/builds/', 'Browse build and creator videos by playstyle, activity, and category.'],
+  ['Gear Tools', '/division-2/tools/', 'Research exotics, named items, brand sets, gearsets, and talents.'],
+  ['Saved Builds', '/division-2/saved/', 'Open builds you saved for later reference on this device.'],
+  ['Video Library', '/division-2/videos/', 'Find creator videos and open the original YouTube videos directly.'],
+  ['Creator Directory', '/division-2/creators/', 'Browse creators represented in the DivGaming video library.'],
+  ['Guides', '/division-2/guides/', 'Use guide paths for farming, builds, returning players, and endgame.']
 ];
 ---
 
-<BaseLayout
-  title="Division 2 Hub | DivGaming"
-  description="The DivGaming Division 2 hub connects builds, gear tools, videos, creators, and guide routes in one place."
-  canonical="/division-2/"
-  noindex={true}
->
-  <section class="shell hero">
-    <div class="command-hero">
+<BaseLayout title="Division 2 Hub | DivGaming" canonical="/division-2/">
+  <section class="shell hero compact-hero">
+    <div class="page-hero">
       <div>
         <p class="eyebrow">Division 2 Hub</p>
         <h1>Choose a section</h1>
-        <p class="lead">
-          Use this page as the main starting point for Division 2 builds, gear tools,
-          videos, creator resources, and guides.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn primary" href={`${base}/division-2/builds/`}>Find Builds</a>
-          <a class="btn ghost" href={`${base}/division-2/tools/`}>Open Tools</a>
-        </div>
+        <p class="lead">Use this page as the main starting point for builds, gear tools, videos, creators, saved builds, and guides.</p>
       </div>
-
-      <aside class="command-panel">
-        <p class="eyebrow">Available now</p>
-        <div class="command-panel__list">
-          <div class="command-panel__row"><span>Build videos</span><strong>{videos.length}</strong></div>
-          <div class="command-panel__row"><span>Creators</span><strong>{creators.length}</strong></div>
-          <div class="command-panel__row"><span>Exotics</span><strong>{exotics.length}</strong></div>
-          <div class="command-panel__row"><span>Named items</span><strong>{namedItems.length}</strong></div>
-        </div>
+      <aside class="hero-panel">
+        <span>Status</span>
+        <strong>Active</strong>
+        <small>Production-parity reset</small>
       </aside>
     </div>
   </section>
@@ -60,20 +32,14 @@ const routes = [
     <div class="section-head">
       <p class="eyebrow">Site sections</p>
       <h2>Start with what you need</h2>
-      <p>
-        These sections are organized around common player needs: finding a build,
-        checking an item, watching a creator, or using a guide path.
-      </p>
+      <p>These sections are organized around common player needs.</p>
     </div>
-
-    <div class="tools-grid">
-      {routes.map((route) => (
-        <a class="tool-card" href={`${base}${route.href}`}>
-          <span class="tool-card__count">{route.count}</span>
-          <span class="mission-kicker">Division 2</span>
-          <strong>{route.title}</strong>
-          <p>{route.text}</p>
-          <em>Open section →</em>
+    <div class="feature-grid">
+      {sections.map(([title, href, text]) => (
+        <a class="feature-card" href={`${base}${href}`}>
+          <span>Division 2</span>
+          <strong>{title}</strong>
+          <p>{text}</p>
         </a>
       ))}
     </div>

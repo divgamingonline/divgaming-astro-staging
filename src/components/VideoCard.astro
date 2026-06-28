@@ -1,84 +1,48 @@
 ---
+import Icon from './Icon.astro';
 import {
-  discoveryFilterTokens,
-  discoverySearchText,
-  formatDate,
-  formatNumber,
-  youtubeThumbnail,
-  youtubeThumbnailFallback,
-  youtubeThumbnailFinalFallback,
-  youtubeWatchUrl,
-  videoCategory,
-  videoPath,
+  videoCreator,
+  videoDescription,
+  videoFilterTokens,
+  videoMeta,
+  videoSearch,
   videoTags,
+  videoThumb,
+  videoTitle,
+  videoUrl,
   type BuildVideo
-} from '../utils/builds';
+} from '../utils/videos';
 
-export interface Props {
-  video: BuildVideo;
-}
-
+export interface Props { video: BuildVideo; }
 const { video } = Astro.props;
-
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-function withBase(href: string) {
-  if (href.startsWith('http')) return href;
-  return `${base}${href}`;
-}
-
-const thumbnail = youtubeThumbnail(video);
-const fallback = youtubeThumbnailFallback(video);
-const finalFallback = youtubeThumbnailFinalFallback(video);
+const url = videoUrl(video);
+const thumb = videoThumb(video);
+const title = videoTitle(video);
+const creator = videoCreator(video);
 const tags = videoTags(video);
-const category = videoCategory(video);
-const watchUrl = youtubeWatchUrl(video);
-const detailHref = withBase(videoPath(video));
-const dateLabel = formatDate(video.date);
-const viewsLabel = formatNumber(video.views);
-const searchText = discoverySearchText(video);
-const filters = discoveryFilterTokens(video).join(' ');
+const key = String(video.id || video.videoId || url);
 ---
 
-<article class="video-card card" data-discovery-card data-search={searchText} data-filters={filters}>
-  <a class="video-card__media" href={detailHref} aria-label={`Open ${video.title}`}>
-    {thumbnail ? (
-      <img
-        src={thumbnail}
-        alt=""
-        loading="lazy"
-        data-fallback={fallback}
-        data-final-fallback={finalFallback}
-        onerror="if (this.dataset.fallback && this.src !== this.dataset.fallback) { this.src = this.dataset.fallback; this.dataset.fallback = ''; } else if (this.dataset.finalFallback && this.src !== this.dataset.finalFallback) { this.src = this.dataset.finalFallback; this.dataset.finalFallback = ''; }"
-      />
-    ) : (
-      <div class="video-card__placeholder">VIDEO</div>
-    )}
-    <span class="video-card__badge">{category}</span>
+<article class="video-card" data-video-card data-video-key={key} data-search={videoSearch(video)} data-filters={videoFilterTokens(video).join(' ')}>
+  <a class="video-thumb" href={url} target="_blank" rel="noopener">
+    {thumb ? <img src={thumb} alt="" loading="lazy" /> : <span>VIDEO</span>}
   </a>
-
-  <div class="video-card__body">
-    <p class="mission-kicker">{video.creator}</p>
-    <h3><a href={detailHref}>{video.title}</a></h3>
-
-    <div class="video-card__meta">
-      {dateLabel && <span>{dateLabel}</span>}
-      {viewsLabel && <span>{viewsLabel} views</span>}
-    </div>
-
-    {video.description && <p>{video.description}</p>}
-
+  <div class="video-body">
+    <p class="eyebrow">{creator}</p>
+    <h3>{title}</h3>
+    {videoMeta(video) && <p class="video-meta">{videoMeta(video)}</p>}
+    <p>{videoDescription(video)}</p>
     {tags.length > 0 && (
-      <div class="badge-row video-card__tags">
-        {tags.slice(0, 5).map((tag) => (
-          <span>{tag}</span>
-        ))}
+      <div class="chip-row">
+        {tags.slice(0, 5).map((tag) => <span>{tag}</span>)}
       </div>
     )}
-
-    <div class="video-card__actions">
-      <a class="btn primary" href={watchUrl} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <a class="btn ghost" href={detailHref}>Video Details</a>
+    <div class="video-actions">
+      <a class="button primary" href={url} target="_blank" rel="noopener">Watch on YouTube</a>
+      <button class="button ghost save-build" type="button" data-save-build data-save-title={title} data-save-creator={creator} data-save-url={url}>
+        <Icon name="save" />
+        Save
+      </button>
     </div>
   </div>
 </article>

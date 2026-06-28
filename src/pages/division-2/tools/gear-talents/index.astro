@@ -1,12 +1,9 @@
 ---
-import ToolDatabasePage from '../../../../components/ToolDatabasePage.astro';
-import gearTalentsData from '../../../../../data/division-2/gear-talents.json';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ToolDatabase from '../../../../components/ToolDatabase.astro';
+import data from '../../../../../data/division-2/gear-talents.json';
 ---
 
-<ToolDatabasePage
-  title="Gear Talents"
-  eyebrow="Backpack and Chest Talents"
-  description="Reference Division 2 gear talents, including perfect talent relationships and slot notes."
-  canonical="/division-2/tools/gear-talents/"
-  dataset={gearTalentsData}
-/>
+<BaseLayout title="Gear Talents | DivGaming" canonical="/division-2/tools/gear-talents/">
+  <ToolDatabase data={data} eyebrow="Gear Talents" title="Gear Talents" description="Search chest and backpack talents for build planning." />
+</BaseLayout>

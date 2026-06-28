@@ -1,0 +1,115 @@
+---
+import ToolItemCard from './ToolItemCard.astro';
+import { getItems } from '../utils/tools';
+
+export interface Props {
+  data: any;
+  eyebrow: string;
+  title: string;
+  description: string;
+}
+
+const { data, eyebrow, title, description } = Astro.props;
+const items = getItems(data);
+---
+
+<section class="shell hero compact-hero">
+  <div class="page-hero">
+    <div>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+    </div>
+    <aside class="hero-panel">
+      <span>Records</span>
+      <strong>{items.length}</strong>
+      <small>Searchable entries</small>
+    </aside>
+  </div>
+</section>
+
+<section class="shell section" data-tool-database>
+  <div class="section-head">
+    <p class="eyebrow">Searchable database</p>
+    <h2><span data-tool-count>{items.length}</span> entries</h2>
+    <p>Search by name, slot, source, talent, gear type, role, or keyword.</p>
+  </div>
+
+  <div class="filter-panel">
+    <input type="search" placeholder="Search this database..." data-tool-search />
+    <button type="button" data-tool-filter-toggle>Filters</button>
+    <button type="button" data-tool-reset>Reset</button>
+    <div class="filter-buttons" data-tool-filters>
+      {['all', 'exotic', 'named', 'brandset', 'gearset', 'weapon', 'talent', 'damage', 'armor', 'skill'].map((filter) => (
+        <button type="button" class={filter === 'all' ? 'active' : ''} data-filter={filter}>{filter.replace('brandset','brand set').replace('gearset','gear set')}</button>
+      ))}
+    </div>
+  </div>
+
+  <div class="tool-grid">
+    {items.map((item) => <ToolItemCard item={item} />)}
+  </div>
+
+  <div class="empty-state" data-tool-empty hidden>
+    <h2>No matching entries found.</h2>
+    <p>Try a broader search term or reset the filters.</p>
+  </div>
+</section>
+
+<script>
+  for (const root of document.querySelectorAll('[data-tool-database]')) {
+    const input = root.querySelector('[data-tool-search]');
+    const cards = [...root.querySelectorAll('[data-tool-card]')];
+    const buttons = [...root.querySelectorAll('[data-filter]')];
+    const count = root.querySelector('[data-tool-count]');
+    const empty = root.querySelector('[data-tool-empty]');
+    const reset = root.querySelector('[data-tool-reset]');
+    const filterPanel = root.querySelector('[data-tool-filters]');
+    const filterToggle = root.querySelector('[data-tool-filter-toggle]');
+    let active = 'all';
+
+    function closeMobileFilters() {
+      if (window.matchMedia('(max-width: 780px)').matches) {
+        filterPanel?.classList.remove('is-open');
+      }
+    }
+
+    function apply() {
+      const q = (input?.value || '').toLowerCase().trim();
+      let visible = 0;
+
+      for (const card of cards) {
+        const search = card.dataset.search || '';
+        const filters = card.dataset.filters || '';
+        const okSearch = !q || search.includes(q);
+        const okFilter = active === 'all' || filters.includes(active);
+        const show = okSearch && okFilter;
+        card.hidden = !show;
+        if (show) visible++;
+      }
+
+      count.textContent = String(visible);
+      empty.hidden = visible !== 0;
+    }
+
+    input?.addEventListener('input', apply);
+    filterToggle?.addEventListener('click', () => filterPanel?.classList.toggle('is-open'));
+
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        active = button.dataset.filter || 'all';
+        buttons.forEach((item) => item.classList.toggle('active', item === button));
+        apply();
+        closeMobileFilters();
+      });
+    }
+
+    reset?.addEventListener('click', () => {
+      input.value = '';
+      active = 'all';
+      buttons.forEach((item) => item.classList.toggle('active', item.dataset.filter === 'all'));
+      apply();
+      closeMobileFilters();
+    });
+  }
+</script>

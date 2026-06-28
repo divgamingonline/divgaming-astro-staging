@@ -1,0 +1,21 @@
+{
+  "name": "DivGaming",
+  "short_name": "DivGaming",
+  "description": "Division 2 builds, tools, guides, and community resources.",
+  "start_url": "/divgaming-astro-staging/",
+  "display": "standalone",
+  "background_color": "#050706",
+  "theme_color": "#ff6b00",
+  "icons": [
+    {
+      "src": "/divgaming-astro-staging/assets/img/dg-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/divgaming-astro-staging/assets/img/dg-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

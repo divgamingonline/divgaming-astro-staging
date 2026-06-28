@@ -1,6 +1,6 @@
 {
   "name": "divgaming-astro-staging",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,13 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/sitemap": "latest",
-    "astro": "latest"
+    "astro": "^5.12.0"
   },
-  "devDependencies": {
-    "typescript": "latest"
-  },
-  "engines": {
-    "node": ">=22.12.0"
-  }
+  "devDependencies": {}
 }

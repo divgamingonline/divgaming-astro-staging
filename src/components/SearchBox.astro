@@ -1,122 +1,70 @@
 ---
 import Icon from './Icon.astro';
-
-export interface Props {
-  id?: string;
-  compact?: boolean;
-}
-
-const { id = 'global-search', compact = false } = Astro.props;
+export interface Props { id: string; compact?: boolean; }
+const { id, compact = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const searchItems = [
-  { title: 'Division 2 Hub', type: 'Hub', href: '/division-2/', keywords: 'hub home start division 2 sections' },
-  { title: 'Build Library', type: 'Builds', href: '/division-2/builds/', keywords: 'builds loadouts striker pve pvp solo videos' },
-  { title: 'Striker Builds', type: 'Builds', href: '/division-2/builds/striker/', keywords: 'striker damage stacks dps' },
-  { title: 'PvE Builds', type: 'Builds', href: '/division-2/builds/pve/', keywords: 'pve countdown raid incursion mission heroic legendary' },
-  { title: 'Solo Builds', type: 'Builds', href: '/division-2/builds/solo/', keywords: 'solo survivability armor regen self reliant' },
-  { title: 'PvP Builds', type: 'Builds', href: '/division-2/builds/pvp/', keywords: 'pvp dark zone conflict dz' },
-  { title: 'Video Library', type: 'Videos', href: '/division-2/videos/', keywords: 'videos youtube creators build video library' },
-  { title: 'Gear Tools', type: 'Tools', href: '/division-2/tools/', keywords: 'tools database gear resources brand gearset talent' },
-  { title: 'Exotic Source Tracker', type: 'Tools', href: '/division-2/tools/exotic-source-tracker/', keywords: 'exotic source tracker weapons gear farming' },
-  { title: 'Named Items Database', type: 'Tools', href: '/division-2/tools/named-items-database/', keywords: 'named items database perfect talents' },
-  { title: 'Brand Set Database', type: 'Tools', href: '/division-2/tools/brand-set-database/', keywords: 'brands brand sets high end bonuses' },
-  { title: 'Gearset Matrix', type: 'Tools', href: '/division-2/tools/gearset-matrix/', keywords: 'gearset matrix gear sets chest backpack' },
-  { title: 'Gear Talents', type: 'Tools', href: '/division-2/tools/gear-talents/', keywords: 'gear talents chest backpack perfect talents' },
-  { title: 'Weapon Talents', type: 'Tools', href: '/division-2/tools/weapon-talents/', keywords: 'weapon talents guns perfect talents' },
-  { title: 'Creator Directory', type: 'Creators', href: '/division-2/creators/', keywords: 'creators youtube channels community' },
-  { title: 'Guides', type: 'Guides', href: '/division-2/guides/', keywords: 'guides farming returning players raids incursions countdown' }
-];
-
-const data = JSON.stringify(searchItems.map((item) => ({ ...item, href: `${base}${item.href}` })));
+const items = [
+  ['Division 2 Hub', 'Hub', '/division-2/', 'home sections main'],
+  ['Gear Tools', 'Tools', '/division-2/tools/', 'gear tools database items talents'],
+  ['Exotic Source Tracker', 'Tools', '/division-2/tools/exotic-source-tracker/', 'exotics source tracker'],
+  ['Named Items Database', 'Tools', '/division-2/tools/named-items-database/', 'named items perfect talents'],
+  ['Brand Set Database', 'Tools', '/division-2/tools/brand-set-database/', 'brand sets high end'],
+  ['Gearset Matrix', 'Tools', '/division-2/tools/gearset-matrix/', 'gearsets green sets'],
+  ['Gear Talents', 'Tools', '/division-2/tools/gear-talents/', 'gear talents chest backpack'],
+  ['Weapon Talents', 'Tools', '/division-2/tools/weapon-talents/', 'weapon talents'],
+  ['Build Library', 'Builds', '/division-2/builds/', 'builds videos loadouts'],
+  ['Striker Builds', 'Builds', '/division-2/builds/striker/', 'striker builds'],
+  ['PvE Builds', 'Builds', '/division-2/builds/pve/', 'pve raids countdown incursion'],
+  ['Solo Builds', 'Builds', '/division-2/builds/solo/', 'solo builds'],
+  ['PvP Builds', 'Builds', '/division-2/builds/pvp/', 'pvp dark zone conflict'],
+  ['Video Library', 'Videos', '/division-2/videos/', 'creator videos youtube'],
+  ['Saved Builds', 'Builds', '/division-2/saved/', 'saved builds bookmarks later'],
+  ['Creators', 'Creators', '/division-2/creators/', 'creators channels'],
+  ['Guides', 'Guides', '/division-2/guides/', 'guides help farming returning']
+].map(([title, type, href, keywords]) => ({ title, type, href: `${base}${href}`, keywords }));
 ---
 
-<div class:list={['global-search-container', compact && 'global-search-container--compact']} data-site-search={id}>
-  <Icon name="search" class="search-icon-left" />
-  <input
-    id={id}
-    class="global-search-input"
-    type="search"
-    placeholder="Search builds, tools, guides..."
-    aria-label="Search DivGaming"
-    autocomplete="off"
-    data-search-input
-  />
-  <button class="search-icon-right" type="button" aria-label="Open first search result" data-search-submit>
-    <Icon name="arrow-right" />
-  </button>
-  <div class="global-search-results" role="listbox" aria-label="Search results" data-search-results></div>
-  <script type="application/json" data-search-index>{data}</script>
+<div class:list={['searchbox', compact && 'searchbox-compact']} data-search-root>
+  <Icon name="search" />
+  <input id={id} type="search" placeholder="Search builds, tools, guides..." data-search-input autocomplete="off" />
+  <div class="search-results" data-search-results></div>
+  <script type="application/json" data-search-data>{JSON.stringify(items)}</script>
 </div>
 
 <script>
-  function setupSiteSearch(root) {
+  for (const root of document.querySelectorAll('[data-search-root]')) {
     const input = root.querySelector('[data-search-input]');
-    const submit = root.querySelector('[data-search-submit]');
     const results = root.querySelector('[data-search-results]');
-    const source = root.querySelector('[data-search-index]');
-    const index = source ? JSON.parse(source.textContent || '[]') : [];
-    let currentResults = [];
+    const data = JSON.parse(root.querySelector('[data-search-data]')?.textContent || '[]');
 
-    function resultMarkup(item) {
-      return `
-        <a href="${item.href}" role="option">
-          <span>${item.type}</span>
-          <strong>${item.title}</strong>
-        </a>
-      `;
-    }
-
-    function runSearch() {
-      const query = (input.value || '').trim().toLowerCase();
-      results.innerHTML = '';
-      currentResults = [];
-
-      if (!query) {
-        root.classList.remove('search-open');
+    function render() {
+      const q = (input?.value || '').toLowerCase().trim();
+      if (!q) {
+        root.classList.remove('is-open');
+        results.innerHTML = '';
         return;
       }
 
-      currentResults = index
-        .filter((item) => `${item.title} ${item.type} ${item.keywords}`.toLowerCase().includes(query))
-        .slice(0, 7);
-
-      if (currentResults.length === 0) {
-        results.innerHTML = '<p class="empty-search">No matching DivGaming section found.</p>';
-      } else {
-        results.innerHTML = currentResults.map(resultMarkup).join('');
-      }
-
-      root.classList.add('search-open');
+      const matches = data.filter((item) => `${item.title} ${item.type} ${item.keywords}`.toLowerCase().includes(q)).slice(0, 7);
+      results.innerHTML = matches.length
+        ? matches.map((item) => `<a href="${item.href}"><span>${item.type}</span><strong>${item.title}</strong></a>`).join('')
+        : '<p>No matching section found.</p>';
+      root.classList.add('is-open');
     }
 
-    input?.addEventListener('input', runSearch);
-    input?.addEventListener('focus', runSearch);
-
+    input?.addEventListener('input', render);
+    input?.addEventListener('focus', render);
     input?.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' && currentResults[0]) {
-        window.location.href = currentResults[0].href;
-      }
-      if (event.key === 'Escape') {
-        root.classList.remove('search-open');
-        input.blur();
-      }
-    });
-
-    submit?.addEventListener('click', () => {
-      if (currentResults[0]) {
-        window.location.href = currentResults[0].href;
-      } else {
-        input?.focus();
+      if (event.key === 'Escape') root.classList.remove('is-open');
+      if (event.key === 'Enter') {
+        const first = results.querySelector('a');
+        if (first) window.location.href = first.href;
       }
     });
 
     document.addEventListener('click', (event) => {
-      if (!root.contains(event.target)) root.classList.remove('search-open');
+      if (!root.contains(event.target)) root.classList.remove('is-open');
     });
-  }
-
-  for (const root of document.querySelectorAll('[data-site-search]')) {
-    setupSiteSearch(root);
   }
 </script>

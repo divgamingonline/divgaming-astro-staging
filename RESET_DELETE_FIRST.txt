@@ -1,0 +1,16 @@
+DELETE THESE FROM THE LOCAL STAGING REPO BEFORE COPYING THIS RESET PACKAGE:
+
+src
+public
+data
+
+Also delete these old root-level package notes if you want the repo clean:
+
+PHASE_*
+*_HOTFIX_*
+*_README.md
+*_UPLOAD_LIST.txt
+
+Do not delete:
+.github
+.git
