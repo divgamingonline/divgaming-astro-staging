@@ -1,0 +1,338 @@
+{
+  "metadata": {
+    "name": "Y8S1 Prototype System",
+    "publicDisplayPolicy": [
+      "Show only on eligible non-exotic gear and weapons.",
+      "Do not show on exotics.",
+      "Keep collapsed by default.",
+      "Do not mix gear max values with weapon max values."
+    ],
+    "_internalReference": {
+      "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+      "tabsUsed": [
+        "Calculations"
+      ]
+    }
+  },
+  "summary": "Prototype rolls and Prototype Augments apply to eligible non-exotic gear and weapons. Exotics are excluded.",
+  "eligibility": {
+    "exotics": false,
+    "namedHighEnd": true,
+    "highEndGear": true,
+    "gearSets": true,
+    "brandSetGearPieces": true,
+    "nonExoticWeapons": true
+  },
+  "gearRollSections": [
+    {
+      "title": "Gear Attribute Max Rolls",
+      "rows": [
+        {
+          "label": "Armor",
+          "standard": "170,000",
+          "prototype": "255,000",
+          "change": "+85,000"
+        },
+        {
+          "label": "Skill Tier",
+          "standard": "+1",
+          "prototype": "+1.5",
+          "change": "+0.5"
+        },
+        {
+          "label": "Critical Hit Chance",
+          "standard": "+6%",
+          "prototype": "+9%",
+          "change": "+3 percentage points"
+        },
+        {
+          "label": "Critical Hit Damage",
+          "standard": "+12%",
+          "prototype": "+18%",
+          "change": "+6 percentage points"
+        },
+        {
+          "label": "Headshot Damage",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Weapon Damage",
+          "standard": "+15%",
+          "prototype": "+22.5%",
+          "change": "+7.5 percentage points"
+        },
+        {
+          "label": "Weapon Handling",
+          "standard": "+8%",
+          "prototype": "+12%",
+          "change": "+4 percentage points"
+        },
+        {
+          "label": "Skill Haste",
+          "standard": "0.12",
+          "prototype": "0.18",
+          "change": "+0.06"
+        },
+        {
+          "label": "Skill Damage",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Repair Skills",
+          "standard": "+20%",
+          "prototype": "+30%",
+          "change": "+10 percentage points"
+        },
+        {
+          "label": "Skill Duration",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Status Effects",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Hazard Protection",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Explosive Resistance",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Armor Regen HP/s",
+          "standard": "4,925",
+          "prototype": "7,388",
+          "change": "+2,462"
+        },
+        {
+          "label": "Health",
+          "standard": "18,935",
+          "prototype": "28,402",
+          "change": "+9,468"
+        },
+        {
+          "label": "Protection from Elites",
+          "standard": "+13%",
+          "prototype": "+19.5%",
+          "change": "+6.5 percentage points"
+        },
+        {
+          "label": "Incoming Repairs",
+          "standard": "+20%",
+          "prototype": "+30%",
+          "change": "+10 percentage points"
+        },
+        {
+          "label": "Burn Resistance",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Bleed Resistance",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        }
+      ]
+    }
+  ],
+  "weaponRollSections": [
+    {
+      "title": "Weapon Core Attribute Max Rolls",
+      "rows": [
+        {
+          "label": "Critical Hit Chance",
+          "standard": "+21%",
+          "prototype": "+31.5%",
+          "change": "+10.5 percentage points"
+        },
+        {
+          "label": "Critical Hit Damage",
+          "standard": "+17%",
+          "prototype": "+25.5%",
+          "change": "+8.5 percentage points"
+        },
+        {
+          "label": "Headshot Damage",
+          "standard": "+111%",
+          "prototype": "+166.5%",
+          "change": "+55.5 percentage points"
+        },
+        {
+          "label": "Health Damage",
+          "standard": "+21%",
+          "prototype": "+31.5%",
+          "change": "+10.5 percentage points"
+        },
+        {
+          "label": "Damage to Armor",
+          "standard": "+12%",
+          "prototype": "+18%",
+          "change": "+6 percentage points"
+        },
+        {
+          "label": "DMG Out of Cover",
+          "standard": "0.12",
+          "prototype": "0.18",
+          "change": "+0.06"
+        }
+      ]
+    },
+    {
+      "title": "Weapon Minor Attribute Max Rolls",
+      "rows": [
+        {
+          "label": "Critical Hit Chance",
+          "standard": "+9.5%",
+          "prototype": "+14.25%",
+          "change": "+4.75 percentage points"
+        },
+        {
+          "label": "Critical Hit Damage",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Headshot Damage",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Health Damage",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        },
+        {
+          "label": "Damage to Armor",
+          "standard": "+6%",
+          "prototype": "+9%",
+          "change": "+3 percentage points"
+        },
+        {
+          "label": "DMG Out of Cover",
+          "standard": "0.1",
+          "prototype": "0.15",
+          "change": "+0.05"
+        },
+        {
+          "label": "Accuracy",
+          "standard": "+12%",
+          "prototype": "+18%",
+          "change": "+6 percentage points"
+        },
+        {
+          "label": "Stability",
+          "standard": "+12%",
+          "prototype": "+18%",
+          "change": "+6 percentage points"
+        },
+        {
+          "label": "Reload Speed",
+          "standard": "+12%",
+          "prototype": "+18%",
+          "change": "+6 percentage points"
+        },
+        {
+          "label": "Optimal Range",
+          "standard": "+24%",
+          "prototype": "+36%",
+          "change": "+12 percentage points"
+        },
+        {
+          "label": "Rate of Fire",
+          "standard": "+5%",
+          "prototype": "+7.5%",
+          "change": "+2.5 percentage points"
+        },
+        {
+          "label": "Magazine Size %",
+          "standard": "0.125",
+          "prototype": "0.1875",
+          "change": "+0.0625"
+        },
+        {
+          "label": "Swap Speed",
+          "standard": "+15%",
+          "prototype": "+22.5%",
+          "change": "+7.5 percentage points"
+        },
+        {
+          "label": "+1 Skill Tier",
+          "standard": "+1",
+          "prototype": "+2",
+          "change": "+1"
+        },
+        {
+          "label": "Armor on Kill",
+          "standard": "+10%",
+          "prototype": "+15%",
+          "change": "+5 percentage points"
+        }
+      ]
+    }
+  ],
+  "augments": [
+    {
+      "name": "Amalgam",
+      "value": "0.025",
+      "description": "2.5% chance for bullets to apply a random status effect"
+    },
+    {
+      "name": "Anomaly",
+      "value": "0.05",
+      "description": "Heal for 5% of the damage dealt by skills"
+    },
+    {
+      "name": "Atomize",
+      "value": "0.225",
+      "description": "22.5% increased explosion range for any explosives"
+    },
+    {
+      "name": "Echo",
+      "value": "0.045",
+      "description": "4.5% chance to duplicate the damage of the last bullet fired"
+    },
+    {
+      "name": "Entropy",
+      "value": "0.15",
+      "description": "Converts 15% of Armor to HP. (Bonus Armor does not count)"
+    },
+    {
+      "name": "Paradox",
+      "value": "0.065",
+      "description": "6.5% chance to refill your magazine by 2 for each bullet spent"
+    },
+    {
+      "name": "Quantum",
+      "value": "0.03",
+      "description": "3% chance to become immune to damage for 2 seconds on taking damage"
+    },
+    {
+      "name": "Synesthesia",
+      "value": "0.045",
+      "description": "4.5% chance that every shot that hits the target reduces your active cooldowns by 0.2 seconds"
+    },
+    {
+      "name": "Trapper",
+      "value": "0.24",
+      "description": "24% increased duration of applied CC effects"
+    }
+  ]
+}
