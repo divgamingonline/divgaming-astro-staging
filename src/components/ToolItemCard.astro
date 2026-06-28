@@ -11,28 +11,34 @@ import {
   itemPrototypePresentation,
   itemRoles,
   itemSearch,
-  itemSource,
   itemSubhead,
   itemType,
   rarityClass,
   type ToolItem
 } from '../utils/tools';
-import { hasRows, modeStatusLabel } from '../utils/effectValues';
+import { hasRows, modesDiffer, rowChange, rowLabel } from '../utils/effectValues';
 
-export interface Props { item: ToolItem; }
+export interface Props {
+  item: ToolItem;
+}
+
 const { item } = Astro.props;
 const icon = itemIcon(item);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (href: string) => href.startsWith('http') ? href : `${base}${href}`;
+
 const effect = itemEffectPresentation(item);
 const prototype = itemPrototypePresentation(item);
 const bonuses = itemBonuses(item);
 const roles = itemRoles(item);
-const source = itemSource(item);
 const description = itemDescription(item);
 const core = coreLabel(item);
-const hasPve = hasRows(effect?.modes?.pve);
-const hasPvp = hasRows(effect?.modes?.pvp);
+
+const pveMode = effect?.modes?.pve;
+const pvpMode = effect?.modes?.pvp;
+const hasPve = hasRows(pveMode);
+const hasPvp = hasRows(pvpMode) && modesDiffer(pveMode, pvpMode);
+const showModeToggle = hasPve && hasPvp;
 const showRawBonuses = !effect && bonuses.length > 0;
 ---
 
@@ -68,8 +74,8 @@ const showRawBonuses = !effect && bonuses.length > 0;
         </div>
       )}
 
-      {(hasPve && hasPvp) && (
-        <div class="mode-toggle" role="tablist" aria-label="Effect value mode">
+      {showModeToggle && (
+        <div class="mode-toggle" role="tablist" aria-label="Effect mode">
           <button type="button" class="active" data-mode-button="pve">PvE</button>
           <button type="button" data-mode-button="pvp">PvP</button>
         </div>
@@ -81,33 +87,32 @@ const showRawBonuses = !effect && bonuses.length > 0;
             {effect.kind === 'perfect-talent' ? (
               <>
                 <div class="value-table-head">
-                  <span>Metric</span>
+                  <span>Effect</span>
                   <span>Regular</span>
                   <span>Perfect</span>
-                  <span>Delta</span>
+                  <span>Change</span>
                 </div>
-                {effect.modes.pve.rows.map((row) => (
+                {pveMode.rows.map((row) => (
                   <div class="value-table-row">
-                    <span>{row.metric}</span>
+                    <span>{rowLabel(row)}</span>
                     <strong>{row.regular}</strong>
                     <strong>{row.perfect}</strong>
-                    <em>{row.delta}</em>
+                    <em>{rowChange(row)}</em>
                   </div>
                 ))}
               </>
             ) : (
               <>
-                <div class="value-list-head">PvE values / description</div>
-                {effect.modes.pve.rows.map((row) => (
+                <div class="value-list-head">{showModeToggle ? 'PvE' : 'Values'}</div>
+                {pveMode.rows.map((row) => (
                   <div class="value-list-row">
-                    <span>{row.metric}</span>
-                    {row.value && row.value !== row.metric && <strong>{row.value}</strong>}
+                    <span>{rowLabel(row)}</span>
+                    {row.value && row.value !== rowLabel(row) && <strong>{row.value}</strong>}
                   </div>
                 ))}
               </>
             )}
           </div>
-          {effect.modes.pve.status && <p class="verification-status">{modeStatusLabel(effect.modes.pve.status)}</p>}
         </div>
       )}
 
@@ -117,33 +122,32 @@ const showRawBonuses = !effect && bonuses.length > 0;
             {effect.kind === 'perfect-talent' ? (
               <>
                 <div class="value-table-head">
-                  <span>Metric</span>
+                  <span>Effect</span>
                   <span>Regular</span>
                   <span>Perfect</span>
-                  <span>Delta</span>
+                  <span>Change</span>
                 </div>
-                {effect.modes.pvp.rows.map((row) => (
+                {pvpMode.rows.map((row) => (
                   <div class="value-table-row">
-                    <span>{row.metric}</span>
+                    <span>{rowLabel(row)}</span>
                     <strong>{row.regular}</strong>
                     <strong>{row.perfect}</strong>
-                    <em>{row.delta}</em>
+                    <em>{rowChange(row)}</em>
                   </div>
                 ))}
               </>
             ) : (
               <>
-                <div class="value-list-head">PvP values / description</div>
-                {effect.modes.pvp.rows.map((row) => (
+                <div class="value-list-head">PvP</div>
+                {pvpMode.rows.map((row) => (
                   <div class="value-list-row">
-                    <span>{row.metric}</span>
-                    {row.value && row.value !== row.metric && <strong>{row.value}</strong>}
+                    <span>{rowLabel(row)}</span>
+                    {row.value && row.value !== rowLabel(row) && <strong>{row.value}</strong>}
                   </div>
                 ))}
               </>
             )}
           </div>
-          {effect.modes.pvp.status && <p class="verification-status">{modeStatusLabel(effect.modes.pvp.status)}</p>}
         </div>
       )}
 
@@ -160,13 +164,6 @@ const showRawBonuses = !effect && bonuses.length > 0;
           </ul>
         </div>
       )}
-
-      {effect.source?.label && (
-        <p class="effect-source">
-          <strong>Source:</strong> {effect.source.label}
-          {effect.source.lastVerified && <span> · {effect.source.lastVerified}</span>}
-        </p>
-      )}
     </div>
   ) : description && (
     <p class="item-description">{description}</p>
@@ -178,6 +175,7 @@ const showRawBonuses = !effect && bonuses.length > 0;
         <span>{prototype.label}</span>
         <strong>{prototype.title}</strong>
       </summary>
+
       <p>{prototype.summary}</p>
       <p class="prototype-applies">{prototype.appliesTo}</p>
 
@@ -185,7 +183,7 @@ const showRawBonuses = !effect && bonuses.length > 0;
         <div class="prototype-section">
           <span class="effect-label">Prototype Roll Examples</span>
           <div class="prototype-roll-grid">
-            {prototype.rollExamples.map((roll) => (
+            {prototype.rollExamples.slice(0, 8).map((roll) => (
               <div>
                 <strong>{roll.label}</strong>
                 <span>Standard: {roll.standard}</span>
@@ -196,9 +194,9 @@ const showRawBonuses = !effect && bonuses.length > 0;
         </div>
       )}
 
-      {prototype.weaponRollNotes.length > 0 && (
+      {prototype.notes.length > 0 && (
         <ul class="bonus-list">
-          {prototype.weaponRollNotes.map((note) => <li>{note}</li>)}
+          {prototype.notes.map((note) => <li>{note}</li>)}
         </ul>
       )}
 
@@ -212,8 +210,6 @@ const showRawBonuses = !effect && bonuses.length > 0;
           </ul>
         </div>
       )}
-
-      <p class="effect-source"><strong>Source:</strong> {prototype.source}</p>
     </details>
   )}
 
@@ -228,8 +224,6 @@ const showRawBonuses = !effect && bonuses.length > 0;
       {roles.slice(0, 5).map((role) => <span>{role}</span>)}
     </div>
   )}
-
-  {source && <p class="source-line"><strong>Source:</strong> {source}</p>}
 
   <script>
     for (const root of document.querySelectorAll('[data-effect-toggle-root]')) {
@@ -400,17 +394,9 @@ const showRawBonuses = !effect && bonuses.length > 0;
   }
 
   .prototype-roll-grid span,
-  .verification-status,
-  .effect-source,
   .prototype-applies {
     color: var(--muted);
     font-size: .82rem;
-  }
-
-  .effect-source {
-    border-top: 1px solid rgba(255,255,255,.08);
-    padding-top: 9px;
-    margin: 9px 0 0;
   }
 
   .named-attribute-box {
@@ -460,7 +446,7 @@ const showRawBonuses = !effect && bonuses.length > 0;
     }
 
     .value-table-row em::before {
-      content: "Delta";
+      content: "Change";
     }
   }
 </style>

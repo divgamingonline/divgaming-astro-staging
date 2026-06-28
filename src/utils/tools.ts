@@ -4,7 +4,6 @@ import {
   getItemEffectOverride,
   getPerfectTalentComparison,
   type EffectModeValues,
-  type EffectSource,
   type PerfectTalentComparison
 } from './effectValues';
 import { getPrototypePresentation, type PrototypePresentation } from './prototype';
@@ -17,7 +16,6 @@ export type ItemEffectPresentation = {
   title: string;
   regularTitle?: string;
   summary?: string;
-  source?: EffectSource;
   modes?: {
     pve?: EffectModeValues;
     pvp?: EffectModeValues;
@@ -29,12 +27,14 @@ const manifest: any = iconManifest;
 
 function cleanTalentName(name: string): string {
   if (/^Future Perfection$/i.test(name)) return 'Future Perfect';
-  return name.replace(/^Perfectly\s+/i, '').replace(/^Perfect\s+/i, '').trim();
+  return name.replace(/^Perfectly\s+/i, '').replace(/^Perfected\s+/i, '').replace(/^Perfect\s+/i, '').trim();
 }
 
 function getRawTalent(item: ToolItem): { name: string; description: string; type: string } {
   const raw = item.talent;
+
   if (typeof raw === 'string') return { name: raw, description: '', type: '' };
+
   if (raw && typeof raw === 'object') {
     return {
       name: String(raw.name || '').trim(),
@@ -42,21 +42,13 @@ function getRawTalent(item: ToolItem): { name: string; description: string; type
       type: String(raw.type || '').trim()
     };
   }
+
   return { name: '', description: '', type: '' };
 }
 
-function textRows(rows: string[], status = 'spreadsheet-backed'): EffectModeValues {
+function textRows(rows: string[]): EffectModeValues {
   return {
-    status,
-    rows: rows.filter(Boolean).map((value) => ({ metric: value, value }))
-  };
-}
-
-function source(tab = 'Talents'): EffectSource {
-  return {
-    label: `Y8S1 Build Making Tool spreadsheet — ${tab} tab`,
-    confidence: 'spreadsheet-backed',
-    lastVerified: 'Uploaded 2026-06-28'
+    rows: rows.filter(Boolean).map((value) => ({ effect: value, value }))
   };
 }
 
@@ -70,12 +62,14 @@ export function itemName(item: ToolItem): string {
 
 export function itemType(item: ToolItem): string {
   const text = `${item.rarity || ''} ${item.category || ''} ${item.itemType || ''}`.toLowerCase();
+
   if (text.includes('exotic')) return 'Exotic';
   if (text.includes('gear set') || text.includes('gearset')) return 'Gear Set';
   if (text.includes('brand set')) return 'Brand Set';
   if (text.includes('named')) return 'Named High-End';
   if (text.includes('weapon talent')) return 'Weapon Talent';
   if (text.includes('gear talent')) return 'Gear Talent';
+
   return String(item.category || item.rarity || 'Reference');
 }
 
@@ -101,15 +95,21 @@ export function isGearSet(item: ToolItem): boolean {
 
 export function rarityClass(item: ToolItem): string {
   const type = itemType(item).toLowerCase();
+
   if (type.includes('exotic')) return 'rarity-exotic';
   if (type.includes('gear set')) return 'rarity-gearset';
   if (type.includes('brand') || type.includes('named') || type.includes('high-end')) return 'rarity-highend';
+
   return 'rarity-standard';
 }
 
 export function itemSubhead(item: ToolItem): string {
-  return [item.slot, item.weaponType, item.brandOrSet, item.coreRollLabel || item.coreRollText]
-    .filter(Boolean).map(String).slice(0, 2).join(' · ');
+  return [
+    item.slot,
+    item.weaponType,
+    item.brandOrSet,
+    item.coreRollLabel || item.coreRollText
+  ].filter(Boolean).map(String).slice(0, 2).join(' · ');
 }
 
 export function itemDescription(item: ToolItem): string {
@@ -120,23 +120,20 @@ export function itemDescription(item: ToolItem): string {
   return '';
 }
 
-export function itemSource(item: ToolItem): string {
-  if (isNamedItem(item)) return '';
-  const source = String(item.source || item.sources || '').trim();
-  if (!source) return '';
-  if (/divgaming curated reference|validate against|source watcher/i.test(source)) return '';
-  return source;
-}
-
 function normalizeProperty(value: any): { label: string; note: string } | null {
   if (!value) return null;
+
   if (typeof value === 'string') return { label: value, note: '' };
+
   if (typeof value === 'object') {
     const label = String(value.label || value.name || value.value || '').trim();
     const note = String(value.note || value.description || '').trim();
+
     if (!label && !note) return null;
+
     return { label, note };
   }
+
   return null;
 }
 
@@ -148,7 +145,7 @@ export function itemNamedAttributes(item: ToolItem): { label: string; descriptio
   if (/^any talent$/i.test(talentName)) {
     properties.push({
       label: 'Open talent slot',
-      description: 'This named item is not locked to one perfect talent. Its named value comes from its extra stat or special item property.'
+      description: 'This item is not locked to one perfect talent. Its named value comes from its roll, attribute, or special item property.'
     });
   }
 
@@ -162,11 +159,12 @@ export function itemNamedAttributes(item: ToolItem): { label: string; descriptio
   for (const entry of Array.isArray(item.fixedAttributes) ? item.fixedAttributes : []) {
     const property = normalizeProperty(entry);
     if (!property) continue;
+
     properties.push({
       label: property.label,
       description: property.note && !/^fixed named item attribute$/i.test(property.note)
         ? property.note
-        : 'Fixed named attribute that separates this item from its standard counterpart.'
+        : 'Fixed named attribute that separates this item from the standard version.'
     });
   }
 
@@ -174,6 +172,7 @@ export function itemNamedAttributes(item: ToolItem): { label: string; descriptio
     const property = normalizeProperty(entry);
     if (!property) continue;
     if (/standard weapon core attribute/i.test(property.note)) continue;
+
     properties.push({
       label: property.label,
       description: property.note || 'Named weapon attribute.'
@@ -188,17 +187,17 @@ export const itemSpecialProperties = itemNamedAttributes;
 export function itemPerfectTalentComparison(item: ToolItem): PerfectTalentComparison | null {
   const talent = getRawTalent(item);
   const name = talent.name.trim();
+
   if (!name) return null;
   if (/^(any talent|named attribute)$/i.test(name)) return null;
 
-  const sourced = getPerfectTalentComparison(name);
-  if (sourced) return sourced;
+  const comparison = getPerfectTalentComparison(name);
+  if (comparison) return comparison;
 
   return {
-    perfectName: name,
     regularName: cleanTalentName(name),
+    perfectName: name,
     summary: talent.description || item.note || '',
-    source: source('Talents'),
     modes: {}
   };
 }
@@ -206,22 +205,15 @@ export function itemPerfectTalentComparison(item: ToolItem): PerfectTalentCompar
 export const itemTalent = itemPerfectTalentComparison;
 export const itemTalentComparison = itemPerfectTalentComparison;
 
-function sameListedPvpRows(rows: string[]): EffectModeValues {
-  return {
-    status: 'same-listed-value',
-    rows: rows.filter(Boolean).map((value) => ({ metric: value, value }))
-  };
-}
-
 export function itemEffectPresentation(item: ToolItem): ItemEffectPresentation | null {
   const override = getItemEffectOverride(item.id);
+
   if (override) {
     return {
       kind: 'generic',
-      label: override.label || 'Effect Values',
+      label: override.label || 'Effect',
       title: override.title || itemName(item),
       summary: override.summary,
-      source: override.source,
       modes: override.modes
     };
   }
@@ -239,7 +231,6 @@ export function itemEffectPresentation(item: ToolItem): ItemEffectPresentation |
         title: perfect.perfectName,
         regularTitle: perfect.regularName,
         summary: perfect.summary,
-        source: perfect.source,
         modes: perfect.modes,
         namedAttributes
       };
@@ -253,16 +244,20 @@ export function itemEffectPresentation(item: ToolItem): ItemEffectPresentation |
         title: itemName(item),
         summary: itemDescription(item),
         namedAttributes,
-        modes: { pve: textRows(rows), pvp: sameListedPvpRows(rows) },
-        source: source('Talents')
+        modes: { pve: textRows(rows) }
       };
     }
   }
 
   if (isExoticItem(item)) {
     const rows = [];
-    if (talent.name || talent.description) rows.push(`${talent.name || 'Exotic Talent'}${talent.description ? ` — ${talent.description}` : ''}`);
-    else if (itemDescription(item)) rows.push(itemDescription(item));
+
+    if (talent.name || talent.description) {
+      rows.push(`${talent.name || 'Exotic Talent'}${talent.description ? ` — ${talent.description}` : ''}`);
+    } else if (itemDescription(item)) {
+      rows.push(itemDescription(item));
+    }
+
     const safeRows = rows.length ? rows : ['Exotic talent details are listed from the current item data.'];
 
     return {
@@ -270,32 +265,35 @@ export function itemEffectPresentation(item: ToolItem): ItemEffectPresentation |
       label: 'Exotic Talent',
       title: talent.name || itemName(item),
       summary: talent.description || itemDescription(item),
-      modes: { pve: textRows(safeRows), pvp: sameListedPvpRows(safeRows) },
-      source: source('Talents')
+      modes: { pve: textRows(safeRows) }
     };
   }
 
   if (isBrandSet(item)) {
     const bonuses = itemBonuses(item);
+
     return {
       kind: 'brand-bonuses',
       label: 'Brand Set Bonuses',
       title: itemName(item),
       summary: item.roles?.length ? `Common roles: ${item.roles.join(', ')}` : '',
-      modes: { pve: textRows(bonuses), pvp: sameListedPvpRows(bonuses) },
-      source: source('Brands List')
+      modes: { pve: textRows(bonuses) }
     };
   }
 
   if (isGearSet(item)) {
-    const rows = [...itemBonuses(item), item.chest ? `Chest Talent: ${item.chest}` : '', item.backpack ? `Backpack Talent: ${item.backpack}` : ''].filter(Boolean);
+    const rows = [
+      ...itemBonuses(item),
+      item.chest ? `Chest Talent: ${item.chest}` : '',
+      item.backpack ? `Backpack Talent: ${item.backpack}` : ''
+    ].filter(Boolean);
+
     return {
       kind: 'gearset-bonuses',
       label: 'Gear Set Bonuses',
       title: itemName(item),
       summary: item.roles?.length ? `Common roles: ${item.roles.join(', ')}` : '',
-      modes: { pve: textRows(rows), pvp: sameListedPvpRows(rows) },
-      source: source('Set Bonuses')
+      modes: { pve: textRows(rows) }
     };
   }
 
@@ -312,17 +310,21 @@ export function itemRoles(item: ToolItem): string[] {
 
 export function coreLabel(item: ToolItem): string {
   const raw = String(item.defaultCore || item.cores?.[0] || item.availableCores?.[0] || item.coreRollLabel || item.coreRollText || '').toLowerCase();
+
   if (raw.includes('weapon') || raw.includes('pistol') || raw.includes('damage')) return 'Weapon Damage';
   if (raw.includes('armor')) return 'Armor';
   if (raw.includes('skill')) return 'Skill Tier';
+
   return '';
 }
 
 export function coreClass(item: ToolItem): string {
   const label = coreLabel(item).toLowerCase();
+
   if (label.includes('weapon')) return 'core-red';
   if (label.includes('armor')) return 'core-blue';
   if (label.includes('skill')) return 'core-yellow';
+
   return '';
 }
 
@@ -330,7 +332,9 @@ export function itemIcon(item: ToolItem): string {
   const type = itemType(item).toLowerCase();
   const brandKey = String(item.assetKey || assetSlug(item.brandOrSet || item.brand || item.set || item.name));
 
-  if ((type.includes('brand') || type.includes('gear set')) && manifest.brands?.[brandKey]) return manifest.brands[brandKey];
+  if ((type.includes('brand') || type.includes('gear set')) && manifest.brands?.[brandKey]) {
+    return manifest.brands[brandKey];
+  }
 
   if (type.includes('named') && item.brandOrSet) {
     const namedBrandKey = assetSlug(item.brandOrSet);
@@ -345,6 +349,7 @@ export function itemIcon(item: ToolItem): string {
     slot.includes('holster') ? 'holster' :
     slot.includes('knee') ? 'kneepads' :
     slot.includes('mask') ? 'mask' : '';
+
   if (slotKey && manifest.gears?.[slotKey]) return manifest.gears[slotKey];
 
   const weapon = String(item.weaponType || '').toLowerCase();
@@ -356,6 +361,7 @@ export function itemIcon(item: ToolItem): string {
     weapon.includes('pistol') || weapon.includes('sidearm') ? 'pistol' :
     weapon.includes('rifle') && !weapon.includes('assault') ? 'rifle' :
     weapon.includes('ar') || weapon.includes('assault') ? 'ar' : '';
+
   if (weaponKey && manifest.weapons?.[weaponKey]) return manifest.weapons[weaponKey];
 
   return '';
@@ -370,19 +376,18 @@ export function itemSearch(item: ToolItem): string {
     itemType(item),
     itemSubhead(item),
     itemDescription(item),
-    itemSource(item),
     effect?.label,
     effect?.title,
     effect?.regularTitle,
     effect?.summary,
-    ...(effect?.modes?.pve?.rows || []).flatMap((row) => [row.metric, row.regular, row.perfect, row.value, row.delta]),
-    ...(effect?.modes?.pvp?.rows || []).flatMap((row) => [row.metric, row.regular, row.perfect, row.value, row.delta]),
+    ...(effect?.modes?.pve?.rows || []).flatMap((row) => [row.effect, row.metric, row.regular, row.perfect, row.value, row.change]),
+    ...(effect?.modes?.pvp?.rows || []).flatMap((row) => [row.effect, row.metric, row.regular, row.perfect, row.value, row.change]),
     ...(effect?.namedAttributes || []).flatMap((property) => [property.label, property.description]),
     prototype?.label,
     prototype?.title,
     prototype?.summary,
     prototype?.appliesTo,
-    ...(prototype?.rollExamples || []).flatMap((roll) => [roll.label, roll.standard, roll.prototype, roll.note]),
+    ...(prototype?.rollExamples || []).flatMap((roll) => [roll.label, roll.standard, roll.prototype]),
     ...(prototype?.augments || []).flatMap((augment) => [augment.name, augment.value, augment.description]),
     ...itemBonuses(item),
     ...itemRoles(item)

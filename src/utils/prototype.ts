@@ -4,7 +4,6 @@ export type PrototypeRollExample = {
   label: string;
   standard: string;
   prototype: string;
-  note?: string;
 };
 
 export type PrototypeAugment = {
@@ -17,43 +16,43 @@ export type PrototypePresentation = {
   label: string;
   title: string;
   summary: string;
-  eligible: boolean;
   appliesTo: string;
   rollExamples: PrototypeRollExample[];
-  weaponRollNotes: string[];
+  notes: string[];
   augments: PrototypeAugment[];
-  source: string;
 };
 
 const data = prototypeData as {
   summary: string;
-  rollExamples: PrototypeRollExample[];
-  weaponRollNotes: string[];
-  augments: PrototypeAugment[];
-  metadata?: {
-    source?: string;
-  };
+  rollExamples?: PrototypeRollExample[];
+  weaponRollNotes?: string[];
+  gearRollNotes?: string[];
+  augments?: PrototypeAugment[];
 };
 
-function isExotic(type: string): boolean {
-  return type.toLowerCase().includes('exotic');
+function textFor(item: Record<string, any>, type: string): string {
+  return `${type} ${item.rarity || ''} ${item.category || ''} ${item.itemType || ''} ${item.slot || ''} ${item.weaponType || ''}`.toLowerCase();
 }
 
-function isWeaponLike(item: Record<string, any>, type: string): boolean {
-  const text = `${type} ${item.weaponType || ''} ${item.category || ''} ${item.itemType || ''}`.toLowerCase();
-  return /(weapon|rifle|assault|smg|lmg|shotgun|marksman|pistol|sidearm)/.test(text);
+function isExotic(text: string): boolean {
+  return text.includes('exotic');
 }
 
-function isGearLike(item: Record<string, any>, type: string): boolean {
-  const text = `${type} ${item.slot || ''} ${item.category || ''} ${item.itemType || ''}`.toLowerCase();
-  return /(gear|brand|mask|backpack|chest|gloves|holster|kneepads|high-end|named)/.test(text);
+function isWeaponLike(text: string): boolean {
+  return /(weapon|rifle|assault|smg|lmg|shotgun|marksman|mmr|pistol|sidearm)/.test(text);
+}
+
+function isGearLike(text: string): boolean {
+  return /(gear|brand|mask|backpack|chest|glove|holster|knee|high-end|named)/.test(text);
 }
 
 export function getPrototypePresentation(item: Record<string, any>, type: string): PrototypePresentation | null {
-  if (isExotic(type)) return null;
+  const text = textFor(item, type);
 
-  const weaponLike = isWeaponLike(item, type);
-  const gearLike = isGearLike(item, type);
+  if (isExotic(text)) return null;
+
+  const weaponLike = isWeaponLike(text);
+  const gearLike = isGearLike(text);
 
   if (!weaponLike && !gearLike) return null;
 
@@ -61,11 +60,9 @@ export function getPrototypePresentation(item: Record<string, any>, type: string
     label: 'Prototype System',
     title: 'Prototype Eligible',
     summary: data.summary,
-    eligible: true,
-    appliesTo: weaponLike ? 'Eligible non-exotic weapon' : 'Eligible non-exotic gear piece',
+    appliesTo: weaponLike ? 'Eligible non-exotic weapon' : 'Eligible non-exotic gear',
     rollExamples: data.rollExamples || [],
-    weaponRollNotes: weaponLike ? (data.weaponRollNotes || []) : [],
-    augments: data.augments || [],
-    source: data.metadata?.source || 'Y8S1 Build Making Tool spreadsheet'
+    notes: weaponLike ? (data.weaponRollNotes || []) : (data.gearRollNotes || []),
+    augments: data.augments || []
   };
 }

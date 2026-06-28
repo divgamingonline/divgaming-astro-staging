@@ -1,1355 +1,1926 @@
 {
   "metadata": {
-    "name": "DivGaming Y8S1 Spreadsheet-Backed Effect Values",
-    "purpose": "Mode-aware effect values for named items, exotics, brand sets, and gear sets.",
-    "source": "Uploaded workbook: [Y8S1] Build Making Tool - The Division 2.xlsx",
-    "publicDisplayRule": "Do not show placeholder source text. PvP appears when sourced or same-listed in the spreadsheet.",
-    "lastUpdated": "2026-06-28"
+    "name": "DivGaming Y8S1 Effect Values",
+    "publicDisplayPolicy": [
+      "No source labels on public cards.",
+      "No spreadsheet/debug wording on public cards.",
+      "Use player-facing labels: Effect, Regular, Perfect, Change.",
+      "Show PvE/PvP tabs only when mode-specific rows exist."
+    ],
+    "_internalReference": {
+      "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+      "tabsUsed": [
+        "Talents",
+        "Calculations"
+      ]
+    }
   },
   "perfectTalents": {
-    "Perfect Flatline": {
-      "regularName": "Flatline",
-      "perfectName": "Perfect Flatline",
-      "summary": "Amplifies weapon damage against pulsed enemies.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
+    "Perfect Eyeless": {
+      "regularName": "Eyeless",
+      "perfectName": "Perfect Eyeless",
+      "summary": "",
       "modes": {
         "pve": {
-          "status": "spreadsheet-backed",
           "rows": [
             {
-              "metric": "Amplified weapon damage to pulsed enemies",
-              "regular": "+15%",
-              "perfect": "+20%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Amplified weapon damage to pulsed enemies",
-              "regular": "+15%",
-              "perfect": "+20%",
-              "delta": "+5 percentage points"
+              "effect": "Amplified Weapon Damage",
+              "regular": "+30%",
+              "perfect": "+35%",
+              "change": "+5 percentage points"
             }
           ]
         }
-      }
-    },
-    "Perfect Sledgehammer": {
-      "regularName": "Sledgehammer",
-      "perfectName": "Perfect Sledgehammer",
-      "summary": "Grenade damage marks enemies and increases damage to armor against marked targets.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
       },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Damage to armor against grenade-marked armored targets",
-              "regular": "+15%",
-              "perfect": "+20%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Damage to armor against grenade-marked armored targets",
-              "regular": "+15%",
-              "perfect": "+20%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Spotter": {
-      "regularName": "Spotter",
-      "perfectName": "Perfect Spotter",
-      "summary": "Amplifies weapon and skill damage against pulsed enemies.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Amplified weapon and skill damage to pulsed enemies",
-              "regular": "+15%",
-              "perfect": "+20%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Amplified weapon and skill damage to pulsed enemies",
-              "regular": "+15%",
-              "perfect": "+20%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Combined Arms": {
-      "regularName": "Combined Arms",
-      "perfectName": "Perfect Combined Arms",
-      "summary": "Shooting an enemy increases skill damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Skill damage after shooting an enemy",
-              "regular": "+25%",
-              "perfect": "+30%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Skill damage after shooting an enemy",
-              "regular": "+25%",
-              "perfect": "+30%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Vigilance": {
-      "regularName": "Vigilance",
-      "perfectName": "Perfect Vigilance",
-      "summary": "Increases total weapon damage. Taking damage disables the buff briefly.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Total weapon damage while active",
-              "regular": "+25%",
-              "perfect": "+25%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Disabled after taking damage",
-              "regular": "4s",
-              "perfect": "3s",
-              "delta": "1 second faster recovery"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Total weapon damage while active",
-              "regular": "+25%",
-              "perfect": "+25%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Disabled after taking damage",
-              "regular": "4s",
-              "perfect": "3s",
-              "delta": "1 second faster recovery"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Glass Cannon": {
-      "regularName": "Glass Cannon",
-      "perfectName": "Perfect Glass Cannon",
-      "summary": "Amplifies damage dealt and damage taken.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Damage dealt amplified",
-              "regular": "+25%",
-              "perfect": "+30%",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Damage taken amplified",
-              "regular": "+50%",
-              "perfect": "+60%",
-              "delta": "+10 percentage points taken"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Damage dealt amplified",
-              "regular": "+25%",
-              "perfect": "+30%",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Damage taken amplified",
-              "regular": "+50%",
-              "perfect": "+60%",
-              "delta": "+10 percentage points taken"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Focus": {
-      "regularName": "Focus",
-      "perfectName": "Perfect Focus",
-      "summary": "Aiming while scoped 8x or higher ramps total weapon damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Maximum scoped weapon damage",
-              "regular": "+50%",
-              "perfect": "+60%",
-              "delta": "+10 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Maximum scoped weapon damage",
-              "regular": "+50%",
-              "perfect": "+60%",
-              "delta": "+10 percentage points"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Intimidate": {
-      "regularName": "Intimidate",
-      "perfectName": "Perfect Intimidate",
-      "summary": "While bonus armor is active, close enemies take amplified weapon damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Modeled max amplified damage",
-              "regular": "≈42.3%",
-              "perfect": "≈48.0%",
-              "delta": "≈+5.7 percentage points"
-            },
-            {
-              "metric": "Spreadsheet formula",
-              "regular": "(1.04^9)-1",
-              "perfect": "(1.04^10)-1",
-              "delta": "Perfect adds one stack step"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Modeled max amplified damage",
-              "regular": "≈42.3%",
-              "perfect": "≈48.0%",
-              "delta": "≈+5.7 percentage points"
-            },
-            {
-              "metric": "Spreadsheet formula",
-              "regular": "(1.04^9)-1",
-              "perfect": "(1.04^10)-1",
-              "delta": "Perfect adds one stack step"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Tech Support": {
-      "regularName": "Tech Support",
-      "perfectName": "Perfect Tech Support",
-      "summary": "Skill kills increase skill damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Skill damage after skill kill",
-              "regular": "+25%",
-              "perfect": "+25%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Duration",
-              "regular": "20s",
-              "perfect": "27s",
-              "delta": "+7 seconds"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Skill damage after skill kill",
-              "regular": "+25%",
-              "perfect": "+25%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Duration",
-              "regular": "20s",
-              "perfect": "27s",
-              "delta": "+7 seconds"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Shock and Awe": {
-      "regularName": "Shock & Awe",
-      "perfectName": "Perfect Shock & Awe",
-      "summary": "Applying a status effect increases skill damage and repair.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Skill damage and repair bonus",
-              "regular": "+20%",
-              "perfect": "+20%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Duration",
-              "regular": "20s",
-              "perfect": "27s",
-              "delta": "+7 seconds"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Skill damage and repair bonus",
-              "regular": "+20%",
-              "perfect": "+20%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Duration",
-              "regular": "20s",
-              "perfect": "27s",
-              "delta": "+7 seconds"
-            }
-          ]
-        }
-      }
-    },
-    "Perfectly Wicked": {
-      "regularName": "Wicked",
-      "perfectName": "Perfectly Wicked",
-      "summary": "Applying a status effect increases total weapon damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Total weapon damage after applying status effect",
-              "regular": "+18%",
-              "perfect": "+18%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Duration",
-              "regular": "20s",
-              "perfect": "27s",
-              "delta": "+7 seconds"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Total weapon damage after applying status effect",
-              "regular": "+18%",
-              "perfect": "+18%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Duration",
-              "regular": "20s",
-              "perfect": "27s",
-              "delta": "+7 seconds"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Clutch": {
-      "regularName": "Clutch",
-      "perfectName": "Perfect Clutch",
-      "summary": "Critical hits repair missing armor while under low armor.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Armor threshold",
-              "regular": "Below 15% armor",
-              "perfect": "Below 20% armor",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Critical hit repair",
-              "regular": "3% missing armor",
-              "perfect": "3% missing armor",
-              "delta": "Same repair amount"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Armor threshold",
-              "regular": "Below 15% armor",
-              "perfect": "Below 20% armor",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Critical hit repair",
-              "regular": "3% missing armor",
-              "perfect": "3% missing armor",
-              "delta": "Same repair amount"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Vanguard": {
-      "regularName": "Vanguard",
-      "perfectName": "Perfect Vanguard",
-      "summary": "Deploying a shield grants bonus armor to allies.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Ally bonus armor",
-              "regular": "+45%",
-              "perfect": "+50%",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Shield invulnerability duration",
-              "regular": "5s",
-              "perfect": "5s",
-              "delta": "Same duration"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Ally bonus armor",
-              "regular": "+45%",
-              "perfect": "+50%",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Shield invulnerability duration",
-              "regular": "5s",
-              "perfect": "5s",
-              "delta": "Same duration"
-            }
-          ]
-        }
-      }
-    },
-    "Perfectly Unbreakable": {
-      "regularName": "Unbreakable",
-      "perfectName": "Perfectly Unbreakable",
-      "summary": "When armor is depleted, repairs armor after cooldown.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Armor repaired",
-              "regular": "95%",
-              "perfect": "100%",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Cooldown",
-              "regular": "60s",
-              "perfect": "55s",
-              "delta": "5 seconds shorter"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Armor repaired",
-              "regular": "95%",
-              "perfect": "100%",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Cooldown",
-              "regular": "60s",
-              "perfect": "55s",
-              "delta": "5 seconds shorter"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Boomerang": {
-      "regularName": "Boomerang",
-      "perfectName": "Perfect Boomerang",
-      "summary": "Critical hits can return the bullet and increase the next shot's damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Bullet return chance",
-              "regular": "50%",
-              "perfect": "75%",
-              "delta": "+25 percentage points"
-            },
-            {
-              "metric": "Next shot increased damage",
-              "regular": "+40%",
-              "perfect": "+50%",
-              "delta": "+10 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Bullet return chance",
-              "regular": "50%",
-              "perfect": "75%",
-              "delta": "+25 percentage points"
-            },
-            {
-              "metric": "Next shot increased damage",
-              "regular": "+40%",
-              "perfect": "+50%",
-              "delta": "+10 percentage points"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Breadbasket": {
-      "regularName": "Bread Basket",
-      "perfectName": "Perfect Bread Basket",
-      "summary": "Body shots build bonus headshot damage for the next headshot.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Bonus headshot damage per stack",
-              "regular": "+55%",
-              "perfect": "+70%",
-              "delta": "+15 percentage points"
-            },
-            {
-              "metric": "Modeled max stack total",
-              "regular": "+165%",
-              "perfect": "+210%",
-              "delta": "+45 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Bonus headshot damage per stack",
-              "regular": "+55%",
-              "perfect": "+70%",
-              "delta": "+15 percentage points"
-            },
-            {
-              "metric": "Modeled max stack total",
-              "regular": "+165%",
-              "perfect": "+210%",
-              "delta": "+45 percentage points"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Fast Hands": {
-      "regularName": "Fast Hands",
-      "perfectName": "Perfect Fast Hands",
-      "summary": "Critical hits add reload-speed stacks.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Reload speed per critical-hit stack",
-              "regular": "+3%",
-              "perfect": "+5%",
-              "delta": "+2 percentage points per stack"
-            },
-            {
-              "metric": "Modeled stack cap",
-              "regular": "+120%",
-              "perfect": "+200%",
-              "delta": "+80 percentage points max"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Reload speed per critical-hit stack",
-              "regular": "+3%",
-              "perfect": "+5%",
-              "delta": "+2 percentage points per stack"
-            },
-            {
-              "metric": "Modeled stack cap",
-              "regular": "+120%",
-              "perfect": "+200%",
-              "delta": "+80 percentage points max"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Killer": {
-      "regularName": "Killer",
-      "perfectName": "Perfect Killer",
-      "summary": "Killing an enemy with a critical hit grants critical hit damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Critical hit damage after critical-hit kill",
-              "regular": "+70%",
-              "perfect": "+90%",
-              "delta": "+20 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Critical hit damage after critical-hit kill",
-              "regular": "+70%",
-              "perfect": "+90%",
-              "delta": "+20 percentage points"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Lucky Shot": {
-      "regularName": "Lucky Shot",
-      "perfectName": "Perfect Lucky Shot",
-      "summary": "Increases magazine capacity and returns missed shots from cover.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Magazine capacity",
-              "regular": "+20%",
-              "perfect": "+30%",
-              "delta": "+10 percentage points"
-            },
-            {
-              "metric": "Missed shots from cover returned",
-              "regular": "100%",
-              "perfect": "100%",
-              "delta": "Same return chance"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Magazine capacity",
-              "regular": "+20%",
-              "perfect": "+30%",
-              "delta": "+10 percentage points"
-            },
-            {
-              "metric": "Missed shots from cover returned",
-              "regular": "100%",
-              "perfect": "100%",
-              "delta": "Same return chance"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Optimist": {
-      "regularName": "Optimist",
-      "perfectName": "Perfect Optimist",
-      "summary": "Weapon damage increases as ammo is missing from the magazine.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Modeled maximum damage ramp",
-              "regular": "+35%",
-              "perfect": "+45%",
-              "delta": "+10 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Modeled maximum damage ramp",
-              "regular": "+35%",
-              "perfect": "+45%",
-              "delta": "+10 percentage points"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Sadist": {
-      "regularName": "Sadist",
-      "perfectName": "Perfect Sadist",
-      "summary": "Deals extra weapon damage to bleeding enemies and can apply bleed after kills.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Weapon damage to bleeding enemies",
-              "regular": "+20%",
-              "perfect": "+25%",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Kills required to apply bleed to next enemy",
-              "regular": "4 kills",
-              "perfect": "3 kills",
-              "delta": "1 fewer kill"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Weapon damage to bleeding enemies",
-              "regular": "+20%",
-              "perfect": "+25%",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Kills required to apply bleed to next enemy",
-              "regular": "4 kills",
-              "perfect": "3 kills",
-              "delta": "1 fewer kill"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Spike": {
-      "regularName": "Spike",
-      "perfectName": "Perfect Spike",
-      "summary": "Headshots grant skill damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Skill damage after headshot",
-              "regular": "+20%",
-              "perfect": "+25%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Skill damage after headshot",
-              "regular": "+20%",
-              "perfect": "+25%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Strained": {
-      "regularName": "Strained",
-      "perfectName": "Perfect Strained",
-      "summary": "Gains critical hit damage while firing.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Critical hit damage per firing interval",
-              "regular": "+10%",
-              "perfect": "+10%",
-              "delta": "Same per-stack value"
-            },
-            {
-              "metric": "Maximum stacks",
-              "regular": "5",
-              "perfect": "8",
-              "delta": "+3 stacks"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Critical hit damage per firing interval",
-              "regular": "+10%",
-              "perfect": "+10%",
-              "delta": "Same per-stack value"
-            },
-            {
-              "metric": "Maximum stacks",
-              "regular": "5",
-              "perfect": "8",
-              "delta": "+3 stacks"
-            }
-          ]
-        }
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Eyeless"
       }
     },
     "Perfectly Ignited": {
       "regularName": "Ignited",
       "perfectName": "Perfectly Ignited",
-      "summary": "Deals extra weapon damage to burning enemies and can apply burn after kills.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
+      "summary": "",
       "modes": {
         "pve": {
-          "status": "spreadsheet-backed",
           "rows": [
             {
-              "metric": "Weapon damage to burning enemies",
-              "regular": "+20%",
+              "effect": "Amplified Weapon Damage",
+              "regular": "+25%",
               "perfect": "+30%",
-              "delta": "+10 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Weapon damage to burning enemies",
-              "regular": "+20%",
-              "perfect": "+30%",
-              "delta": "+10 percentage points"
+              "change": "+5 percentage points"
             }
           ]
         }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Ignited"
       }
     },
-    "Perfectly Opportunistic": {
-      "regularName": "Opportunistic",
-      "perfectName": "Perfectly Opportunistic",
-      "summary": "Shotgun or marksman rifle hits amplify damage the target takes from all sources.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
+    "Perfect Sadist": {
+      "regularName": "Sadist",
+      "perfectName": "Perfect Sadist",
+      "summary": "",
       "modes": {
         "pve": {
-          "status": "spreadsheet-backed",
           "rows": [
             {
-              "metric": "Amplified damage taken by marked target",
-              "regular": "+10%",
-              "perfect": "+15%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Amplified damage taken by marked target",
-              "regular": "+10%",
-              "perfect": "+15%",
-              "delta": "+5 percentage points"
+              "effect": "Amplified Weapon Damage",
+              "regular": "+30%",
+              "perfect": "+35%",
+              "change": "+5 percentage points"
             }
           ]
         }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Sadist"
+      }
+    },
+    "Perfect Pressure Point": {
+      "regularName": "Pressure Point",
+      "perfectName": "Perfect Pressure Point",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Pressure Point"
+      }
+    },
+    "Perfect Immobilize": {
+      "regularName": "Immobilize",
+      "perfectName": "Perfect Immobilize",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "+20%",
+              "perfect": "+25%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Immobilize"
+      }
+    },
+    "Perfectly In Sync": {
+      "regularName": "In Sync",
+      "perfectName": "Perfectly In Sync",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+30%",
+              "perfect": "+40%",
+              "change": "+10 percentage points"
+            },
+            {
+              "effect": "Skill Damage",
+              "regular": "+30%",
+              "perfect": "+40%",
+              "change": "+10 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly In Sync"
+      }
+    },
+    "Perfect Optimist": {
+      "regularName": "Optimist",
+      "perfectName": "Perfect Optimist",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+17.85%",
+              "perfect": "+22.95%",
+              "change": "+5.1 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Optimist"
+      }
+    },
+    "Perfectly Strained": {
+      "regularName": "Strained",
+      "perfectName": "Perfectly Strained",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Critical Hit Damage",
+              "regular": "0%",
+              "perfect": "0%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Strained"
+      }
+    },
+    "Perfect Killer": {
+      "regularName": "Killer",
+      "perfectName": "Perfect Killer",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Critical Hit Damage",
+              "regular": "+70%",
+              "perfect": "+90%",
+              "change": "+20 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Killer"
+      }
+    },
+    "Perfect Fast Hands": {
+      "regularName": "Fast Hands",
+      "perfectName": "Perfect Fast Hands",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Reload Speed",
+              "regular": "+88.5%",
+              "perfect": "+147.5%",
+              "change": "+59 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Fast Hands"
+      }
+    },
+    "Perfectly Steady Handed": {
+      "regularName": "Steady Handed",
+      "perfectName": "Perfectly Steady Handed",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Steady Handed"
+      }
+    },
+    "Perfect Spike": {
+      "regularName": "Spike",
+      "perfectName": "Perfect Spike",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Skill Damage",
+              "regular": "+20%",
+              "perfect": "+25%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Spike"
+      }
+    },
+    "Perfect Perpetuation": {
+      "regularName": "Perpetuation",
+      "perfectName": "Perfect Perpetuation",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Perpetuation"
+      }
+    },
+    "Perfectly Close & Personal": {
+      "regularName": "Close & Personal",
+      "perfectName": "Perfectly Close & Personal",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+30%",
+              "perfect": "+38%",
+              "change": "+8 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Close & Personal"
+      }
+    },
+    "Perfect Ranger": {
+      "regularName": "Ranger",
+      "perfectName": "Perfect Ranger",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "0%",
+              "perfect": "0%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Ranger"
+      }
+    },
+    "Perfect Vindictive": {
+      "regularName": "Vindictive",
+      "perfectName": "Perfect Vindictive",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Critical Hit Chance",
+              "regular": "+15%",
+              "perfect": "+18%",
+              "change": "+3 percentage points"
+            },
+            {
+              "effect": "Critical Hit Damage",
+              "regular": "+15%",
+              "perfect": "+18%",
+              "change": "+3 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Vindictive"
       }
     },
     "Future Perfection": {
       "regularName": "Future Perfect",
       "perfectName": "Future Perfection",
-      "summary": "Weapon kills grant skill tier progression.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
+      "summary": "",
       "modes": {
         "pve": {
-          "status": "spreadsheet-backed",
           "rows": [
             {
-              "metric": "Skill tier progression modeled value",
+              "effect": "Skill Tier",
               "regular": "+3",
               "perfect": "+4",
-              "delta": "+1 skill tier step"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Skill tier progression modeled value",
-              "regular": "+3",
-              "perfect": "+4",
-              "delta": "+1 skill tier step"
+              "change": "+1"
             }
           ]
         }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Future Perfection"
       }
     },
-    "Perfect Shock & Awe": {
-      "regularName": "Shock & Awe",
-      "perfectName": "Perfect Shock & Awe",
-      "summary": "Applying a status effect increases skill damage and repair.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
+    "Perfect Preservation": {
+      "regularName": "Preservation",
+      "perfectName": "Perfect Preservation",
+      "summary": "",
       "modes": {
         "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Skill damage and repair bonus",
-              "regular": "+20%",
-              "perfect": "+20%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Duration",
-              "regular": "20s",
-              "perfect": "27s",
-              "delta": "+7 seconds"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Skill damage and repair bonus",
-              "regular": "+20%",
-              "perfect": "+20%",
-              "delta": "Same percentage"
-            },
-            {
-              "metric": "Duration",
-              "regular": "20s",
-              "perfect": "27s",
-              "delta": "+7 seconds"
-            }
-          ]
+          "rows": []
         }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Preservation"
       }
     },
     "Perfect Bread Basket": {
       "regularName": "Bread Basket",
       "perfectName": "Perfect Bread Basket",
-      "summary": "Body shots build bonus headshot damage for the next headshot.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
+      "summary": "",
       "modes": {
         "pve": {
-          "status": "spreadsheet-backed",
           "rows": [
             {
-              "metric": "Bonus headshot damage per stack",
-              "regular": "+55%",
-              "perfect": "+70%",
-              "delta": "+15 percentage points"
-            },
-            {
-              "metric": "Modeled max stack total",
+              "effect": "Headshot Damage",
               "regular": "+165%",
               "perfect": "+210%",
-              "delta": "+45 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Bonus headshot damage per stack",
-              "regular": "+55%",
-              "perfect": "+70%",
-              "delta": "+15 percentage points"
-            },
-            {
-              "metric": "Modeled max stack total",
-              "regular": "+165%",
-              "perfect": "+210%",
-              "delta": "+45 percentage points"
+              "change": "+45 percentage points"
             }
           ]
         }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Bread Basket"
+      }
+    },
+    "Perfectly Behind You": {
+      "regularName": "Behind You",
+      "perfectName": "Perfectly Behind You",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "+20%",
+              "perfect": "+25%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Behind You"
+      }
+    },
+    "Perfect Reformation": {
+      "regularName": "Reformation",
+      "perfectName": "Perfect Reformation",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Repair Skills",
+              "regular": "+60%",
+              "perfect": "+80%",
+              "change": "+20 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Reformation"
+      }
+    },
+    "Perfect Overflowing": {
+      "regularName": "Overflowing",
+      "perfectName": "Perfect Overflowing",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Overflowing"
+      }
+    },
+    "Perfectly On Empty": {
+      "regularName": "On Empty",
+      "perfectName": "Perfectly On Empty",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Handling",
+              "regular": "+60%",
+              "perfect": "+80%",
+              "change": "+20 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly On Empty"
+      }
+    },
+    "Perfect Near Sighted": {
+      "regularName": "Near Sighted",
+      "perfectName": "Perfect Near Sighted",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Near Sighted"
+      }
+    },
+    "Perfectly Unhinged": {
+      "regularName": "Unhinged",
+      "perfectName": "Perfectly Unhinged",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+18%",
+              "perfect": "+22%",
+              "change": "+4 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Unhinged"
+      }
+    },
+    "Perfect Overwhelm": {
+      "regularName": "Overwhelm",
+      "perfectName": "Perfect Overwhelm",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+40%",
+              "perfect": "+48%",
+              "change": "+8 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Overwhelm"
+      }
+    },
+    "Perfect Flatline": {
+      "regularName": "Flatline",
+      "perfectName": "Perfect Flatline",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Flatline"
+      }
+    },
+    "Perfect Frenzy": {
+      "regularName": "Frenzy",
+      "perfectName": "Perfect Frenzy",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+15%",
+              "perfect": "+18.75%",
+              "change": "+3.75 percentage points"
+            },
+            {
+              "effect": "Rate of Fire",
+              "regular": "+15%",
+              "perfect": "+18.75%",
+              "change": "+3.75 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Frenzy"
+      }
+    },
+    "Perfect Outsider": {
+      "regularName": "Outsider",
+      "perfectName": "Perfect Outsider",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Outsider"
+      }
+    },
+    "Perfectly Unwavering": {
+      "regularName": "Unwavering",
+      "perfectName": "Perfectly Unwavering",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Handling",
+              "regular": "+300%",
+              "perfect": "+400%",
+              "change": "+100 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Unwavering"
+      }
+    },
+    "Perfect Pummel": {
+      "regularName": "Pummel",
+      "perfectName": "Perfect Pummel",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+40%",
+              "perfect": "+40%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Pummel"
+      }
+    },
+    "Perfect Pumped Up": {
+      "regularName": "Pumped Up",
+      "perfectName": "Perfect Pumped Up",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+30%",
+              "perfect": "+30%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Pumped Up"
+      }
+    },
+    "Perfect Brazen": {
+      "regularName": "Brazen",
+      "perfectName": "Perfect Brazen",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "0%",
+              "perfect": "0%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Brazen"
+      }
+    },
+    "Perfect Boomerang": {
+      "regularName": "Boomerang",
+      "perfectName": "Perfect Boomerang",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+11.8%",
+              "perfect": "+22.12%",
+              "change": "+10.33 percentage points"
+            },
+            {
+              "effect": "Magazine Size",
+              "regular": "+29.5%",
+              "perfect": "+44.25%",
+              "change": "+14.75 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Boomerang"
+      }
+    },
+    "Perfect Rifleman": {
+      "regularName": "Rifleman",
+      "perfectName": "Perfect Rifleman",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+50%",
+              "perfect": "+66%",
+              "change": "+16 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Rifleman"
+      }
+    },
+    "Perfectly Naked": {
+      "regularName": "Naked",
+      "perfectName": "Perfectly Naked",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Headshot Damage",
+              "regular": "+50%",
+              "perfect": "+50%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Naked"
+      }
+    },
+    "Perfect First Blood": {
+      "regularName": "First Blood",
+      "perfectName": "Perfect First Blood",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect First Blood"
+      }
+    },
+    "Perfect Salvage": {
+      "regularName": "Salvage",
+      "perfectName": "Perfect Salvage",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Salvage"
+      }
+    },
+    "Perfect Finisher": {
+      "regularName": "Finisher",
+      "perfectName": "Perfect Finisher",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Finisher"
+      }
+    },
+    "Perfectly Measured": {
+      "regularName": "Measured",
+      "perfectName": "Perfectly Measured",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "-25%/0%",
+              "perfect": "-30%/0%",
+              "change": "-25%/0% → -30%/0%"
+            },
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "0%/30%",
+              "perfect": "0%/38%",
+              "change": "0%/30% → 0%/38%"
+            },
+            {
+              "effect": "Rate of Fire",
+              "regular": "25%/-18%",
+              "perfect": "25%/-18%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Measured"
+      }
+    },
+    "Perfect Lucky Shot": {
+      "regularName": "Lucky Shot",
+      "perfectName": "Perfect Lucky Shot",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Magazine Size",
+              "regular": "+20%",
+              "perfect": "+30%",
+              "change": "+10 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Lucky Shot"
+      }
+    },
+    "Perfect Precision Strike": {
+      "regularName": "Precision Strike",
+      "perfectName": "Perfect Precision Strike",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Damage",
+              "regular": "+60%",
+              "perfect": "+70%",
+              "change": "+10 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Precision Strike"
+      }
+    },
+    "Perfect Sledgehammer": {
+      "regularName": "Sledgehammer",
+      "perfectName": "Perfect Sledgehammer",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Damage",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfected Sledgehammer"
+      }
+    },
+    "Perfectly Determined": {
+      "regularName": "Determined",
+      "perfectName": "Perfectly Determined",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Determined"
+      }
+    },
+    "Perfect Thunder Strike": {
+      "regularName": "Thunder Strike",
+      "perfectName": "Perfect Thunder Strike",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "+30%",
+              "perfect": "+35%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Thunder Strike"
+      }
+    },
+    "Perfect Streamline": {
+      "regularName": "Streamline",
+      "perfectName": "Perfect Streamline",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+42%",
+              "perfect": "+47%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Streamline"
+      }
+    },
+    "Perfect Soft Spot": {
+      "regularName": "Soft Spot",
+      "perfectName": "Perfect Soft Spot",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+27%",
+              "perfect": "+32%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Soft Spot"
+      }
+    },
+    "Perfect Back and Forth": {
+      "regularName": "Back and Forth",
+      "perfectName": "Perfect Back and Forth",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+10%",
+              "perfect": "+12%",
+              "change": "+2 percentage points"
+            },
+            {
+              "effect": "Rate of Fire",
+              "regular": "+9%",
+              "perfect": "+13%",
+              "change": "+4 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Back and Forth"
+      }
+    },
+    "Perfectly Unbreakable": {
+      "regularName": "Unbreakable",
+      "perfectName": "Perfectly Unbreakable",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Unbreakable"
+      }
+    },
+    "Perfect Intimidate": {
+      "regularName": "Intimidate",
+      "perfectName": "Perfect Intimidate",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "+42.33%",
+              "perfect": "+48.02%",
+              "change": "+5.69 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Intimidate"
+      }
+    },
+    "Perfectly Efficient": {
+      "regularName": "Efficient",
+      "perfectName": "Perfectly Efficient",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Efficient"
+      }
+    },
+    "Perfect Entrench": {
+      "regularName": "Entrench",
+      "perfectName": "Perfect Entrench",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Entrench"
+      }
+    },
+    "Perfect Overwatch": {
+      "regularName": "Overwatch",
+      "perfectName": "Perfect Overwatch",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+12%",
+              "perfect": "+14%",
+              "change": "+2 percentage points"
+            },
+            {
+              "effect": "Total Skill Damage",
+              "regular": "+12%",
+              "perfect": "+12%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Overwatch"
+      }
+    },
+    "Perfect Obliterate": {
+      "regularName": "Obliterate",
+      "perfectName": "Perfect Obliterate",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+20%",
+              "perfect": "+24%",
+              "change": "+4 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Obliterate"
+      }
+    },
+    "Perfect Gunslinger": {
+      "regularName": "Gunslinger",
+      "perfectName": "Perfect Gunslinger",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+23%",
+              "perfect": "+28%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Gunslinger"
+      }
+    },
+    "Perfect Kinetic Momentum": {
+      "regularName": "Kinetic Momentum",
+      "perfectName": "Perfect Kinetic Momentum",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Skill Damage",
+              "regular": "+45%",
+              "perfect": "+54%",
+              "change": "+9 percentage points"
+            },
+            {
+              "effect": "Total Skill Repair",
+              "regular": "+60%",
+              "perfect": "+72%",
+              "change": "+12 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Kinetic Momentum"
+      }
+    },
+    "Perfect Glass Cannon": {
+      "regularName": "Glass Cannon",
+      "perfectName": "Perfect Glass Cannon",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Damage",
+              "regular": "+25%",
+              "perfect": "+30%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Glass Cannon"
+      }
+    },
+    "Perfect Braced": {
+      "regularName": "Braced",
+      "perfectName": "Perfect Braced",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Handling",
+              "regular": "+45%",
+              "perfect": "+50%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Braced"
+      }
+    },
+    "Perfectly Skilled": {
+      "regularName": "Skilled",
+      "perfectName": "Perfectly Skilled",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Skilled"
+      }
+    },
+    "Perfect Spark": {
+      "regularName": "Spark",
+      "perfectName": "Perfect Spark",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+15%",
+              "perfect": "+18%",
+              "change": "+3 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Spark"
+      }
+    },
+    "Perfect Spotter": {
+      "regularName": "Spotter",
+      "perfectName": "Perfect Spotter",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "change": "+5 percentage points"
+            },
+            {
+              "effect": "Amplified Skill Damage",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Spotter"
+      }
+    },
+    "Perfect Trauma": {
+      "regularName": "Trauma",
+      "perfectName": "Perfect Trauma",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Trauma"
+      }
+    },
+    "Perfect Vanguard": {
+      "regularName": "Vanguard",
+      "perfectName": "Perfect Vanguard",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Vanguard"
+      }
+    },
+    "Perfect Focus": {
+      "regularName": "Focus",
+      "perfectName": "Perfect Focus",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+50%",
+              "perfect": "+60%",
+              "change": "+10 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Focus"
+      }
+    },
+    "Perfect Headhunter": {
+      "regularName": "Headhunter",
+      "perfectName": "Perfect Headhunter",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Headhunter"
+      }
+    },
+    "Perfectly Mad Bomber": {
+      "regularName": "Mad Bomber",
+      "perfectName": "Perfectly Mad Bomber",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Mad Bomber"
+      }
+    },
+    "Perfect Companion": {
+      "regularName": "Companion",
+      "perfectName": "Perfect Companion",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Companion"
+      }
+    },
+    "Perfect Adrenaline Rush": {
+      "regularName": "Adrenaline Rush",
+      "perfectName": "Perfect Adrenaline Rush",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Adrenaline Rush"
+      }
+    },
+    "Perfectly Unstoppable Force": {
+      "regularName": "Unstoppable Force",
+      "perfectName": "Perfectly Unstoppable Force",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+25%",
+              "perfect": "+35%",
+              "change": "+10 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Unstoppable Force"
+      }
+    },
+    "Perfectly Wicked": {
+      "regularName": "Wicked",
+      "perfectName": "Perfectly Wicked",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+18%",
+              "perfect": "+18%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Wicked"
+      }
+    },
+    "Perfect Vigilance": {
+      "regularName": "Vigilance",
+      "perfectName": "Perfect Vigilance",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+25%",
+              "perfect": "+25%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Vigilance"
+      }
+    },
+    "Perfect Energize": {
+      "regularName": "Energize",
+      "perfectName": "Perfect Energize",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Skill Tier",
+              "regular": "+1",
+              "perfect": "+1",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Energize"
+      }
+    },
+    "Perfect Overclock": {
+      "regularName": "Overclock",
+      "perfectName": "Perfect Overclock",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Reload Speed",
+              "regular": "+25%",
+              "perfect": "+30%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Overclock"
+      }
+    },
+    "Perfectly Calculated": {
+      "regularName": "Calculated",
+      "perfectName": "Perfectly Calculated",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Calculated"
+      }
+    },
+    "Perfect Galvanize": {
+      "regularName": "Galvanize",
+      "perfectName": "Perfect Galvanize",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Galvanize"
+      }
+    },
+    "Perfect Clutch": {
+      "regularName": "Clutch",
+      "perfectName": "Perfect Clutch",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Clutch"
+      }
+    },
+    "Perfect Creeping Death": {
+      "regularName": "Creeping Death",
+      "perfectName": "Perfect Creeping Death",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Creeping Death"
+      }
+    },
+    "Perfect Combined Arms": {
+      "regularName": "Combined Arms",
+      "perfectName": "Perfect Combined Arms",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Skill Damage",
+              "regular": "+25%",
+              "perfect": "+30%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Combined Arms"
+      }
+    },
+    "Perfect Composure": {
+      "regularName": "Composure",
+      "perfectName": "Perfect Composure",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Weapon Damage",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Composure"
+      }
+    },
+    "Perfect Shock & Awe": {
+      "regularName": "Shock & Awe",
+      "perfectName": "Perfect Shock & Awe",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Skill Damage",
+              "regular": "+20%",
+              "perfect": "+20%",
+              "change": "No change"
+            },
+            {
+              "effect": "Total Skill Repair",
+              "regular": "+20%",
+              "perfect": "+20%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Shock & Awe"
+      }
+    },
+    "Perfect Tech Support": {
+      "regularName": "Tech Support",
+      "perfectName": "Perfect Tech Support",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Skill Damage",
+              "regular": "+25%",
+              "perfect": "+25%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Tech Support"
+      }
+    },
+    "Perfect Versatile": {
+      "regularName": "Versatile",
+      "perfectName": "Perfect Versatile",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Weapon Damage",
+              "regular": "+10%",
+              "perfect": "+20%",
+              "change": "+10 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Versatile"
+      }
+    },
+    "Perfectly Opportunistic": {
+      "regularName": "Opportunistic",
+      "perfectName": "Perfectly Opportunistic",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Damage",
+              "regular": "+10%",
+              "perfect": "+15%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Opportunistic"
+      }
+    },
+    "Perfect Bloodsucker": {
+      "regularName": "Bloodsucker",
+      "perfectName": "Perfect Bloodsucker",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Bloodsucker"
+      }
+    },
+    "Perfect Stabilize": {
+      "regularName": "Stabilize",
+      "perfectName": "Perfect Stabilize",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": []
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Stabilize"
+      }
+    },
+    "Perfected Sledgehammer": {
+      "regularName": "Sledgehammer",
+      "perfectName": "Perfected Sledgehammer",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Amplified Damage",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "change": "+5 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfected Sledgehammer"
+      }
+    },
+    "Perfect Shock and Awe": {
+      "regularName": "Shock & Awe",
+      "perfectName": "Perfect Shock and Awe",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Total Skill Damage",
+              "regular": "+20%",
+              "perfect": "+20%",
+              "change": "No change"
+            },
+            {
+              "effect": "Total Skill Repair",
+              "regular": "+20%",
+              "perfect": "+20%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Shock & Awe"
+      }
+    },
+    "Perfect Breadbasket": {
+      "regularName": "Bread Basket",
+      "perfectName": "Perfect Breadbasket",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Headshot Damage",
+              "regular": "+165%",
+              "perfect": "+210%",
+              "change": "+45 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfect Bread Basket"
       }
     },
     "Perfect Ignited": {
       "regularName": "Ignited",
-      "perfectName": "Perfectly Ignited",
-      "summary": "Deals extra weapon damage to burning enemies and can apply burn after kills.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
+      "perfectName": "Perfect Ignited",
+      "summary": "",
       "modes": {
         "pve": {
-          "status": "spreadsheet-backed",
           "rows": [
             {
-              "metric": "Weapon damage to burning enemies",
-              "regular": "+20%",
+              "effect": "Amplified Weapon Damage",
+              "regular": "+25%",
               "perfect": "+30%",
-              "delta": "+10 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Weapon damage to burning enemies",
-              "regular": "+20%",
-              "perfect": "+30%",
-              "delta": "+10 percentage points"
+              "change": "+5 percentage points"
             }
           ]
         }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Ignited"
+      }
+    },
+    "Perfect In Sync": {
+      "regularName": "In Sync",
+      "perfectName": "Perfect In Sync",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Weapon Damage",
+              "regular": "+30%",
+              "perfect": "+40%",
+              "change": "+10 percentage points"
+            },
+            {
+              "effect": "Skill Damage",
+              "regular": "+30%",
+              "perfect": "+40%",
+              "change": "+10 percentage points"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly In Sync"
+      }
+    },
+    "Perfect Strained": {
+      "regularName": "Strained",
+      "perfectName": "Perfect Strained",
+      "summary": "",
+      "modes": {
+        "pve": {
+          "rows": [
+            {
+              "effect": "Critical Hit Damage",
+              "regular": "0%",
+              "perfect": "0%",
+              "change": "No change"
+            }
+          ]
+        }
+      },
+      "_internalReference": {
+        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
+        "tab": "Talents",
+        "sourceTalentName": "Perfectly Strained"
       }
     }
   },
-  "items": {
-    "lady-death": {
-      "label": "Exotic Talent",
-      "title": "Breathe Free",
-      "summary": "Movement builds stacks that increase shot damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "mode-specific",
-          "rows": [
-            {
-              "metric": "Shot damage from movement stacks",
-              "value": "+75%"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "mode-specific",
-          "rows": [
-            {
-              "metric": "Shot damage from movement stacks",
-              "value": "+60%"
-            }
-          ]
-        }
-      }
-    },
-    "busy-little-bee": {
-      "label": "Exotic Talent",
-      "title": "Busy Little Bee",
-      "summary": "Building stacks across targets increases weapon damage.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "mode-specific",
-          "rows": [
-            {
-              "metric": "Modeled max value at 10 stacks",
-              "value": "+200%"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "mode-specific",
-          "rows": [
-            {
-              "metric": "Modeled max value at 10 stacks",
-              "value": "+20%"
-            }
-          ]
-        }
-      }
-    },
-    "chameleon": {
-      "label": "Exotic Talent",
-      "title": "Adaptive Instincts",
-      "summary": "Different hit zones grant different temporary offensive bonuses.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "Headshots bonus",
-              "value": "+20% Critical Hit Chance and +50% Critical Hit Damage"
-            },
-            {
-              "metric": "Body shots bonus",
-              "value": "+90% Weapon Damage"
-            },
-            {
-              "metric": "Leg shots bonus",
-              "value": "+150% Reload Speed"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "Headshots bonus",
-              "value": "+20% Critical Hit Chance and +50% Critical Hit Damage"
-            },
-            {
-              "metric": "Body shots bonus",
-              "value": "+90% Weapon Damage"
-            },
-            {
-              "metric": "Leg shots bonus",
-              "value": "+150% Reload Speed"
-            }
-          ]
-        }
-      }
-    },
-    "coyote-s-mask": {
-      "label": "Exotic Talent",
-      "title": "Pack Instincts",
-      "summary": "You and allies gain critical bonuses based on distance from the last enemy hit.",
-      "source": {
-        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
-        "confidence": "spreadsheet-backed",
-        "lastVerified": "Uploaded 2026-06-28"
-      },
-      "modes": {
-        "pve": {
-          "status": "spreadsheet-backed",
-          "rows": [
-            {
-              "metric": "0–15m",
-              "value": "+25% Critical Hit Damage"
-            },
-            {
-              "metric": "15–25m",
-              "value": "+10% Critical Hit Chance and +10% Critical Hit Damage"
-            },
-            {
-              "metric": "25m+",
-              "value": "+25% Critical Hit Chance"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "same-listed-value",
-          "rows": [
-            {
-              "metric": "0–15m",
-              "value": "+25% Critical Hit Damage"
-            },
-            {
-              "metric": "15–25m",
-              "value": "+10% Critical Hit Chance and +10% Critical Hit Damage"
-            },
-            {
-              "metric": "25m+",
-              "value": "+25% Critical Hit Chance"
-            }
-          ]
-        }
-      }
-    }
-  }
+  "items": {}
 }
