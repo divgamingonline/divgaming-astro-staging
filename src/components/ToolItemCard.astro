@@ -8,6 +8,7 @@ import {
   itemFilters,
   itemIcon,
   itemName,
+  itemPrototypePresentation,
   itemRoles,
   itemSearch,
   itemSource,
@@ -24,6 +25,7 @@ const icon = itemIcon(item);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (href: string) => href.startsWith('http') ? href : `${base}${href}`;
 const effect = itemEffectPresentation(item);
+const prototype = itemPrototypePresentation(item);
 const bonuses = itemBonuses(item);
 const roles = itemRoles(item);
 const source = itemSource(item);
@@ -66,10 +68,10 @@ const showRawBonuses = !effect && bonuses.length > 0;
         </div>
       )}
 
-      {(hasPve || hasPvp) && (
+      {(hasPve && hasPvp) && (
         <div class="mode-toggle" role="tablist" aria-label="Effect value mode">
-          {hasPve && <button type="button" class="active" data-mode-button="pve">PvE</button>}
-          {hasPvp && <button type="button" data-mode-button="pvp">PvP</button>}
+          <button type="button" class="active" data-mode-button="pve">PvE</button>
+          <button type="button" data-mode-button="pvp">PvP</button>
         </div>
       )}
 
@@ -99,7 +101,7 @@ const showRawBonuses = !effect && bonuses.length > 0;
                 {effect.modes.pve.rows.map((row) => (
                   <div class="value-list-row">
                     <span>{row.metric}</span>
-                    {row.value && <strong>{row.value}</strong>}
+                    {row.value && row.value !== row.metric && <strong>{row.value}</strong>}
                   </div>
                 ))}
               </>
@@ -135,7 +137,7 @@ const showRawBonuses = !effect && bonuses.length > 0;
                 {effect.modes.pvp.rows.map((row) => (
                   <div class="value-list-row">
                     <span>{row.metric}</span>
-                    {row.value && <strong>{row.value}</strong>}
+                    {row.value && row.value !== row.metric && <strong>{row.value}</strong>}
                   </div>
                 ))}
               </>
@@ -170,6 +172,51 @@ const showRawBonuses = !effect && bonuses.length > 0;
     <p class="item-description">{description}</p>
   )}
 
+  {prototype && (
+    <details class="prototype-card">
+      <summary>
+        <span>{prototype.label}</span>
+        <strong>{prototype.title}</strong>
+      </summary>
+      <p>{prototype.summary}</p>
+      <p class="prototype-applies">{prototype.appliesTo}</p>
+
+      {prototype.rollExamples.length > 0 && (
+        <div class="prototype-section">
+          <span class="effect-label">Prototype Roll Examples</span>
+          <div class="prototype-roll-grid">
+            {prototype.rollExamples.map((roll) => (
+              <div>
+                <strong>{roll.label}</strong>
+                <span>Standard: {roll.standard}</span>
+                <span>Prototype: {roll.prototype}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {prototype.weaponRollNotes.length > 0 && (
+        <ul class="bonus-list">
+          {prototype.weaponRollNotes.map((note) => <li>{note}</li>)}
+        </ul>
+      )}
+
+      {prototype.augments.length > 0 && (
+        <div class="prototype-section">
+          <span class="effect-label">Prototype Augments</span>
+          <ul class="bonus-list">
+            {prototype.augments.map((augment) => (
+              <li><strong>{augment.name}</strong> — {augment.value}: {augment.description}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <p class="effect-source"><strong>Source:</strong> {prototype.source}</p>
+    </details>
+  )}
+
   {showRawBonuses && (
     <ul class="bonus-list">
       {bonuses.slice(0, 5).map((bonus) => <li>{bonus}</li>)}
@@ -195,7 +242,6 @@ const showRawBonuses = !effect && bonuses.length > 0;
       for (const button of buttons) {
         button.addEventListener('click', () => {
           const mode = button.dataset.modeButton;
-
           buttons.forEach((item) => item.classList.toggle('active', item === button));
           panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.modePanel === mode));
         });
@@ -205,7 +251,8 @@ const showRawBonuses = !effect && bonuses.length > 0;
 </article>
 
 <style>
-  .effect-card {
+  .effect-card,
+  .prototype-card {
     display: grid;
     gap: 12px;
     border: 1px solid rgba(255, 107, 0, .20);
@@ -219,26 +266,30 @@ const showRawBonuses = !effect && bonuses.length > 0;
     background: rgba(255, 91, 100, .055);
   }
 
-  .effect-card--gearset-bonuses {
+  .effect-card--gearset-bonuses,
+  .prototype-card {
     border-color: rgba(117, 240, 160, .25);
     background: rgba(117, 240, 160, .045);
   }
 
   .effect-title-row strong,
-  .effect-regular-row strong {
+  .effect-regular-row strong,
+  .prototype-card summary strong {
     display: block;
     color: #fff;
     font-family: "Chakra Petch", sans-serif;
   }
 
-  .effect-title-row p {
+  .effect-title-row p,
+  .prototype-card p {
     color: var(--muted);
     margin: 5px 0 0;
   }
 
   .effect-label,
   .effect-regular-row span,
-  .value-list-head {
+  .value-list-head,
+  .prototype-card summary span {
     display: block;
     color: var(--orange2);
     font-family: "Chakra Petch", sans-serif;
@@ -290,7 +341,8 @@ const showRawBonuses = !effect && bonuses.length > 0;
     display: block;
   }
 
-  .value-table {
+  .value-table,
+  .prototype-section {
     display: grid;
     gap: 8px;
   }
@@ -320,7 +372,8 @@ const showRawBonuses = !effect && bonuses.length > 0;
     font-size: .9rem;
   }
 
-  .value-table-row strong {
+  .value-table-row strong,
+  .value-list-row strong {
     color: #fff;
   }
 
@@ -330,7 +383,8 @@ const showRawBonuses = !effect && bonuses.length > 0;
     font-weight: 800;
   }
 
-  .value-list-row {
+  .value-list-row,
+  .prototype-roll-grid > div {
     display: grid;
     gap: 4px;
     border: 1px solid rgba(255,255,255,.07);
@@ -339,20 +393,24 @@ const showRawBonuses = !effect && bonuses.length > 0;
     background: rgba(0,0,0,.16);
   }
 
-  .value-list-row strong {
-    color: #fff;
+  .prototype-roll-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
+  .prototype-roll-grid span,
   .verification-status,
-  .effect-source {
+  .effect-source,
+  .prototype-applies {
     color: var(--muted);
-    margin: 9px 0 0;
     font-size: .82rem;
   }
 
   .effect-source {
     border-top: 1px solid rgba(255,255,255,.08);
     padding-top: 9px;
+    margin: 9px 0 0;
   }
 
   .named-attribute-box {
@@ -362,8 +420,8 @@ const showRawBonuses = !effect && bonuses.length > 0;
     background: rgba(255, 107, 0, .045);
   }
 
-  .named-attribute-box .bonus-list {
-    margin-top: 6px;
+  .prototype-card summary {
+    cursor: pointer;
   }
 
   @media (max-width: 780px) {
@@ -371,8 +429,12 @@ const showRawBonuses = !effect && bonuses.length > 0;
       display: none;
     }
 
-    .value-table-row {
+    .value-table-row,
+    .prototype-roll-grid {
       grid-template-columns: 1fr;
+    }
+
+    .value-table-row {
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 12px;
       padding: 10px;

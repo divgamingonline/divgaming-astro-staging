@@ -1,7 +1,5 @@
 import effectValuesData from '../../data/division-2/effect-values.json';
 
-export type EffectMode = 'pve' | 'pvp';
-
 export type EffectRow = {
   metric: string;
   regular?: string;
@@ -20,6 +18,7 @@ export type EffectSource = {
   confidence?: string;
   lastVerified?: string;
   url?: string;
+  note?: string;
 };
 
 export type PerfectTalentComparison = {
@@ -58,12 +57,23 @@ function normalize(value: unknown): string {
 }
 
 const perfectTalentMap = new Map<string, PerfectTalentComparison>();
-for (const value of Object.values(data.perfectTalents || {})) {
+for (const [key, value] of Object.entries(data.perfectTalents || {})) {
+  perfectTalentMap.set(normalize(key), value);
   perfectTalentMap.set(normalize(value.perfectName), value);
 }
 
+const aliases: Record<string, string> = {
+  'perfect ignited': 'perfectly ignited',
+  'perfect shock and awe': 'perfect shock & awe',
+  'perfect breadbasket': 'perfect bread basket',
+  'perfect pumped up': 'perfectly pumped up',
+  'perfect in sync': 'perfectly in sync'
+};
+
 export function getPerfectTalentComparison(perfectTalentName: unknown): PerfectTalentComparison | null {
-  return perfectTalentMap.get(normalize(perfectTalentName)) || null;
+  const key = normalize(perfectTalentName);
+  const aliasKey = aliases[key] || key;
+  return perfectTalentMap.get(key) || perfectTalentMap.get(aliasKey) || null;
 }
 
 export function getItemEffectOverride(itemId: unknown): ItemEffectOverride | null {
@@ -71,14 +81,16 @@ export function getItemEffectOverride(itemId: unknown): ItemEffectOverride | nul
 }
 
 export function hasRows(mode?: EffectModeValues): boolean {
-  return Boolean(mode?.rows?.length);
+  if (!mode?.rows?.length) return false;
+  return mode.rows.some((row) => Boolean(row.metric || row.value || row.regular || row.perfect || row.delta));
 }
 
 export function modeStatusLabel(status?: string): string {
   if (!status) return '';
   if (status === 'verified') return 'Verified';
-  if (status === 'needs-final-verification') return 'Needs final verification';
-  if (status === 'pending') return 'Pending verification';
-  if (status === 'same-as-pve') return 'Same as PvE unless separately tuned';
+  if (status === 'spreadsheet-backed') return 'Spreadsheet-backed';
+  if (status === 'source-backed') return 'Source-backed';
+  if (status === 'mode-specific') return 'Mode-specific value';
+  if (status === 'same-listed-value') return 'Same listed value in source';
   return status.replace(/-/g, ' ');
 }

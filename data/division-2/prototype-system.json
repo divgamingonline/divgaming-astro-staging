@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "name": "Y8S1 Prototype System",
+    "source": "Uploaded workbook: [Y8S1] Build Making Tool - The Division 2.xlsx",
+    "sourceTabs": [
+      "Welcome",
+      "Main Build",
+      "Stat Dropdowns",
+      "Calculations",
+      "Talents",
+      "Icon Links",
+      "Brand"
+    ],
+    "publicRule": "Show Prototype System only for eligible non-exotic gear and weapons. Exotics are excluded.",
+    "lastUpdated": "2026-06-28"
+  },
+  "eligibility": {
+    "exotics": false,
+    "namedHighEnd": true,
+    "highEndGear": true,
+    "gearSets": true,
+    "brandSets": true,
+    "weapons": true
+  },
+  "summary": "Prototype rolls and Prototype Augments can apply to eligible non-exotic gear and weapons. Exotics are not part of the prototype system.",
+  "rollExamples": [
+    {
+      "label": "Weapon Damage core",
+      "standard": "+15%",
+      "prototype": "+22.5%",
+      "note": "Spreadsheet prototype max value."
+    },
+    {
+      "label": "Critical Hit Chance",
+      "standard": "+6%",
+      "prototype": "+9%",
+      "note": "Spreadsheet prototype max value."
+    },
+    {
+      "label": "Critical Hit Damage",
+      "standard": "+12%",
+      "prototype": "+18%",
+      "note": "Spreadsheet prototype max value."
+    },
+    {
+      "label": "Skill Tier",
+      "standard": "+1",
+      "prototype": "+1.5",
+      "note": "Prototype value shown in the spreadsheet dropdowns."
+    }
+  ],
+  "weaponRollNotes": [
+    "Prototype weapon stat rows appear in the spreadsheet for primary weapon, secondary weapon, and sidearm slots.",
+    "Prototype weapon damage is modeled separately from normal weapon damage and weapon type damage."
+  ],
+  "augments": [
+    {
+      "name": "Amalgam",
+      "value": "2.5% chance",
+      "description": "Bullets can apply a random status effect."
+    },
+    {
+      "name": "Anomaly",
+      "value": "5%",
+      "description": "Heal for a percentage of damage dealt by skills."
+    },
+    {
+      "name": "Atomize",
+      "value": "22.5%",
+      "description": "Increased explosion range for explosives."
+    },
+    {
+      "name": "Echo",
+      "value": "4.5% chance",
+      "description": "Chance to duplicate the damage of the last bullet fired."
+    },
+    {
+      "name": "Entropy",
+      "value": "15%",
+      "description": "Converts a portion of armor to health. Bonus armor does not count."
+    },
+    {
+      "name": "Paradox",
+      "value": "6.5% chance",
+      "description": "Chance to refill your magazine by 2 for each bullet spent."
+    },
+    {
+      "name": "Quantum",
+      "value": "3% chance",
+      "description": "Chance to become immune to damage for 2 seconds when taking damage."
+    },
+    {
+      "name": "Synesthesia",
+      "value": "4.5% chance",
+      "description": "Chance that shots hitting the target reduce active cooldowns by 0.2 seconds."
+    },
+    {
+      "name": "Trapper",
+      "value": "24%",
+      "description": "Increased duration of applied crowd-control effects."
+    }
+  ]
+}

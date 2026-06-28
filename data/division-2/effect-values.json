@@ -1,13 +1,9 @@
 {
   "metadata": {
-    "name": "Division 2 Effect Value Overrides",
-    "purpose": "Mode-aware PvE/PvP value overrides for named perfect talents, exotic talents, gear set bonuses, brand set bonuses, and other item effects.",
-    "importantNote": "Do not publish guessed values as verified. Use pending/needs-final-verification until checked against in-game text or trusted community data.",
-    "sourceApproach": [
-      "Primary: in-game talent/bonus text after current title update.",
-      "Secondary: trusted community data sources such as mxswat / hi-dep / public Division 2 gear sheets.",
-      "Internal DivGaming watcher notes must not appear on public cards."
-    ],
+    "name": "DivGaming Y8S1 Spreadsheet-Backed Effect Values",
+    "purpose": "Mode-aware effect values for named items, exotics, brand sets, and gear sets.",
+    "source": "Uploaded workbook: [Y8S1] Build Making Tool - The Division 2.xlsx",
+    "publicDisplayRule": "Do not show placeholder source text. PvP appears when sourced or same-listed in the spreadsheet.",
     "lastUpdated": "2026-06-28"
   },
   "perfectTalents": {
@@ -16,13 +12,13 @@
       "perfectName": "Perfect Flatline",
       "summary": "Amplifies weapon damage against pulsed enemies.",
       "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
       },
       "modes": {
         "pve": {
-          "status": "needs-final-verification",
+          "status": "spreadsheet-backed",
           "rows": [
             {
               "metric": "Amplified weapon damage to pulsed enemies",
@@ -33,13 +29,13 @@
           ]
         },
         "pvp": {
-          "status": "pending",
+          "status": "same-listed-value",
           "rows": [
             {
-              "metric": "PvP amplified weapon damage",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
+              "metric": "Amplified weapon damage to pulsed enemies",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "delta": "+5 percentage points"
             }
           ]
         }
@@ -50,30 +46,30 @@
       "perfectName": "Perfect Sledgehammer",
       "summary": "Grenade damage marks enemies and increases damage to armor against marked targets.",
       "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
       },
       "modes": {
         "pve": {
-          "status": "needs-final-verification",
+          "status": "spreadsheet-backed",
           "rows": [
             {
-              "metric": "Damage to armor against grenade-marked enemies",
-              "regular": "+30%",
-              "perfect": "+40%",
-              "delta": "+10 percentage points"
+              "metric": "Damage to armor against grenade-marked armored targets",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "delta": "+5 percentage points"
             }
           ]
         },
         "pvp": {
-          "status": "pending",
+          "status": "same-listed-value",
           "rows": [
             {
-              "metric": "PvP damage to armor against grenade-marked enemies",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
+              "metric": "Damage to armor against grenade-marked armored targets",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "delta": "+5 percentage points"
             }
           ]
         }
@@ -84,13 +80,13 @@
       "perfectName": "Perfect Spotter",
       "summary": "Amplifies weapon and skill damage against pulsed enemies.",
       "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
       },
       "modes": {
         "pve": {
-          "status": "needs-final-verification",
+          "status": "spreadsheet-backed",
           "rows": [
             {
               "metric": "Amplified weapon and skill damage to pulsed enemies",
@@ -101,13 +97,13 @@
           ]
         },
         "pvp": {
-          "status": "pending",
+          "status": "same-listed-value",
           "rows": [
             {
-              "metric": "PvP amplified weapon and skill damage",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
+              "metric": "Amplified weapon and skill damage to pulsed enemies",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "delta": "+5 percentage points"
             }
           ]
         }
@@ -118,13 +114,13 @@
       "perfectName": "Perfect Combined Arms",
       "summary": "Shooting an enemy increases skill damage.",
       "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
       },
       "modes": {
         "pve": {
-          "status": "needs-final-verification",
+          "status": "spreadsheet-backed",
           "rows": [
             {
               "metric": "Skill damage after shooting an enemy",
@@ -135,13 +131,185 @@
           ]
         },
         "pvp": {
-          "status": "pending",
+          "status": "same-listed-value",
           "rows": [
             {
-              "metric": "PvP skill damage",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
+              "metric": "Skill damage after shooting an enemy",
+              "regular": "+25%",
+              "perfect": "+30%",
+              "delta": "+5 percentage points"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Vigilance": {
+      "regularName": "Vigilance",
+      "perfectName": "Perfect Vigilance",
+      "summary": "Increases total weapon damage. Taking damage disables the buff briefly.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Total weapon damage while active",
+              "regular": "+25%",
+              "perfect": "+25%",
+              "delta": "Same percentage"
+            },
+            {
+              "metric": "Disabled after taking damage",
+              "regular": "4s",
+              "perfect": "3s",
+              "delta": "1 second faster recovery"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Total weapon damage while active",
+              "regular": "+25%",
+              "perfect": "+25%",
+              "delta": "Same percentage"
+            },
+            {
+              "metric": "Disabled after taking damage",
+              "regular": "4s",
+              "perfect": "3s",
+              "delta": "1 second faster recovery"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Glass Cannon": {
+      "regularName": "Glass Cannon",
+      "perfectName": "Perfect Glass Cannon",
+      "summary": "Amplifies damage dealt and damage taken.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Damage dealt amplified",
+              "regular": "+25%",
+              "perfect": "+30%",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Damage taken amplified",
+              "regular": "+50%",
+              "perfect": "+60%",
+              "delta": "+10 percentage points taken"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Damage dealt amplified",
+              "regular": "+25%",
+              "perfect": "+30%",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Damage taken amplified",
+              "regular": "+50%",
+              "perfect": "+60%",
+              "delta": "+10 percentage points taken"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Focus": {
+      "regularName": "Focus",
+      "perfectName": "Perfect Focus",
+      "summary": "Aiming while scoped 8x or higher ramps total weapon damage.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Maximum scoped weapon damage",
+              "regular": "+50%",
+              "perfect": "+60%",
+              "delta": "+10 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Maximum scoped weapon damage",
+              "regular": "+50%",
+              "perfect": "+60%",
+              "delta": "+10 percentage points"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Intimidate": {
+      "regularName": "Intimidate",
+      "perfectName": "Perfect Intimidate",
+      "summary": "While bonus armor is active, close enemies take amplified weapon damage.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Modeled max amplified damage",
+              "regular": "≈42.3%",
+              "perfect": "≈48.0%",
+              "delta": "≈+5.7 percentage points"
+            },
+            {
+              "metric": "Spreadsheet formula",
+              "regular": "(1.04^9)-1",
+              "perfect": "(1.04^10)-1",
+              "delta": "Perfect adds one stack step"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Modeled max amplified damage",
+              "regular": "≈42.3%",
+              "perfect": "≈48.0%",
+              "delta": "≈+5.7 percentage points"
+            },
+            {
+              "metric": "Spreadsheet formula",
+              "regular": "(1.04^9)-1",
+              "perfect": "(1.04^10)-1",
+              "delta": "Perfect adds one stack step"
             }
           ]
         }
@@ -152,144 +320,684 @@
       "perfectName": "Perfect Tech Support",
       "summary": "Skill kills increase skill damage.",
       "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
       },
       "modes": {
         "pve": {
-          "status": "needs-final-verification",
+          "status": "spreadsheet-backed",
           "rows": [
             {
-              "metric": "Skill damage after a skill kill",
-              "regular": "+25%",
-              "perfect": "+30%",
-              "delta": "+5 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "pending",
-          "rows": [
-            {
-              "metric": "PvP skill damage",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Glass Cannon": {
-      "regularName": "Glass Cannon",
-      "perfectName": "Perfect Glass Cannon",
-      "summary": "Increases damage dealt while increasing damage taken.",
-      "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
-      },
-      "modes": {
-        "pve": {
-          "status": "needs-final-verification",
-          "rows": [
-            {
-              "metric": "Damage dealt",
-              "regular": "+25%",
-              "perfect": "+30%",
-              "delta": "+5 percentage points"
-            },
-            {
-              "metric": "Damage taken penalty",
-              "regular": "+50%",
-              "perfect": "+60%",
-              "delta": "+10 percentage points taken"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "pending",
-          "rows": [
-            {
-              "metric": "PvP damage dealt / damage taken",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Overwatch": {
-      "regularName": "Overwatch",
-      "perfectName": "Perfect Overwatch",
-      "summary": "After staying in cover, grants weapon and skill damage to you and allies.",
-      "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
-      },
-      "modes": {
-        "pve": {
-          "status": "needs-final-verification",
-          "rows": [
-            {
-              "metric": "Weapon and skill damage while active",
-              "regular": "+12%",
-              "perfect": "+15%",
-              "delta": "+3 percentage points"
-            }
-          ]
-        },
-        "pvp": {
-          "status": "pending",
-          "rows": [
-            {
-              "metric": "PvP weapon and skill damage",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
-            }
-          ]
-        }
-      }
-    },
-    "Perfect Vigilance": {
-      "regularName": "Vigilance",
-      "perfectName": "Perfect Vigilance",
-      "summary": "Increases weapon damage. Taking damage disables the bonus briefly.",
-      "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
-      },
-      "modes": {
-        "pve": {
-          "status": "needs-final-verification",
-          "rows": [
-            {
-              "metric": "Weapon damage while active",
+              "metric": "Skill damage after skill kill",
               "regular": "+25%",
               "perfect": "+25%",
-              "delta": "No percentage change"
+              "delta": "Same percentage"
             },
             {
-              "metric": "Disabled after taking damage",
-              "regular": "4 seconds",
-              "perfect": "3 seconds",
-              "delta": "1 second faster recovery"
+              "metric": "Duration",
+              "regular": "20s",
+              "perfect": "27s",
+              "delta": "+7 seconds"
             }
           ]
         },
         "pvp": {
-          "status": "pending",
+          "status": "same-listed-value",
           "rows": [
             {
-              "metric": "PvP weapon damage / disable duration",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
+              "metric": "Skill damage after skill kill",
+              "regular": "+25%",
+              "perfect": "+25%",
+              "delta": "Same percentage"
+            },
+            {
+              "metric": "Duration",
+              "regular": "20s",
+              "perfect": "27s",
+              "delta": "+7 seconds"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Shock and Awe": {
+      "regularName": "Shock & Awe",
+      "perfectName": "Perfect Shock & Awe",
+      "summary": "Applying a status effect increases skill damage and repair.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Skill damage and repair bonus",
+              "regular": "+20%",
+              "perfect": "+20%",
+              "delta": "Same percentage"
+            },
+            {
+              "metric": "Duration",
+              "regular": "20s",
+              "perfect": "27s",
+              "delta": "+7 seconds"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Skill damage and repair bonus",
+              "regular": "+20%",
+              "perfect": "+20%",
+              "delta": "Same percentage"
+            },
+            {
+              "metric": "Duration",
+              "regular": "20s",
+              "perfect": "27s",
+              "delta": "+7 seconds"
+            }
+          ]
+        }
+      }
+    },
+    "Perfectly Wicked": {
+      "regularName": "Wicked",
+      "perfectName": "Perfectly Wicked",
+      "summary": "Applying a status effect increases total weapon damage.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Total weapon damage after applying status effect",
+              "regular": "+18%",
+              "perfect": "+18%",
+              "delta": "Same percentage"
+            },
+            {
+              "metric": "Duration",
+              "regular": "20s",
+              "perfect": "27s",
+              "delta": "+7 seconds"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Total weapon damage after applying status effect",
+              "regular": "+18%",
+              "perfect": "+18%",
+              "delta": "Same percentage"
+            },
+            {
+              "metric": "Duration",
+              "regular": "20s",
+              "perfect": "27s",
+              "delta": "+7 seconds"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Clutch": {
+      "regularName": "Clutch",
+      "perfectName": "Perfect Clutch",
+      "summary": "Critical hits repair missing armor while under low armor.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Armor threshold",
+              "regular": "Below 15% armor",
+              "perfect": "Below 20% armor",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Critical hit repair",
+              "regular": "3% missing armor",
+              "perfect": "3% missing armor",
+              "delta": "Same repair amount"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Armor threshold",
+              "regular": "Below 15% armor",
+              "perfect": "Below 20% armor",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Critical hit repair",
+              "regular": "3% missing armor",
+              "perfect": "3% missing armor",
+              "delta": "Same repair amount"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Vanguard": {
+      "regularName": "Vanguard",
+      "perfectName": "Perfect Vanguard",
+      "summary": "Deploying a shield grants bonus armor to allies.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Ally bonus armor",
+              "regular": "+45%",
+              "perfect": "+50%",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Shield invulnerability duration",
+              "regular": "5s",
+              "perfect": "5s",
+              "delta": "Same duration"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Ally bonus armor",
+              "regular": "+45%",
+              "perfect": "+50%",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Shield invulnerability duration",
+              "regular": "5s",
+              "perfect": "5s",
+              "delta": "Same duration"
+            }
+          ]
+        }
+      }
+    },
+    "Perfectly Unbreakable": {
+      "regularName": "Unbreakable",
+      "perfectName": "Perfectly Unbreakable",
+      "summary": "When armor is depleted, repairs armor after cooldown.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Armor repaired",
+              "regular": "95%",
+              "perfect": "100%",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Cooldown",
+              "regular": "60s",
+              "perfect": "55s",
+              "delta": "5 seconds shorter"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Armor repaired",
+              "regular": "95%",
+              "perfect": "100%",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Cooldown",
+              "regular": "60s",
+              "perfect": "55s",
+              "delta": "5 seconds shorter"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Boomerang": {
+      "regularName": "Boomerang",
+      "perfectName": "Perfect Boomerang",
+      "summary": "Critical hits can return the bullet and increase the next shot's damage.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Bullet return chance",
+              "regular": "50%",
+              "perfect": "75%",
+              "delta": "+25 percentage points"
+            },
+            {
+              "metric": "Next shot increased damage",
+              "regular": "+40%",
+              "perfect": "+50%",
+              "delta": "+10 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Bullet return chance",
+              "regular": "50%",
+              "perfect": "75%",
+              "delta": "+25 percentage points"
+            },
+            {
+              "metric": "Next shot increased damage",
+              "regular": "+40%",
+              "perfect": "+50%",
+              "delta": "+10 percentage points"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Breadbasket": {
+      "regularName": "Bread Basket",
+      "perfectName": "Perfect Bread Basket",
+      "summary": "Body shots build bonus headshot damage for the next headshot.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Bonus headshot damage per stack",
+              "regular": "+55%",
+              "perfect": "+70%",
+              "delta": "+15 percentage points"
+            },
+            {
+              "metric": "Modeled max stack total",
+              "regular": "+165%",
+              "perfect": "+210%",
+              "delta": "+45 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Bonus headshot damage per stack",
+              "regular": "+55%",
+              "perfect": "+70%",
+              "delta": "+15 percentage points"
+            },
+            {
+              "metric": "Modeled max stack total",
+              "regular": "+165%",
+              "perfect": "+210%",
+              "delta": "+45 percentage points"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Fast Hands": {
+      "regularName": "Fast Hands",
+      "perfectName": "Perfect Fast Hands",
+      "summary": "Critical hits add reload-speed stacks.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Reload speed per critical-hit stack",
+              "regular": "+3%",
+              "perfect": "+5%",
+              "delta": "+2 percentage points per stack"
+            },
+            {
+              "metric": "Modeled stack cap",
+              "regular": "+120%",
+              "perfect": "+200%",
+              "delta": "+80 percentage points max"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Reload speed per critical-hit stack",
+              "regular": "+3%",
+              "perfect": "+5%",
+              "delta": "+2 percentage points per stack"
+            },
+            {
+              "metric": "Modeled stack cap",
+              "regular": "+120%",
+              "perfect": "+200%",
+              "delta": "+80 percentage points max"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Killer": {
+      "regularName": "Killer",
+      "perfectName": "Perfect Killer",
+      "summary": "Killing an enemy with a critical hit grants critical hit damage.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Critical hit damage after critical-hit kill",
+              "regular": "+70%",
+              "perfect": "+90%",
+              "delta": "+20 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Critical hit damage after critical-hit kill",
+              "regular": "+70%",
+              "perfect": "+90%",
+              "delta": "+20 percentage points"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Lucky Shot": {
+      "regularName": "Lucky Shot",
+      "perfectName": "Perfect Lucky Shot",
+      "summary": "Increases magazine capacity and returns missed shots from cover.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Magazine capacity",
+              "regular": "+20%",
+              "perfect": "+30%",
+              "delta": "+10 percentage points"
+            },
+            {
+              "metric": "Missed shots from cover returned",
+              "regular": "100%",
+              "perfect": "100%",
+              "delta": "Same return chance"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Magazine capacity",
+              "regular": "+20%",
+              "perfect": "+30%",
+              "delta": "+10 percentage points"
+            },
+            {
+              "metric": "Missed shots from cover returned",
+              "regular": "100%",
+              "perfect": "100%",
+              "delta": "Same return chance"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Optimist": {
+      "regularName": "Optimist",
+      "perfectName": "Perfect Optimist",
+      "summary": "Weapon damage increases as ammo is missing from the magazine.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Modeled maximum damage ramp",
+              "regular": "+35%",
+              "perfect": "+45%",
+              "delta": "+10 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Modeled maximum damage ramp",
+              "regular": "+35%",
+              "perfect": "+45%",
+              "delta": "+10 percentage points"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Sadist": {
+      "regularName": "Sadist",
+      "perfectName": "Perfect Sadist",
+      "summary": "Deals extra weapon damage to bleeding enemies and can apply bleed after kills.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Weapon damage to bleeding enemies",
+              "regular": "+20%",
+              "perfect": "+25%",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Kills required to apply bleed to next enemy",
+              "regular": "4 kills",
+              "perfect": "3 kills",
+              "delta": "1 fewer kill"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Weapon damage to bleeding enemies",
+              "regular": "+20%",
+              "perfect": "+25%",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Kills required to apply bleed to next enemy",
+              "regular": "4 kills",
+              "perfect": "3 kills",
+              "delta": "1 fewer kill"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Spike": {
+      "regularName": "Spike",
+      "perfectName": "Perfect Spike",
+      "summary": "Headshots grant skill damage.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Skill damage after headshot",
+              "regular": "+20%",
+              "perfect": "+25%",
+              "delta": "+5 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Skill damage after headshot",
+              "regular": "+20%",
+              "perfect": "+25%",
+              "delta": "+5 percentage points"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Strained": {
+      "regularName": "Strained",
+      "perfectName": "Perfect Strained",
+      "summary": "Gains critical hit damage while firing.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Critical hit damage per firing interval",
+              "regular": "+10%",
+              "perfect": "+10%",
+              "delta": "Same per-stack value"
+            },
+            {
+              "metric": "Maximum stacks",
+              "regular": "5",
+              "perfect": "8",
+              "delta": "+3 stacks"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Critical hit damage per firing interval",
+              "regular": "+10%",
+              "perfect": "+10%",
+              "delta": "Same per-stack value"
+            },
+            {
+              "metric": "Maximum stacks",
+              "regular": "5",
+              "perfect": "8",
+              "delta": "+3 stacks"
+            }
+          ]
+        }
+      }
+    },
+    "Perfectly Ignited": {
+      "regularName": "Ignited",
+      "perfectName": "Perfectly Ignited",
+      "summary": "Deals extra weapon damage to burning enemies and can apply burn after kills.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Weapon damage to burning enemies",
+              "regular": "+20%",
+              "perfect": "+30%",
+              "delta": "+10 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Weapon damage to burning enemies",
+              "regular": "+20%",
+              "perfect": "+30%",
+              "delta": "+10 percentage points"
             }
           ]
         }
@@ -300,13 +1008,13 @@
       "perfectName": "Perfectly Opportunistic",
       "summary": "Shotgun or marksman rifle hits amplify damage the target takes from all sources.",
       "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
       },
       "modes": {
         "pve": {
-          "status": "needs-final-verification",
+          "status": "spreadsheet-backed",
           "rows": [
             {
               "metric": "Amplified damage taken by marked target",
@@ -317,52 +1025,331 @@
           ]
         },
         "pvp": {
-          "status": "pending",
+          "status": "same-listed-value",
           "rows": [
             {
-              "metric": "PvP amplified damage taken",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
+              "metric": "Amplified damage taken by marked target",
+              "regular": "+10%",
+              "perfect": "+15%",
+              "delta": "+5 percentage points"
             }
           ]
         }
       }
     },
-    "Perfect Shock and Awe": {
-      "regularName": "Shock and Awe",
-      "perfectName": "Perfect Shock and Awe",
-      "summary": "Applying a status effect increases skill damage and repair.",
+    "Future Perfection": {
+      "regularName": "Future Perfect",
+      "perfectName": "Future Perfection",
+      "summary": "Weapon kills grant skill tier progression.",
       "source": {
-        "label": "Needs final in-game PvE/PvP verification",
-        "confidence": "needs-final-verification",
-        "lastVerified": "Pending"
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
       },
       "modes": {
         "pve": {
-          "status": "needs-final-verification",
+          "status": "spreadsheet-backed",
           "rows": [
             {
-              "metric": "Skill damage and repair after status effect",
-              "regular": "+20%",
-              "perfect": "+25%",
-              "delta": "+5 percentage points"
+              "metric": "Skill tier progression modeled value",
+              "regular": "+3",
+              "perfect": "+4",
+              "delta": "+1 skill tier step"
             }
           ]
         },
         "pvp": {
-          "status": "pending",
+          "status": "same-listed-value",
           "rows": [
             {
-              "metric": "PvP skill damage / repair",
-              "regular": "Needs source",
-              "perfect": "Needs source",
-              "delta": "Pending"
+              "metric": "Skill tier progression modeled value",
+              "regular": "+3",
+              "perfect": "+4",
+              "delta": "+1 skill tier step"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Shock & Awe": {
+      "regularName": "Shock & Awe",
+      "perfectName": "Perfect Shock & Awe",
+      "summary": "Applying a status effect increases skill damage and repair.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Skill damage and repair bonus",
+              "regular": "+20%",
+              "perfect": "+20%",
+              "delta": "Same percentage"
+            },
+            {
+              "metric": "Duration",
+              "regular": "20s",
+              "perfect": "27s",
+              "delta": "+7 seconds"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Skill damage and repair bonus",
+              "regular": "+20%",
+              "perfect": "+20%",
+              "delta": "Same percentage"
+            },
+            {
+              "metric": "Duration",
+              "regular": "20s",
+              "perfect": "27s",
+              "delta": "+7 seconds"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Bread Basket": {
+      "regularName": "Bread Basket",
+      "perfectName": "Perfect Bread Basket",
+      "summary": "Body shots build bonus headshot damage for the next headshot.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Bonus headshot damage per stack",
+              "regular": "+55%",
+              "perfect": "+70%",
+              "delta": "+15 percentage points"
+            },
+            {
+              "metric": "Modeled max stack total",
+              "regular": "+165%",
+              "perfect": "+210%",
+              "delta": "+45 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Bonus headshot damage per stack",
+              "regular": "+55%",
+              "perfect": "+70%",
+              "delta": "+15 percentage points"
+            },
+            {
+              "metric": "Modeled max stack total",
+              "regular": "+165%",
+              "perfect": "+210%",
+              "delta": "+45 percentage points"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Ignited": {
+      "regularName": "Ignited",
+      "perfectName": "Perfectly Ignited",
+      "summary": "Deals extra weapon damage to burning enemies and can apply burn after kills.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Weapon damage to burning enemies",
+              "regular": "+20%",
+              "perfect": "+30%",
+              "delta": "+10 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Weapon damage to burning enemies",
+              "regular": "+20%",
+              "perfect": "+30%",
+              "delta": "+10 percentage points"
             }
           ]
         }
       }
     }
   },
-  "items": {}
+  "items": {
+    "lady-death": {
+      "label": "Exotic Talent",
+      "title": "Breathe Free",
+      "summary": "Movement builds stacks that increase shot damage.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "mode-specific",
+          "rows": [
+            {
+              "metric": "Shot damage from movement stacks",
+              "value": "+75%"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "mode-specific",
+          "rows": [
+            {
+              "metric": "Shot damage from movement stacks",
+              "value": "+60%"
+            }
+          ]
+        }
+      }
+    },
+    "busy-little-bee": {
+      "label": "Exotic Talent",
+      "title": "Busy Little Bee",
+      "summary": "Building stacks across targets increases weapon damage.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "mode-specific",
+          "rows": [
+            {
+              "metric": "Modeled max value at 10 stacks",
+              "value": "+200%"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "mode-specific",
+          "rows": [
+            {
+              "metric": "Modeled max value at 10 stacks",
+              "value": "+20%"
+            }
+          ]
+        }
+      }
+    },
+    "chameleon": {
+      "label": "Exotic Talent",
+      "title": "Adaptive Instincts",
+      "summary": "Different hit zones grant different temporary offensive bonuses.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "Headshots bonus",
+              "value": "+20% Critical Hit Chance and +50% Critical Hit Damage"
+            },
+            {
+              "metric": "Body shots bonus",
+              "value": "+90% Weapon Damage"
+            },
+            {
+              "metric": "Leg shots bonus",
+              "value": "+150% Reload Speed"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "Headshots bonus",
+              "value": "+20% Critical Hit Chance and +50% Critical Hit Damage"
+            },
+            {
+              "metric": "Body shots bonus",
+              "value": "+90% Weapon Damage"
+            },
+            {
+              "metric": "Leg shots bonus",
+              "value": "+150% Reload Speed"
+            }
+          ]
+        }
+      }
+    },
+    "coyote-s-mask": {
+      "label": "Exotic Talent",
+      "title": "Pack Instincts",
+      "summary": "You and allies gain critical bonuses based on distance from the last enemy hit.",
+      "source": {
+        "label": "Y8S1 Build Making Tool spreadsheet — Talents tab",
+        "confidence": "spreadsheet-backed",
+        "lastVerified": "Uploaded 2026-06-28"
+      },
+      "modes": {
+        "pve": {
+          "status": "spreadsheet-backed",
+          "rows": [
+            {
+              "metric": "0–15m",
+              "value": "+25% Critical Hit Damage"
+            },
+            {
+              "metric": "15–25m",
+              "value": "+10% Critical Hit Chance and +10% Critical Hit Damage"
+            },
+            {
+              "metric": "25m+",
+              "value": "+25% Critical Hit Chance"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "same-listed-value",
+          "rows": [
+            {
+              "metric": "0–15m",
+              "value": "+25% Critical Hit Damage"
+            },
+            {
+              "metric": "15–25m",
+              "value": "+10% Critical Hit Chance and +10% Critical Hit Damage"
+            },
+            {
+              "metric": "25m+",
+              "value": "+25% Critical Hit Chance"
+            }
+          ]
+        }
+      }
+    }
+  }
 }
