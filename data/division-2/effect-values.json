@@ -1,0 +1,368 @@
+{
+  "metadata": {
+    "name": "Division 2 Effect Value Overrides",
+    "purpose": "Mode-aware PvE/PvP value overrides for named perfect talents, exotic talents, gear set bonuses, brand set bonuses, and other item effects.",
+    "importantNote": "Do not publish guessed values as verified. Use pending/needs-final-verification until checked against in-game text or trusted community data.",
+    "sourceApproach": [
+      "Primary: in-game talent/bonus text after current title update.",
+      "Secondary: trusted community data sources such as mxswat / hi-dep / public Division 2 gear sheets.",
+      "Internal DivGaming watcher notes must not appear on public cards."
+    ],
+    "lastUpdated": "2026-06-28"
+  },
+  "perfectTalents": {
+    "Perfect Flatline": {
+      "regularName": "Flatline",
+      "perfectName": "Perfect Flatline",
+      "summary": "Amplifies weapon damage against pulsed enemies.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Amplified weapon damage to pulsed enemies",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "delta": "+5 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP amplified weapon damage",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Sledgehammer": {
+      "regularName": "Sledgehammer",
+      "perfectName": "Perfect Sledgehammer",
+      "summary": "Grenade damage marks enemies and increases damage to armor against marked targets.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Damage to armor against grenade-marked enemies",
+              "regular": "+30%",
+              "perfect": "+40%",
+              "delta": "+10 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP damage to armor against grenade-marked enemies",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Spotter": {
+      "regularName": "Spotter",
+      "perfectName": "Perfect Spotter",
+      "summary": "Amplifies weapon and skill damage against pulsed enemies.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Amplified weapon and skill damage to pulsed enemies",
+              "regular": "+15%",
+              "perfect": "+20%",
+              "delta": "+5 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP amplified weapon and skill damage",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Combined Arms": {
+      "regularName": "Combined Arms",
+      "perfectName": "Perfect Combined Arms",
+      "summary": "Shooting an enemy increases skill damage.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Skill damage after shooting an enemy",
+              "regular": "+25%",
+              "perfect": "+30%",
+              "delta": "+5 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP skill damage",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Tech Support": {
+      "regularName": "Tech Support",
+      "perfectName": "Perfect Tech Support",
+      "summary": "Skill kills increase skill damage.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Skill damage after a skill kill",
+              "regular": "+25%",
+              "perfect": "+30%",
+              "delta": "+5 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP skill damage",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Glass Cannon": {
+      "regularName": "Glass Cannon",
+      "perfectName": "Perfect Glass Cannon",
+      "summary": "Increases damage dealt while increasing damage taken.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Damage dealt",
+              "regular": "+25%",
+              "perfect": "+30%",
+              "delta": "+5 percentage points"
+            },
+            {
+              "metric": "Damage taken penalty",
+              "regular": "+50%",
+              "perfect": "+60%",
+              "delta": "+10 percentage points taken"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP damage dealt / damage taken",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Overwatch": {
+      "regularName": "Overwatch",
+      "perfectName": "Perfect Overwatch",
+      "summary": "After staying in cover, grants weapon and skill damage to you and allies.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Weapon and skill damage while active",
+              "regular": "+12%",
+              "perfect": "+15%",
+              "delta": "+3 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP weapon and skill damage",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Vigilance": {
+      "regularName": "Vigilance",
+      "perfectName": "Perfect Vigilance",
+      "summary": "Increases weapon damage. Taking damage disables the bonus briefly.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Weapon damage while active",
+              "regular": "+25%",
+              "perfect": "+25%",
+              "delta": "No percentage change"
+            },
+            {
+              "metric": "Disabled after taking damage",
+              "regular": "4 seconds",
+              "perfect": "3 seconds",
+              "delta": "1 second faster recovery"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP weapon damage / disable duration",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    },
+    "Perfectly Opportunistic": {
+      "regularName": "Opportunistic",
+      "perfectName": "Perfectly Opportunistic",
+      "summary": "Shotgun or marksman rifle hits amplify damage the target takes from all sources.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Amplified damage taken by marked target",
+              "regular": "+10%",
+              "perfect": "+15%",
+              "delta": "+5 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP amplified damage taken",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    },
+    "Perfect Shock and Awe": {
+      "regularName": "Shock and Awe",
+      "perfectName": "Perfect Shock and Awe",
+      "summary": "Applying a status effect increases skill damage and repair.",
+      "source": {
+        "label": "Needs final in-game PvE/PvP verification",
+        "confidence": "needs-final-verification",
+        "lastVerified": "Pending"
+      },
+      "modes": {
+        "pve": {
+          "status": "needs-final-verification",
+          "rows": [
+            {
+              "metric": "Skill damage and repair after status effect",
+              "regular": "+20%",
+              "perfect": "+25%",
+              "delta": "+5 percentage points"
+            }
+          ]
+        },
+        "pvp": {
+          "status": "pending",
+          "rows": [
+            {
+              "metric": "PvP skill damage / repair",
+              "regular": "Needs source",
+              "perfect": "Needs source",
+              "delta": "Pending"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "items": {}
+}

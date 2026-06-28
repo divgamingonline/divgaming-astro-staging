@@ -4,32 +4,34 @@ import {
   coreLabel,
   itemBonuses,
   itemDescription,
+  itemEffectPresentation,
   itemFilters,
   itemIcon,
   itemName,
-  itemNamedAttributes,
   itemRoles,
   itemSearch,
   itemSource,
   itemSubhead,
-  itemTalent,
   itemType,
   rarityClass,
   type ToolItem
 } from '../utils/tools';
+import { hasRows, modeStatusLabel } from '../utils/effectValues';
 
 export interface Props { item: ToolItem; }
 const { item } = Astro.props;
 const icon = itemIcon(item);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (href: string) => href.startsWith('http') ? href : `${base}${href}`;
-const talent = itemTalent(item);
-const namedAttributes = itemNamedAttributes(item);
+const effect = itemEffectPresentation(item);
 const bonuses = itemBonuses(item);
 const roles = itemRoles(item);
 const source = itemSource(item);
 const description = itemDescription(item);
 const core = coreLabel(item);
+const hasPve = hasRows(effect?.modes?.pve);
+const hasPvp = hasRows(effect?.modes?.pvp);
+const showRawBonuses = !effect && bonuses.length > 0;
 ---
 
 <article
@@ -49,41 +51,126 @@ const core = coreLabel(item);
 
   {core && <span class:list={['core-badge', coreClass(item)]}><i></i>{core}</span>}
 
-  {talent ? (
-    <div class="talent-box talent-box--compare">
-      <div class="talent-section talent-section--perfect">
-        <span class="talent-label">Perfect Talent</span>
-        <strong>{talent.perfectName}</strong>
-        <p>{talent.perfectDescription}</p>
+  {effect ? (
+    <div class:list={['effect-card', `effect-card--${effect.kind}`]} data-effect-toggle-root>
+      <div class="effect-title-row">
+        <span class="effect-label">{effect.label}</span>
+        <strong>{effect.title}</strong>
+        {effect.summary && <p>{effect.summary}</p>}
       </div>
 
-      <div class="talent-section">
-        <span class="talent-label">Regular Talent</span>
-        <strong>{talent.regularName}</strong>
-        <p>{talent.regularDescription}</p>
-      </div>
+      {effect.regularTitle && (
+        <div class="effect-regular-row">
+          <span>Regular Talent</span>
+          <strong>{effect.regularTitle}</strong>
+        </div>
+      )}
 
-      <p class="talent-difference"><strong>Perfect difference:</strong> {talent.difference}</p>
+      {(hasPve || hasPvp) && (
+        <div class="mode-toggle" role="tablist" aria-label="Effect value mode">
+          {hasPve && <button type="button" class="active" data-mode-button="pve">PvE</button>}
+          {hasPvp && <button type="button" data-mode-button="pvp">PvP</button>}
+        </div>
+      )}
+
+      {hasPve && (
+        <div class="mode-panel active" data-mode-panel="pve">
+          <div class:list={['value-table', effect.kind === 'perfect-talent' && 'value-table--comparison']}>
+            {effect.kind === 'perfect-talent' ? (
+              <>
+                <div class="value-table-head">
+                  <span>Metric</span>
+                  <span>Regular</span>
+                  <span>Perfect</span>
+                  <span>Delta</span>
+                </div>
+                {effect.modes.pve.rows.map((row) => (
+                  <div class="value-table-row">
+                    <span>{row.metric}</span>
+                    <strong>{row.regular}</strong>
+                    <strong>{row.perfect}</strong>
+                    <em>{row.delta}</em>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <>
+                <div class="value-list-head">PvE values / description</div>
+                {effect.modes.pve.rows.map((row) => (
+                  <div class="value-list-row">
+                    <span>{row.metric}</span>
+                    {row.value && <strong>{row.value}</strong>}
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+          {effect.modes.pve.status && <p class="verification-status">{modeStatusLabel(effect.modes.pve.status)}</p>}
+        </div>
+      )}
+
+      {hasPvp && (
+        <div class="mode-panel" data-mode-panel="pvp">
+          <div class:list={['value-table', effect.kind === 'perfect-talent' && 'value-table--comparison']}>
+            {effect.kind === 'perfect-talent' ? (
+              <>
+                <div class="value-table-head">
+                  <span>Metric</span>
+                  <span>Regular</span>
+                  <span>Perfect</span>
+                  <span>Delta</span>
+                </div>
+                {effect.modes.pvp.rows.map((row) => (
+                  <div class="value-table-row">
+                    <span>{row.metric}</span>
+                    <strong>{row.regular}</strong>
+                    <strong>{row.perfect}</strong>
+                    <em>{row.delta}</em>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <>
+                <div class="value-list-head">PvP values / description</div>
+                {effect.modes.pvp.rows.map((row) => (
+                  <div class="value-list-row">
+                    <span>{row.metric}</span>
+                    {row.value && <strong>{row.value}</strong>}
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+          {effect.modes.pvp.status && <p class="verification-status">{modeStatusLabel(effect.modes.pvp.status)}</p>}
+        </div>
+      )}
+
+      {effect.namedAttributes?.length > 0 && (
+        <div class="named-attribute-box">
+          <span class="effect-label">Named Attribute</span>
+          <ul class="bonus-list">
+            {effect.namedAttributes.map((property) => (
+              <li>
+                <strong>{property.label}</strong>
+                {property.description && <span> — {property.description}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {effect.source?.label && (
+        <p class="effect-source">
+          <strong>Source:</strong> {effect.source.label}
+          {effect.source.lastVerified && <span> · {effect.source.lastVerified}</span>}
+        </p>
+      )}
     </div>
   ) : description && (
     <p class="item-description">{description}</p>
   )}
 
-  {namedAttributes.length > 0 && (
-    <div class="named-attribute-box">
-      <span class="talent-label">Named Attribute</span>
-      <ul class="bonus-list">
-        {namedAttributes.map((property) => (
-          <li>
-            <strong>{property.label}</strong>
-            {property.description && <span> — {property.description}</span>}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
-
-  {bonuses.length > 0 && (
+  {showRawBonuses && (
     <ul class="bonus-list">
       {bonuses.slice(0, 5).map((bonus) => <li>{bonus}</li>)}
     </ul>
@@ -96,25 +183,62 @@ const core = coreLabel(item);
   )}
 
   {source && <p class="source-line"><strong>Source:</strong> {source}</p>}
+
+  <script>
+    for (const root of document.querySelectorAll('[data-effect-toggle-root]')) {
+      if (root.dataset.effectToggleReady === 'true') continue;
+      root.dataset.effectToggleReady = 'true';
+
+      const buttons = [...root.querySelectorAll('[data-mode-button]')];
+      const panels = [...root.querySelectorAll('[data-mode-panel]')];
+
+      for (const button of buttons) {
+        button.addEventListener('click', () => {
+          const mode = button.dataset.modeButton;
+
+          buttons.forEach((item) => item.classList.toggle('active', item === button));
+          panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.modePanel === mode));
+        });
+      }
+    }
+  </script>
 </article>
 
 <style>
-  .talent-box--compare {
+  .effect-card {
     display: grid;
     gap: 12px;
+    border: 1px solid rgba(255, 107, 0, .20);
+    border-radius: 16px;
+    padding: 12px;
+    background: rgba(255, 107, 0, .045);
   }
 
-  .talent-section {
-    border-top: 1px solid rgba(255, 255, 255, .08);
-    padding-top: 10px;
+  .effect-card--exotic-talent {
+    border-color: rgba(255, 91, 100, .28);
+    background: rgba(255, 91, 100, .055);
   }
 
-  .talent-section:first-child {
-    border-top: 0;
-    padding-top: 0;
+  .effect-card--gearset-bonuses {
+    border-color: rgba(117, 240, 160, .25);
+    background: rgba(117, 240, 160, .045);
   }
 
-  .talent-label {
+  .effect-title-row strong,
+  .effect-regular-row strong {
+    display: block;
+    color: #fff;
+    font-family: "Chakra Petch", sans-serif;
+  }
+
+  .effect-title-row p {
+    color: var(--muted);
+    margin: 5px 0 0;
+  }
+
+  .effect-label,
+  .effect-regular-row span,
+  .value-list-head {
     display: block;
     color: var(--orange2);
     font-family: "Chakra Petch", sans-serif;
@@ -125,16 +249,110 @@ const core = coreLabel(item);
     margin-bottom: 5px;
   }
 
-  .talent-section strong {
-    display: block;
-    color: #fff;
-    margin-bottom: 4px;
+  .effect-regular-row {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 10px;
   }
 
-  .talent-difference {
-    border-top: 1px solid rgba(255, 107, 0, .22);
-    margin: 0;
-    padding-top: 10px;
+  .mode-toggle {
+    display: inline-flex;
+    align-self: flex-start;
+    gap: 6px;
+    border: 1px solid rgba(255,107,0,.22);
+    border-radius: 999px;
+    padding: 4px;
+    background: rgba(0,0,0,.25);
+  }
+
+  .mode-toggle button {
+    border: 0;
+    border-radius: 999px;
+    color: var(--muted);
+    background: transparent;
+    padding: 6px 12px;
+    font-family: "Chakra Petch", sans-serif;
+    font-size: .72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .mode-toggle button.active {
+    color: #160d05;
+    background: var(--orange);
+  }
+
+  .mode-panel {
+    display: none;
+  }
+
+  .mode-panel.active {
+    display: block;
+  }
+
+  .value-table {
+    display: grid;
+    gap: 8px;
+  }
+
+  .value-table-head,
+  .value-table-row {
+    display: grid;
+    grid-template-columns: 1.5fr .75fr .75fr 1fr;
+    gap: 8px;
+    align-items: start;
+  }
+
+  .value-table-head {
+    color: var(--orange2);
+    font-family: "Chakra Petch", sans-serif;
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding-bottom: 6px;
+  }
+
+  .value-table-row,
+  .value-list-row {
+    color: var(--muted);
+    font-size: .9rem;
+  }
+
+  .value-table-row strong {
+    color: #fff;
+  }
+
+  .value-table-row em {
+    color: var(--green);
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  .value-list-row {
+    display: grid;
+    gap: 4px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    padding: 9px;
+    background: rgba(0,0,0,.16);
+  }
+
+  .value-list-row strong {
+    color: #fff;
+  }
+
+  .verification-status,
+  .effect-source {
+    color: var(--muted);
+    margin: 9px 0 0;
+    font-size: .82rem;
+  }
+
+  .effect-source {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 9px;
   }
 
   .named-attribute-box {
@@ -146,5 +364,41 @@ const core = coreLabel(item);
 
   .named-attribute-box .bonus-list {
     margin-top: 6px;
+  }
+
+  @media (max-width: 780px) {
+    .value-table-head {
+      display: none;
+    }
+
+    .value-table-row {
+      grid-template-columns: 1fr;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(0,0,0,.18);
+    }
+
+    .value-table-row strong::before,
+    .value-table-row em::before {
+      display: block;
+      color: var(--orange2);
+      font-family: "Chakra Petch", sans-serif;
+      font-size: .62rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .value-table-row strong:nth-of-type(1)::before {
+      content: "Regular";
+    }
+
+    .value-table-row strong:nth-of-type(2)::before {
+      content: "Perfect";
+    }
+
+    .value-table-row em::before {
+      content: "Delta";
+    }
   }
 </style>
