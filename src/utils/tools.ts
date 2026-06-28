@@ -5,46 +5,318 @@ export type ToolItem = Record<string, any>;
 
 const manifest: any = iconManifest;
 
-const TALENT_DETAILS: Record<string, string> = {
-  'Perfectly Wicked': 'Applying a status effect grants a stronger temporary weapon damage bonus. Best used on status-focused or bleed/burn builds.',
-  'Perfectly Measured': 'Changes damage and rate of fire across the magazine, creating a stronger version of the Measured magazine split.',
-  'Perfect Rifleman': 'Headshots build rifle damage stacks. Useful for accurate rifle builds that can keep landing precision hits.',
-  'Perfectly Pumped Up': 'Reloading builds a temporary shotgun damage bonus, rewarding close-range play and frequent reload timing.',
-  'Perfect Lucky Shot': 'Improves rifle sustain from cover by returning missed shots and supporting longer firing windows.',
-  'Perfect Sadist': 'Deals increased weapon damage to bleeding enemies. Works best with builds that can reliably apply bleed.',
-  'Perfect Headhunter': 'Headshot kills amplify your next headshot, allowing precision builds to chain very high headshot damage.',
-  'Perfect Spotter': 'Amplifies damage against pulsed enemies. Strong with Pulse, linked laser pointer, Flatline-style setups, and team marking.',
-  'Perfect Strained': 'Critical hit damage builds the longer you keep firing. Best on weapons and builds that can maintain sustained fire.',
-  'Perfect Killer': 'A critical-hit kill grants a stronger temporary critical hit damage bonus.',
-  'Perfect Clutch': 'Critical hits help recover armor while under pressure, making it a survivability-focused crit backpack option.',
-  'Perfect Spark': 'Damaging enemies with a skill or explosive grants weapon damage, supporting hybrid weapon/skill play.',
-  'Perfect Overwatch': 'Staying in cover grants a stronger team-friendly weapon and skill damage bonus.',
-  'Perfect Combined Arms': 'Shooting an enemy increases skill damage, making it a strong backpack talent for skill DPS builds.',
-  'Perfect Vigilance': 'Increases weapon damage until you take damage, with a faster recovery window than the standard version.',
-  'Perfect Fast Hands': 'Critical hits build reload-speed stacks, reducing downtime on weapons that crit often.',
-  'Perfect In Sync': 'Weapon hits and skill hits boost each other, with stronger damage when both bonuses are active together.',
-  'Perfect Intimidate': 'While you have bonus armor, close enemies take amplified damage. Best with bonus armor sources and aggressive play.',
-  'Perfect Allegro': 'Provides a stronger rate-of-fire benefit, improving weapon output through faster firing.',
-  'Perfect Flatline': 'Amplifies weapon damage against pulsed enemies. Pairs well with linked laser pointer, Pulse, and team marking.',
-  'Perfect Sledgehammer': 'Grenades mark enemies and increase armor damage against them, giving the team a stronger burst window.',
-  'Future Perfection': 'Weapon kills grant skill tier progression and can lead into overcharge behavior at high skill tier.',
-  'Perfect Breadbasket': 'Body shots build bonus headshot damage, rewarding controlled follow-up headshots.',
-  'Perfect Finisher': 'After a kill, swapping from this weapon grants a stronger temporary critical chance and critical damage bonus.',
-  'Perfect Tech Support': 'Skill kills increase skill damage, making it useful for turret, drone, and other skill-damage builds.',
-  'Perfect Vanguard': 'Deploying a shield grants bonus armor to you and nearby teammates, supporting tank and team-protection builds.',
-  'Perfect Focus': 'Aiming through a high-magnification scope ramps weapon damage over time.',
-  'Perfect Ignited': 'Deals increased weapon damage to burning enemies. Strong with burn/status application.',
-  'Perfect Overwhelm': 'Rewards suppressing or pressuring enemies with a stronger weapon-performance window.',
-  'Perfect Glass Cannon': 'Greatly increases damage dealt, but also increases damage taken. High-risk, high-reward DPS talent.',
-  'Perfect Outsider': 'Kills improve weapon accuracy and optimal range, helping SMGs perform better beyond normal comfort range.',
-  'Perfectly Rooted': 'Staying in cover activates a stronger skill damage and repair bonus after the condition is met.',
-  'Perfectly Opportunistic': 'Enemies hit by shotguns or marksman rifles take amplified damage from all sources, making it strong for team support.',
-  'Perfect Optimist': 'Weapon damage increases as the magazine empties, rewarding sustained fire through the mag.',
-  'Perfect Shock and Awe': 'Applying status effects or explosive damage increases skill damage and repair, supporting status/skill hybrid builds.',
-  'Perfect Spike': 'Headshots increase skill damage, supporting accurate skill-damage builds.',
-  'Perfect Boomerang': 'Critical hits can return bullets and amplify follow-up shots, improving rifle sustain and burst potential.',
-  'Perfectly Unbreakable': 'When your armor breaks, a stronger armor repair effect triggers. Defensive chest option for survivability.'
+type TalentInfo = {
+  perfectName: string;
+  regularName: string;
+  perfectDescription: string;
+  regularDescription: string;
+  difference: string;
 };
+
+const TALENT_INFO: Record<string, TalentInfo> = {
+  'Perfectly Wicked': {
+    perfectName: 'Perfectly Wicked',
+    regularName: 'Wicked',
+    perfectDescription: 'Applying a status effect activates a stronger weapon-damage window.',
+    regularDescription: 'Wicked grants weapon damage after applying a status effect.',
+    difference: 'The perfect version is the named-item upgrade with a stronger bonus window than the regular talent.'
+  },
+  'Perfectly Measured': {
+    perfectName: 'Perfectly Measured',
+    regularName: 'Measured',
+    perfectDescription: 'Splits the magazine into two firing phases, changing rate of fire and damage as the magazine empties.',
+    regularDescription: 'Measured uses the same magazine-split behavior with standard tuning.',
+    difference: 'The perfect version improves the magazine-split tradeoff compared with regular Measured.'
+  },
+  'Perfect Rifleman': {
+    perfectName: 'Perfect Rifleman',
+    regularName: 'Rifleman',
+    perfectDescription: 'Headshots build rifle damage stacks, rewarding accurate repeated precision hits.',
+    regularDescription: 'Rifleman also stacks rifle damage from headshots, but at the regular talent strength.',
+    difference: 'The perfect version gives the named-item strengthened version of the Rifleman stacking behavior.'
+  },
+  'Perfectly Pumped Up': {
+    perfectName: 'Perfectly Pumped Up',
+    regularName: 'Pumped Up',
+    perfectDescription: 'Reloading builds a stronger temporary weapon-damage bonus for close-range shotgun play.',
+    regularDescription: 'Pumped Up grants weapon damage after reloading, using the regular talent value.',
+    difference: 'The perfect version strengthens the reload-to-damage payoff.'
+  },
+  'Perfect Lucky Shot': {
+    perfectName: 'Perfect Lucky Shot',
+    regularName: 'Lucky Shot',
+    perfectDescription: 'Improves magazine sustain from cover by returning missed shots and supporting longer firing windows.',
+    regularDescription: 'Lucky Shot has the same cover-focused missed-shot return concept with standard tuning.',
+    difference: 'The perfect version gives a stronger named-item version of Lucky Shot’s sustain behavior.'
+  },
+  'Perfect Sadist': {
+    perfectName: 'Perfect Sadist',
+    regularName: 'Sadist',
+    perfectDescription: 'Deals increased weapon damage to bleeding enemies.',
+    regularDescription: 'Sadist also increases weapon damage against bleeding enemies at the regular talent value.',
+    difference: 'The perfect version improves the bleed-target damage bonus.'
+  },
+  'Perfect Headhunter': {
+    perfectName: 'Perfect Headhunter',
+    regularName: 'Headhunter',
+    perfectDescription: 'Headshot kills amplify the next headshot, allowing precision builds to chain very high headshot damage.',
+    regularDescription: 'Headhunter uses the same headshot-kill chaining concept at regular strength.',
+    difference: 'The perfect version gives a stronger headshot-chain payoff than regular Headhunter.'
+  },
+  'Perfect Spotter': {
+    perfectName: 'Perfect Spotter',
+    regularName: 'Spotter',
+    perfectDescription: 'Amplifies damage against pulsed enemies.',
+    regularDescription: 'Spotter also amplifies damage to pulsed enemies, using the standard talent value.',
+    difference: 'The perfect version increases the pulsed-target damage payoff.'
+  },
+  'Perfect Strained': {
+    perfectName: 'Perfect Strained',
+    regularName: 'Strained',
+    perfectDescription: 'Builds critical hit damage the longer you keep firing.',
+    regularDescription: 'Strained also builds critical hit damage during sustained fire at regular strength.',
+    difference: 'The perfect version improves the sustained-fire critical damage reward.'
+  },
+  'Perfect Killer': {
+    perfectName: 'Perfect Killer',
+    regularName: 'Killer',
+    perfectDescription: 'A critical-hit kill grants a stronger temporary critical hit damage bonus.',
+    regularDescription: 'Killer grants critical hit damage after a critical-hit kill at the regular talent value.',
+    difference: 'The perfect version strengthens the post-kill critical damage window.'
+  },
+  'Perfect Clutch': {
+    perfectName: 'Perfect Clutch',
+    regularName: 'Clutch',
+    perfectDescription: 'Critical hits help recover armor while under pressure, supporting aggressive crit-based survivability.',
+    regularDescription: 'Clutch provides the same crit-to-armor recovery concept at regular strength.',
+    difference: 'The perfect version improves the survivability value compared with regular Clutch.'
+  },
+  'Perfect Spark': {
+    perfectName: 'Perfect Spark',
+    regularName: 'Spark',
+    perfectDescription: 'Damaging enemies with a skill or explosive activates a stronger weapon-damage bonus.',
+    regularDescription: 'Spark grants weapon damage after skill or explosive damage at standard strength.',
+    difference: 'The perfect version improves the weapon-damage bonus window.'
+  },
+  'Perfect Overwatch': {
+    perfectName: 'Perfect Overwatch',
+    regularName: 'Overwatch',
+    perfectDescription: 'Staying in cover grants a stronger team-friendly weapon and skill damage bonus.',
+    regularDescription: 'Overwatch grants a team damage bonus from cover at the regular talent value.',
+    difference: 'The perfect version improves the cover-based team damage support value.'
+  },
+  'Perfect Combined Arms': {
+    perfectName: 'Perfect Combined Arms',
+    regularName: 'Combined Arms',
+    perfectDescription: 'Shooting an enemy increases skill damage, making it strong for skill DPS builds.',
+    regularDescription: 'Combined Arms also boosts skill damage after shooting an enemy at regular strength.',
+    difference: 'The perfect version gives a stronger skill-damage boost than regular Combined Arms.'
+  },
+  'Perfect Vigilance': {
+    perfectName: 'Perfect Vigilance',
+    regularName: 'Vigilance',
+    perfectDescription: 'Increases weapon damage until you take damage, with the named-item improved recovery behavior.',
+    regularDescription: 'Vigilance grants weapon damage but is disabled after taking damage.',
+    difference: 'The perfect version improves the downtime/recovery behavior compared with regular Vigilance.'
+  },
+  'Perfect Fast Hands': {
+    perfectName: 'Perfect Fast Hands',
+    regularName: 'Fast Hands',
+    perfectDescription: 'Critical hits build reload-speed stacks, reducing weapon downtime.',
+    regularDescription: 'Fast Hands builds reload speed from critical hits at the regular talent value.',
+    difference: 'The perfect version improves the reload-speed payoff from critical hits.'
+  },
+  'Perfect Finisher': {
+    perfectName: 'Perfect Finisher',
+    regularName: 'Finisher',
+    perfectDescription: 'After a kill, swapping from this weapon grants a stronger temporary critical chance and critical damage bonus.',
+    regularDescription: 'Finisher grants critical chance and critical damage after a kill and weapon swap at regular strength.',
+    difference: 'The perfect version improves the post-kill swap bonus.'
+  },
+  'Perfect Flatline': {
+    perfectName: 'Perfect Flatline',
+    regularName: 'Flatline',
+    perfectDescription: 'Amplifies weapon damage against pulsed enemies.',
+    regularDescription: 'Flatline also amplifies weapon damage against pulsed enemies at regular strength.',
+    difference: 'The perfect version increases the pulsed-target damage payoff.'
+  },
+  'Perfect Focus': {
+    perfectName: 'Perfect Focus',
+    regularName: 'Focus',
+    perfectDescription: 'Aiming through a high-magnification scope ramps weapon damage over time.',
+    regularDescription: 'Focus ramps weapon damage while scoped at the regular talent value.',
+    difference: 'The perfect version improves the scoped damage ramp/reward.'
+  },
+  'Perfect Glass Cannon': {
+    perfectName: 'Perfect Glass Cannon',
+    regularName: 'Glass Cannon',
+    perfectDescription: 'Greatly increases damage dealt, but also increases damage taken.',
+    regularDescription: 'Glass Cannon uses the same high-risk, high-reward damage tradeoff at regular strength.',
+    difference: 'The perfect version increases the damage-focused payoff while keeping the risky playstyle.'
+  },
+  'Perfect Ignited': {
+    perfectName: 'Perfect Ignited',
+    regularName: 'Ignited',
+    perfectDescription: 'Deals increased weapon damage to burning enemies.',
+    regularDescription: 'Ignited also increases weapon damage against burning enemies at regular strength.',
+    difference: 'The perfect version improves the burn-target damage bonus.'
+  },
+  'Perfect In Sync': {
+    perfectName: 'Perfect In Sync',
+    regularName: 'In Sync',
+    perfectDescription: 'Weapon hits and skill hits boost each other, with a stronger payoff when both sides are active.',
+    regularDescription: 'In Sync also rewards alternating weapon and skill damage at regular strength.',
+    difference: 'The perfect version improves the weapon/skill hybrid damage payoff.'
+  },
+  'Perfect Intimidate': {
+    perfectName: 'Perfect Intimidate',
+    regularName: 'Intimidate',
+    perfectDescription: 'While you have bonus armor, close enemies take amplified damage.',
+    regularDescription: 'Intimidate also boosts close-range damage while you have bonus armor at regular strength.',
+    difference: 'The perfect version improves the aggressive bonus-armor damage window.'
+  },
+  'Perfect Sledgehammer': {
+    perfectName: 'Perfect Sledgehammer',
+    regularName: 'Sledgehammer',
+    perfectDescription: 'Grenades mark enemies and create a stronger armor-damage window against marked targets.',
+    regularDescription: 'Sledgehammer also marks enemies damaged by grenades and increases armor damage against them at regular strength.',
+    difference: 'The perfect version improves the grenade-mark armor-damage payoff for you and your team.'
+  },
+  'Perfect Tech Support': {
+    perfectName: 'Perfect Tech Support',
+    regularName: 'Tech Support',
+    perfectDescription: 'Skill kills increase skill damage, making it useful for turret, drone, and skill-damage builds.',
+    regularDescription: 'Tech Support also increases skill damage after skill kills at regular strength.',
+    difference: 'The perfect version improves the skill-kill damage bonus.'
+  },
+  'Perfect Vanguard': {
+    perfectName: 'Perfect Vanguard',
+    regularName: 'Vanguard',
+    perfectDescription: 'Deploying a shield grants bonus armor to you and nearby teammates.',
+    regularDescription: 'Vanguard provides team bonus armor from shield deployment at regular strength.',
+    difference: 'The perfect version improves the team-protection value from shield deployment.'
+  },
+  'Perfect Allegro': {
+    perfectName: 'Perfect Allegro',
+    regularName: 'Allegro',
+    perfectDescription: 'Provides a stronger rate-of-fire benefit for faster weapon output.',
+    regularDescription: 'Allegro increases rate of fire at the regular talent value.',
+    difference: 'The perfect version improves the rate-of-fire benefit.'
+  },
+  'Perfect Outsider': {
+    perfectName: 'Perfect Outsider',
+    regularName: 'Outsider',
+    perfectDescription: 'Kills improve weapon accuracy and optimal range, helping close-range weapons perform better at distance.',
+    regularDescription: 'Outsider improves accuracy and optimal range after kills at regular strength.',
+    difference: 'The perfect version improves the post-kill handling/range benefit.'
+  },
+  'Perfect Optimist': {
+    perfectName: 'Perfect Optimist',
+    regularName: 'Optimist',
+    perfectDescription: 'Weapon damage increases as the magazine empties.',
+    regularDescription: 'Optimist uses the same lower-magazine damage ramp at regular strength.',
+    difference: 'The perfect version improves the damage ramp as the magazine gets lower.'
+  },
+  'Perfect Spike': {
+    perfectName: 'Perfect Spike',
+    regularName: 'Spike',
+    perfectDescription: 'Headshots increase skill damage, supporting accurate skill-damage builds.',
+    regularDescription: 'Spike increases skill damage after headshots at regular strength.',
+    difference: 'The perfect version improves the headshot-to-skill-damage bonus.'
+  },
+  'Perfect Breadbasket': {
+    perfectName: 'Perfect Breadbasket',
+    regularName: 'Breadbasket',
+    perfectDescription: 'Body shots build bonus headshot damage for follow-up precision hits.',
+    regularDescription: 'Breadbasket also builds headshot damage from body shots at regular strength.',
+    difference: 'The perfect version improves the body-shot-to-headshot reward.'
+  },
+  'Perfect Boomerang': {
+    perfectName: 'Perfect Boomerang',
+    regularName: 'Boomerang',
+    perfectDescription: 'Critical hits can return bullets and amplify follow-up shots.',
+    regularDescription: 'Boomerang has the same critical-hit bullet return and damage concept at regular strength.',
+    difference: 'The perfect version improves the rifle sustain and burst payoff.'
+  },
+  'Perfect Shock and Awe': {
+    perfectName: 'Perfect Shock and Awe',
+    regularName: 'Shock and Awe',
+    perfectDescription: 'Applying status effects or explosive damage increases skill damage and repair.',
+    regularDescription: 'Shock and Awe also boosts skill damage and repair after status or explosive damage at regular strength.',
+    difference: 'The perfect version improves the status/explosive skill-support bonus.'
+  },
+  'Perfectly Opportunistic': {
+    perfectName: 'Perfectly Opportunistic',
+    regularName: 'Opportunistic',
+    perfectDescription: 'Enemies hit by shotguns or marksman rifles take amplified damage from all sources.',
+    regularDescription: 'Opportunistic also marks enemies hit by shotguns or marksman rifles for increased incoming damage at regular strength.',
+    difference: 'The perfect version improves the team damage-support effect.'
+  },
+  'Perfectly Rooted': {
+    perfectName: 'Perfectly Rooted',
+    regularName: 'Rooted',
+    perfectDescription: 'Staying in cover activates a stronger skill damage and repair bonus after the condition is met.',
+    regularDescription: 'Rooted grants skill damage and repair from cover at regular strength.',
+    difference: 'The perfect version improves the cover-based skill support bonus.'
+  },
+  'Perfectly Unbreakable': {
+    perfectName: 'Perfectly Unbreakable',
+    regularName: 'Unbreakable',
+    perfectDescription: 'When your armor breaks, a stronger armor repair effect triggers.',
+    regularDescription: 'Unbreakable repairs armor when your armor breaks at regular strength.',
+    difference: 'The perfect version improves the emergency armor-repair value.'
+  },
+  'Perfectly Pumped Up': {
+    perfectName: 'Perfectly Pumped Up',
+    regularName: 'Pumped Up',
+    perfectDescription: 'Reloading builds a stronger temporary shotgun damage bonus.',
+    regularDescription: 'Pumped Up grants weapon damage after reloads at regular strength.',
+    difference: 'The perfect version improves the reload-based damage payoff.'
+  },
+  'Perfectly Measured': {
+    perfectName: 'Perfectly Measured',
+    regularName: 'Measured',
+    perfectDescription: 'Splits the magazine into two firing phases with an improved named-item tradeoff.',
+    regularDescription: 'Measured changes rate of fire and damage across the magazine at regular strength.',
+    difference: 'The perfect version improves the magazine-split behavior.'
+  },
+  'Perfect Kinetic Momentum': {
+    perfectName: 'Perfect Kinetic Momentum',
+    regularName: 'Kinetic Momentum',
+    perfectDescription: 'Builds stronger skill damage and repair while skills are active and not on cooldown.',
+    regularDescription: 'Kinetic Momentum builds skill damage and repair while skills remain active at regular strength.',
+    difference: 'The perfect version improves the active-skill stacking benefit.'
+  },
+  'Perfect Adrenaline Rush': {
+    perfectName: 'Perfect Adrenaline Rush',
+    regularName: 'Adrenaline Rush',
+    perfectDescription: 'Grants bonus armor when close to enemies, supporting aggressive close-range builds.',
+    regularDescription: 'Adrenaline Rush also grants bonus armor near enemies at regular strength.',
+    difference: 'The perfect version improves the close-range bonus armor value.'
+  },
+  'Perfect Overwhelm': {
+    perfectName: 'Perfect Overwhelm',
+    regularName: 'Overwhelm',
+    perfectDescription: 'Rewards sustained pressure against enemies with a stronger weapon-performance window.',
+    regularDescription: 'Overwhelm uses the same pressure-based weapon benefit at regular strength.',
+    difference: 'The perfect version improves the pressure-based payoff.'
+  },
+  'Future Perfection': {
+    perfectName: 'Future Perfection',
+    regularName: 'Future Perfect',
+    perfectDescription: 'Weapon kills grant skill-tier progression and can help reach overcharge behavior in the right build.',
+    regularDescription: 'Future Perfect also grants skill-tier progression from weapon kills at regular strength.',
+    difference: 'Future Perfection is the named-item version with improved tuning compared with the regular Future Perfect talent.'
+  }
+};
+
+function cleanTalentName(name: string): string {
+  return name
+    .replace(/^Perfectly\s+/i, '')
+    .replace(/^Perfect\s+/i, '')
+    .replace(/Perfection$/i, 'Perfect')
+    .trim();
+}
 
 export function getItems(data: any): ToolItem[] {
   return asArray(data);
@@ -63,6 +335,10 @@ export function itemType(item: ToolItem): string {
   if (text.includes('weapon talent')) return 'Weapon Talent';
   if (text.includes('gear talent')) return 'Gear Talent';
   return String(item.category || item.rarity || 'Reference');
+}
+
+export function isNamedItem(item: ToolItem): boolean {
+  return itemType(item).toLowerCase().includes('named');
 }
 
 export function rarityClass(item: ToolItem): string {
@@ -84,20 +360,21 @@ export function itemSubhead(item: ToolItem): string {
 
 export function itemDescription(item: ToolItem): string {
   if (item.description) return String(item.description);
-  if (item.note) return String(item.note);
   if (item.notes) return String(item.notes);
+  if (item.note) return String(item.note);
   if (Array.isArray(item.bonuses) && item.bonuses.length) return item.bonuses.map(String).join(' / ');
   return '';
 }
 
 export function itemSource(item: ToolItem): string {
-  const source = String(item.source || item.sources || '').trim();
+  if (isNamedItem(item)) return '';
 
+  const source = String(item.source || item.sources || '').trim();
   if (!source) return '';
 
-  // Hide internal curation notes from the public cards.
   if (/divgaming curated reference/i.test(source)) return '';
   if (/validate against/i.test(source)) return '';
+  if (/source watcher/i.test(source)) return '';
 
   return source;
 }
@@ -120,24 +397,27 @@ function getRawTalent(item: ToolItem): { name: string; description: string; type
   return { name: '', description: '', type: '' };
 }
 
-export function itemTalent(item: ToolItem): { name: string; description: string } | null {
+export function itemTalent(item: ToolItem): TalentInfo | null {
   const talent = getRawTalent(item);
   const name = talent.name.trim();
 
   if (!name) return null;
-
-  // These are not real talent descriptions. They are handled as special properties instead.
   if (/^(any talent|named attribute)$/i.test(name)) return null;
 
-  const description =
-    talent.description ||
-    TALENT_DETAILS[name] ||
-    item.note ||
-    '';
+  const mapped = TALENT_INFO[name];
+
+  if (mapped) {
+    return mapped;
+  }
+
+  const regularName = cleanTalentName(name);
 
   return {
-    name,
-    description: String(description)
+    perfectName: name,
+    regularName,
+    perfectDescription: talent.description || item.note || `${name} is the named-item upgraded version of ${regularName}.`,
+    regularDescription: `${regularName} is the standard version of this talent.`,
+    difference: `The perfect version improves the standard ${regularName} behavior.`
   };
 }
 
@@ -163,7 +443,7 @@ function normalizeProperty(value: any): { label: string; note: string } | null {
   return null;
 }
 
-export function itemSpecialProperties(item: ToolItem): { label: string; description: string }[] {
+export function itemNamedAttributes(item: ToolItem): { label: string; description: string }[] {
   const properties: { label: string; description: string }[] = [];
   const talent = getRawTalent(item);
   const talentName = talent.name.trim();
@@ -171,14 +451,14 @@ export function itemSpecialProperties(item: ToolItem): { label: string; descript
   if (/^any talent$/i.test(talentName)) {
     properties.push({
       label: 'Open talent slot',
-      description: 'This named item is not locked to one talent. Its named value comes from its special stat/property instead.'
+      description: 'This named item is not locked to one perfect talent. Its named value comes from its extra stat or special item property.'
     });
   }
 
   if (/^named attribute$/i.test(talentName)) {
     properties.push({
       label: 'Named attribute',
-      description: item.note || 'This item is valuable because of its special named attribute rather than a perfect talent.'
+      description: item.note || 'This item is valuable because of its named attribute rather than a perfect talent.'
     });
   }
 
@@ -192,7 +472,7 @@ export function itemSpecialProperties(item: ToolItem): { label: string; descript
       description:
         property.note && !/^fixed named item attribute$/i.test(property.note)
           ? property.note
-          : 'Fixed named item attribute that makes this item different from its standard counterpart.'
+          : 'Fixed named attribute that separates this item from its standard counterpart.'
     });
   }
 
@@ -201,7 +481,6 @@ export function itemSpecialProperties(item: ToolItem): { label: string; descript
     const property = normalizeProperty(entry);
     if (!property) continue;
 
-    // Do not show ordinary weapon damage as a "special" property.
     if (/standard weapon core attribute/i.test(property.note)) continue;
 
     properties.push({
@@ -219,6 +498,9 @@ export function itemSpecialProperties(item: ToolItem): { label: string; descript
 
   return properties;
 }
+
+// Backwards-compatible alias for older component references.
+export const itemSpecialProperties = itemNamedAttributes;
 
 export function itemBonuses(item: ToolItem): string[] {
   return Array.isArray(item.bonuses) ? item.bonuses.map(String) : [];
@@ -289,7 +571,7 @@ export function itemIcon(item: ToolItem): string {
 
 export function itemSearch(item: ToolItem): string {
   const talent = itemTalent(item);
-  const specialProperties = itemSpecialProperties(item);
+  const namedAttributes = itemNamedAttributes(item);
 
   return [
     itemName(item),
@@ -297,9 +579,12 @@ export function itemSearch(item: ToolItem): string {
     itemSubhead(item),
     itemDescription(item),
     itemSource(item),
-    talent?.name,
-    talent?.description,
-    ...specialProperties.flatMap((property) => [property.label, property.description]),
+    talent?.perfectName,
+    talent?.regularName,
+    talent?.perfectDescription,
+    talent?.regularDescription,
+    talent?.difference,
+    ...namedAttributes.flatMap((property) => [property.label, property.description]),
     ...itemBonuses(item),
     ...itemRoles(item)
   ].filter(Boolean).join(' ').toLowerCase();
