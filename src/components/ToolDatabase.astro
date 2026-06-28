@@ -1,6 +1,6 @@
 ---
 import ToolItemCard from './ToolItemCard.astro';
-import { getItems } from '../utils/tools';
+import { getItems, itemFilters } from '../utils/tools';
 
 export interface Props {
   data: any;
@@ -11,6 +11,67 @@ export interface Props {
 
 const { data, eyebrow, title, description } = Astro.props;
 const items = getItems(data);
+
+const filterLabels: Record<string, string> = {
+  all: 'All',
+  exotic: 'Exotic',
+  named: 'Named',
+  brandset: 'Brand Set',
+  gearset: 'Gear Set',
+  weapon: 'Weapon',
+  talent: 'Talent',
+  backpack: 'Backpack',
+  chest: 'Chest',
+  mask: 'Mask',
+  gloves: 'Gloves',
+  holster: 'Holster',
+  kneepads: 'Kneepads',
+  damage: 'Damage',
+  weapon_damage: 'Weapon Damage',
+  armor: 'Armor',
+  skill: 'Skill',
+  skill_tier: 'Skill Tier'
+};
+
+const preferredOrder = [
+  'all',
+  'exotic',
+  'named',
+  'brandset',
+  'gearset',
+  'weapon',
+  'talent',
+  'backpack',
+  'chest',
+  'mask',
+  'gloves',
+  'holster',
+  'kneepads',
+  'damage',
+  'weapon_damage',
+  'armor',
+  'skill',
+  'skill_tier'
+];
+
+const filterCounts = new Map<string, number>();
+filterCounts.set('all', items.length);
+
+for (const item of items) {
+  const filters = itemFilters(item).split(/\s+/).filter(Boolean);
+  for (const filter of filters) {
+    if (filter === 'all') continue;
+    filterCounts.set(filter, (filterCounts.get(filter) || 0) + 1);
+  }
+}
+
+const activeFilters = preferredOrder
+  .filter((filter) => filter === 'all' || (filterCounts.get(filter) || 0) > 0)
+  .map((filter) => ({
+    key: filter,
+    label: filterLabels[filter] || filter.replace(/_/g, ' '),
+    count: filterCounts.get(filter) || items.length
+  }));
 ---
 
 <section class="shell hero compact-hero">
@@ -40,8 +101,16 @@ const items = getItems(data);
     <button type="button" data-tool-filter-toggle>Filters</button>
     <button type="button" data-tool-reset>Reset</button>
     <div class="filter-buttons" data-tool-filters>
-      {['all', 'exotic', 'named', 'brandset', 'gearset', 'weapon', 'talent', 'damage', 'armor', 'skill'].map((filter) => (
-        <button type="button" class={filter === 'all' ? 'active' : ''} data-filter={filter}>{filter.replace('brandset','brand set').replace('gearset','gear set')}</button>
+      {activeFilters.map((filter) => (
+        <button
+          type="button"
+          class={filter.key === 'all' ? 'active' : ''}
+          data-filter={filter.key}
+          title={`${filter.count} matching entries`}
+        >
+          {filter.label}
+          <span>{filter.count}</span>
+        </button>
       ))}
     </div>
   </div>
@@ -74,15 +143,20 @@ const items = getItems(data);
       }
     }
 
+    function cardHasFilter(card, filter) {
+      if (filter === 'all') return true;
+      const filters = (card.dataset.filters || '').split(/\s+/).filter(Boolean);
+      return filters.includes(filter);
+    }
+
     function apply() {
       const q = (input?.value || '').toLowerCase().trim();
       let visible = 0;
 
       for (const card of cards) {
         const search = card.dataset.search || '';
-        const filters = card.dataset.filters || '';
         const okSearch = !q || search.includes(q);
-        const okFilter = active === 'all' || filters.includes(active);
+        const okFilter = cardHasFilter(card, active);
         const show = okSearch && okFilter;
         card.hidden = !show;
         if (show) visible++;
