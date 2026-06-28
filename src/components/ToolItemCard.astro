@@ -10,6 +10,7 @@ import {
   itemRoles,
   itemSearch,
   itemSource,
+  itemSpecialProperties,
   itemSubhead,
   itemTalent,
   itemType,
@@ -23,6 +24,7 @@ const icon = itemIcon(item);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (href: string) => href.startsWith('http') ? href : `${base}${href}`;
 const talent = itemTalent(item);
+const specialProperties = itemSpecialProperties(item);
 const bonuses = itemBonuses(item);
 const roles = itemRoles(item);
 const source = itemSource(item);
@@ -49,10 +51,24 @@ const core = coreLabel(item);
 
   {talent ? (
     <div class="talent-box">
-      {talent.name && <strong>{talent.name}</strong>}
+      <span class="eyebrow">Special property</span>
+      <strong>{talent.name}</strong>
       {talent.description && <p>{talent.description}</p>}
     </div>
-  ) : description && <p class="item-description">{description}</p>}
+  ) : description && (
+    <p class="item-description">{description}</p>
+  )}
+
+  {specialProperties.length > 0 && (
+    <ul class="bonus-list">
+      {specialProperties.map((property) => (
+        <li>
+          <strong>{property.label}</strong>
+          {property.description && <> — {property.description}</>}
+        </li>
+      ))}
+    </ul>
+  )}
 
   {bonuses.length > 0 && (
     <ul class="bonus-list">
