@@ -1,9 +1,15 @@
 import prototypeData from '../../data/division-2/prototype-system.json';
 
-export type PrototypeRollExample = {
+export type PrototypeRollRow = {
   label: string;
   standard: string;
   prototype: string;
+  change: string;
+};
+
+export type PrototypeRollSection = {
+  title: string;
+  rows: PrototypeRollRow[];
 };
 
 export type PrototypeAugment = {
@@ -17,16 +23,15 @@ export type PrototypePresentation = {
   title: string;
   summary: string;
   appliesTo: string;
-  rollExamples: PrototypeRollExample[];
+  rollSections: PrototypeRollSection[];
   notes: string[];
   augments: PrototypeAugment[];
 };
 
 const data = prototypeData as {
   summary: string;
-  rollExamples?: PrototypeRollExample[];
-  weaponRollNotes?: string[];
-  gearRollNotes?: string[];
+  gearRollSections?: PrototypeRollSection[];
+  weaponRollSections?: PrototypeRollSection[];
   augments?: PrototypeAugment[];
 };
 
@@ -61,8 +66,10 @@ export function getPrototypePresentation(item: Record<string, any>, type: string
     title: 'Prototype Eligible',
     summary: data.summary,
     appliesTo: weaponLike ? 'Eligible non-exotic weapon' : 'Eligible non-exotic gear',
-    rollExamples: data.rollExamples || [],
-    notes: weaponLike ? (data.weaponRollNotes || []) : (data.gearRollNotes || []),
+    rollSections: weaponLike ? (data.weaponRollSections || []) : (data.gearRollSections || []),
+    notes: weaponLike
+      ? ['Weapon prototype values are shown separately from gear prototype values.']
+      : ['Gear prototype values are shown separately from weapon prototype values.'],
     augments: data.augments || []
   };
 }

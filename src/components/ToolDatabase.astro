@@ -18,60 +18,97 @@ const filterLabels: Record<string, string> = {
   named: 'Named',
   brandset: 'Brand Set',
   gearset: 'Gear Set',
+  gear: 'Gear',
   weapon: 'Weapon',
   talent: 'Talent',
+  prototype: 'Prototype',
   backpack: 'Backpack',
   chest: 'Chest',
   mask: 'Mask',
   gloves: 'Gloves',
   holster: 'Holster',
   kneepads: 'Kneepads',
-  damage: 'Damage',
-  weapon_damage: 'Weapon Damage',
-  armor: 'Armor',
-  skill: 'Skill',
-  skill_tier: 'Skill Tier'
+  weapon_damage: 'Weapon Damage Core',
+  armor_core: 'Armor Core',
+  skill_tier: 'Skill Tier',
+  ar: 'Assault Rifle',
+  rifle: 'Rifle',
+  smg: 'SMG',
+  lmg: 'LMG',
+  shotgun: 'Shotgun',
+  mmr: 'Marksman Rifle',
+  pistol: 'Pistol'
 };
 
 const preferredOrder = [
   'all',
-  'exotic',
-  'named',
-  'brandset',
-  'gearset',
+  'gear',
   'weapon',
   'talent',
+  'prototype',
   'backpack',
   'chest',
   'mask',
   'gloves',
   'holster',
   'kneepads',
-  'damage',
   'weapon_damage',
-  'armor',
-  'skill',
-  'skill_tier'
+  'armor_core',
+  'skill_tier',
+  'ar',
+  'rifle',
+  'smg',
+  'lmg',
+  'shotgun',
+  'mmr',
+  'pistol',
+  'exotic',
+  'named',
+  'brandset',
+  'gearset'
 ];
 
 const filterCounts = new Map<string, number>();
 filterCounts.set('all', items.length);
 
 for (const item of items) {
-  const filters = itemFilters(item).split(/\s+/).filter(Boolean);
+  const filters = new Set(itemFilters(item).split(/\s+/).filter(Boolean));
+
   for (const filter of filters) {
     if (filter === 'all') continue;
     filterCounts.set(filter, (filterCounts.get(filter) || 0) + 1);
   }
 }
 
-const activeFilters = preferredOrder
-  .filter((filter) => filter === 'all' || (filterCounts.get(filter) || 0) > 0)
-  .map((filter) => ({
-    key: filter,
-    label: filterLabels[filter] || filter.replace(/_/g, ' '),
-    count: filterCounts.get(filter) || items.length
-  }));
+const discoveredFilters = [...filterCounts.keys()]
+  .filter((filter) => filter !== 'all')
+  .sort((a, b) => {
+    const ai = preferredOrder.includes(a) ? preferredOrder.indexOf(a) : 999;
+    const bi = preferredOrder.includes(b) ? preferredOrder.indexOf(b) : 999;
+    if (ai !== bi) return ai - bi;
+    return a.localeCompare(b);
+  });
+
+const activeFilters = [
+  {
+    key: 'all',
+    label: filterLabels.all,
+    count: items.length
+  },
+  ...discoveredFilters
+    .filter((filter) => {
+      const count = filterCounts.get(filter) || 0;
+
+      // Hide filters that are empty or identical to the whole current page.
+      // Example: Named Items Database should not show Named 60/60.
+      return count > 0 && count < items.length;
+    })
+    .map((filter) => ({
+      key: filter,
+      label: filterLabels[filter] || filter.replace(/^role_/, '').replace(/_/g, ' '),
+      count: filterCounts.get(filter) || 0
+    }))
+];
 ---
 
 <section class="shell hero compact-hero">
@@ -93,7 +130,7 @@ const activeFilters = preferredOrder
   <div class="section-head">
     <p class="eyebrow">Searchable database</p>
     <h2><span data-tool-count>{items.length}</span> entries</h2>
-    <p>Search by name, slot, source, talent, gear type, role, or keyword.</p>
+    <p>Search by name, slot, item type, talent, role, or keyword.</p>
   </div>
 
   <div class="filter-panel">
@@ -179,7 +216,7 @@ const activeFilters = preferredOrder
     }
 
     reset?.addEventListener('click', () => {
-      input.value = '';
+      if (input) input.value = '';
       active = 'all';
       buttons.forEach((item) => item.classList.toggle('active', item.dataset.filter === 'all'));
       apply();

@@ -38,6 +38,8 @@ const pveMode = effect?.modes?.pve;
 const pvpMode = effect?.modes?.pvp;
 const hasPve = hasRows(pveMode);
 const hasPvp = hasRows(pvpMode) && modesDiffer(pveMode, pvpMode);
+const pveRows = pveMode?.rows || [];
+const pvpRows = pvpMode?.rows || [];
 const showModeToggle = hasPve && hasPvp;
 const showRawBonuses = !effect && bonuses.length > 0;
 ---
@@ -92,7 +94,7 @@ const showRawBonuses = !effect && bonuses.length > 0;
                   <span>Perfect</span>
                   <span>Change</span>
                 </div>
-                {pveMode.rows.map((row) => (
+                {pveRows.map((row) => (
                   <div class="value-table-row">
                     <span>{rowLabel(row)}</span>
                     <strong>{row.regular}</strong>
@@ -104,7 +106,7 @@ const showRawBonuses = !effect && bonuses.length > 0;
             ) : (
               <>
                 <div class="value-list-head">{showModeToggle ? 'PvE' : 'Values'}</div>
-                {pveMode.rows.map((row) => (
+                {pveRows.map((row) => (
                   <div class="value-list-row">
                     <span>{rowLabel(row)}</span>
                     {row.value && row.value !== rowLabel(row) && <strong>{row.value}</strong>}
@@ -127,7 +129,7 @@ const showRawBonuses = !effect && bonuses.length > 0;
                   <span>Perfect</span>
                   <span>Change</span>
                 </div>
-                {pvpMode.rows.map((row) => (
+                {pvpRows.map((row) => (
                   <div class="value-table-row">
                     <span>{rowLabel(row)}</span>
                     <strong>{row.regular}</strong>
@@ -139,7 +141,7 @@ const showRawBonuses = !effect && bonuses.length > 0;
             ) : (
               <>
                 <div class="value-list-head">PvP</div>
-                {pvpMode.rows.map((row) => (
+                {pvpRows.map((row) => (
                   <div class="value-list-row">
                     <span>{rowLabel(row)}</span>
                     {row.value && row.value !== rowLabel(row) && <strong>{row.value}</strong>}
@@ -179,20 +181,21 @@ const showRawBonuses = !effect && bonuses.length > 0;
       <p>{prototype.summary}</p>
       <p class="prototype-applies">{prototype.appliesTo}</p>
 
-      {prototype.rollExamples.length > 0 && (
+      {prototype.rollSections.length > 0 && prototype.rollSections.map((section) => (
         <div class="prototype-section">
-          <span class="effect-label">Prototype Roll Examples</span>
+          <span class="effect-label">{section.title}</span>
           <div class="prototype-roll-grid">
-            {prototype.rollExamples.slice(0, 8).map((roll) => (
+            {section.rows.map((roll) => (
               <div>
                 <strong>{roll.label}</strong>
                 <span>Standard: {roll.standard}</span>
                 <span>Prototype: {roll.prototype}</span>
+                <em>{roll.change}</em>
               </div>
             ))}
           </div>
         </div>
-      )}
+      ))}
 
       {prototype.notes.length > 0 && (
         <ul class="bonus-list">
@@ -371,7 +374,8 @@ const showRawBonuses = !effect && bonuses.length > 0;
     color: #fff;
   }
 
-  .value-table-row em {
+  .value-table-row em,
+  .prototype-roll-grid em {
     color: var(--green);
     font-style: normal;
     font-weight: 800;

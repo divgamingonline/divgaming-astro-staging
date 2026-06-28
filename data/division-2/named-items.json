@@ -36,9 +36,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Named holster with ammo-capacity utility.",
       "detailUrl": "/division-2/named-items/ammo-dump/",
       "aliases": []
@@ -66,9 +63,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Status-to-weapon-damage backpack; notable off-brand core exception.",
       "detailUrl": "/division-2/named-items/anarchists-cookbook/",
       "aliases": []
@@ -101,9 +95,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Perfect measured magazine split.",
       "detailUrl": "/division-2/named-items/the-apartment/",
       "aliases": [
@@ -138,9 +129,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Headshot stacks for weapon damage.",
       "detailUrl": "/division-2/named-items/artists-tool/",
       "aliases": [
@@ -175,9 +163,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Sidearm-style close-range shotgun option.",
       "detailUrl": "/division-2/named-items/backup-boomstick/",
       "aliases": [
@@ -212,9 +197,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Cover-based missed shots return to the magazine.",
       "detailUrl": "/division-2/named-items/bakers-dozen/",
       "aliases": [
@@ -249,9 +231,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "More damage to bleeding enemies.",
       "detailUrl": "/division-2/named-items/carnage/",
       "aliases": [
@@ -281,9 +260,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Headshot chain chest.",
       "detailUrl": "/division-2/named-items/chainkiller/",
       "aliases": []
@@ -316,9 +292,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Popular holiday named mask.",
       "detailUrl": "/division-2/named-items/chill-out/",
       "aliases": []
@@ -351,9 +324,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Exception item with non-standard offensive core behavior.",
       "detailUrl": "/division-2/named-items/claws-out/",
       "aliases": []
@@ -381,9 +351,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Pulse/Flatline style tank-DPS chest.",
       "detailUrl": "/division-2/named-items/closer/",
       "aliases": []
@@ -416,9 +383,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Crit damage builds while firing.",
       "detailUrl": "/division-2/named-items/cold-relations/",
       "aliases": [
@@ -453,9 +417,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "High-value LMG/DPS named gloves.",
       "detailUrl": "/division-2/named-items/contractors-gloves/",
       "aliases": []
@@ -488,9 +449,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Stronger critical-hit-damage kill talent.",
       "detailUrl": "/division-2/named-items/dark-winter/",
       "aliases": [
@@ -525,9 +483,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Named gloves commonly used for armor-on-kill setups.",
       "detailUrl": "/division-2/named-items/deathgrips/",
       "aliases": []
@@ -555,9 +510,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Crit survivability backpack.",
       "detailUrl": "/division-2/named-items/devils-due/",
       "aliases": []
@@ -585,9 +537,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Crit/explosive brand chest.",
       "detailUrl": "/division-2/named-items/door-kickers-knock/",
       "aliases": []
@@ -620,9 +569,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Rifle/headshot named gloves.",
       "detailUrl": "/division-2/named-items/eagles-grasp/",
       "aliases": []
@@ -655,9 +601,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Named kneepads with armor regeneration utility.",
       "detailUrl": "/division-2/named-items/emperors-guard/",
       "aliases": []
@@ -685,9 +628,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "AR support chest.",
       "detailUrl": "/division-2/named-items/ferocious-calm/",
       "aliases": []
@@ -720,9 +660,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "SMG/status gloves.",
       "detailUrl": "/division-2/named-items/firm-handshake/",
       "aliases": []
@@ -750,9 +687,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Skill DPS staple backpack.",
       "detailUrl": "/division-2/named-items/force-multiplier/",
       "aliases": []
@@ -785,9 +719,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Shield-health holster.",
       "detailUrl": "/division-2/named-items/forge/",
       "aliases": []
@@ -820,9 +751,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "High-value rifle/DPS named kneepads.",
       "detailUrl": "/division-2/named-items/foxs-prayer/",
       "aliases": []
@@ -850,9 +778,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "DPS backpack with faster Vigilance recovery.",
       "detailUrl": "/division-2/named-items/the-gift/",
       "aliases": []
@@ -885,9 +810,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Faster reload stacking from crits.",
       "detailUrl": "/division-2/named-items/good-times/",
       "aliases": [
@@ -922,9 +844,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Stronger weapon/skill damage loop.",
       "detailUrl": "/division-2/named-items/harmony/",
       "aliases": [
@@ -959,9 +878,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "DZ-associated named mask.",
       "detailUrl": "/division-2/named-items/the-hollow-man/",
       "aliases": []
@@ -989,9 +905,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Hunter chest reward / intimidate option.",
       "detailUrl": "/division-2/named-items/hunter-killer/",
       "aliases": []
@@ -1024,9 +937,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Rate-of-fire focused perfect talent.",
       "detailUrl": "/division-2/named-items/invisible-hand/",
       "aliases": [
@@ -1061,9 +971,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Amplified damage to pulsed enemies.",
       "detailUrl": "/division-2/named-items/kingbreaker/",
       "aliases": [
@@ -1098,9 +1005,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Perfect grenade-mark armor damage synergy.",
       "detailUrl": "/division-2/named-items/lefty/",
       "aliases": [
@@ -1131,9 +1035,6 @@
         }
       ],
       "talent": "Any Talent",
-      "source": "User-confirmed DivGaming correction; verify in source watcher.",
-      "sourceConfidence": "user_confirmed",
-      "needsVerification": false,
       "note": "Special assault rifle with +5% Weapon Damage; talent is not fixed.",
       "detailUrl": "/division-2/named-items/lexington/",
       "aliases": [],
@@ -1162,9 +1063,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Bonus armor backpack.",
       "detailUrl": "/division-2/named-items/matador/",
       "aliases": []
@@ -1197,9 +1095,6 @@
         "type": "fixed_or_named",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Kills grant skill tier / overcharge behavior.",
       "detailUrl": "/division-2/named-items/mechanical-animal/",
       "aliases": [
@@ -1234,9 +1129,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Shield and skill-health utility gloves.",
       "detailUrl": "/division-2/named-items/motherly-love/",
       "aliases": []
@@ -1269,9 +1161,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Body shots stack headshot damage.",
       "detailUrl": "/division-2/named-items/mozambique-special/",
       "aliases": [
@@ -1306,9 +1195,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Scanner pulse utility mask.",
       "detailUrl": "/division-2/named-items/nightwatcher/",
       "aliases": []
@@ -1341,9 +1227,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Weapon swap after kill grants stronger crit stats.",
       "detailUrl": "/division-2/named-items/orbit/",
       "aliases": [
@@ -1373,9 +1256,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Skill kill damage backpack.",
       "detailUrl": "/division-2/named-items/percussive-maintenance/",
       "aliases": []
@@ -1409,9 +1289,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Exception item: commonly represented with armor core plus offensive weapon-damage value.",
       "detailUrl": "/division-2/named-items/picaros-holster/",
       "aliases": []
@@ -1439,9 +1316,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Shield/team bonus armor chest.",
       "detailUrl": "/division-2/named-items/pointman/",
       "aliases": []
@@ -1469,9 +1343,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "MMR/headshot chest option.",
       "detailUrl": "/division-2/named-items/pristine-example/",
       "aliases": []
@@ -1504,9 +1375,6 @@
         "type": "",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Pistol/headshot mask.",
       "detailUrl": "/division-2/named-items/punch-drunk/",
       "aliases": []
@@ -1539,9 +1407,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "More damage to burning enemies.",
       "detailUrl": "/division-2/named-items/pyromaniac/",
       "aliases": [
@@ -1576,9 +1441,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Suppression/handling-oriented perfect talent.",
       "detailUrl": "/division-2/named-items/quiet-roar/",
       "aliases": [
@@ -1608,9 +1470,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "High-risk/high-damage DPS chest.",
       "detailUrl": "/division-2/named-items/the-sacrifice/",
       "aliases": []
@@ -1643,9 +1502,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Improved accuracy/range after kill.",
       "detailUrl": "/division-2/named-items/safety-distance/",
       "aliases": [
@@ -1680,9 +1536,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Skill damage/repair buff after staying in cover.",
       "detailUrl": "/division-2/named-items/send-off/",
       "aliases": [
@@ -1712,9 +1565,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Shotgun/MMR support backpack.",
       "detailUrl": "/division-2/named-items/the-setup/",
       "aliases": []
@@ -1747,9 +1597,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Stronger Optimist-style magazine damage scaling.",
       "detailUrl": "/division-2/named-items/shield-splinterer/",
       "aliases": [
@@ -1779,9 +1626,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Status/skill backpack.",
       "detailUrl": "/division-2/named-items/strategic-alignment/",
       "aliases": []
@@ -1814,9 +1658,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Headshots boost skill damage.",
       "detailUrl": "/division-2/named-items/surge/",
       "aliases": [
@@ -1851,9 +1692,6 @@
         "type": "fixed_or_named",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Equipped skill-tier bonus utility sidearm.",
       "detailUrl": "/division-2/named-items/tdi-kard-custom/",
       "aliases": [
@@ -1888,9 +1726,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Stronger weapon/skill damage loop.",
       "detailUrl": "/division-2/named-items/test-subject/",
       "aliases": [
@@ -1920,9 +1755,6 @@
         "description": "50% of weapon damage dealt to the primary target transfers to another enemy within 30 meters.",
         "type": "Named gear talent"
       },
-      "source": "User-confirmed DivGaming correction; verify brand/core/source in source watcher.",
-      "sourceConfidence": "hi-dep-item-sources",
-      "needsVerification": false,
       "note": "Česká Výroba s.r.o. named kneepads with Bewildered damage-transfer behavior.",
       "detailUrl": "/division-2/named-items/turmoil/",
       "aliases": [],
@@ -1956,9 +1788,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Crits can return bullets and amplify shots.",
       "detailUrl": "/division-2/named-items/the-virginian/",
       "aliases": [
@@ -1988,9 +1817,6 @@
         "type": "perfect",
         "description": "When in combat, each skill generates stacks while active or not on cooldown. Perfect Kinetic Momentum raises the stack cap compared with the standard talent."
       },
-      "source": "Wyvern Wear targeted loot / named item sources",
-      "sourceConfidence": "hi-dep-y8s2-divgaming-curated",
-      "needsVerification": false,
       "note": "Named Wyvern Wear chest with Perfect Kinetic Momentum.",
       "detailUrl": "/division-2/named-items/visionario/",
       "aliases": []
@@ -2023,9 +1849,6 @@
         "type": "fixed_or_named",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Known for elevated headshot-damage value.",
       "detailUrl": "/division-2/named-items/white-death/",
       "aliases": [
@@ -2055,9 +1878,6 @@
         "type": "perfect",
         "description": ""
       },
-      "source": "DivGaming curated reference; validate against hi-dep/mxswat after major patches.",
-      "sourceConfidence": "curated",
-      "needsVerification": false,
       "note": "Defensive shotgun/armor chest.",
       "detailUrl": "/division-2/named-items/zero-fs/",
       "aliases": []

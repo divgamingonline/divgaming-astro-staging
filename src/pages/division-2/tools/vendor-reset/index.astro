@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title="Division 2 Vendor Reset | DivGaming" canonical="/division-2/tools/vendor-reset/">
+  <section class="shell hero compact-hero">
+    <div class="page-hero">
+      <div>
+        <p class="eyebrow">Vendor Reset</p>
+        <h1>Check weekly vendor stock fast</h1>
+        <p class="lead">Open the live vendor view, compare named items, scan useful rolls, and jump back into DivGaming item databases without digging through menus.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://hi-dep.github.io/division2/?view=vendor" target="_blank" rel="noopener">Open live vendor sheet</a>
+          <a class="button ghost" href={`${base}/division-2/tools/named-items-database/`}>Named Items</a>
+          <a class="button ghost" href={`${base}/division-2/tools/brand-set-database/`}>Brand Sets</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <span>Field Intel</span>
+        <strong>Vendor</strong>
+        <small>External live stock</small>
+      </aside>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="feature-grid">
+      <a class="feature-card primary-card" href="https://hi-dep.github.io/division2/?view=vendor" target="_blank" rel="noopener">
+        <span>Live stock</span>
+        <strong>Hi-Dep Vendor View</strong>
+        <p>Use the community vendor view for current weekly stock and targeted pickups.</p>
+      </a>
+      <a class="feature-card" href={`${base}/division-2/tools/named-items-database/`}>
+        <span>Research</span>
+        <strong>Named Items</strong>
+        <p>Check whether a vendor item is worth buying before you spend credits.</p>
+      </a>
+      <a class="feature-card" href={`${base}/division-2/tools/exotic-source-tracker/`}>
+        <span>Sources</span>
+        <strong>Exotic Tracker</strong>
+        <p>Confirm exotic acquisition paths and avoid wasting farm time.</p>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

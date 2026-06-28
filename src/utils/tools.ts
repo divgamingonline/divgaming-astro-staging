@@ -25,6 +25,14 @@ export type ItemEffectPresentation = {
 
 const manifest: any = iconManifest;
 
+function slug(value: unknown): string {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
 function cleanTalentName(name: string): string {
   if (/^Future Perfection$/i.test(name)) return 'Future Perfect';
   return name.replace(/^Perfectly\s+/i, '').replace(/^Perfected\s+/i, '').replace(/^Perfect\s+/i, '').trim();
@@ -387,7 +395,7 @@ export function itemSearch(item: ToolItem): string {
     prototype?.title,
     prototype?.summary,
     prototype?.appliesTo,
-    ...(prototype?.rollExamples || []).flatMap((roll) => [roll.label, roll.standard, roll.prototype]),
+    ...(prototype?.rollSections || []).flatMap((section) => [section.title, ...section.rows.flatMap((row) => [row.label, row.standard, row.prototype, row.change])]),
     ...(prototype?.augments || []).flatMap((augment) => [augment.name, augment.value, augment.description]),
     ...itemBonuses(item),
     ...itemRoles(item)
@@ -396,17 +404,59 @@ export function itemSearch(item: ToolItem): string {
 
 export function itemFilters(item: ToolItem): string {
   const tokens = new Set<string>(['all']);
-  const text = itemSearch(item);
+  const type = itemType(item).toLowerCase();
+  const itemTypeText = String(item.itemType || item.category || '').toLowerCase();
+  const slot = String(item.slot || '').toLowerCase();
+  const weaponType = String(item.weaponType || '').toLowerCase();
+  const talent = getRawTalent(item);
+  const cores = [
+    item.defaultCore,
+    ...(Array.isArray(item.availableCores) ? item.availableCores : [])
+  ].map((value) => String(value || '').toLowerCase());
 
-  for (const token of ['exotic', 'named', 'brand', 'gear', 'weapon', 'talent', 'prototype', 'augment', 'backpack', 'chest', 'mask', 'gloves', 'holster', 'kneepads', 'skill', 'armor', 'damage']) {
-    if (text.includes(token)) tokens.add(token);
+  if (type.includes('exotic')) tokens.add('exotic');
+  if (type.includes('named')) tokens.add('named');
+  if (type.includes('brand set')) tokens.add('brandset');
+  if (type.includes('gear set')) tokens.add('gearset');
+
+  if (itemTypeText.includes('gear') || slot) tokens.add('gear');
+  if (itemTypeText.includes('weapon') || weaponType || item.brandOrSet === 'Weapon') tokens.add('weapon');
+
+  if (talent.name && !/^(any talent|named attribute)$/i.test(talent.name)) tokens.add('talent');
+
+  for (const key of ['backpack', 'chest', 'mask', 'gloves', 'holster', 'kneepads']) {
+    if (slot.includes(key) || (key === 'gloves' && slot.includes('glove')) || (key === 'kneepads' && slot.includes('knee'))) {
+      tokens.add(key);
+    }
   }
 
-  if (itemType(item).toLowerCase().includes('gear set')) tokens.add('gearset');
-  if (itemType(item).toLowerCase().includes('brand set')) tokens.add('brandset');
-  if (coreLabel(item).toLowerCase().includes('weapon')) tokens.add('weapon_damage');
-  if (coreLabel(item).toLowerCase().includes('armor')) tokens.add('armor');
-  if (coreLabel(item).toLowerCase().includes('skill')) tokens.add('skill_tier');
+  const weaponMap: Record<string, string> = {
+    smg: 'smg',
+    lmg: 'lmg',
+    shotgun: 'shotgun',
+    pistol: 'pistol',
+    sidearm: 'pistol',
+    rifle: 'rifle',
+    marksman: 'mmr',
+    mmr: 'mmr',
+    assault: 'ar',
+    ar: 'ar'
+  };
+
+  for (const [needle, token] of Object.entries(weaponMap)) {
+    if (weaponType.includes(needle)) tokens.add(token);
+  }
+
+  if (cores.some((value) => value.includes('weapon'))) tokens.add('weapon_damage');
+  if (cores.some((value) => value.includes('armor'))) tokens.add('armor_core');
+  if (cores.some((value) => value.includes('skill'))) tokens.add('skill_tier');
+
+  if (itemPrototypePresentation(item)) tokens.add('prototype');
+
+  for (const role of itemRoles(item)) {
+    const token = slug(role);
+    if (token) tokens.add(`role_${token}`);
+  }
 
   return [...tokens].join(' ');
 }

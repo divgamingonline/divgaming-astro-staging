@@ -2,16 +2,14 @@
   "metadata": {
     "name": "DivGaming Y8S1 Effect Values",
     "publicDisplayPolicy": [
-      "No source labels on public cards.",
-      "No spreadsheet/debug wording on public cards.",
-      "Use player-facing labels: Effect, Regular, Perfect, Change.",
-      "Show PvE/PvP tabs only when mode-specific rows exist."
+      "No public source labels.",
+      "No placeholder source or verification wording.",
+      "Use Effect, Regular, Perfect, Change."
     ],
     "_internalReference": {
       "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
       "tabsUsed": [
-        "Talents",
-        "Calculations"
+        "Talents"
       ]
     }
   },
@@ -347,15 +345,15 @@
           "rows": [
             {
               "effect": "Critical Hit Chance",
-              "regular": "+15%",
-              "perfect": "+18%",
-              "change": "+3 percentage points"
+              "regular": "+16%",
+              "perfect": "+21%",
+              "change": "+5 percentage points"
             },
             {
               "effect": "Critical Hit Damage",
-              "regular": "+15%",
-              "perfect": "+18%",
-              "change": "+3 percentage points"
+              "regular": "+16%",
+              "perfect": "+21%",
+              "change": "+5 percentage points"
             }
           ]
         }
@@ -733,9 +731,9 @@
             },
             {
               "effect": "Magazine Size",
-              "regular": "+29.5%",
-              "perfect": "+44.25%",
-              "change": "+14.75 percentage points"
+              "regular": "0.295",
+              "perfect": "0.4425",
+              "change": "+0.1475"
             }
           ]
         }
@@ -826,7 +824,20 @@
       "summary": "",
       "modes": {
         "pve": {
-          "rows": []
+          "rows": [
+            {
+              "effect": "Critical Hit Chance",
+              "regular": "+30%",
+              "perfect": "+35%",
+              "change": "+5 percentage points"
+            },
+            {
+              "effect": "Critical Hit Damage",
+              "regular": "+30%",
+              "perfect": "+40%",
+              "change": "+10 percentage points"
+            }
+          ]
         }
       },
       "_internalReference": {
@@ -878,9 +889,9 @@
           "rows": [
             {
               "effect": "Magazine Size",
-              "regular": "+20%",
-              "perfect": "+30%",
-              "change": "+10 percentage points"
+              "regular": "0.2",
+              "perfect": "0.3",
+              "change": "+0.1"
             }
           ]
         }
@@ -932,7 +943,7 @@
       "_internalReference": {
         "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
         "tab": "Talents",
-        "sourceTalentName": "Perfected Sledgehammer"
+        "sourceTalentName": "Perfect Sledgehammer"
       }
     },
     "Perfectly Determined": {
@@ -1025,15 +1036,15 @@
           "rows": [
             {
               "effect": "Weapon Damage",
-              "regular": "+10%",
-              "perfect": "+12%",
-              "change": "+2 percentage points"
+              "regular": "+4.5%",
+              "perfect": "+4.5%",
+              "change": "No change"
             },
             {
               "effect": "Rate of Fire",
-              "regular": "+9%",
-              "perfect": "+13%",
-              "change": "+4 percentage points"
+              "regular": "+5%",
+              "perfect": "+5%",
+              "change": "No change"
             }
           ]
         }
@@ -1127,8 +1138,8 @@
             {
               "effect": "Total Skill Damage",
               "regular": "+12%",
-              "perfect": "+12%",
-              "change": "No change"
+              "perfect": "",
+              "change": ""
             }
           ]
         }
@@ -1796,7 +1807,7 @@
       "_internalReference": {
         "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
         "tab": "Talents",
-        "sourceTalentName": "Perfected Sledgehammer"
+        "sourceTalentName": "Perfect Sledgehammer"
       }
     },
     "Perfect Shock and Awe": {
@@ -1897,28 +1908,6 @@
         "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
         "tab": "Talents",
         "sourceTalentName": "Perfectly In Sync"
-      }
-    },
-    "Perfect Strained": {
-      "regularName": "Strained",
-      "perfectName": "Perfect Strained",
-      "summary": "",
-      "modes": {
-        "pve": {
-          "rows": [
-            {
-              "effect": "Critical Hit Damage",
-              "regular": "0%",
-              "perfect": "0%",
-              "change": "No change"
-            }
-          ]
-        }
-      },
-      "_internalReference": {
-        "workbook": "[Y8S1] Build Making Tool - The Division 2.xlsx",
-        "tab": "Talents",
-        "sourceTalentName": "Perfectly Strained"
       }
     }
   },

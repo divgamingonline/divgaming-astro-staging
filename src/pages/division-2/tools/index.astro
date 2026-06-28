@@ -11,6 +11,8 @@ import { getItems } from '../../../utils/tools';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const tools = [
+  ['Vendor Reset', '/division-2/tools/vendor-reset/', 'Live', 'Open the live vendor view and jump into item databases for buy decisions.'],
+  ['Expertise Cost Tracker', '/division-2/tools/expertise-cost-tracker/', 'Plan', 'Plan what to upgrade before spending rare materials.'],
   ['Exotic Source Tracker', '/division-2/tools/exotic-source-tracker/', getItems(exoticsData).length, 'Find exotic weapons and gear, sources, and talents.'],
   ['Named Items Database', '/division-2/tools/named-items-database/', getItems(namedItemsData).length, 'Look up named gear, named weapons, perfect talents, slots, and sources.'],
   ['Brand Set Database', '/division-2/tools/brand-set-database/', getItems(brandsetsData).length, 'Compare high-end brand set bonuses and roles.'],
@@ -26,12 +28,12 @@ const tools = [
       <div>
         <p class="eyebrow">Gear Tools</p>
         <h1>Research items and plan builds</h1>
-        <p class="lead">Use these tools to look up items, compare gear options, understand talents, and make better build decisions.</p>
+        <p class="lead">Use the DivGaming toolset to plan builds, check items, compare bonuses, verify talents, review prototype eligibility, and move faster through endgame decisions.</p>
       </div>
       <aside class="hero-panel">
         <span>Tools</span>
         <strong>{tools.length}</strong>
-        <small>Databases</small>
+        <small>Tools</small>
       </aside>
     </div>
   </section>

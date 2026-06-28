@@ -54,13 +54,11 @@ for (const [key, value] of Object.entries(data.perfectTalents || {})) {
 }
 
 const aliases: Record<string, string> = {
-  'perfect sledgehammer': 'perfect sledgehammer',
   'perfected sledgehammer': 'perfect sledgehammer',
   'perfect shock and awe': 'perfect shock & awe',
   'perfect breadbasket': 'perfect bread basket',
   'perfect ignited': 'perfectly ignited',
-  'perfect in sync': 'perfectly in sync',
-  'perfect strained': 'perfectly strained'
+  'perfect in sync': 'perfectly in sync'
 };
 
 export function getPerfectTalentComparison(perfectTalentName: unknown): PerfectTalentComparison | null {
